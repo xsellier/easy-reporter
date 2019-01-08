@@ -4,6 +4,6 @@
   },
   "server": {
     "port": 80,
-    "host": "herokuapp.com"
+    "host": "citygamestudio.herokuapp.com"
   }
 }
