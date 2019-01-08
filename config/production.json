@@ -3,7 +3,6 @@
     "level": "info"
   },
   "server": {
-    "port": 80,
-    "host": "citygamestudio.herokuapp.com"
+    "port": 80
   }
 }
