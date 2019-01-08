@@ -1,0 +1,32 @@
+{
+  "database": {
+    "driver": "pg",
+    "port": 5432,
+    "host": "127.0.0.1",
+    "user": "dev",
+    "password": "passwordDev",
+    "database": "easyreporting",
+    "min": 2,
+    "max": 5,
+    "idleTimeoutMillis": 300000,
+    "ssl": false
+  },
+  "sql": {
+    "encoding": "utf-8",
+    "relativeDirectory": "sql"
+  },
+  "logger": {
+    "namespace": "easy-error-reporter",
+    "level": "info"
+  },
+  "session": {
+    "ttl": 3600
+  },
+  "server": {
+    "port": 1337,
+    "host": "localhost"
+  },
+  "website": {
+    "public": "public"
+  }
+}
