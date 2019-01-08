@@ -4,6 +4,6 @@
   },
   "server": {
     "port": 80,
-    "host": "*"
+    "host": "herokuapp.com"
   }
 }
