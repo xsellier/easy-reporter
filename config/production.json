@@ -1,8 +1,5 @@
 {
   "logger": {
     "level": "info"
-  },
-  "server": {
-    "port": 80
   }
 }
