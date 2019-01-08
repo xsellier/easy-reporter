@@ -1,8 +1,7 @@
--- $1 : user id
--- $2 : password
+-- $1 : password
 WITH inserted_account AS (
-  INSERT INTO account (created_at, id, hashed_password)
-  VALUES (NOW(), $1, $2)
+  INSERT INTO account (created_at, hashed_password)
+  VALUES (NOW(), $1)
   RETURNING id
 ),
 SELECT a.id
