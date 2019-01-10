@@ -1,2 +1,2 @@
-SELECT filename
+SELECT *
 FROM report;
