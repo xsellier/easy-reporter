@@ -80,7 +80,7 @@
                   </md-card>
                 </div>
               </div>
-              <div class="md-layout" v-if="report != null">
+              <div class="md-layout" v-if="report != null && report.data != null">
                 <div class="md-layout-item md-size-33">
                   <md-card class="system-info">
                     <md-card-header>
@@ -285,9 +285,10 @@ export default {
           Authorization: `Bearer ${this.token}`
         }
       }).then(response => {
-        this.filename = report.filename;
-        this.report = response.data;
+        let rawReport = pako.ungzip(atob(response.data), {to: 'string'});
 
+        this.filename = report.filename;
+        this.report = JSON.parse(rawReport)
         this.sending = false;
       });
     },
