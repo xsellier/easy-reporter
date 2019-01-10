@@ -1,6 +1,6 @@
 exports.up = function (db) {
   return new Promise((resolve, reject) => {
-    db.runSql('TRUNCATE account'), (err) => {
+    db.runSql('TRUNCATE TABLE account CASCADE', (err) => {
       if (err) {
         reject(err)
       } else {
@@ -12,18 +12,18 @@ exports.up = function (db) {
           }
         })
       }
-    }
+    })
   })
 }
 
 exports.down = function (db) {
   return new Promise((resolve, reject) => {
-    db.runSql('TRUNCATE account'), (err) => {
+    db.runSql('TRUNCATE TABLE account', (err) => {
       if (err) {
         reject(err)
       } else {
         resolve()
       }
-    }
+    })
   })
 }
