@@ -7,5 +7,12 @@
   },
   "server": {
     "port": "PORT"
+  },
+  "authentication": {
+    "secret_key": "SECRET_KEY"
+  },
+  "file": {
+    "token": "GITSHARE_TOKEN",
+    "secret": "GITSHARE_SECRET"
   }
 }

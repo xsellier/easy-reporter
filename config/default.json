@@ -28,5 +28,13 @@
   },
   "website": {
     "public": "public"
+  },
+  "authentication": {
+    "secret_key": "MY_VERY_SECRET_KEY"
+  },
+  "file": {
+    "host": "http://app.smartfile.com/",
+    "token": "MY_SECRET_TOKEN",
+    "secret": "MY_SECRET_SECRET"
   }
 }

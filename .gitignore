@@ -1,4 +1,7 @@
 .vscode/
 
+config/local.json
 log/
 node_modules/
+
+test.js
