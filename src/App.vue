@@ -9,18 +9,22 @@
           <md-app-drawer md-permanent="full">
             <md-toolbar class="md-transparent" md-elevation="0">Reports
               <div class="md-toolbar-section-end">
+                <md-list>
+                <md-list-item>
                 <md-checkbox v-model="debug">Debug</md-checkbox>
                 <md-checkbox v-model="deleted">Deleted</md-checkbox>
                 <md-checkbox v-model="uploaded">Uploaded</md-checkbox>
+                </md-list-item>
+                  <md-list-item>
                 <md-button class="md-raised md-accent" v-on:click="list">Refresh</md-button>
+                <md-button class="md-raised md-accent" :disabled="reportsBulkDelete.length <= 0" v-on:click="bulkDelete()">Delete</md-button>
+                </md-list-item>
+                </md-list>
               </div>
             </md-toolbar>
             <md-list class="md-triple-line">
-              <md-list-item
-                v-for="report in filteredReports"
-                :key="report.filename"
-                @click="info(report)"
-              >
+              <md-list-item v-for="report in filteredReports" :key="report.filename">
+                <md-checkbox v-model="reportsBulkDelete" v-if="report.deleted_at == null" :value="report.filename" class="md-primary"></md-checkbox>
                 <md-icon
                   v-bind:class="{ 'success': report.uploaded, 'failure': !report.uploaded }"
                 >cloud_upload</md-icon>
@@ -31,6 +35,7 @@
                 </div>
                 <md-icon class="failure" v-if="report.deleted_at">deleted_at</md-icon>
                 <md-icon class="failure" v-if="report.debug">bug_report</md-icon>
+                <md-button class="md-dense md-raised md-primary" v-if="report.deleted_at == null" v-on:click="info(report)">Open</md-button>
               </md-list-item>
             </md-list>
           </md-app-drawer>
@@ -153,6 +158,7 @@ export default {
   data() {
     return {
       reports: [],
+      reportsBulkDelete: [],
       cache: {},
       report: null,
       username: "",
@@ -223,6 +229,33 @@ export default {
     }
   },
   methods: {
+    bulkDelete: function() {
+      this.sending = true;
+
+      this.$http({
+        method: "POST",
+        url: `/report/bulk/delete`,
+        headers: {
+          Authorization: `Bearer ${this.token}`
+        },
+        data: {
+          reports: this.reportsBulkDelete
+        }
+      }).then(() => {
+        this.report = null;
+        this.filename = null;
+
+        this.sending = false;
+        this.reportsBulkDelete = [];
+
+        return this.list();
+      })
+      .catch(err => {
+        this.sending = false;
+
+        this.$refs.errorSnackbar.show(`Cannot delete reports: ${err.message}`);
+      });
+    },
     formatCallstack: function(callstack) {
       return callstack.reduce((acc, item, index) => {
         let computed_index = parseInt(Math.floor(index / 2), 10);
@@ -266,6 +299,11 @@ export default {
         this.sending = false;
 
         return this.list();
+      })
+      .catch(err => {
+        this.sending = false;
+
+        this.$refs.errorSnackbar.show(`Cannot delete report: ${err.message}`);
       });
     },
     info: function(report) {
@@ -285,11 +323,16 @@ export default {
           Authorization: `Bearer ${this.token}`
         }
       }).then(response => {
-        let rawReport = pako.ungzip(atob(response.data), {to: 'string'});
+        let rawReport = pako.ungzip(atob(response.data), { to: "string" });
 
         this.filename = report.filename;
-        this.report = JSON.parse(rawReport)
+        this.report = JSON.parse(rawReport);
         this.sending = false;
+      })
+      .catch(err => {
+        this.sending = false;
+
+        this.$refs.errorSnackbar.show(`Cannot download report: ${err.message}`);
       });
     },
     login: function() {
@@ -323,7 +366,15 @@ export default {
         }
       }).then(response => {
         this.reports = response.data;
+        this.reports.sort((a, b) => {
+          return a.created_at < b.created_at
+        })
         this.sending = false;
+      })
+      .catch(err => {
+        this.sending = false;
+
+        this.$refs.errorSnackbar.show(`Cannot list reports: ${err.message}`);
       });
     }
   }
