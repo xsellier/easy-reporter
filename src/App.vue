@@ -22,6 +22,7 @@
                 </md-list>
               </div>
             </md-toolbar>
+            <md-content class="md-scrollbar">
             <md-list class="md-triple-line">
               <md-list-item v-for="report in filteredReports" :key="report.filename">
                 <md-checkbox v-model="reportsBulkDelete" v-if="report.deleted_at == null" :value="report.filename" class="md-primary"></md-checkbox>
@@ -38,6 +39,7 @@
                 <md-button class="md-dense md-raised md-primary" v-if="report.deleted_at == null" v-on:click="info(report)">Open</md-button>
               </md-list-item>
             </md-list>
+            </md-content>
           </md-app-drawer>
           <md-app-content>
             <template>
@@ -57,7 +59,7 @@
                 >Delete</md-button>
               </div>
               <div class="md-layout" v-if="report != null">
-                <div class="md-layout-item md-size-60">
+                <div class="md-layout-item md-size-60" v-if="report != null && report.data != null">
                   <md-content>
                     <p class="md-display-1">{{ report.data.error }}</p>
                     <p class="md-body-2">{{ report.data.error_descr }}</p>
