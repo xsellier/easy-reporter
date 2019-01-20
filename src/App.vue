@@ -1,44 +1,55 @@
 <template>
   <div id="app">
     <template v-if="token">
-      <div class="page-container md-layout-row">
+      <div class="page-container">
         <md-app>
           <md-app-toolbar class="md-primary">
             <span class="md-title">Informations</span>
           </md-app-toolbar>
           <md-app-drawer md-permanent="full">
-            <md-toolbar class="md-transparent" md-elevation="0">Reports
-              <div class="md-toolbar-section-end">
-                <md-list>
+            <md-toolbar class="md-dense" id="toolbar">
+              <md-list>
                 <md-list-item>
-                <md-checkbox v-model="debug">Debug</md-checkbox>
-                <md-checkbox v-model="deleted">Deleted</md-checkbox>
-                <md-checkbox v-model="uploaded">Uploaded</md-checkbox>
+                  <md-checkbox v-model="debug">Debug</md-checkbox>
+                  <md-checkbox v-model="deleted">Deleted</md-checkbox>
+                  <md-checkbox v-model="uploaded">Uploaded</md-checkbox>
                 </md-list-item>
-                  <md-list-item>
-                <md-button class="md-raised md-accent" v-on:click="list">Refresh</md-button>
-                <md-button class="md-raised md-accent" :disabled="reportsBulkDelete.length <= 0" v-on:click="bulkDelete()">Delete</md-button>
+                <md-list-item>
+                  <md-button class="md-raised md-accent" v-on:click="list">Refresh</md-button>
+                  <md-button
+                    class="md-raised md-accent"
+                    :disabled="reportsBulkDelete.length <= 0"
+                    v-on:click="bulkDelete()"
+                  >Delete</md-button>
                 </md-list-item>
-                </md-list>
-              </div>
+              </md-list>
             </md-toolbar>
             <md-content class="md-scrollbar">
-            <md-list class="md-triple-line">
-              <md-list-item v-for="report in filteredReports" :key="report.filename">
-                <md-checkbox v-model="reportsBulkDelete" v-if="report.deleted_at == null" :value="report.filename" class="md-primary"></md-checkbox>
-                <md-icon
-                  v-bind:class="{ 'success': report.uploaded, 'failure': !report.uploaded }"
-                >cloud_upload</md-icon>
-                <div class="md-list-item-text">
-                  <span>{{ report.filename }}</span>
-                  <span>Version: {{ report.version }}</span>
-                  <p>Created: {{ report.created_at }}</p>
-                </div>
-                <md-icon class="failure" v-if="report.deleted_at">deleted_at</md-icon>
-                <md-icon class="failure" v-if="report.debug">bug_report</md-icon>
-                <md-button class="md-dense md-raised md-primary" v-if="report.deleted_at == null" v-on:click="info(report)">Open</md-button>
-              </md-list-item>
-            </md-list>
+              <md-list class="md-triple-line">
+                <md-list-item v-for="report in filteredReports" :key="report.filename">
+                  <md-checkbox
+                    v-model="reportsBulkDelete"
+                    v-if="report.deleted_at == null"
+                    :value="report.filename"
+                    class="md-primary"
+                  ></md-checkbox>
+                  <md-icon
+                    v-bind:class="{ 'success': report.uploaded, 'failure': !report.uploaded }"
+                  >cloud_upload</md-icon>
+                  <div class="md-list-item-text">
+                    <span>{{ report.filename }}</span>
+                    <span>Version: {{ report.version }}</span>
+                    <p>Created: {{ report.created_at }}</p>
+                  </div>
+                  <md-icon class="failure" v-if="report.deleted_at">deleted_at</md-icon>
+                  <md-icon class="failure" v-if="report.debug">bug_report</md-icon>
+                  <md-button
+                    class="md-dense md-raised md-primary"
+                    v-if="report.deleted_at == null"
+                    v-on:click="info(report)"
+                  >Open</md-button>
+                </md-list-item>
+              </md-list>
             </md-content>
           </md-app-drawer>
           <md-app-content>
@@ -66,7 +77,7 @@
                   </md-content>
                 </div>
                 <div class="md-layout-item md-size-15">
-                  <md-card class="system-info">
+                  <md-card id="system-info">
                     <md-card-header>
                       <div class="md-title">System</div>
                     </md-card-header>
@@ -87,9 +98,9 @@
                   </md-card>
                 </div>
               </div>
-              <div class="md-layout" v-if="report != null && report.data != null">
-                <div class="md-layout-item md-size-33">
-                  <md-card class="system-info">
+              <div class="md-layout" v-if="report != null">
+                <div class="md-layout-item md-size-33" v-if="report != null && report.data != null">
+                  <md-card id="callstack">
                     <md-card-header>
                       <div class="md-title">Callstack</div>
                     </md-card-header>
@@ -110,6 +121,10 @@
                 </div>
                 <div class="md-layout-item md-size-60">
                   <pre>
+                    {{ report.dump }}
+                  </pre>
+                  <md-divider></md-divider>
+                  <pre>
                     {{ report.logdump }}
                   </pre>
                 </div>
@@ -119,42 +134,21 @@
         </md-app>
       </div>
     </template>
-    <template v-if="!token">
-      <div class="md-layout">
-        <md-card class="md-layout-item md-size-50 md-small-size-100">
-          <md-card-header>
-            <div class="md-title">Login</div>
-          </md-card-header>
-          <md-card-content>
-            <md-field md-clearable>
-              <label>Username</label>
-              <md-input v-model="username"></md-input>
-            </md-field>
-
-            <md-field>
-              <label>Password</label>
-              <md-input v-model="password" type="password"></md-input>
-            </md-field>
-          </md-card-content>
-
-          <md-card-actions>
-            <md-button type="submit" class="md-primary" :disabled="sending" @click="login">Login</md-button>
-          </md-card-actions>
-        </md-card>
-      </div>
-    </template>
+    <LoginForm ref="loginForm" v-if="!token" v-on:login="login()"></LoginForm>
     <ErrorSnackbar ref="errorSnackbar"></ErrorSnackbar>
   </div>
 </template>
 
 <script>
 import ErrorSnackbar from "./components/ErrorSnackbar.vue";
+import LoginForm from "./components/LoginForm.vue";
 import VueApexCharts from "vue-apexcharts";
 
 export default {
   name: "Reports",
   components: {
     ErrorSnackbar,
+    LoginForm,
     VueApexCharts
   },
   data() {
@@ -243,20 +237,23 @@ export default {
         data: {
           reports: this.reportsBulkDelete
         }
-      }).then(() => {
-        this.report = null;
-        this.filename = null;
-
-        this.sending = false;
-        this.reportsBulkDelete = [];
-
-        return this.list();
       })
-      .catch(err => {
-        this.sending = false;
+        .then(() => {
+          this.report = null;
+          this.filename = null;
 
-        this.$refs.errorSnackbar.show(`Cannot delete reports: ${err.message}`);
-      });
+          this.sending = false;
+          this.reportsBulkDelete = [];
+
+          return this.list();
+        })
+        .catch(err => {
+          this.sending = false;
+
+          this.$refs.errorSnackbar.show(
+            `Cannot delete reports: ${err.message}`
+          );
+        });
     },
     formatCallstack: function(callstack) {
       return callstack.reduce((acc, item, index) => {
@@ -294,19 +291,20 @@ export default {
         headers: {
           Authorization: `Bearer ${this.token}`
         }
-      }).then(() => {
-        this.report = null;
-        this.filename = null;
-
-        this.sending = false;
-
-        return this.list();
       })
-      .catch(err => {
-        this.sending = false;
+        .then(() => {
+          this.report = null;
+          this.filename = null;
 
-        this.$refs.errorSnackbar.show(`Cannot delete report: ${err.message}`);
-      });
+          this.sending = false;
+
+          return this.list();
+        })
+        .catch(err => {
+          this.sending = false;
+
+          this.$refs.errorSnackbar.show(`Cannot delete report: ${err.message}`);
+        });
     },
     info: function(report) {
       this.report = null;
@@ -324,35 +322,40 @@ export default {
         headers: {
           Authorization: `Bearer ${this.token}`
         }
-      }).then(response => {
-        let rawReport = pako.ungzip(atob(response.data), { to: "string" });
-
-        this.filename = report.filename;
-        this.report = JSON.parse(rawReport);
-        this.sending = false;
       })
-      .catch(err => {
-        this.sending = false;
+        .then(response => {
+          let rawReport = pako.ungzip(atob(response.data), { to: "string" });
 
-        this.$refs.errorSnackbar.show(`Cannot download report: ${err.message}`);
-      });
+          this.filename = report.filename;
+          this.report = JSON.parse(rawReport);
+          this.sending = false;
+        })
+        .catch(err => {
+          this.sending = false;
+
+          this.$refs.errorSnackbar.show(
+            `Cannot download report: ${err.message}`
+          );
+        });
     },
     login: function() {
       this.sending = true;
 
       this.$http
         .post(`/user/login`, {
-          username: this.username,
-          password: this.password
+          username: this.$refs.loginForm.username,
+          password: this.$refs.loginForm.password
         })
         .then(response => {
           this.token = response.data;
           this.sending = false;
 
+          this.$refs.loginForm.done();
           return this.list();
         })
         .catch(err => {
           this.sending = false;
+          this.$refs.loginForm.done();
 
           this.$refs.errorSnackbar.show(`Login failed: ${err.message}`);
         });
@@ -366,24 +369,32 @@ export default {
         headers: {
           Authorization: `Bearer ${this.token}`
         }
-      }).then(response => {
-        this.reports = response.data;
-        this.reports.sort((a, b) => {
-          return a.created_at < b.created_at
-        })
-        this.sending = false;
       })
-      .catch(err => {
-        this.sending = false;
+        .then(response => {
+          this.reports = response.data;
+          this.reports.sort((a, b) => {
+            return a.created_at < b.created_at;
+          });
+          this.sending = false;
+        })
+        .catch(err => {
+          this.sending = false;
 
-        this.$refs.errorSnackbar.show(`Cannot list reports: ${err.message}`);
-      });
+          this.$refs.errorSnackbar.show(`Cannot list reports: ${err.message}`);
+        });
     }
   }
 };
 </script>
 
 <style lang="scss" scoped>
+#toolbar {
+  position: sticky;
+  position: -webkit-sticky;
+  top: 1px;
+  z-index: 1000;
+}
+
 .full-control > .md-list {
   width: 100%;
   max-width: 100%;
@@ -406,6 +417,8 @@ export default {
 }
 
 .md-app {
+  max-height: 900px;
+
   border: 1px solid rgba(#000, 0.12);
 }
 
@@ -417,8 +430,15 @@ export default {
   overflow-x: none;
 }
 
-.system-info {
+#system-info {
   width: 320px;
+  margin: 4px;
+  display: inline-block;
+  vertical-align: top;
+}
+
+#callstack {
+  width: 400px;
   margin: 4px;
   display: inline-block;
   vertical-align: top;

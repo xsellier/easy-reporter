@@ -12,6 +12,7 @@
     "build": "rm -rf public/ && vue-cli-service build",
     "start": "node lib/index",
     "test": "echo \"Error: no test specified\" && exit 1",
+    "frontend": "vue-cli-service build --watch",
     "heroku-postbuild": "npm install --only=dev --no-shrinkwrap && npm run build"
   },
   "keywords": [
