@@ -248,7 +248,8 @@ export default {
           return this.list();
         })
         .catch(err => {
-          this.sending = false;
+          this.sending = false
+          this.token = null
 
           this.$refs.errorSnackbar.show(
             `Cannot delete reports: ${err.message}`
@@ -302,6 +303,7 @@ export default {
         })
         .catch(err => {
           this.sending = false;
+          this.token = null
 
           this.$refs.errorSnackbar.show(`Cannot delete report: ${err.message}`);
         });
@@ -332,6 +334,7 @@ export default {
         })
         .catch(err => {
           this.sending = false;
+          this.token = null
 
           this.$refs.errorSnackbar.show(
             `Cannot download report: ${err.message}`
@@ -356,6 +359,7 @@ export default {
         .catch(err => {
           this.sending = false;
           this.$refs.loginForm.done();
+          this.token = null
 
           this.$refs.errorSnackbar.show(`Login failed: ${err.message}`);
         });
@@ -379,6 +383,7 @@ export default {
         })
         .catch(err => {
           this.sending = false;
+          this.token = null
 
           this.$refs.errorSnackbar.show(`Cannot list reports: ${err.message}`);
         });
