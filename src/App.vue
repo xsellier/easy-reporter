@@ -21,6 +21,9 @@
                     :disabled="reportsBulkDelete.length <= 0"
                     v-on:click="bulkDelete()"
                   >Delete</md-button>
+                  <span>
+                    {{ filteredReports.length }}
+                  </span>
                 </md-list-item>
               </md-list>
             </md-toolbar>
