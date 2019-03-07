@@ -145,8 +145,6 @@ export default {
 
         return acc
       }, {});
-
-      console.log(this.versions)
     }
   }
 }
