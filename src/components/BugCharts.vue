@@ -140,11 +140,7 @@ export default {
       this.reports = list;
     },
     refreshVersions: function(list) {
-      this.versions = list.reduce((acc, item) => {
-        acc[item.name] = item.cracked
-
-        return acc
-      }, {});
+      this.versions = list
     }
   }
 }
