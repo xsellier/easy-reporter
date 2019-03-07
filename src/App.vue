@@ -143,7 +143,7 @@ export default {
           }, {});
           this.sending = false;
 
-          this.$refs.bugCharts.refreshVersions(this.reports);
+          this.$refs.bugCharts.refreshVersions(this.versions);
           this.$refs.bugReports.refreshVersions(this.versions);
         })
         .catch(err => {
