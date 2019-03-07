@@ -101,7 +101,7 @@ export default {
                 return second_acc
               }
 
-              if (versions[item.version]) {
+              if (this.versions[item.version]) {
                 return second_acc + 1
               }
               return second_acc
@@ -120,7 +120,7 @@ export default {
                 return second_acc
               }
 
-              if (versions[item.version]) {
+              if (this.versions[item.version]) {
                 return second_acc
               }
               return second_acc + 1
