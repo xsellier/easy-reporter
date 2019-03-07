@@ -90,6 +90,8 @@ export default {
 
       time_duration.reverse()
 
+      var self = this
+
       return [{
         name: 'Cracked',
         data: time_duration.reduce((acc, time_duration_item) => {
@@ -100,7 +102,7 @@ export default {
                 return second_acc
               }
 
-              if (this.versions[item.version] == true) {
+              if (self.versions[item.version] == true) {
                 return second_acc + 1
               }
 
@@ -120,7 +122,7 @@ export default {
                 return second_acc
               }
 
-              if (this.versions[item.version] != null && this.versions[item.version] == true) {
+              if (self.versions[item.version] != null && self.versions[item.version] == true) {
                 return second_acc
               }
 
