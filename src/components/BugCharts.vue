@@ -106,8 +106,8 @@ export default {
 
               return second_acc
             }, 0)
-          }
-)
+          })
+
           return acc
         }, [])
       }, {
@@ -120,13 +120,14 @@ export default {
                 return second_acc
               }
 
-              if (this.versions[item.version] == null || this.versions[item.version] == true) {
+              if (this.versions[item.version] != null && this.versions[item.version] == true) {
                 return second_acc
               }
+
               return second_acc + 1
             }, 0)
-          }
-)
+          })
+
           return acc
         }, [])
       }]
@@ -135,13 +136,13 @@ export default {
   methods: {
     refreshReports: function(list) {
       this.reports = list;
-
-      this.$forceUpdate()
     },
     refreshVersions: function(list) {
-      this.versions = list;
+      this.versions = list.reduce((acc, item) => {
+        acc[item.name] = item.cracked
 
-      this.$forceUpdate()
+        return acc
+      }, {});
     }
   }
 }
