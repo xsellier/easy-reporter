@@ -71,7 +71,7 @@ export default {
       var month = date.getMonth()
       var year = date.getFullYear()
 
-      for (var index = 0; index < 8; ++index) {
+      for (var index = 0; index < 30; ++index) {
         time_duration.push(`${year}-${('' + (month + 1)).padStart(2, '0')}-${('' + day).padStart(2, '0')}`)
 
         day--
