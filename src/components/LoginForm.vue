@@ -1,5 +1,5 @@
 <template>
-  <div class="md-layout">
+  <div class="md-layout md-gutter md-alignment-center">
     <md-card class="md-layout-item md-size-50 md-small-size-100">
       <md-card-header>
         <div class="md-title">Login</div>
@@ -43,3 +43,7 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+
+</style>

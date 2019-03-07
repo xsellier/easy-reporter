@@ -1,0 +1,430 @@
+<template v-if="token">
+  <div class="page-container">
+    <md-app>
+      <md-app-toolbar class="md-primary">
+        <span class="md-title">Informations</span>
+      </md-app-toolbar>
+      <md-app-drawer md-permanent="full">
+        <md-toolbar class="md-dense" id="toolbar">
+          <md-list>
+            <md-list-item>
+              <md-checkbox v-model="debug">Debug</md-checkbox>
+              <md-checkbox v-model="deleted">Deleted</md-checkbox>
+              <md-checkbox v-model="uploaded">Uploaded</md-checkbox>
+              <md-checkbox v-model="cracked">Cracked</md-checkbox>
+            </md-list-item>
+            <md-list-item>
+              <md-button class="md-raised md-accent" v-on:click="list">Refresh</md-button>
+              <md-button
+                class="md-raised md-accent"
+                :disabled="reportsBulkDelete.length <= 0"
+                v-on:click="bulkDelete()"
+              >Delete</md-button>
+              <span>
+                {{ filteredReports.length }}
+              </span>
+            </md-list-item>
+          </md-list>
+        </md-toolbar>
+        <md-content class="md-scrollbar">
+          <md-list class="md-triple-line">
+            <md-list-item v-for="report in filteredReports" :key="report.filename">
+              <md-checkbox
+                v-model="reportsBulkDelete"
+                v-if="report.deleted_at == null"
+                :value="report.filename"
+                class="md-primary"
+              ></md-checkbox>
+              <md-icon
+                v-bind:class="{ 'success': report.uploaded, 'failure': !report.uploaded }"
+              >cloud_upload</md-icon>
+              <div class="md-list-item-text">
+                <span>{{ report.filename }}</span>
+                <span>Version: {{ report.version }}</span>
+                <p>Created: {{ report.created_at }}</p>
+              </div>
+              <md-icon class="failure" v-if="report.deleted_at">deleted_at</md-icon>
+              <md-icon class="failure" v-if="report.debug">bug_report</md-icon>
+              <md-button
+                class="md-dense md-raised md-primary"
+                v-if="report.deleted_at == null"
+                v-on:click="info(report)"
+              >Open</md-button>
+            </md-list-item>
+          </md-list>
+        </md-content>
+      </md-app-drawer>
+      <md-app-content>
+        <template>
+          <div v-if="sending">
+            <md-progress-bar md-mode="indeterminate"></md-progress-bar>
+          </div>
+          <div class="md-layout" md-card v-if="report != null">
+            <md-button
+              class="md-raised md-primary"
+              :disabled="sending"
+              @click="downloadReport()"
+            >Download</md-button>
+            <md-button
+              class="md-raised md-accent"
+              :disabled="sending"
+              @click="deleteReport()"
+            >Delete</md-button>
+            <md-button
+              class="md-raised md-accent"
+              :disabled="sending"
+              @click="flagVersionAsCracked()"
+              v-if="!report.cracked"
+            >Flag version as cracked</md-button>
+            <md-button
+              class="md-raised md-accent"
+              :disabled="sending"
+              @click="unflagVersionAsCracked()"
+              v-if="report.cracked"
+            >Unflag version as cracked</md-button>
+          </div>
+          <div class="md-layout" v-if="report != null">
+            <div class="md-layout-item md-size-60" v-if="report != null && report.data != null">
+              <md-content>
+                <p class="md-display-1">{{ report.data.error }}</p>
+                <p class="md-body-2">{{ report.data.error_descr }}</p>
+              </md-content>
+            </div>
+            <div class="md-layout-item md-size-15">
+              <md-card id="system-info">
+                <md-card-header>
+                  <div class="md-title">System</div>
+                </md-card-header>
+
+                <md-card-content>
+                  <div class="md-list-item-text">
+                    <span>OS: {{ report.system.name }}</span>
+                    <span>Can thread: {{ report.system.cpu.thread }}</span>
+                    <span>CPU count: {{ report.system.cpu.count }}</span>
+                    <span>Model: {{ report.system.cpu.model }}</span>
+                    <span>Locale: {{ report.system.locale }}</span>
+                    <span>VSync: {{ report.system.screen.vsync }}</span>
+                    <span>Resolution: {{ report.system.screen.resolution }}</span>
+                    <span>Fullscreen: {{ report.system.screen.fullscreen }}</span>
+                    <span>Window size: {{ report.system.screen.size }}</span>
+                  </div>
+                </md-card-content>
+              </md-card>
+            </div>
+          </div>
+          <div class="md-layout" v-if="report != null">
+            <div class="md-layout-item md-size-33" v-if="report != null && report.data != null">
+              <md-card id="callstack">
+                <md-card-header>
+                  <div class="md-title">Callstack</div>
+                </md-card-header>
+
+                <md-card-content>
+                  <div class="md-list-item-text">
+                    <span>{{ report.data.source_file }}: {{ report.data.source_line }} ({{ report.data.source_func }})</span>
+                  </div>
+                  <div
+                    class="md-list-item-text"
+                    v-for="item in formatCallstack(report.data.callstack)"
+                    :key="item.name"
+                  >
+                    <span>{{ item.name }}: {{ item.line }}</span>
+                  </div>
+                </md-card-content>
+              </md-card>
+            </div>
+            <div class="md-layout-item md-size-60">
+              <pre>
+                {{ report.dump }}
+              </pre>
+              <md-divider></md-divider>
+              <pre>
+                {{ report.logdump }}
+              </pre>
+            </div>
+          </div>
+        </template>
+      </md-app-content>
+    </md-app>
+  </div>
+</template>
+
+<script>
+export default {
+  name: "BugReports",
+  components: {
+  },
+  data() {
+    return {
+      versions: {},
+      reports: [],
+      version: [],
+      reportsBulkDelete: [],
+      cache: {},
+      report: null,
+      username: "",
+      password: "",
+      filename: null,
+      sending: false,
+      token: null,
+      debug: false,
+      deleted: false,
+      uploaded: true,
+      cracked: false
+    };
+  },
+  computed: {
+    filteredReports: function() {
+      let self = this;
+
+      return this.reports.filter(report => {
+        // Validate uploaded filter
+        var valid = report.uploaded == self.uploaded
+
+        // Validate deleted filter
+        valid &= (report.deleted_at != null) == self.deleted
+
+        // Validate debug filter
+        valid &= report.debug == self.debug
+
+        // Validate crack filter
+        var cracked = false
+
+        if (self.versions[report.version] != null) {
+          cracked = self.versions[report.version]
+        }
+
+        valid &= cracked == self.cracked
+
+        return valid;
+      });
+    }
+  },
+  methods: {
+    bulkDelete: function() {
+      this.sending = true;
+
+      this.$http({
+        method: "POST",
+        url: `/report/bulk/delete`,
+        headers: {
+          Authorization: `Bearer ${this.token}`
+        },
+        data: {
+          reports: this.reportsBulkDelete
+        }
+      })
+        .then(() => {
+          this.report = null;
+          this.filename = null;
+
+          this.sending = false;
+          this.reportsBulkDelete = [];
+
+          return this.list();
+        })
+        .catch(err => {
+          this.sending = false
+          this.token = null
+
+          this.$emit('error', `Cannot delete reports: ${err.message}`);
+        });
+    },
+    formatCallstack: function(callstack) {
+      return callstack.reduce((acc, item, index) => {
+        let computed_index = parseInt(Math.floor(index / 2), 10);
+
+        if (index % 2 == 0) {
+          acc[computed_index] = {
+            name: item
+          };
+        } else {
+          acc[computed_index].line = item;
+        }
+
+        return acc;
+      }, []);
+    },
+    downloadReport: function() {
+      var dataStr =
+        "data:text/json;charset=utf-8," +
+        encodeURIComponent(JSON.stringify(this.report, null, 2));
+      var downloadAnchorNode = document.createElement("a");
+
+      downloadAnchorNode.setAttribute("href", dataStr);
+      downloadAnchorNode.setAttribute("download", this.filename + ".json");
+      document.body.appendChild(downloadAnchorNode);
+      downloadAnchorNode.click();
+      downloadAnchorNode.remove();
+    },
+    deleteReport: function() {
+      this.sending = true;
+
+      this.$http({
+        method: "DELETE",
+        url: `/report/${encodeURIComponent(this.filename)}`,
+        headers: {
+          Authorization: `Bearer ${this.token}`
+        }
+      })
+        .then(() => {
+          this.report = null;
+          this.filename = null;
+
+          this.sending = false;
+
+          return this.list();
+        })
+        .catch(err => {
+          this.sending = false;
+          this.token = null
+
+          this.$emit('error', `Cannot delete report: ${err.message}`);
+        });
+    },
+    info: function(report) {
+      this.report = null;
+      this.filename = null;
+
+      if (report.deleted_at != null || !report.uploaded) {
+        return;
+      }
+
+      this.sending = true;
+
+      this.$http({
+        method: "get",
+        url: `/report/${encodeURIComponent(report.filename)}`,
+        headers: {
+          Authorization: `Bearer ${this.token}`
+        }
+      })
+        .then(response => {
+          let rawReport = pako.ungzip(atob(response.data), { to: "string" });
+
+          this.filename = report.filename;
+          this.report = JSON.parse(rawReport);
+          this.report.version = report.version;
+          this.report.cracked = this.versions[this.report.version] || false
+          this.sending = false;
+        })
+        .catch(err => {
+          this.sending = false;
+          this.token = null
+
+          this.$emit('error', `Cannot download report: ${err.message}`);
+        });
+    },
+    flagVersionAsCracked: function (version) {
+      return this._setFlagVersionCracked(version, true)
+    },
+    unflagVersionAsCracked: function (version) {
+      return this._setFlagVersionCracked(version, false)
+    },
+    _setFlagVersionCracked: function(version, cracked) {
+      return this.$http({
+        method: "post",
+        url: `/version/update`,
+        headers: {
+          Authorization: `Bearer ${this.token}`
+        },
+        data: {
+          name: this.report.version,
+          cracked: cracked
+        }
+      })
+        .then(() => {
+          this.versions[version] = cracked
+          this.report.cracked = cracked
+          this.sending = false;
+          this.$forceUpdate()
+        })
+        .catch(err => {
+          this.sending = false;
+          this.token = null
+
+          this.$emit('error', `Cannot download report: ${err.message}`);
+        });
+    },
+    login: function(token) {
+      this.token = token;
+    },
+    list: function() {
+      this.sending = true;
+
+      this.$emit('list');
+    },
+    refreshReports: function(list) {
+      this.sending = false;
+      this.reports = list;
+    },
+    refreshVersions: function(list) {
+      this.sending = false;
+      this.versions = list;
+    }
+  }
+};
+</script>
+
+<style lang="scss" scoped>
+#toolbar {
+  position: sticky;
+  position: -webkit-sticky;
+  top: 1px;
+  z-index: 1000;
+}
+
+.full-control > .md-list {
+  width: 100%;
+  max-width: 100%;
+  display: inline-block;
+  border: 1px solid rgba(#000, 0.12);
+  vertical-align: top;
+}
+
+.success {
+  color: green !important;
+}
+
+.failure {
+  color: red !important;
+}
+
+.md-drawer {
+  width: 512px;
+  max-width: calc(100vw - 125px);
+}
+
+.md-app {
+  max-height: 900px;
+
+  border: 1px solid rgba(#000, 0.12);
+}
+
+.md-progress-bar {
+  margin: 24px;
+}
+
+.md-app-content {
+  overflow-x: none;
+}
+
+#system-info {
+  width: 320px;
+  margin: 4px;
+  display: inline-block;
+  vertical-align: top;
+}
+
+#callstack {
+  width: 400px;
+  margin: 4px;
+  display: inline-block;
+  vertical-align: top;
+}
+
+.logdump {
+  width: 100%;
+  height: 100%;
+}
+</style>
