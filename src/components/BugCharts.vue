@@ -54,7 +54,6 @@ export default {
         },
         yaxis: {
           min: 0,
-          max: 50,
           title: {
             text: 'Reports amount'
           }
@@ -101,9 +100,10 @@ export default {
                 return second_acc
               }
 
-              if (this.versions[item.version]) {
+              if (this.versions[item.version] == true) {
                 return second_acc + 1
               }
+
               return second_acc
             }, 0)
           }
@@ -120,7 +120,7 @@ export default {
                 return second_acc
               }
 
-              if (this.versions[item.version]) {
+              if (this.versions[item.version] == null || this.versions[item.version] == false) {
                 return second_acc
               }
               return second_acc + 1
