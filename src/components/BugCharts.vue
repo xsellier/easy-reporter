@@ -120,7 +120,7 @@ export default {
                 return second_acc
               }
 
-              if (this.versions[item.version] == null || this.versions[item.version] == false) {
+              if (this.versions[item.version] == null || this.versions[item.version] == true) {
                 return second_acc
               }
               return second_acc + 1
@@ -135,9 +135,13 @@ export default {
   methods: {
     refreshReports: function(list) {
       this.reports = list;
+
+      this.$forceUpdate()
     },
     refreshVersions: function(list) {
       this.versions = list;
+
+      this.$forceUpdate()
     }
   }
 }
