@@ -14,6 +14,7 @@
               <md-checkbox v-model="cracked">Cracked</md-checkbox>
             </md-list-item>
             <md-list-item>
+              <md-checkbox class="md-raised md-accent" v-model="selectAllValue" v-on:change="selectAll()">Select all</md-checkbox>
               <md-button class="md-raised md-accent" v-on:click="list">Refresh</md-button>
               <md-button
                 class="md-raised md-accent"
@@ -170,7 +171,8 @@ export default {
       debug: false,
       deleted: false,
       uploaded: true,
-      cracked: false
+      cracked: false,
+      selectAllValue: false
     };
   },
   computed: {
@@ -201,6 +203,13 @@ export default {
     }
   },
   methods: {
+    selectAll: function() {
+      if (this.selectAllValue) {
+        this.reportsBulkDelete = this.filteredReports.map((report) => report.filename)
+      } else {
+        this.reportsBulkDelete = []
+      }
+    },
     bulkDelete: function() {
       this.sending = true;
 
