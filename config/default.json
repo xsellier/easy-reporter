@@ -20,7 +20,7 @@
     "level": "debug"
   },
   "session": {
-    "ttl": 3600
+    "ttl": 7200
   },
   "server": {
     "port": 1337,
@@ -36,5 +36,10 @@
     "host": "http://app.smartfile.com/",
     "token": "MY_SECRET_TOKEN",
     "secret": "MY_SECRET_SECRET"
+  },
+  "email": {
+    "domain": "MY_EMAIL_DOMAIN",
+    "apiKey": "MY_SECRET_SECRET",
+    "to": "MY_SUPER_SECRET_EMAIL"
   }
 }
