@@ -35,11 +35,13 @@
   "file": {
     "host": "http://app.smartfile.com/",
     "token": "MY_SECRET_TOKEN",
-    "secret": "MY_SECRET_SECRET"
+    "secret": "MY_SECRET_SECRET",
+    "path": "./tmp"
   },
   "email": {
     "domain": "MY_EMAIL_DOMAIN",
     "apiKey": "MY_SECRET_SECRET",
     "to": "MY_SUPER_SECRET_EMAIL"
-  }
+  },
+  "fileDriver": "local"
 }

@@ -4,5 +4,6 @@
   },
   "server": {
     "host": "0.0.0.0"
-  }
+  },
+  "fileDriver": "file"
 }
