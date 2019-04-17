@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import VueApexCharts from "vue-apexcharts";
+import VueApexCharts from "vue-apexcharts"
 
 export default {
   name: "BugCharts",
@@ -137,7 +137,7 @@ export default {
   },
   methods: {
     refreshReports: function(list) {
-      this.reports = list;
+      this.reports = list
     },
     refreshVersions: function(list) {
       this.versions = list

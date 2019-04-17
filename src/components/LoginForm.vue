@@ -33,9 +33,9 @@ export default {
   }),
   methods: {
     login: function() {
-      this.sending = true;
+      this.sending = true
 
-      this.$emit('login');
+      this.$emit('login')
     },
     done: function() {
       this.sending = false

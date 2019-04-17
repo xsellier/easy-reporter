@@ -173,11 +173,11 @@ export default {
       uploaded: true,
       cracked: false,
       selectAllValue: false
-    };
+    }
   },
   computed: {
     filteredReports: function() {
-      let self = this;
+      let self = this
 
       return this.reports.filter(report => {
         // Validate uploaded filter
@@ -198,8 +198,8 @@ export default {
 
         valid &= cracked == self.cracked
 
-        return valid;
-      });
+        return valid
+      })
     }
   },
   methods: {
@@ -211,7 +211,7 @@ export default {
       }
     },
     bulkDelete: function() {
-      this.sending = true;
+      this.sending = true
 
       this.$http({
         method: "POST",
@@ -224,50 +224,52 @@ export default {
         }
       })
         .then(() => {
-          this.report = null;
-          this.filename = null;
+          this.report = null
+          this.filename = null
 
-          this.sending = false;
-          this.reportsBulkDelete = [];
-
-          return this.list();
-        })
-        .catch(err => {
           this.sending = false
-          this.token = null
+          this.reportsBulkDelete = []
 
-          this.$emit('error', `Cannot delete reports: ${err.message}`);
-        });
+          return this.list()
+        })
+        .catch((err) => {
+          if (err.response && err.response.status < 500) {
+            this.token = null
+          }
+
+          this.sending = false
+          this.$emit('error', this.token, `Cannot delete reports: ${err.message}`)
+        })
     },
     formatCallstack: function(callstack) {
       return callstack.reduce((acc, item, index) => {
-        let computed_index = parseInt(Math.floor(index / 2), 10);
+        let computed_index = parseInt(Math.floor(index / 2), 10)
 
         if (index % 2 == 0) {
           acc[computed_index] = {
             name: item
-          };
+          }
         } else {
-          acc[computed_index].line = item;
+          acc[computed_index].line = item
         }
 
-        return acc;
-      }, []);
+        return acc
+      }, [])
     },
     downloadReport: function() {
       var dataStr =
         "data:text/json;charset=utf-8," +
-        encodeURIComponent(JSON.stringify(this.report, null, 2));
-      var downloadAnchorNode = document.createElement("a");
+        encodeURIComponent(JSON.stringify(this.report, null, 2))
+      var downloadAnchorNode = document.createElement("a")
 
-      downloadAnchorNode.setAttribute("href", dataStr);
-      downloadAnchorNode.setAttribute("download", this.filename + ".json");
-      document.body.appendChild(downloadAnchorNode);
-      downloadAnchorNode.click();
-      downloadAnchorNode.remove();
+      downloadAnchorNode.setAttribute("href", dataStr)
+      downloadAnchorNode.setAttribute("download", this.filename + ".json")
+      document.body.appendChild(downloadAnchorNode)
+      downloadAnchorNode.click()
+      downloadAnchorNode.remove()
     },
     deleteReport: function() {
-      this.sending = true;
+      this.sending = true
 
       this.$http({
         method: "DELETE",
@@ -276,30 +278,32 @@ export default {
           Authorization: `Bearer ${this.token}`
         }
       })
-        .then(() => {
-          this.report = null;
-          this.filename = null;
+      .then(() => {
+        this.report = null
+        this.filename = null
 
-          this.sending = false;
+        this.sending = false
 
-          return this.list();
-        })
-        .catch(err => {
-          this.sending = false;
+        return this.list()
+      })
+      .catch((err) => {
+        if (err.response && err.response.status < 500) {
           this.token = null
+        }
 
-          this.$emit('error', `Cannot delete report: ${err.message}`);
-        });
+        this.sending = false
+        this.$emit('error', this.token, `Cannot delete report: ${err.message}`)
+      })
     },
     info: function(report) {
-      this.report = null;
-      this.filename = null;
+      this.report = null
+      this.filename = null
 
       if (report.deleted_at != null || !report.uploaded) {
-        return;
+        return
       }
 
-      this.sending = true;
+      this.sending = true
 
       this.$http({
         method: "get",
@@ -308,21 +312,23 @@ export default {
           Authorization: `Bearer ${this.token}`
         }
       })
-        .then(response => {
-          let rawReport = pako.ungzip(atob(response.data), { to: "string" });
+        .then((response) => {
+          let rawReport = pako.ungzip(atob(response.data), { to: "string" })
 
-          this.filename = report.filename;
-          this.report = JSON.parse(rawReport);
-          this.report.version = report.version;
+          this.filename = report.filename
+          this.report = JSON.parse(rawReport)
+          this.report.version = report.version
           this.report.cracked = this.versions[this.report.version] || false
-          this.sending = false;
+          this.sending = false
         })
-        .catch(err => {
-          this.sending = false;
-          this.token = null
+        .catch((err) => {
+          if (err.response && err.response.status < 500) {
+            this.token = null
+          }
 
-          this.$emit('error', `Cannot download report: ${err.message}`);
-        });
+          this.sending = false
+          this.$emit('error', this.token, `Cannot download report: ${err.message}`)
+        })
     },
     flagVersionAsCracked: function (version) {
       return this._setFlagVersionCracked(version, true)
@@ -342,37 +348,39 @@ export default {
           cracked: cracked
         }
       })
-        .then(() => {
-          this.versions[version] = cracked
-          this.report.cracked = cracked
-          this.sending = false;
-          this.$forceUpdate()
-        })
-        .catch(err => {
-          this.sending = false;
+      .then(() => {
+        this.versions[version] = cracked
+        this.report.cracked = cracked
+        this.sending = false
+        this.$forceUpdate()
+      })
+      .catch((err) => {
+        if (err.response && err.response.status < 500) {
           this.token = null
+        }
 
-          this.$emit('error', `Cannot download report: ${err.message}`);
-        });
+        this.sending = false
+        this.$emit('error', this.token, `Cannot download report: ${err.message}`)
+      })
     },
     login: function(token) {
-      this.token = token;
+      this.token = token
     },
     list: function() {
-      this.sending = true;
+      this.sending = true
 
-      this.$emit('list');
+      this.$emit('list')
     },
     refreshReports: function(list) {
-      this.sending = false;
-      this.reports = list;
+      this.sending = false
+      this.reports = list
     },
     refreshVersions: function(list) {
-      this.sending = false;
-      this.versions = list;
+      this.sending = false
+      this.versions = list
     }
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>
