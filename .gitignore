@@ -7,3 +7,5 @@ public/
 tmp/
 
 test.js
+
+npm-debug.log

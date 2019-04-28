@@ -36,7 +36,13 @@
     "host": "http://app.smartfile.com/",
     "token": "MY_SECRET_TOKEN",
     "secret": "MY_SECRET_SECRET",
-    "path": "./tmp"
+    "path": "./tmp",
+    "apiKey": "MY_SECRET_SANTA",
+    "authDomain": "MY_SECRET_SANTA",
+    "databaseURL": "MY_SECRET_SANTA",
+    "projectId": "MY_SECRET_SANTA",
+    "storageBucket": "MY_SECRET_SANTA",
+    "messagingSenderId": "MY_SECRET_SANTA"
   },
   "email": {
     "domain": "MY_EMAIL_DOMAIN",
