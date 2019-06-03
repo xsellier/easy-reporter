@@ -1,4 +1,5 @@
 exports.up = function (db) {
+  console.log('RUNNING')
   return Promise.resolve()
     .then(() => {
       return db.createTable('report', {

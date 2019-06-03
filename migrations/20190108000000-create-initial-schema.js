@@ -1,16 +1,21 @@
 exports.up = function (db) {
-  return Promise.resolve()
-    .then(() => {
-      return db.createTable('account', {
-        id: {
-          type: 'int',
-          primaryKey: true,
-          autoIncrement: true
-        },
-        hashed_password: { type: 'string' },
-        created_at: { type: 'datetime' }
-      })
+  return new Promise((resolve, reject) => {
+    db.createTable('account', {
+      id: {
+        type: 'int',
+        primaryKey: true,
+        autoIncrement: true
+      },
+      hashed_password: { type: 'string' },
+      created_at: { type: 'datetime' }
+    }, (err) => {
+      if (err) {
+        reject(err)
+      } else {
+        resolve()
+      }
     })
+  })
 }
 
 exports.down = function (db) {

@@ -1,8 +1,9 @@
 <template>
   <div id="app">
-    <LoginForm ref="loginForm" v-if="!token" v-on:login="login"></LoginForm>
+    <CreateAdminForm ref="createAdminForm" v-if="!connectionInitialized" v-on:createAdmin="createAdmin"></CreateAdminForm>
+    <LoginForm ref="loginForm" v-if="!token && connectionInitialized" v-on:login="login"></LoginForm>
 
-    <template v-if="token">
+    <template v-if="token && connectionInitialized">
       <md-tabs md-sync-route>
         <md-tab id="tab-charts" md-label="Charts">
           <BugCharts ref="bugCharts" v-on:error="showError"></BugCharts>
@@ -21,6 +22,7 @@ import ErrorSnackbar from "./components/ErrorSnackbar.vue"
 import BugCharts from "./components/BugCharts.vue"
 import BugReports from "./components/BugReports.vue"
 import LoginForm from "./components/LoginForm.vue"
+import CreateAdminForm from "./components/CreateAdminForm.vue"
 import VueApexCharts from "vue-apexcharts"
 
 export default {
@@ -30,7 +32,8 @@ export default {
     BugCharts,
     BugReports,
     LoginForm,
-    VueApexCharts
+    VueApexCharts,
+    CreateAdminForm
   },
   data() {
     return {
@@ -43,6 +46,7 @@ export default {
       password: "",
       filename: null,
       sending: false,
+      connectionInitialized: false,
       token: null,
       debug: false,
       deleted: false,
@@ -62,11 +66,49 @@ export default {
       })
     }
   },
+  beforeMount: function () {
+    this.sending = true
+
+    return this.$http({
+      method: "get",
+      url: "/admin/exists",
+      headers: {}
+    })
+    .then((response) => {
+      this.connectionInitialized = response.data
+    })
+  },
   methods: {
     showError: function(token, message) {
       this.token = token
 
       this.$refs.errorSnackbar.show(message)
+    },
+    createAdmin: function () {
+      this.sending = true
+
+      this.$http
+        .post(`/admin/create`, {
+          username: this.$refs.createAdminForm.username,
+          password: this.$refs.createAdminForm.password
+        })
+        .then((response) => {
+          this.token = response.data
+          this.sending = false
+
+          this.connectionInitialized = true
+          this.$refs.createAdminForm.done()
+
+          return this.listReports()
+        })
+        .then(() => this.listVersions())
+        .catch((err) => {
+          this.sending = false
+          this.$refs.createAdminForm.done()
+          this.token = null
+
+          this.$refs.errorSnackbar.show(`Login failed: ${err.message}`)
+        })
     },
     login: function() {
       this.sending = true

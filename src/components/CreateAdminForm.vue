@@ -1,0 +1,49 @@
+<template>
+  <div class="md-layout md-gutter md-alignment-center">
+    <md-card class="md-layout-item md-size-50 md-small-size-100">
+      <md-card-header>
+        <div class="md-title">Create admin</div>
+      </md-card-header>
+      <md-card-content>
+        <md-field md-clearable>
+          <label>Username</label>
+          <md-input v-model="username"></md-input>
+        </md-field>
+
+        <md-field>
+          <label>Password</label>
+          <md-input v-model="password" type="password"></md-input>
+        </md-field>
+      </md-card-content>
+
+      <md-card-actions>
+        <md-button type="submit" class="md-primary" :disabled="sending" @click="createAdmin">Create admin</md-button>
+      </md-card-actions>
+    </md-card>
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'CreateAdminForm',
+  data: () => ({
+    sending: false,
+    password: '',
+    username: ''
+  }),
+  methods: {
+    createAdmin: function() {
+      this.sending = true
+
+      this.$emit('createAdmin')
+    },
+    done: function() {
+      this.sending = false
+    }
+  }
+}
+</script>
+
+<style lang="scss" scoped>
+
+</style>
