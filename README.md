@@ -2,7 +2,7 @@
 
 ## Setup
 
-- Install NodeJS v12 with NPM
+- Install NodeJS v8 with NPM
 - Install PostgreSQL
 
 ### Configure postgresql
@@ -24,4 +24,13 @@ npm run dev
 
 # Open
 # http://localhost:1337/
+```
+
+
+### Feed easy-reporter locally
+
+It sends one report at a time
+
+```sh
+node test.js
 ```
