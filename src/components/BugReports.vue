@@ -102,7 +102,8 @@
           </template>
           <template v-if="report != null">
             <v-layout row wrap>
-              <v-flex xs12 tag="h1" class="headline">{{ report.data.error }}</v-flex>
+              <v-flex xs12 tag="h1" class="headline" v-if="report.data != null">{{ report.data.error }}</v-flex>
+              <v-flex xs12 tag="h1" class="headline" v-if="report.data == null">Custom bug report</v-flex>
               <v-spacer></v-spacer>
               <v-flex xs12>
                 <v-btn
@@ -129,7 +130,7 @@
                 >Unflag version as cracked</v-btn>                
               </v-flex>
               <v-spacer></v-spacer>
-              <v-flex xs3>
+              <v-flex xs3 v-if="report.data != null">
                 <v-card>
                   <v-toolbar dense>
                     <v-toolbar-title>Callstack</v-toolbar-title>
