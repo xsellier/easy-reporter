@@ -1,8 +1,14 @@
 <template>
-  <md-snackbar :md-position="position" :md-duration="duration" :md-active.sync="showSnackbar" md-persistent>
-    <span>{{ message }}</span>
-    <md-button class="md-primary" @click="showSnackbar = false">Hide</md-button>
-  </md-snackbar>
+  <v-snackbar
+    v-model="showSnackbar">
+  {{ message }}
+  <v-btn
+    color="pink"
+    flat
+    @click="showSnackbar = false">
+    Close
+  </v-btn>
+</v-snackbar>
 </template>
 
 <script>

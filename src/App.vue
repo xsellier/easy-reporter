@@ -1,20 +1,32 @@
 <template>
-  <div id="app">
+  <v-app>
     <CreateAdminForm ref="createAdminForm" v-if="!connectionInitialized" v-on:createAdmin="createAdmin"></CreateAdminForm>
     <LoginForm ref="loginForm" v-if="!token && connectionInitialized" v-on:login="login"></LoginForm>
 
     <template v-if="token && connectionInitialized">
-      <md-tabs md-sync-route>
-        <md-tab id="tab-charts" md-label="Charts">
+      <v-tabs
+        v-model="active"
+        color="indigo"
+        dark
+        absolute
+        clipped-left
+        centered
+        slider-color="white"
+        app
+      >
+        <v-tab ripple>Charts</v-tab>
+        <v-tab-item>
           <BugCharts ref="bugCharts" v-on:error="showError"></BugCharts>
-        </md-tab>
-        <md-tab id="tab-reports" md-label="Reports">
-          <BugReports ref="bugReports" v-on:list="list" v-on:error="showError"></BugReports>
-        </md-tab>
-      </md-tabs>
+        </v-tab-item>
+        <v-tab ripple>Bug reports</v-tab>
+        <v-tab-item>
+         <BugReports ref="bugReports" v-on:list="list" v-on:error="showError"></BugReports>
+        </v-tab-item>
+      </v-tabs>
     </template>
+
     <ErrorSnackbar ref="errorSnackbar"></ErrorSnackbar>
-  </div>
+  </v-app>
 </template>
 
 <script>
@@ -37,6 +49,7 @@ export default {
   },
   data() {
     return {
+      active: "",
       versions: {},
       reports: [],
       reportsBulkDelete: [],

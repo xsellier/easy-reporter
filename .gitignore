@@ -5,6 +5,7 @@ log/
 node_modules/
 public/
 tmp/
+dist/
 
 test.js
 

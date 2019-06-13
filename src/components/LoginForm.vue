@@ -1,35 +1,59 @@
 <template>
-  <div class="md-layout md-gutter md-alignment-center">
-    <md-card class="md-layout-item md-size-50 md-small-size-100">
-      <md-card-header>
-        <div class="md-title">Login</div>
-      </md-card-header>
-      <md-card-content>
-        <md-field md-clearable>
-          <label>Username</label>
-          <md-input v-model="username"></md-input>
-        </md-field>
-
-        <md-field>
-          <label>Password</label>
-          <md-input v-model="password" type="password"></md-input>
-        </md-field>
-      </md-card-content>
-
-      <md-card-actions>
-        <md-button type="submit" class="md-primary" :disabled="sending" @click="login">Login</md-button>
-      </md-card-actions>
-    </md-card>
-  </div>
+  <v-container fluid>
+    <v-layout row justify-center>
+      <v-flex xs12 sm8 md4>
+        <v-card class="elevation-12">
+          <v-toolbar dark color="primary">
+            <v-toolbar-title>Login form</v-toolbar-title>
+            <v-spacer></v-spacer>
+          </v-toolbar>
+          <v-card-text>
+            <v-form class="formclass" ref="form" v-model="valid">
+              <v-text-field
+                v-model="username"
+                :rules="[rules.username]"
+                label="Username"
+                value=""
+                required></v-text-field>
+              <v-text-field 
+                v-model="password"
+                :append-icon="passwordShow ? 'visibility' : 'visibility_off'"
+                :rules="[rules.password]"
+                :type="passwordShow ? 'text' : 'password'"
+                label="Password"
+                required
+                @click:append="passwordShow = !passwordShow"></v-text-field>
+            </v-form>
+          </v-card-text>
+          <v-card-actions>
+            <v-spacer></v-spacer>
+            <v-btn
+              :disabled="sending || !valid"
+              depressed
+              small
+              value=""
+              color="primary"
+              @click="login">Login</v-btn>
+          </v-card-actions>
+        </v-card>
+      </v-flex>
+    </v-layout>
+  </v-container>
 </template>
 
 <script>
 export default {
   name: 'LoginForm',
   data: () => ({
+    valid: false,
     sending: false,
+    username: '',
+    passwordShow: false,
     password: '',
-    username: ''
+    rules: {
+      username: value => !!value || 'Username is required',
+      password: value => !!value || 'Password is required'
+    }
   }),
   methods: {
     login: function() {

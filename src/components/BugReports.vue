@@ -1,152 +1,255 @@
 <template v-if="token">
   <div class="page-container">
-    <md-app>
-      <md-app-toolbar class="md-primary">
-        <span class="md-title">Informations</span>
-      </md-app-toolbar>
-      <md-app-drawer md-permanent="full">
-        <md-toolbar class="md-dense" id="toolbar">
-          <md-list>
-            <md-list-item>
-              <md-checkbox v-model="debug">Debug</md-checkbox>
-              <md-checkbox v-model="deleted">Deleted</md-checkbox>
-              <md-checkbox v-model="uploaded">Uploaded</md-checkbox>
-              <md-checkbox v-model="cracked">Cracked</md-checkbox>
-            </md-list-item>
-            <md-list-item>
-              <md-checkbox class="md-raised md-accent" v-model="selectAllValue" v-on:change="selectAll()">Select all</md-checkbox>
-              <md-button class="md-raised md-accent" v-on:click="list">Refresh</md-button>
-              <md-button
-                class="md-raised md-accent"
-                :disabled="reportsBulkDelete.length <= 0"
-                v-on:click="bulkDelete()"
-              >Delete</md-button>
-              <span>
-                {{ filteredReports.length }}
-              </span>
-            </md-list-item>
-          </md-list>
-        </md-toolbar>
-        <md-content class="md-scrollbar">
-          <md-list class="md-triple-line">
-            <md-list-item v-for="report in filteredReports" :key="report.filename">
-              <md-checkbox
-                v-model="reportsBulkDelete"
-                v-if="report.deleted_at == null"
-                :value="report.filename"
-                class="md-primary"
-              ></md-checkbox>
-              <md-icon
-                v-bind:class="{ 'success': report.uploaded, 'failure': !report.uploaded }"
-              >cloud_upload</md-icon>
-              <div class="md-list-item-text">
-                <span>{{ report.filename }}</span>
-                <span>Version: {{ report.version }}</span>
-                <p>Created: {{ report.created_at }}</p>
-              </div>
-              <md-icon class="failure" v-if="report.deleted_at">deleted_at</md-icon>
-              <md-icon class="failure" v-if="report.debug">bug_report</md-icon>
-              <md-button
-                class="md-dense md-raised md-primary"
-                v-if="report.deleted_at == null"
-                v-on:click="info(report)"
-              >Open</md-button>
-            </md-list-item>
-          </md-list>
-        </md-content>
-      </md-app-drawer>
-      <md-app-content>
-        <template>
-          <div v-if="sending">
-            <md-progress-bar md-mode="indeterminate"></md-progress-bar>
-          </div>
-          <div class="md-layout" md-card v-if="report != null">
-            <md-button
-              class="md-raised md-primary"
-              :disabled="sending"
-              @click="downloadReport()"
-            >Download</md-button>
-            <md-button
-              class="md-raised md-accent"
-              :disabled="sending"
-              @click="deleteReport()"
-            >Delete</md-button>
-            <md-button
-              class="md-raised md-accent"
-              :disabled="sending"
-              @click="flagVersionAsCracked()"
-              v-if="!report.cracked"
-            >Flag version as cracked</md-button>
-            <md-button
-              class="md-raised md-accent"
-              :disabled="sending"
-              @click="unflagVersionAsCracked()"
-              v-if="report.cracked"
-            >Unflag version as cracked</md-button>
-          </div>
-          <div class="md-layout" v-if="report != null">
-            <div class="md-layout-item md-size-60" v-if="report != null && report.data != null">
-              <md-content>
-                <p class="md-display-1">{{ report.data.error }}</p>
-                <p class="md-body-2">{{ report.data.error_descr }}</p>
-              </md-content>
-            </div>
-            <div class="md-layout-item md-size-15">
-              <md-card id="system-info">
-                <md-card-header>
-                  <div class="md-title">System</div>
-                </md-card-header>
+    <v-navigation-drawer
+      fixed
+      app
+    >
+      <v-list dense subheader>
+        <v-list-tile>
+          <v-list-tile-action>
+            <v-checkbox v-model="debug"></v-checkbox>
+          </v-list-tile-action>
+          <v-list-tile-content>
+            <v-list-tile-title>Debug</v-list-tile-title>
+          </v-list-tile-content>
+        </v-list-tile>
 
-                <md-card-content>
-                  <div class="md-list-item-text">
-                    <span>OS: {{ report.system.name }}</span>
-                    <span>Can thread: {{ report.system.cpu.thread }}</span>
-                    <span>CPU count: {{ report.system.cpu.count }}</span>
-                    <span>Model: {{ report.system.cpu.model }}</span>
-                    <span>Locale: {{ report.system.locale }}</span>
-                    <span>VSync: {{ report.system.screen.vsync }}</span>
-                    <span>Resolution: {{ report.system.screen.resolution }}</span>
-                    <span>Fullscreen: {{ report.system.screen.fullscreen }}</span>
-                    <span>Window size: {{ report.system.screen.size }}</span>
-                  </div>
-                </md-card-content>
-              </md-card>
-            </div>
-          </div>
-          <div class="md-layout" v-if="report != null">
-            <div class="md-layout-item md-size-33" v-if="report != null && report.data != null">
-              <md-card id="callstack">
-                <md-card-header>
-                  <div class="md-title">Callstack</div>
-                </md-card-header>
+        <v-list-tile>
+          <v-list-tile-action>
+            <v-checkbox v-model="deleted"></v-checkbox>
+          </v-list-tile-action>
+          <v-list-tile-content>
+            <v-list-tile-title>Deleted</v-list-tile-title>
+          </v-list-tile-content>
+        </v-list-tile>
 
-                <md-card-content>
-                  <div class="md-list-item-text">
-                    <span>{{ report.data.source_file }}: {{ report.data.source_line }} ({{ report.data.source_func }})</span>
-                  </div>
-                  <div
-                    class="md-list-item-text"
-                    v-for="item in formatCallstack(report.data.callstack)"
-                    :key="item.name"
-                  >
-                    <span>{{ item.name }}: {{ item.line }}</span>
-                  </div>
-                </md-card-content>
-              </md-card>
-            </div>
-            <div class="md-layout-item md-size-60">
-              <pre>
-                {{ report.dump }}
-              </pre>
-              <md-divider></md-divider>
-              <pre>
-                {{ report.logdump }}
-              </pre>
-            </div>
-          </div>
-        </template>
-      </md-app-content>
-    </md-app>
+        <v-list-tile>
+          <v-list-tile-action>
+            <v-checkbox v-model="uploaded"></v-checkbox>
+          </v-list-tile-action>
+          <v-list-tile-content>
+            <v-list-tile-title>Uploaded</v-list-tile-title>
+          </v-list-tile-content>
+        </v-list-tile>
+
+        <v-list-tile>
+          <v-list-tile-action>
+            <v-checkbox v-model="cracked"></v-checkbox>
+          </v-list-tile-action>
+          <v-list-tile-content>
+            <v-list-tile-title>Cracked</v-list-tile-title>
+          </v-list-tile-content>
+        </v-list-tile>
+
+        <v-list-tile>
+          <v-list-tile-action>
+            <v-checkbox v-on:change="selectAll()" v-model="selectAllValue"></v-checkbox>
+          </v-list-tile-action>
+          <v-list-tile-content>
+            <v-list-tile-title>Select all</v-list-tile-title>
+          </v-list-tile-content>
+        </v-list-tile>
+
+        <v-list-tile>
+          <v-list-tile-action>
+            <v-btn color="primary" dark small v-on:click="list">Refresh</v-btn>
+          </v-list-tile-action>
+          <v-list-tile-action>
+            <v-btn color="primary" dark small :disabled="reportsBulkDelete.length <= 0" v-on:click="bulkDelete()">Delete</v-btn>
+          </v-list-tile-action>
+          <v-list-tile-content>
+            <v-list-tile-title>Total: {{ filteredReports.length }}</v-list-tile-title>
+          </v-list-tile-content>
+        </v-list-tile>
+
+        <v-divider inset></v-divider>
+
+        <v-subheader inset>Reports</v-subheader>
+
+        <v-list-tile v-for="report in filteredReports" :key="report.filename">
+          <v-list-tile-avatar>
+            <v-checkbox v-model="reportsBulkDelete"
+                v-if="report.deleted_at == null"
+                :value="report.filename"></v-checkbox>
+          </v-list-tile-avatar>
+          <v-list-tile-content>
+            <v-list-tile-title>
+              {{ report.version }}
+            </v-list-tile-title>
+            <v-list-tile-sub-title>
+              {{ report.created_at }}
+            </v-list-tile-sub-title>
+          </v-list-tile-content>
+          <v-list-tile-action>
+            <v-btn
+              small
+              v-if="report.deleted_at == null"
+              v-on:click="info(report)">Open</v-btn>
+          </v-list-tile-action>
+        </v-list-tile>
+
+      </v-list>
+    </v-navigation-drawer>
+    <v-content>
+      <v-container fluid fill-height>
+        <v-layout
+          justify-center
+          align-center
+          row wrap
+        >
+          <template v-if="sending">
+            <v-progress-linear :indeterminate="true"></v-progress-linear>
+          </template>
+          <template v-if="report != null">
+            <v-layout row wrap>
+              <v-flex xs12 tag="h1" class="headline">{{ report.data.error }}</v-flex>
+              <v-spacer></v-spacer>
+              <v-flex xs12>
+                <v-btn
+                  color="info"
+                  :disabled="sending"
+                  @click="downloadReport()"
+                >Download</v-btn>
+                <v-btn
+                  color="warning"
+                  :disabled="sending"
+                  @click="deleteReport()"
+                >Delete</v-btn>
+                <v-btn
+                  color="error"
+                  :disabled="sending"
+                  @click="flagVersionAsCracked()"
+                  v-if="!report.cracked"
+                >Flag version as cracked</v-btn>
+                <v-btn
+                  color="info"
+                  :disabled="sending"
+                  @click="unflagVersionAsCracked()"
+                  v-if="report.cracked"
+                >Unflag version as cracked</v-btn>                
+              </v-flex>
+              <v-spacer></v-spacer>
+              <v-flex xs3>
+                <v-card>
+                  <v-toolbar dense>
+                    <v-toolbar-title>Callstack</v-toolbar-title>
+                  </v-toolbar>
+                  <v-list dense subheader>
+                    <v-spacer></v-spacer>
+                    <v-list-tile>
+                      <v-list-tile-content>
+                        <v-list-tile-title>{{ report.data.source_file }} ({{ report.data.source_line }})</v-list-tile-title>
+                        <v-list-tile-sub-title>{{ report.data.source_func }}</v-list-tile-sub-title>
+                      </v-list-tile-content>
+                      <template v-for="item in formatCallstack(report.data.callstack)">
+                        <v-list-tile-content :key="item.name">
+                          <v-list-tile-title>{{ item.name }}</v-list-tile-title>
+                          <v-list-tile-sub-title>{{ item.line }}</v-list-tile-sub-title>
+                        </v-list-tile-content>
+                      </template>
+                    </v-list-tile>
+                  </v-list>
+                </v-card>
+              </v-flex>
+              &nbsp;&nbsp;&nbsp;&nbsp;
+              <v-layout column>
+                <v-flex xs7 v-if="report.dump">
+                  <v-textarea
+                    label="Dump"
+                    class="logdump"
+                    readonly
+                    auto-grow
+                    :value="report.dump"
+                  ></v-textarea>
+                </v-flex>
+                <v-flex xs7 v-if="report.logdump">
+                  <v-textarea
+                    label="Logs"
+                    class="logdump"
+                    readonly
+                    auto-grow
+                    :value="report.logdump"
+                  ></v-textarea>
+                </v-flex>
+              </v-layout>
+              &nbsp;&nbsp;&nbsp;&nbsp;
+              <v-flex xs2>
+                <v-card>
+                  <v-list dense subheader>
+                    <v-list-tile>
+                      <v-list-tile-content>
+                        <v-list-tile-title>{{ report.system.name }}</v-list-tile-title>
+                        <v-list-tile-sub-title>OS</v-list-tile-sub-title>
+                      </v-list-tile-content>
+                    </v-list-tile>
+                    <v-divider></v-divider>
+                    <v-list-tile>
+                      <v-list-tile-content>
+                        <v-list-tile-title>{{ report.system.cpu.thread }}</v-list-tile-title>
+                        <v-list-tile-sub-title>Can thread</v-list-tile-sub-title>
+                      </v-list-tile-content>
+                    </v-list-tile>
+                    <v-divider></v-divider>
+                    <v-list-tile>
+                      <v-list-tile-content>
+                        <v-list-tile-title>{{ report.system.cpu.count }}</v-list-tile-title>
+                        <v-list-tile-sub-title>CPU count</v-list-tile-sub-title>
+                      </v-list-tile-content>
+                    </v-list-tile>
+                    <v-divider></v-divider>
+                    <v-list-tile>
+                      <v-list-tile-content>
+                        <v-list-tile-title>{{ report.system.cpu.model }}</v-list-tile-title>
+                        <v-list-tile-sub-title>Model</v-list-tile-sub-title>
+                      </v-list-tile-content>
+                    </v-list-tile>
+                    <v-divider></v-divider>
+                    <v-list-tile>
+                      <v-list-tile-content>
+                        <v-list-tile-title>{{ report.system.locale }}</v-list-tile-title>
+                        <v-list-tile-sub-title>Locale</v-list-tile-sub-title>
+                      </v-list-tile-content>
+                    </v-list-tile>
+                    <v-divider></v-divider>
+                    <v-list-tile>
+                      <v-list-tile-content>
+                        <v-list-tile-title>{{ report.system.screen.vsync }}</v-list-tile-title>
+                        <v-list-tile-sub-title>VSync</v-list-tile-sub-title>
+                      </v-list-tile-content>
+                    </v-list-tile>
+                    <v-divider></v-divider>
+                    <v-list-tile>
+                      <v-list-tile-content>
+                        <v-list-tile-title>{{ report.system.screen.resolution }}</v-list-tile-title>
+                        <v-list-tile-sub-title>Resolution</v-list-tile-sub-title>
+                      </v-list-tile-content>
+                    </v-list-tile>
+                    <v-divider></v-divider>
+                    <v-list-tile>
+                      <v-list-tile-content>
+                        <v-list-tile-title>{{ report.system.screen.fullscreen }}</v-list-tile-title>
+                        <v-list-tile-sub-title>Fullscreen</v-list-tile-sub-title>
+                      </v-list-tile-content>
+                    </v-list-tile>
+                    <v-divider></v-divider>
+                    <v-list-tile>
+                      <v-list-tile-content>
+                        <v-list-tile-title>{{ report.system.screen.size }}</v-list-tile-title>
+                        <v-list-tile-sub-title>Window size</v-list-tile-sub-title>
+                      </v-list-tile-content>
+                    </v-list-tile>
+                  </v-list>
+                </v-card>
+              </v-flex>
+            </v-layout>
+          </template>
+        </v-layout>
+      </v-container>
+    </v-content>
+    <v-footer color="indigo" app inset>
+      <span class="white--text">&copy; Easy reporter 2019</span>
+    </v-footer>
+
   </div>
 </template>
 
@@ -384,64 +487,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-#toolbar {
-  position: sticky;
-  position: -webkit-sticky;
-  top: 1px;
-  z-index: 1000;
-}
-
-.full-control > .md-list {
-  width: 100%;
-  max-width: 100%;
-  display: inline-block;
-  border: 1px solid rgba(#000, 0.12);
-  vertical-align: top;
-}
-
-.success {
-  color: green !important;
-}
-
-.failure {
-  color: red !important;
-}
-
-.md-drawer {
-  width: 512px;
-  max-width: calc(100vw - 125px);
-}
-
-.md-app {
-  max-height: 900px;
-
-  border: 1px solid rgba(#000, 0.12);
-}
-
-.md-progress-bar {
-  margin: 24px;
-}
-
-.md-app-content {
-  overflow-x: none;
-}
-
-#system-info {
-  width: 320px;
-  margin: 4px;
-  display: inline-block;
-  vertical-align: top;
-}
-
-#callstack {
-  width: 400px;
-  margin: 4px;
-  display: inline-block;
-  vertical-align: top;
-}
-
-.logdump {
-  width: 100%;
-  height: 100%;
+.logdump {  
+  font-family: "courier new" !important;
+  font-size: 14px !important;
 }
 </style>

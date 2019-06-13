@@ -44,7 +44,7 @@
     "vue": "^2.6.10",
     "vue-apexcharts": "^1.3.4",
     "vue-json-viewer": "^2.1.4",
-    "vue-material": "^1.0.0-beta-10.2",
+    "vuetify": "^1.5.14",
     "xhr2": "^0.1.4"
   },
   "devDependencies": {

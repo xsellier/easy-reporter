@@ -9,7 +9,7 @@ module.exports = {
   lintOnSave: process.env.NODE_ENV !== 'production',
   pages: {
     index: {
-      entry: 'src/main.js',
+      entry: 'src/index.js',
       template: 'src/index.html',
       file: 'index.html',
       title: 'Easy reporter'
