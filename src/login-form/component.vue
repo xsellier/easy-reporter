@@ -2,13 +2,13 @@
   <v-container fluid>
     <v-layout row justify-center>
       <v-flex xs12 sm8 md4>
+        <v-form class="formclass" ref="form" v-model="valid" @submit.prevent="login">
         <v-card class="elevation-12">
           <v-toolbar dark color="primary">
             <v-toolbar-title>Login form</v-toolbar-title>
             <v-spacer></v-spacer>
           </v-toolbar>
           <v-card-text>
-            <v-form class="formclass" ref="form" v-model="valid">
               <v-text-field
                 v-model="username"
                 :rules="[rules.username]"
@@ -23,7 +23,6 @@
                 label="Password"
                 required
                 @click:append="passwordShow = !passwordShow"></v-text-field>
-            </v-form>
           </v-card-text>
           <v-card-actions>
             <v-spacer></v-spacer>
@@ -32,10 +31,12 @@
               depressed
               small
               value=""
+              type="submit"
               color="primary"
               @click="login">Login</v-btn>
           </v-card-actions>
         </v-card>
+            </v-form>
       </v-flex>
     </v-layout>
   </v-container>
