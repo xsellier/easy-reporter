@@ -1,17 +1,3 @@
-<template>
-  <v-snackbar
-    v-model="showSnackbar">
-  {{ message }}
-  <v-btn
-    color="pink"
-    flat
-    @click="showSnackbar = false">
-    Close
-  </v-btn>
-</v-snackbar>
-</template>
-
-<script>
 export default {
   name: 'ErrorSnackbar',
   data: () => ({
@@ -27,4 +13,3 @@ export default {
     }
   }
 }
-</script>

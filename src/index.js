@@ -14,7 +14,7 @@ Vue.use(JsonViewer)
 
 Vue.prototype.$http = axios
 
-import App from './App.vue'
+import App from './app/component.vue'
 
 new Vue({
   el: '#app',

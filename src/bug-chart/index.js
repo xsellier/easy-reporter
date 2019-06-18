@@ -1,16 +1,7 @@
-<template v-if="token">
-  <div class="page-container">
-    <div id="chart">
-      <VueApexCharts type=area height=400 :options="chartOptions" :series="series" />
-    </div>
-  </div>
-</template>
-
-<script>
 import VueApexCharts from "vue-apexcharts"
 
 export default {
-  name: "BugCharts",
+  name: "BugChart",
   components: {
     VueApexCharts
   },
@@ -144,7 +135,3 @@ export default {
     }
   }
 }
-</script>
-
-<style lang="scss" scoped>
-</style>
