@@ -239,6 +239,13 @@
                         <v-list-tile-sub-title>Window size</v-list-tile-sub-title>
                       </v-list-tile-content>
                     </v-list-tile>
+                    <v-divider></v-divider>
+                    <v-list-tile>
+                      <v-list-tile-content>
+                        <v-list-tile-title>{{ report.system.executable }}</v-list-tile-title>
+                        <v-list-tile-sub-title>Executable</v-list-tile-sub-title>
+                      </v-list-tile-content>
+                    </v-list-tile>
                   </v-list>
                 </v-card>
               </v-flex>
