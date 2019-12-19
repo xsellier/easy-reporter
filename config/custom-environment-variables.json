@@ -6,7 +6,8 @@
     "database": "DB_NAME"
   },
   "server": {
-    "port": "PORT"
+    "port": "PORT",
+    "host": "HOST"
   },
   "authentication": {
     "secret_key": "SECRET_KEY"
