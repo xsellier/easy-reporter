@@ -5,7 +5,7 @@ chmod -R a+w .data/
 # Prepare the view
 npm install --only=dev --no-shrinkwrap
 rm -rf public/
-vue-cli-service build
+./node_modules/.bin/vue-cli-service build
 
 # Start the server
 node lib/index
