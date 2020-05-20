@@ -3,6 +3,7 @@ mkdir -p .data/
 chmod -R a+w .data/
 
 # Prepare the view
+npm install --only=dev --no-shrinkwrap
 rm -rf public/
 vue-cli-service build
 
