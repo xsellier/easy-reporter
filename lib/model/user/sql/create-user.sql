@@ -1,3 +1,4 @@
--- $1 : password
+-- ? : password
+-- ? : hashed password
 INSERT INTO account (created_at, username, hashed_password)
-VALUES (NOW(), $1, $2);
+VALUES (DateTime('now'), ?, ?);

@@ -1,5 +1,5 @@
--- $1 : filename
--- $2 : value
+-- ? : filename
+-- ? : value
 UPDATE report
-SET important = $2
-WHERE filename = $1;
+SET important = ?
+WHERE filename = ?;

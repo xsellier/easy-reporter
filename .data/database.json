@@ -1,0 +1,8 @@
+{
+  "defaultEnv": "options",
+  "options": {
+    "driver": "sqlite3",
+    "filename": "/home/binogure/work/github/xsellier/easy-error-reporter/.data/sqlite.db",
+    "password": "passwordDev"
+  }
+}

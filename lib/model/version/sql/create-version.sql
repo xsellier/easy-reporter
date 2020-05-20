@@ -1,7 +1,7 @@
--- $1 : name
--- $2 : cracked
+-- ? : name
+-- ? : cracked
 INSERT INTO version (name, cracked)
-VALUES ($1, $2)
+VALUES (?, ?)
 ON CONFLICT (name) DO UPDATE SET
     name = EXCLUDED.name,
     cracked = EXCLUDED.cracked;

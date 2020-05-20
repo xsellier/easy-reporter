@@ -1,15 +1,8 @@
 {
   "database": {
-    "driver": "pg",
-    "port": 5432,
-    "host": "127.0.0.1",
+    "driver": "sqlite3",
     "user": "dev",
-    "password": "passwordDev",
-    "database": "easyreporting",
-    "min": 2,
-    "max": 5,
-    "idleTimeoutMillis": 300000,
-    "ssl": false
+    "password": "passwordDev"
   },
   "sql": {
     "encoding": "utf-8",
@@ -47,6 +40,7 @@
   "email": {
     "domain": "MY_EMAIL_DOMAIN",
     "apiKey": "MY_SECRET_SECRET",
+    "publicApiKey": "MY_PUBLIC_API_KEY",
     "to": "MY_SUPER_SECRET_EMAIL"
   },
   "fileDriver": "local"

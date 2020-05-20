@@ -7,7 +7,12 @@ exports.up = function (db) {
         autoIncrement: true
       },
       hashed_password: { type: 'string' },
-      created_at: { type: 'datetime' }
+      created_at: { type: 'datetime' },
+      username: {
+        type: 'string',
+        notNull: true,
+        unique: true
+      }
     }, (err) => {
       if (err) {
         reject(err)

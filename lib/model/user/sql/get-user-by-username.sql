@@ -1,3 +1,3 @@
--- $1 : The name of the account to retrieve
+-- ? : The name of the account to retrieve
 SELECT * FROM account
-WHERE username = $1;
+WHERE username = ?;

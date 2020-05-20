@@ -1,5 +1,5 @@
--- $1 : version
+-- ? : version
 SELECT cracked
 FROM version
-WHERE name = $1
+WHERE name = ?
 LIMIT 1;
