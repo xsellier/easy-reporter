@@ -4,7 +4,6 @@
 config/local.json
 log/
 node_modules/
-public/
 tmp/
 dist/
 
