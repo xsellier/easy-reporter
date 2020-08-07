@@ -19,6 +19,7 @@ export default {
     return {
       active: "",
       versions: {},
+      bugs: {},
       reports: [],
       reportsBulkDelete: [],
       cache: {},
@@ -38,7 +39,7 @@ export default {
     filteredReports: function() {
       let self = this
 
-      return this.reports.filter(report => {
+      return this.reports.filter((report) => {
         return (
           report.uploaded == self.uploaded &&
           (report.deleted_at != null) == self.deleted &&
@@ -83,6 +84,7 @@ export default {
           return this.listReports()
         })
         .then(() => this.listVersions())
+        .then(() => this.listBugs())
         .catch((err) => {
           this.sending = false
           this.$refs.createAdminForm.done()
@@ -108,6 +110,7 @@ export default {
           return this.listReports()
         })
         .then(() => this.listVersions())
+        .then(() => this.listBugs())
         .catch((err) => {
           this.sending = false
           this.$refs.loginForm.done()
@@ -119,6 +122,7 @@ export default {
     list: function() {
       return this.listReports()
         .then(() => this.listVersions())
+        .then(() => this.listBugs())
     },
     listReports: function() {
       this.sending = true
@@ -178,6 +182,39 @@ export default {
 
         this.sending = false
         this.$refs.errorSnackbar.show(`Cannot list versions: ${err.message}`)
+      })
+    },
+    listBugs: function() {
+      this.sending = true
+
+      return this.$http({
+        method: "get",
+        url: "/bug/list",
+        headers: {
+          Authorization: `Bearer ${this.token}`
+        }
+      })
+      .then((response) => {
+        this.bugs = response.data.reduce((acc, item) => {
+          if (acc[item.version] == null) {
+            acc[item.version] = {}
+          }
+
+          acc[item.version][item.title] = item.fixed
+
+          return acc
+        }, {})
+        this.sending = false
+
+        this.$refs.bugReports.refreshBugs(this.bugs)
+      })
+      .catch((err) => {
+        if (err.response && err.response.status < 500) {
+          this.token = null
+        }
+
+        this.sending = false
+        this.$refs.errorSnackbar.show(`Cannot list bugs: ${err.message}`)
       })
     }
   }

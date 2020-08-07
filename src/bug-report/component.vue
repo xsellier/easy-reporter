@@ -43,6 +43,15 @@
 
         <v-list-tile>
           <v-list-tile-action>
+            <v-checkbox v-model="fixed"></v-checkbox>
+          </v-list-tile-action>
+          <v-list-tile-content>
+            <v-list-tile-title>Fixed</v-list-tile-title>
+          </v-list-tile-content>
+        </v-list-tile>
+
+        <v-list-tile>
+          <v-list-tile-action>
             <v-checkbox v-on:change="selectAll()" v-model="selectAllValue"></v-checkbox>
           </v-list-tile-action>
           <v-list-tile-content>
@@ -127,7 +136,19 @@
                   :disabled="sending"
                   @click="unflagVersionAsCracked()"
                   v-if="report.cracked"
-                >Unflag version as cracked</v-btn>                
+                >Unflag version as cracked</v-btn>
+                <v-btn
+                  color="info"
+                  :disabled="sending"
+                  @click="flagBugAsFixed()"
+                  v-if="!report.fixed"
+                >Flag bug as fixed</v-btn>
+                <v-btn
+                  color="warning"
+                  :disabled="sending"
+                  @click="unflagBugAsFixed()"
+                  v-if="report.fixed"
+                >Unflag bug as fixed</v-btn>
               </v-flex>
               <v-spacer></v-spacer>
               <v-flex xs3 v-if="report.data != null">

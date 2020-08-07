@@ -7,6 +7,7 @@ export default {
       versions: {},
       reports: [],
       version: [],
+      bugs: {},
       reportsBulkDelete: [],
       cache: {},
       report: null,
@@ -18,6 +19,7 @@ export default {
       debug: false,
       deleted: false,
       uploaded: true,
+      fixed: false,
       cracked: false,
       selectAllValue: false
     }
@@ -44,6 +46,14 @@ export default {
         }
 
         valid &= cracked == self.cracked
+
+        // Validate fixed filter
+        var fixed = false
+        if (self.bugs[report.version] != null && self.bugs[report.version][report.title] != null) {
+          fixed = self.bugs[report.version][report.title]
+        }
+
+        valid &= fixed == self.fixed
 
         return valid
       })
@@ -165,7 +175,9 @@ export default {
           this.filename = report.filename
           this.report = JSON.parse(rawReport)
           this.report.version = report.version
+          this.report.title = report.title
           this.report.cracked = this.versions[this.report.version] || false
+          this.report.fixed = (this.bugs[report.version] != null && this.bugs[report.version][report.title] != null) ? this.bugs[report.version][report.title] : false
           this.sending = false
         })
         .catch((err) => {
@@ -177,13 +189,13 @@ export default {
           this.$emit('error', this.token, `Cannot download report: ${err.message}`)
         })
     },
-    flagVersionAsCracked: function (version) {
-      return this._setFlagVersionCracked(version, true)
+    flagVersionAsCracked: function () {
+      return this._setFlagVersionCracked(true)
     },
-    unflagVersionAsCracked: function (version) {
-      return this._setFlagVersionCracked(version, false)
+    unflagVersionAsCracked: function () {
+      return this._setFlagVersionCracked(false)
     },
-    _setFlagVersionCracked: function(version, cracked) {
+    _setFlagVersionCracked: function(cracked) {
       return this.$http({
         method: "post",
         url: `/version/update`,
@@ -196,8 +208,42 @@ export default {
         }
       })
       .then(() => {
-        this.versions[version] = cracked
+        this.versions[this.report.version] = cracked
         this.report.cracked = cracked
+        this.sending = false
+        this.$forceUpdate()
+      })
+      .catch((err) => {
+        if (err.response && err.response.status < 500) {
+          this.token = null
+        }
+
+        this.sending = false
+        this.$emit('error', this.token, `Cannot download report: ${err.message}`)
+      })
+    },
+    flagBugAsFixed: function () {
+      return this._setFlagBugFixed(true)
+    },
+    unflagBugAsFixed: function () {
+      return this._setFlagBugFixed(false)
+    },
+    _setFlagBugFixed: function(fixed) {
+      console.log(this.report)
+      return this.$http({
+        method: "post",
+        url: `/bug/update`,
+        headers: {
+          Authorization: `Bearer ${this.token}`
+        },
+        data: {
+          version: this.report.version,
+          title: this.report.title,
+          fixed: fixed
+        }
+      })
+      .then(() => {
+        this.report.fixed = fixed
         this.sending = false
         this.$forceUpdate()
       })
@@ -225,6 +271,10 @@ export default {
     refreshVersions: function(list) {
       this.sending = false
       this.versions = list
+    },
+    refreshBugs: function(list) {
+      this.sending = false
+      this.bugs = list
     }
   }
 }

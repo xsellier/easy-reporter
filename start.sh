@@ -16,8 +16,5 @@ npm install --cache /tmp/my_app --prefer-offline --no-audit --no-shrinkwrap
 echo "=========================="
 echo "Let's start!"
 
-# Prevent one 404 HTTP error
-touch public/favicon.ico
-
 # Start the server
 node lib/index.js
