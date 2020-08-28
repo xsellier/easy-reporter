@@ -22,9 +22,12 @@
     "messagingSenderId": "FIREBASE_MESSENGER_SENDER_ID"
   },
   "email": {
-    "domain": "EMAIL_DOMAIN",
-    "apiKey": "EMAIL_APIKEY",
-    "publicApiKey": "EMAIL_PUBLIC_APIKEY",
+    "configuration": {
+      "auth": {
+        "user": "EMAIL_USERNAME",
+        "pass": "EMAIL_PASSWORD"
+      }
+    },
     "to": "EMAIL_TO"
   }
 }

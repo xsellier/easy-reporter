@@ -38,10 +38,16 @@
     "messagingSenderId": "MY_SECRET_SANTA"
   },
   "email": {
-    "domain": "MY_EMAIL_DOMAIN",
-    "apiKey": "MY_SECRET_SECRET",
-    "publicApiKey": "MY_PUBLIC_API_KEY",
-    "to": "MY_SUPER_SECRET_EMAIL"
+    "configuration": {
+      "host": "smtp.zoho.com",
+      "port": 465,
+      "secure": true,
+      "auth": {
+        "user": "MY_SUPER_SECRET_EMAIL_USER",
+        "pass": "MY_SUPER_SECRET_EMAIL_PASS"
+      }
+    },
+    "to": "EMAIL_TO"
   },
   "fileDriver": "local"
 }
