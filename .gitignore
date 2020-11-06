@@ -8,5 +8,6 @@ tmp/
 dist/
 
 test.js
-
+data.json
+node_modules_fake
 npm-debug.log

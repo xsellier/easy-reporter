@@ -6,7 +6,8 @@
   },
   "sql": {
     "encoding": "utf-8",
-    "relativeDirectory": "sql"
+    "relativeDirectory": "sql",
+    "pagination": 25
   },
   "logger": {
     "namespace": "easy-error-reporter",

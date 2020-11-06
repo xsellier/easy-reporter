@@ -32,7 +32,7 @@ export default {
       token: null,
       debug: false,
       deleted: false,
-      uploaded: true,
+      uploaded: true
     }
   },
   computed: {
@@ -95,28 +95,32 @@ export default {
     },
     login: function() {
       this.sending = true
-
       this.$http
         .post(`/user/login`, {
           username: this.$refs.loginForm.username,
           password: this.$refs.loginForm.password
         })
         .then((response) => {
+          if (this.$refs.loginForm) {
+            this.$refs.loginForm.done()
+          }
+
           this.token = response.data
           this.sending = false
-
-          this.$refs.loginForm.done()
 
           return this.listReports()
         })
         .then(() => this.listVersions())
         .then(() => this.listBugs())
         .catch((err) => {
+          this.$refs.errorSnackbar.show(`Login failed: ${err.message}`)
+
           this.sending = false
-          this.$refs.loginForm.done()
           this.token = null
 
-          this.$refs.errorSnackbar.show(`Login failed: ${err.message}`)
+          if (this.$refs.loginForm) {
+            this.$refs.loginForm.done()
+          }
         })
     },
     list: function() {
@@ -125,25 +129,31 @@ export default {
         .then(() => this.listBugs())
     },
     listReports: function() {
+      if (!this.$refs.bugReports) {
+        return Promise.resolve()
+      }
+
       this.sending = true
 
       return this.$http({
         method: "get",
-        url: "/report/list",
+        url: `/report/list/${this.$refs.bugReports.debug}/${this.$refs.bugReports.uploaded}/${this.$refs.bugReports.deleted}/${this.$refs.bugReports.currentPage}`,
         headers: {
           Authorization: `Bearer ${this.token}`
         }
       })
       .then((response) => {
-        this.reports = response.data
+        this.reports = response.data.list
         this.reports.sort((a, b) => {
           return a.created_at < b.created_at
         })
         this.sending = false
 
         this.$refs.bugReports.login(this.token)
-        this.$refs.bugCharts.refreshReports(this.reports)
-        this.$refs.bugReports.refreshReports(this.reports)
+        // Needs to be rework since it hasn't the right values for
+        // reports
+        // this.$refs.bugCharts.refreshReports(this.reports)
+        this.$refs.bugReports.refreshReports(this.reports, response.data.maxPage, response.data.total)
       })
       .catch((err) => {
         if (err.response && err.response.status < 500) {
@@ -155,6 +165,10 @@ export default {
       })
     },
     listVersions: function() {
+      if (!this.$refs.bugReports) {
+        return Promise.resolve()
+      }
+
       this.sending = true
 
       return this.$http({
@@ -185,6 +199,10 @@ export default {
       })
     },
     listBugs: function() {
+      if (!this.$refs.bugReports) {
+        return Promise.resolve()
+      }
+
       this.sending = true
 
       return this.$http({

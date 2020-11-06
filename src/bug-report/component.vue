@@ -7,7 +7,7 @@
       <v-list dense subheader>
         <v-list-tile>
           <v-list-tile-action>
-            <v-checkbox v-model="debug"></v-checkbox>
+            <v-checkbox v-model="debug" v-on:change="emitUpdateSignal()"></v-checkbox>
           </v-list-tile-action>
           <v-list-tile-content>
             <v-list-tile-title>Debug</v-list-tile-title>
@@ -16,7 +16,7 @@
 
         <v-list-tile>
           <v-list-tile-action>
-            <v-checkbox v-model="deleted"></v-checkbox>
+            <v-checkbox v-model="deleted" v-on:change="emitUpdateSignal()"></v-checkbox>
           </v-list-tile-action>
           <v-list-tile-content>
             <v-list-tile-title>Deleted</v-list-tile-title>
@@ -25,7 +25,7 @@
 
         <v-list-tile>
           <v-list-tile-action>
-            <v-checkbox v-model="uploaded"></v-checkbox>
+            <v-checkbox v-model="uploaded" v-on:change="emitUpdateSignal()"></v-checkbox>
           </v-list-tile-action>
           <v-list-tile-content>
             <v-list-tile-title>Uploaded</v-list-tile-title>
@@ -67,8 +67,12 @@
             <v-btn color="primary" dark small :disabled="reportsBulkDelete.length <= 0" v-on:click="bulkDelete()">Delete</v-btn>
           </v-list-tile-action>
           <v-list-tile-content>
-            <v-list-tile-title>Total: {{ filteredReports.length }}</v-list-tile-title>
+            <v-list-tile-title>Items: {{ filteredReports.length }} / {{ totalItems }}</v-list-tile-title>
           </v-list-tile-content>
+        </v-list-tile>
+
+        <v-list-tile>
+          <v-pagination v-model="currentPage" :length="totalPages" v-on:input="changePage()" v-on:next="emitUpdateSignal()" v-on:previous="emitUpdateSignal()"></v-pagination>
         </v-list-tile>
 
         <v-divider inset></v-divider>

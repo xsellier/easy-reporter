@@ -21,7 +21,10 @@ export default {
       uploaded: true,
       fixed: false,
       cracked: false,
-      selectAllValue: false
+      selectAllValue: false,
+      totalPages: 1,
+      currentPage: 1,
+      totalItems: 0
     }
   },
   computed: {
@@ -80,23 +83,23 @@ export default {
           reports: this.reportsBulkDelete
         }
       })
-        .then(() => {
-          this.report = null
-          this.filename = null
+      .then(() => {
+        this.report = null
+        this.filename = null
 
-          this.sending = false
-          this.reportsBulkDelete = []
+        this.sending = false
+        this.reportsBulkDelete = []
 
-          return this.list()
-        })
-        .catch((err) => {
-          if (err.response && err.response.status < 500) {
-            this.token = null
-          }
+        return this.list()
+      })
+      .catch((err) => {
+        if (err.response && err.response.status < 500) {
+          this.token = null
+        }
 
-          this.sending = false
-          this.$emit('error', this.token, `Cannot delete reports: ${err.message}`)
-        })
+        this.sending = false
+        this.$emit('error', this.token, `Cannot delete reports: ${err.message}`)
+      })
     },
     formatCallstack: function(callstack) {
       return callstack.reduce((acc, item, index) => {
@@ -229,7 +232,6 @@ export default {
       return this._setFlagBugFixed(false)
     },
     _setFlagBugFixed: function(fixed) {
-      console.log(this.report)
       return this.$http({
         method: "post",
         url: `/bug/update`,
@@ -259,14 +261,25 @@ export default {
     login: function(token) {
       this.token = token
     },
+    changePage: function() {
+      this.emitUpdateSignal()
+    },
+    emitUpdateSignal: function() {
+      this.sending = true
+
+      this.$emit('updateFilters')
+    },
     list: function() {
       this.sending = true
 
       this.$emit('list')
     },
-    refreshReports: function(list) {
+    refreshReports: function(list, pMaxPage, pTotalItems) {
       this.sending = false
       this.reports = list
+      this.totalPages = pMaxPage
+      this.currentPage = Math.min(this.currentPage, pMaxPage)
+      this.totalItems = pTotalItems
     },
     refreshVersions: function(list) {
       this.sending = false

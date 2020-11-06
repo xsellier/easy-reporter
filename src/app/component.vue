@@ -20,7 +20,7 @@
         </v-tab-item>
         <v-tab ripple>Bug reports</v-tab>
         <v-tab-item>
-         <BugReports ref="bugReports" v-on:list="list" v-on:error="showError"></BugReports>
+         <BugReports ref="bugReports" v-on:list="list" v-on:updateFilters="listReports" v-on:error="showError"></BugReports>
         </v-tab-item>
       </v-tabs>
     </template>
