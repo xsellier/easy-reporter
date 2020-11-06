@@ -10,9 +10,6 @@ chmod -R a+w .data/
 echo "=========================="
 echo "Prepping node modules"
 
-rm -rf node_modules_fake/
-rm -rf node_modules/
-
 # Wait for the rm to work
 sleep 1
 mv ./node_modules/ ./node_modules_fake/
