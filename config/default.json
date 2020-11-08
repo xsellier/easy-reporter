@@ -7,7 +7,7 @@
   "sql": {
     "encoding": "utf-8",
     "relativeDirectory": "sql",
-    "pagination": 25
+    "pagination": 50
   },
   "logger": {
     "namespace": "easy-error-reporter",
