@@ -147,13 +147,23 @@ export default {
         this.reports.sort((a, b) => {
           return a.created_at < b.created_at
         })
-        this.sending = false
 
         this.$refs.bugReports.login(this.token)
-        // Needs to be rework since it hasn't the right values for
-        // reports
-        // this.$refs.bugCharts.refreshReports(this.reports)
         this.$refs.bugReports.refreshReports(this.reports, response.data.maxPage, response.data.total)
+      })
+      .then(() => {
+        return this.$http({
+          method: "get",
+          url: `/report/summary`,
+          headers: {
+            Authorization: `Bearer ${this.token}`
+          }
+        })
+      })
+      .then((response) => {
+        this.sending = false
+        console.log(response.data)
+        this.$refs.bugCharts.refreshSummary(response.data)
       })
       .catch((err) => {
         if (err.response && err.response.status < 500) {
@@ -185,8 +195,6 @@ export default {
           return acc
         }, {})
         this.sending = false
-
-        this.$refs.bugCharts.refreshVersions(this.versions)
         this.$refs.bugReports.refreshVersions(this.versions)
       })
       .catch((err) => {

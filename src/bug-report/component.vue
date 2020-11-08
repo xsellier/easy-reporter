@@ -5,75 +5,116 @@
       app
     >
       <v-list dense subheader>
-        <v-list-tile>
-          <v-list-tile-action>
-            <v-checkbox v-model="debug" v-on:change="emitUpdateSignal()"></v-checkbox>
-          </v-list-tile-action>
-          <v-list-tile-content>
-            <v-list-tile-title>Debug</v-list-tile-title>
-          </v-list-tile-content>
-        </v-list-tile>
+        <v-layout wrap align-center>
+          <v-list-tile></v-list-tile>
+        </v-layout>
 
-        <v-list-tile>
-          <v-list-tile-action>
-            <v-checkbox v-model="deleted" v-on:change="emitUpdateSignal()"></v-checkbox>
-          </v-list-tile-action>
-          <v-list-tile-content>
-            <v-list-tile-title>Deleted</v-list-tile-title>
-          </v-list-tile-content>
-        </v-list-tile>
+        <v-layout wrap align-center>
+          <v-flex>
+            <v-list-tile>
+              <v-select :items="versionKeys" v-model="versionSelected" label="Version"  v-on:change="emitVersionSelected()"></v-select>
+            </v-list-tile>
+          </v-flex>
+        </v-layout>
 
-        <v-list-tile>
-          <v-list-tile-action>
-            <v-checkbox v-model="uploaded" v-on:change="emitUpdateSignal()"></v-checkbox>
-          </v-list-tile-action>
-          <v-list-tile-content>
-            <v-list-tile-title>Uploaded</v-list-tile-title>
-          </v-list-tile-content>
-        </v-list-tile>
+        <v-layout>
+          <v-flex xs6>
+            <v-list-tile>
+              <v-list-tile-action>
+                <v-checkbox v-model="debug" v-on:change="emitUpdateSignal()"></v-checkbox>
+              </v-list-tile-action>
+              <v-list-tile-content>
+                <v-list-tile-title>Debug</v-list-tile-title>
+              </v-list-tile-content>
+            </v-list-tile>
+          </v-flex>
+          <v-flex xs6>
+            <v-list-tile>
+              <v-list-tile-action>
+                <v-checkbox v-model="deleted" v-on:change="emitUpdateSignal()"></v-checkbox>
+              </v-list-tile-action>
+              <v-list-tile-content>
+                <v-list-tile-title>Deleted</v-list-tile-title>
+              </v-list-tile-content>
+            </v-list-tile>
+          </v-flex>
+        </v-layout>
+        <v-layout>
+          <v-flex xs6>
+            <v-list-tile>
+              <v-list-tile-action>
+                <v-checkbox v-model="uploaded" v-on:change="emitUpdateSignal()"></v-checkbox>
+              </v-list-tile-action>
+              <v-list-tile-content>
+                <v-list-tile-title>Uploaded</v-list-tile-title>
+              </v-list-tile-content>
+            </v-list-tile>
+          </v-flex>
+          <v-flex xs6>
+            <v-list-tile>
+              <v-list-tile-action>
+                <v-checkbox v-model="cracked"></v-checkbox>
+              </v-list-tile-action>
+              <v-list-tile-content>
+                <v-list-tile-title>Cracked</v-list-tile-title>
+              </v-list-tile-content>
+            </v-list-tile>
+          </v-flex>
+        </v-layout>
 
-        <v-list-tile>
-          <v-list-tile-action>
-            <v-checkbox v-model="cracked"></v-checkbox>
-          </v-list-tile-action>
-          <v-list-tile-content>
-            <v-list-tile-title>Cracked</v-list-tile-title>
-          </v-list-tile-content>
-        </v-list-tile>
+        <v-layout>
+          <v-flex xs6>
+            <v-list-tile>
+              <v-list-tile-action>
+                <v-checkbox v-model="fixed"></v-checkbox>
+              </v-list-tile-action>
+              <v-list-tile-content>
+                <v-list-tile-title>Fixed</v-list-tile-title>
+              </v-list-tile-content>
+            </v-list-tile>
+          </v-flex>
+          <v-flex xs6>
+            <v-list-tile>
+              <v-list-tile-action>
+                <v-checkbox v-on:change="selectAll()" v-model="selectAllValue"></v-checkbox>
+              </v-list-tile-action>
+              <v-list-tile-content>
+                <v-list-tile-title>Select all</v-list-tile-title>
+              </v-list-tile-content>
+            </v-list-tile>
+          </v-flex>
+        </v-layout>
 
-        <v-list-tile>
-          <v-list-tile-action>
-            <v-checkbox v-model="fixed"></v-checkbox>
-          </v-list-tile-action>
-          <v-list-tile-content>
-            <v-list-tile-title>Fixed</v-list-tile-title>
-          </v-list-tile-content>
-        </v-list-tile>
+        <v-layout>
+          <v-flex xs6>
+            <v-list-tile>
+              <v-list-tile-action>
+                <v-btn color="primary" dark small v-on:click="list">Refresh</v-btn>
+              </v-list-tile-action>
+            </v-list-tile>
+          </v-flex>
+          <v-flex xs6  v-if="reportsBulkDelete.length > 0">
+            <v-list-tile>
+              <v-list-tile-action>
+                <v-btn color="warning" dark small v-on:click="bulkDelete()">Delete</v-btn>
+              </v-list-tile-action>
+            </v-list-tile>
+          </v-flex>
+        </v-layout>
 
-        <v-list-tile>
-          <v-list-tile-action>
-            <v-checkbox v-on:change="selectAll()" v-model="selectAllValue"></v-checkbox>
-          </v-list-tile-action>
-          <v-list-tile-content>
-            <v-list-tile-title>Select all</v-list-tile-title>
-          </v-list-tile-content>
-        </v-list-tile>
+        <v-layout wrap align-center>
+          <v-list-tile d-flex>
+            <v-pagination v-model="currentPage" :length="totalPages" v-on:input="changePage()" v-on:next="emitUpdateSignal()" v-on:previous="emitUpdateSignal()"></v-pagination>
+          </v-list-tile>
+        </v-layout>
 
-        <v-list-tile>
-          <v-list-tile-action>
-            <v-btn color="primary" dark small v-on:click="list">Refresh</v-btn>
-          </v-list-tile-action>
-          <v-list-tile-action>
-            <v-btn color="primary" dark small :disabled="reportsBulkDelete.length <= 0" v-on:click="bulkDelete()">Delete</v-btn>
-          </v-list-tile-action>
-          <v-list-tile-content>
-            <v-list-tile-title>Items: {{ filteredReports.length }} / {{ totalItems }}</v-list-tile-title>
-          </v-list-tile-content>
-        </v-list-tile>
-
-        <v-list-tile>
-          <v-pagination v-model="currentPage" :length="totalPages" v-on:input="changePage()" v-on:next="emitUpdateSignal()" v-on:previous="emitUpdateSignal()"></v-pagination>
-        </v-list-tile>
+        <v-layout wrap align-center>
+          <v-list-tile d-flex>
+            <v-list-tile-content>
+              <v-list-tile-title>Items: {{ filteredReports.length }} / {{ totalItems }}</v-list-tile-title>
+            </v-list-tile-content>
+          </v-list-tile>
+        </v-layout>
 
         <v-divider inset></v-divider>
 

@@ -7,8 +7,7 @@ export default {
   },
   data() {
     return {
-      versions: {},
-      reports: [],
+      summary: [],
       chartOptions: {
         chart: {
           height: 320,
@@ -54,70 +53,30 @@ export default {
   },
   computed: {
     series: function() {
-      var time_duration = []
-      var MONTHS = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
       var date = new Date()
+      var time_duration = []
 
-      var day = date.getDate()
-      var month = date.getMonth()
-      var year = date.getFullYear()
+      for (let index = 0; index < 12; ++index) {
+         console.log(`${date.getFullYear()}-${date.getMonth() + 1}`)
+        time_duration.push(`${date.getFullYear()}-${date.getMonth() + 1}`)
 
-      for (var index = 0; index < 30; ++index) {
-        time_duration.push(`${year}-${('' + (month + 1)).padStart(2, '0')}-${('' + day).padStart(2, '0')}`)
-
-        day--
-        if (day <= 0) {
-          month--
-
-          if (month <= 0) {
-            month = 12
-
-            year--
-          }
-
-          day = MONTHS[month]
-        }
+        date.setMonth(date.getMonth() - 1)
       }
 
       time_duration.reverse()
-
       var self = this
-
+      console.log(time_duration)
       return [{
-        name: 'Cracked',
-        data: time_duration.reduce((acc, time_duration_item) => {
-          acc.push({
-            x: time_duration_item,
-            y: this.reports.reduce((second_acc, item) => {
-              if (!item.created_at.startsWith(time_duration_item)) {
-                return second_acc
-              }
-
-              if (self.versions[item.version] == true) {
-                return second_acc + 1
-              }
-
-              return second_acc
-            }, 0)
-          })
-
-          return acc
-        }, [])
-      }, {
         name: 'Legit',
         data: time_duration.reduce((acc, time_duration_item) => {
           acc.push({
             x: time_duration_item,
-            y: this.reports.reduce((second_acc, item) => {
-              if (!item.created_at.startsWith(time_duration_item)) {
+            y: this.summary.reduce((second_acc, item) => {
+              if (parseInt(item.Month) != parseInt(time_duration_item.split('-')[1])) {
                 return second_acc
               }
 
-              if (self.versions[item.version] != null && self.versions[item.version] == true) {
-                return second_acc
-              }
-
-              return second_acc + 1
+              return item.numberOfReports
             }, 0)
           })
 
@@ -127,11 +86,8 @@ export default {
     },
   },
   methods: {
-    refreshReports: function(list) {
-      this.reports = list
-    },
-    refreshVersions: function(list) {
-      this.versions = list
+    refreshSummary: function(value) {
+      this.summary = value
     }
   }
 }

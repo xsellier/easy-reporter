@@ -5,6 +5,8 @@ export default {
   data() {
     return {
       versions: {},
+      versionKeys: [],
+      versionSelected: 'None',
       reports: [],
       version: [],
       bugs: {},
@@ -40,6 +42,10 @@ export default {
 
         // Validate debug filter
         valid &= report.debug == self.debug
+
+        if (self.versionSelected != 'None') {
+          valid &= report.version == self.versionSelected
+        }
 
         // Validate crack filter
         var cracked = false
@@ -284,6 +290,7 @@ export default {
     refreshVersions: function(list) {
       this.sending = false
       this.versions = list
+      this.versionKeys = ['None'].concat(Object.keys(list))
     },
     refreshBugs: function(list) {
       this.sending = false
