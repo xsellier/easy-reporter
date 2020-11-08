@@ -7,5 +7,5 @@ WHERE
   debug = ? AND
   uploaded = ? AND
   deleted_at IS__DELETED__ NULL
-ORDER BY created_at ASC
+ORDER BY created_at DESC
 LIMIT ? OFFSET ?;
