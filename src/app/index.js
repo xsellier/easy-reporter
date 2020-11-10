@@ -137,7 +137,7 @@ export default {
 
       return this.$http({
         method: "get",
-        url: `/report/list/${this.$refs.bugReports.debug}/${this.$refs.bugReports.uploaded}/${this.$refs.bugReports.deleted}/${this.$refs.bugReports.currentPage}`,
+        url: `/report/list/${this.$refs.bugReports.debug}/${this.$refs.bugReports.uploaded}/${this.$refs.bugReports.deleted}/${this.$refs.bugReports.fixed}/${this.$refs.bugReports.currentPage}`,
         headers: {
           Authorization: `Bearer ${this.token}`
         }
@@ -162,7 +162,6 @@ export default {
       })
       .then((response) => {
         this.sending = false
-        console.log(response.data)
         this.$refs.bugCharts.refreshSummary(response.data)
       })
       .catch((err) => {

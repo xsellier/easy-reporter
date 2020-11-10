@@ -56,14 +56,6 @@ export default {
 
         valid &= cracked == self.cracked
 
-        // Validate fixed filter
-        var fixed = false
-        if (self.bugs[report.version] != null && self.bugs[report.version][report.title] != null) {
-          fixed = self.bugs[report.version][report.title]
-        }
-
-        valid &= fixed == self.fixed
-
         return valid
       })
     }

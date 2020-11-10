@@ -66,7 +66,7 @@
           <v-flex xs6>
             <v-list-tile>
               <v-list-tile-action>
-                <v-checkbox v-model="fixed"></v-checkbox>
+                <v-checkbox v-model="fixed" v-on:change="emitUpdateSignal()"></v-checkbox>
               </v-list-tile-action>
               <v-list-tile-content>
                 <v-list-tile-title>Fixed</v-list-tile-title>

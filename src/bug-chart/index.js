@@ -57,15 +57,13 @@ export default {
       var time_duration = []
 
       for (let index = 0; index < 12; ++index) {
-         console.log(`${date.getFullYear()}-${date.getMonth() + 1}`)
         time_duration.push(`${date.getFullYear()}-${date.getMonth() + 1}`)
 
         date.setMonth(date.getMonth() - 1)
       }
 
       time_duration.reverse()
-      var self = this
-      console.log(time_duration)
+
       return [{
         name: 'Legit',
         data: time_duration.reduce((acc, time_duration_item) => {
