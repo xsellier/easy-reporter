@@ -12,7 +12,7 @@
         <v-layout wrap align-center>
           <v-flex>
             <v-list-tile>
-              <v-select :items="versionKeys" v-model="versionSelected" label="Version"  v-on:change="emitVersionSelected()"></v-select>
+              <v-select :items="versionKeys" v-model="versionSelected" label="Version"></v-select>
             </v-list-tile>
           </v-flex>
         </v-layout>

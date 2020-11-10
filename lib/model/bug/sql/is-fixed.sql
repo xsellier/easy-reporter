@@ -1,6 +1,7 @@
--- ? : version
+-- ? : application name
 -- ? : bug title
+-- ? : version
 SELECT fixed
 FROM bug
-WHERE title = ? AND version = ?
+WHERE name = ? AND title = ? AND version = ?
 LIMIT 1;

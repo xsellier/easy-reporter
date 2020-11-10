@@ -1,5 +1,8 @@
 -- ? : version
+-- ? : application name
 SELECT cracked
 FROM version
-WHERE name = ?
+WHERE
+      name = ?
+  AND application_name = ?
 LIMIT 1;

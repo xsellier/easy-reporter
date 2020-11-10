@@ -32,7 +32,9 @@ export default {
       token: null,
       debug: false,
       deleted: false,
-      uploaded: true
+      uploaded: true,
+      selectedGame: null,
+      games: []
     }
   },
   computed: {
@@ -108,6 +110,12 @@ export default {
           this.token = response.data
           this.sending = false
 
+          return this.listApplications()
+        })
+        .then(() => {
+          return this.refreshCharts()
+        })
+        .then(() => {
           return this.listReports()
         })
         .then(() => this.listVersions())
@@ -123,10 +131,50 @@ export default {
           }
         })
     },
+    applicationChanged: function () {
+      if (!this.$refs.bugReports) {
+        return Promise.resolve()
+      }
+
+      this.$refs.bugReports.application_name = this.selectedGame
+
+      return this.refreshCharts()
+        .then(() => this.list())
+    },
+    refreshCharts: function() {
+      return this.$http({
+        method: "get",
+        url: `/report/summary/${this.selectedGame}`,
+        headers: {
+          Authorization: `Bearer ${this.token}`
+        }
+      }).then((response) => {
+        this.$refs.bugCharts.refreshSummary(response.data)
+      })
+    },
     list: function() {
       return this.listReports()
         .then(() => this.listVersions())
         .then(() => this.listBugs())
+    },
+    listApplications: function () {
+      this.sending = true
+
+      return this.$http({
+        method: "get",
+        url: `/report/list-application/`,
+        headers: {
+          Authorization: `Bearer ${this.token}`
+        }
+      })
+      .then((response) => {
+        this.sending = false
+        this.games = response.data
+
+        if (this.selectedGame == null && this.games.length > 0) {
+           this.selectedGame = this.games[0]
+        }
+      })
     },
     listReports: function() {
       if (!this.$refs.bugReports) {
@@ -137,7 +185,7 @@ export default {
 
       return this.$http({
         method: "get",
-        url: `/report/list/${this.$refs.bugReports.debug}/${this.$refs.bugReports.uploaded}/${this.$refs.bugReports.deleted}/${this.$refs.bugReports.fixed}/${this.$refs.bugReports.currentPage}`,
+        url: `/report/list/${this.selectedGame}/${this.$refs.bugReports.debug}/${this.$refs.bugReports.uploaded}/${this.$refs.bugReports.deleted}/${this.$refs.bugReports.fixed}/${this.$refs.bugReports.currentPage}`,
         headers: {
           Authorization: `Bearer ${this.token}`
         }
@@ -147,22 +195,9 @@ export default {
         this.reports.sort((a, b) => {
           return a.created_at < b.created_at
         })
-
+        this.sending = false
         this.$refs.bugReports.login(this.token)
         this.$refs.bugReports.refreshReports(this.reports, response.data.maxPage, response.data.total)
-      })
-      .then(() => {
-        return this.$http({
-          method: "get",
-          url: `/report/summary`,
-          headers: {
-            Authorization: `Bearer ${this.token}`
-          }
-        })
-      })
-      .then((response) => {
-        this.sending = false
-        this.$refs.bugCharts.refreshSummary(response.data)
       })
       .catch((err) => {
         if (err.response && err.response.status < 500) {
@@ -182,7 +217,7 @@ export default {
 
       return this.$http({
         method: "get",
-        url: "/version/list",
+        url: `/version/list/${this.selectedGame}`,
         headers: {
           Authorization: `Bearer ${this.token}`
         }
@@ -214,7 +249,7 @@ export default {
 
       return this.$http({
         method: "get",
-        url: "/bug/list",
+        url: `/bug/list/${this.selectedGame}`,
         headers: {
           Authorization: `Bearer ${this.token}`
         }

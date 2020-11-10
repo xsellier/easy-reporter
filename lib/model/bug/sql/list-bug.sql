@@ -1,3 +1,4 @@
--- ? : version
+-- ? : application name
 SELECT *
-FROM bug;
+FROM bug
+WHERE name = ?;

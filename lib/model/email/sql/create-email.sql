@@ -1,7 +1,9 @@
--- ? : version name
+-- ? : application name
 -- ? : bug name
-INSERT INTO email (title, version)
-VALUES (?, ?)
-ON CONFLICT (title, version) DO UPDATE SET
+-- ? : version name
+INSERT INTO email (name, title, version)
+VALUES (?, ?, ?)
+ON CONFLICT (name, title, version) DO UPDATE SET
+    name = EXCLUDED.name,
     title = EXCLUDED.title,
     version = EXCLUDED.version;

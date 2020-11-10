@@ -4,7 +4,7 @@ exports.up = function (db) {
       return db.createTable('report', {
         filename: {
           type: 'string',
-          primaryKey: true,
+          primaryKey: true
         },
         uploaded: {
           type: 'boolean',

@@ -26,7 +26,8 @@ export default {
       selectAllValue: false,
       totalPages: 1,
       currentPage: 1,
-      totalItems: 0
+      totalItems: 0,
+      application_name: ''
     }
   },
   computed: {
@@ -204,6 +205,7 @@ export default {
           Authorization: `Bearer ${this.token}`
         },
         data: {
+          application_name: this.application_name,
           name: this.report.version,
           cracked: cracked
         }
@@ -237,6 +239,7 @@ export default {
           Authorization: `Bearer ${this.token}`
         },
         data: {
+          name: this.application_name,
           version: this.report.version,
           title: this.report.title,
           fixed: fixed
@@ -279,11 +282,13 @@ export default {
       this.currentPage = Math.min(this.currentPage, pMaxPage)
       this.totalItems = pTotalItems
     },
+
     refreshVersions: function(list) {
       this.sending = false
       this.versions = list
       this.versionKeys = ['None'].concat(Object.keys(list))
     },
+
     refreshBugs: function(list) {
       this.sending = false
       this.bugs = list

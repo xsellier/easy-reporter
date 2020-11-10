@@ -1,13 +1,16 @@
+-- ? : application name
 -- ? : debug
 -- ? : uploaded
 -- ? : fixed
 SELECT COUNT(report.filename) as count
 FROM report
 LEFT OUTER JOIN bug ON
-      report.title = bug.title
+      report.name = bug.name
+  AND report.title = bug.title
   AND report.version = bug.version
 WHERE
-      report.debug = ?
+      report.name = ?
+  AND report.debug = ?
   AND report.uploaded = ?
   AND (   bug.fixed IS__FIXED__ NULL
        OR bug.fixed = ?

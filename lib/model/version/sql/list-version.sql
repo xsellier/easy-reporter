@@ -1,2 +1,5 @@
+-- ? : application name
 SELECT *
-FROM version;
+FROM version
+WHERE
+  application_name = ?;

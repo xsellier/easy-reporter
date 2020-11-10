@@ -1,3 +1,4 @@
--- ? : version
+-- ? : application name
 SELECT *
-FROM email;
+FROM email
+WHERE name = ?;
