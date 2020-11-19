@@ -119,28 +119,34 @@
         <v-divider inset></v-divider>
 
         <v-subheader inset>Reports</v-subheader>
-
-        <v-list-tile v-for="report in filteredReports" :key="report.filename">
-          <v-list-tile-avatar>
-            <v-checkbox v-model="reportsBulkDelete"
-                v-if="report.deleted_at == null"
-                :value="report.filename"></v-checkbox>
-          </v-list-tile-avatar>
-          <v-list-tile-content>
-            <v-list-tile-title>
-              {{ report.version }}
-            </v-list-tile-title>
-            <v-list-tile-sub-title>
-              {{ report.created_at }}
-            </v-list-tile-sub-title>
-          </v-list-tile-content>
-          <v-list-tile-action>
-            <v-btn
-              small
-              v-if="report.deleted_at == null"
-              v-on:click="info(report)">Open</v-btn>
-          </v-list-tile-action>
-        </v-list-tile>
+          <v-list two-line>
+          <template v-for="report in filteredReports">
+            <v-list-tile avatar ripple :key="report.filename">
+              <v-list-tile-content>
+                <v-list-tile-title>
+                  {{ report.title }}
+                </v-list-tile-title>
+                <v-list-tile-sub-title class="text--primary">
+                  {{ report.version }}
+                </v-list-tile-sub-title>
+                <v-list-tile-sub-title>
+                  {{ report.created_at }}
+                </v-list-tile-sub-title>
+              </v-list-tile-content>
+              <v-list-tile-action>
+                <v-checkbox v-model="reportsBulkDelete"
+                  v-if="report.deleted_at == null"
+                  :value="report.filename"></v-checkbox>
+                <v-btn
+                  small
+                  v-if="report.deleted_at == null"
+                  v-on:click="info(report)">Open</v-btn>
+              </v-list-tile-action>
+            </v-list-tile>
+            <v-divider
+              ></v-divider>
+          </template>
+        </v-list>
 
       </v-list>
     </v-navigation-drawer>
