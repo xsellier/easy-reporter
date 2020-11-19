@@ -121,8 +121,13 @@
         <v-subheader inset>Reports</v-subheader>
           <v-list two-line>
           <template v-for="report in filteredReports">
-            <v-list-tile avatar ripple :key="report.filename">
-              <v-list-tile-content>
+            <v-list-tile avatar  :key="report.filename" v-on:click="">
+              <v-list-tile-action>
+                <v-checkbox v-model="reportsBulkDelete"
+                  v-if="report.deleted_at == null"
+                  :value="report.filename"></v-checkbox>
+              </v-list-tile-action>
+              <v-list-tile-content v-on:click="info(report)">
                 <v-list-tile-title>
                   {{ report.title }}
                 </v-list-tile-title>
@@ -133,15 +138,6 @@
                   {{ report.created_at }}
                 </v-list-tile-sub-title>
               </v-list-tile-content>
-              <v-list-tile-action>
-                <v-checkbox v-model="reportsBulkDelete"
-                  v-if="report.deleted_at == null"
-                  :value="report.filename"></v-checkbox>
-                <v-btn
-                  small
-                  v-if="report.deleted_at == null"
-                  v-on:click="info(report)">Open</v-btn>
-              </v-list-tile-action>
             </v-list-tile>
             <v-divider
               ></v-divider>
