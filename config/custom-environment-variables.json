@@ -19,7 +19,8 @@
     "databaseURL": "FIREBASE_DATABASE_URL",
     "projectId": "FIREBASE_PROJECT_ID",
     "storageBucket": "FIREBASE_STORAGE_BUCKET",
-    "messagingSenderId": "FIREBASE_MESSENGER_SENDER_ID"
+    "messagingSenderId": "FIREBASE_MESSENGER_SENDER_ID",
+    "appId": "FIREBASE_APP_ID"
   },
   "email": {
     "configuration": {
@@ -29,5 +30,6 @@
       }
     },
     "to": "EMAIL_TO"
-  }
+  },
+  "filedriver": "STORAGE_FILEDRIVER"
 }

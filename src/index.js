@@ -5,10 +5,8 @@ import axios from 'axios'
 import Vue from 'vue'
 import Vuetify from 'vuetify'
 
-import VueApexCharts from 'vue-apexcharts'
 import JsonViewer from 'vue-json-viewer'
 
-Vue.use(VueApexCharts)
 Vue.use(Vuetify)
 Vue.use(JsonViewer)
 

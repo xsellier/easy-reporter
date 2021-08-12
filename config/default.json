@@ -18,7 +18,7 @@
   },
   "server": {
     "port": 1337,
-    "host": "localhost"
+    "host": "127.0.0.1"
   },
   "website": {
     "public": "public"

@@ -1,18 +1,14 @@
 import ErrorSnackbar from "../error-snackbar/component.vue"
-import BugCharts from "../bug-chart/component.vue"
 import BugReports from "../bug-report/component.vue"
 import LoginForm from "../login-form/component.vue"
 import CreateAdminForm from "../create-admin-form/component.vue"
-import VueApexCharts from "vue-apexcharts"
 
 export default {
   name: "Application",
   components: {
     ErrorSnackbar,
-    BugCharts,
     BugReports,
     LoginForm,
-    VueApexCharts,
     CreateAdminForm
   },
   data() {
@@ -113,9 +109,6 @@ export default {
           return this.listApplications()
         })
         .then(() => {
-          return this.refreshCharts()
-        })
-        .then(() => {
           return this.listReports()
         })
         .then(() => this.listVersions())
@@ -138,19 +131,7 @@ export default {
 
       this.$refs.bugReports.application_name = this.selectedGame
 
-      return this.refreshCharts()
-        .then(() => this.list())
-    },
-    refreshCharts: function() {
-      return this.$http({
-        method: "get",
-        url: `/report/summary/${this.selectedGame}`,
-        headers: {
-          Authorization: `Bearer ${this.token}`
-        }
-      }).then((response) => {
-        this.$refs.bugCharts.refreshSummary(response.data)
-      })
+      return this.list()
     },
     list: function() {
       return this.listReports()

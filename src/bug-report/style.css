@@ -1,4 +1,9 @@
 .logdump {  
   font-family: "courier new" !important;
-  font-size: 14px !important;
+  font-size: 12px !important;
+}
+
+#report-list {
+  height:512px;/* or any height you want */
+  overflow-y:auto
 }
