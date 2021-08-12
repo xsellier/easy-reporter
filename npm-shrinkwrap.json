@@ -10,7 +10,7 @@
       "dependencies": {
         "@firebase/app": "^0.6.29",
         "@firebase/storage": "^0.6.2",
-        "axios": "^0.19.0",
+        "axios": "^0.21.1",
         "boom": "^7.3.0",
         "config": "^3.2.4",
         "db-migrate": "^0.11.11",
@@ -3001,10 +3001,11 @@
       "license": "MIT"
     },
     "node_modules/axios": {
-      "version": "0.19.2",
-      "license": "MIT",
+      "version": "0.21.1",
+      "resolved": "https://registry.npmjs.org/axios/-/axios-0.21.1.tgz",
+      "integrity": "sha512-dKQiRHxGD9PPRIUNIWvZhPTPpl1rf/OxTYKsqKUDjBwYylTvV7SjSHJb9ratfyzM6wCdLCOYLzs73qpg5c4iGA==",
       "dependencies": {
-        "follow-redirects": "1.5.10"
+        "follow-redirects": "^1.10.0"
       }
     },
     "node_modules/babel-code-frame": {
@@ -3260,14 +3261,6 @@
       "optional": true,
       "engines": {
         "node": ">=8"
-      }
-    },
-    "node_modules/bindings": {
-      "version": "1.5.0",
-      "extraneous": true,
-      "license": "MIT",
-      "dependencies": {
-        "file-uri-to-path": "1.0.0"
       }
     },
     "node_modules/bl": {
@@ -7347,11 +7340,6 @@
         "node": ">= 4"
       }
     },
-    "node_modules/file-uri-to-path": {
-      "version": "1.0.0",
-      "extraneous": true,
-      "license": "MIT"
-    },
     "node_modules/filesize": {
       "version": "3.6.1",
       "dev": true,
@@ -7549,25 +7537,23 @@
       }
     },
     "node_modules/follow-redirects": {
-      "version": "1.5.10",
-      "license": "MIT",
-      "dependencies": {
-        "debug": "=3.1.0"
-      },
+      "version": "1.14.1",
+      "resolved": "https://registry.npmjs.org/follow-redirects/-/follow-redirects-1.14.1.tgz",
+      "integrity": "sha512-HWqDgT7ZEkqRzBvc2s64vSZ/hfOceEol3ac/7tKwzuvEyWx3/4UegXh5oBOIotkGsObyk3xznnSRVADBgWSQVg==",
+      "funding": [
+        {
+          "type": "individual",
+          "url": "https://github.com/sponsors/RubenVerborgh"
+        }
+      ],
       "engines": {
         "node": ">=4.0"
+      },
+      "peerDependenciesMeta": {
+        "debug": {
+          "optional": true
+        }
       }
-    },
-    "node_modules/follow-redirects/node_modules/debug": {
-      "version": "3.1.0",
-      "license": "MIT",
-      "dependencies": {
-        "ms": "2.0.0"
-      }
-    },
-    "node_modules/follow-redirects/node_modules/ms": {
-      "version": "2.0.0",
-      "license": "MIT"
     },
     "node_modules/for-in": {
       "version": "1.0.2",
@@ -19585,9 +19571,11 @@
       "version": "1.11.0"
     },
     "axios": {
-      "version": "0.19.2",
+      "version": "0.21.1",
+      "resolved": "https://registry.npmjs.org/axios/-/axios-0.21.1.tgz",
+      "integrity": "sha512-dKQiRHxGD9PPRIUNIWvZhPTPpl1rf/OxTYKsqKUDjBwYylTvV7SjSHJb9ratfyzM6wCdLCOYLzs73qpg5c4iGA==",
       "requires": {
-        "follow-redirects": "1.5.10"
+        "follow-redirects": "^1.10.0"
       }
     },
     "babel-code-frame": {
@@ -19756,13 +19744,6 @@
       "version": "2.2.0",
       "dev": true,
       "optional": true
-    },
-    "bindings": {
-      "version": "1.5.0",
-      "extraneous": true,
-      "requires": {
-        "file-uri-to-path": "1.0.0"
-      }
     },
     "bl": {
       "version": "4.1.0",
@@ -22608,10 +22589,6 @@
         }
       }
     },
-    "file-uri-to-path": {
-      "version": "1.0.0",
-      "extraneous": true
-    },
     "filesize": {
       "version": "3.6.1",
       "dev": true
@@ -22759,21 +22736,9 @@
       }
     },
     "follow-redirects": {
-      "version": "1.5.10",
-      "requires": {
-        "debug": "=3.1.0"
-      },
-      "dependencies": {
-        "debug": {
-          "version": "3.1.0",
-          "requires": {
-            "ms": "2.0.0"
-          }
-        },
-        "ms": {
-          "version": "2.0.0"
-        }
-      }
+      "version": "1.14.1",
+      "resolved": "https://registry.npmjs.org/follow-redirects/-/follow-redirects-1.14.1.tgz",
+      "integrity": "sha512-HWqDgT7ZEkqRzBvc2s64vSZ/hfOceEol3ac/7tKwzuvEyWx3/4UegXh5oBOIotkGsObyk3xznnSRVADBgWSQVg=="
     },
     "for-in": {
       "version": "1.0.2",
