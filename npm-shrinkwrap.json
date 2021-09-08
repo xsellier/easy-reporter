@@ -10,7 +10,7 @@
       "dependencies": {
         "@firebase/app": "^0.6.29",
         "@firebase/storage": "^0.6.2",
-        "axios": "^0.19.0",
+        "axios": "^0.21.2",
         "boom": "^7.3.0",
         "config": "^3.2.4",
         "db-migrate": "^0.11.12",
@@ -3001,10 +3001,11 @@
       "license": "MIT"
     },
     "node_modules/axios": {
-      "version": "0.19.2",
-      "license": "MIT",
+      "version": "0.21.2",
+      "resolved": "https://registry.npmjs.org/axios/-/axios-0.21.2.tgz",
+      "integrity": "sha512-87otirqUw3e8CzHTMO+/9kh/FSgXt/eVDvipijwDtEuwbkySWZ9SBm6VEubmJ/kLKEoLQV/POhxXFb66bfekfg==",
       "dependencies": {
-        "follow-redirects": "1.5.10"
+        "follow-redirects": "^1.14.0"
       }
     },
     "node_modules/b64": {
@@ -7592,25 +7593,23 @@
       }
     },
     "node_modules/follow-redirects": {
-      "version": "1.5.10",
-      "license": "MIT",
-      "dependencies": {
-        "debug": "=3.1.0"
-      },
+      "version": "1.14.3",
+      "resolved": "https://registry.npmjs.org/follow-redirects/-/follow-redirects-1.14.3.tgz",
+      "integrity": "sha512-3MkHxknWMUtb23apkgz/83fDoe+y+qr0TdgacGIA7bew+QLBo3vdgEN2xEsuXNivpFy4CyDhBBZnNZOtalmenw==",
+      "funding": [
+        {
+          "type": "individual",
+          "url": "https://github.com/sponsors/RubenVerborgh"
+        }
+      ],
       "engines": {
         "node": ">=4.0"
+      },
+      "peerDependenciesMeta": {
+        "debug": {
+          "optional": true
+        }
       }
-    },
-    "node_modules/follow-redirects/node_modules/debug": {
-      "version": "3.1.0",
-      "license": "MIT",
-      "dependencies": {
-        "ms": "2.0.0"
-      }
-    },
-    "node_modules/follow-redirects/node_modules/ms": {
-      "version": "2.0.0",
-      "license": "MIT"
     },
     "node_modules/for-in": {
       "version": "1.0.2",
@@ -19588,9 +19587,11 @@
       "version": "1.11.0"
     },
     "axios": {
-      "version": "0.19.2",
+      "version": "0.21.2",
+      "resolved": "https://registry.npmjs.org/axios/-/axios-0.21.2.tgz",
+      "integrity": "sha512-87otirqUw3e8CzHTMO+/9kh/FSgXt/eVDvipijwDtEuwbkySWZ9SBm6VEubmJ/kLKEoLQV/POhxXFb66bfekfg==",
       "requires": {
-        "follow-redirects": "1.5.10"
+        "follow-redirects": "^1.14.0"
       }
     },
     "b64": {
@@ -22798,21 +22799,9 @@
       }
     },
     "follow-redirects": {
-      "version": "1.5.10",
-      "requires": {
-        "debug": "=3.1.0"
-      },
-      "dependencies": {
-        "debug": {
-          "version": "3.1.0",
-          "requires": {
-            "ms": "2.0.0"
-          }
-        },
-        "ms": {
-          "version": "2.0.0"
-        }
-      }
+      "version": "1.14.3",
+      "resolved": "https://registry.npmjs.org/follow-redirects/-/follow-redirects-1.14.3.tgz",
+      "integrity": "sha512-3MkHxknWMUtb23apkgz/83fDoe+y+qr0TdgacGIA7bew+QLBo3vdgEN2xEsuXNivpFy4CyDhBBZnNZOtalmenw=="
     },
     "for-in": {
       "version": "1.0.2",
