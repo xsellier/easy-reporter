@@ -7,3 +7,8 @@
   height:512px;/* or any height you want */
   overflow-y:auto
 }
+
+.selected {
+  background-color: #c7eaff;
+  color: #013a5c;
+}

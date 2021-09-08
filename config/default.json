@@ -27,16 +27,14 @@
     "secret_key": "MY_VERY_SECRET_KEY"
   },
   "file": {
-    "host": "http://app.smartfile.com/",
-    "token": "MY_SECRET_TOKEN",
-    "secret": "MY_SECRET_SECRET",
     "path": "./tmp",
     "apiKey": "MY_SECRET_SANTA",
     "authDomain": "MY_SECRET_SANTA",
     "databaseURL": "MY_SECRET_SANTA",
     "projectId": "MY_SECRET_SANTA",
     "storageBucket": "MY_SECRET_SANTA",
-    "messagingSenderId": "MY_SECRET_SANTA"
+    "messagingSenderId": "MY_SECRET_SANTA",
+    "appId": "MY_APP_ID"
   },
   "email": {
     "configuration": {

@@ -19,5 +19,7 @@ WHERE
        OR bug.fixed = ?
       )
   AND report.deleted_at IS__DELETED__ NULL
+  AND report.manual = ?
+
 ORDER BY created_at DESC
 LIMIT ? OFFSET ?;

@@ -26,6 +26,7 @@ export default {
       sending: false,
       connectionInitialized: false,
       token: null,
+      manual: false,
       debug: false,
       deleted: false,
       uploaded: true,
@@ -166,7 +167,7 @@ export default {
 
       return this.$http({
         method: "get",
-        url: `/report/list/${this.selectedGame}/${this.$refs.bugReports.debug}/${this.$refs.bugReports.uploaded}/${this.$refs.bugReports.deleted}/${this.$refs.bugReports.fixed}/${this.$refs.bugReports.currentPage}`,
+        url: `/report/list/${this.selectedGame}/${this.$refs.bugReports.debug}/${this.$refs.bugReports.uploaded}/${this.$refs.bugReports.deleted}/${this.$refs.bugReports.fixed}/${this.$refs.bugReports.manual}/${this.$refs.bugReports.currentPage}`,
         headers: {
           Authorization: `Bearer ${this.token}`
         }

@@ -11,6 +11,7 @@ export default {
       version: [],
       bugs: {},
       reportsBulkDelete: [],
+      manual: false,
       cache: {},
       report: null,
       username: "",
@@ -27,7 +28,8 @@ export default {
       totalPages: 1,
       currentPage: 1,
       totalItems: 0,
-      application_name: ''
+      application_name: '',
+      selectedReport: null
     }
   },
   computed: {
@@ -62,8 +64,11 @@ export default {
     }
   },
   methods: {
+    isSelected: function(reportName) {
+      return reportName == this.selectedReport
+    },
     selectAll: function() {
-      if (this.selectAllValue) {
+      if (this.reportsBulkDelete.length < this.filteredReports.length) {
         this.reportsBulkDelete = this.filteredReports.map((report) => report.filename)
       } else {
         this.reportsBulkDelete = []
@@ -155,6 +160,7 @@ export default {
       })
     },
     info: function(report) {
+      this.selectedReport = null
       this.report = null
       this.filename = null
 
@@ -181,6 +187,8 @@ export default {
           this.report.cracked = this.versions[this.report.version] || false
           this.report.fixed = (this.bugs[report.version] != null && this.bugs[report.version][report.title] != null) ? this.bugs[report.version][report.title] : false
           this.sending = false
+
+          this.selectedReport = report.filename
         })
         .catch((err) => {
           if (err.response && err.response.status < 500) {
@@ -263,6 +271,7 @@ export default {
       this.token = token
     },
     changePage: function() {
+      this.reportsBulkDelete = []
       this.emitUpdateSignal()
     },
     emitUpdateSignal: function() {

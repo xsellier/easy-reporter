@@ -13,7 +13,7 @@
         "axios": "^0.19.0",
         "boom": "^7.3.0",
         "config": "^3.2.4",
-        "db-migrate": "^0.11.11",
+        "db-migrate": "^0.11.12",
         "db-migrate-sqlite3": "^0.4.0",
         "firebase": "^8.9.1",
         "glob": "^7.1.6",
@@ -3007,6 +3007,15 @@
         "follow-redirects": "1.5.10"
       }
     },
+    "node_modules/b64": {
+      "version": "4.1.2",
+      "resolved": "https://registry.npmjs.org/b64/-/b64-4.1.2.tgz",
+      "integrity": "sha512-+GUspBxlH3CJaxMUGUE1EBoWM6RKgWiYwUDal0qdf8m3ArnXNN1KzKVo5HOnE/FSq4HHyWf3TlHLsZI8PKQgrQ==",
+      "deprecated": "This module has moved and is now available at @hapi/b64. Please update your dependencies as this version is no longer maintained an may contain bugs and security issues.",
+      "dependencies": {
+        "hoek": "6.x.x"
+      }
+    },
     "node_modules/babel-code-frame": {
       "version": "6.26.0",
       "dev": true,
@@ -3264,8 +3273,10 @@
     },
     "node_modules/bindings": {
       "version": "1.5.0",
-      "extraneous": true,
-      "license": "MIT",
+      "resolved": "https://registry.npmjs.org/bindings/-/bindings-1.5.0.tgz",
+      "integrity": "sha512-p2q/t/mhvuOj/UeLlV6566GD/guowlr0hHxClI0W9m7MWYkL1F0hLo+0Aexs9HSPCtR1SXQ0TD3MMKrXZajbiQ==",
+      "dev": true,
+      "optional": true,
       "dependencies": {
         "file-uri-to-path": "1.0.0"
       }
@@ -3407,6 +3418,12 @@
         "boom": "7.x.x",
         "hoek": "6.x.x"
       }
+    },
+    "node_modules/bourne": {
+      "version": "1.1.2",
+      "resolved": "https://registry.npmjs.org/bourne/-/bourne-1.1.2.tgz",
+      "integrity": "sha512-b2dgVkTZhkQirNMohgC00rWfpVqEi9y5tKM1k3JvoNx05ODtfQoPPd4js9CYFQoY0IM8LAmnJulEuWv74zjUOg==",
+      "deprecated": "This module has moved and is now available at @hapi/bourne. Please update your dependencies as this version is no longer maintained an may contain bugs and security issues."
     },
     "node_modules/brace-expansion": {
       "version": "1.1.11",
@@ -3938,6 +3955,20 @@
       },
       "engines": {
         "node": ">=8"
+      }
+    },
+    "node_modules/chokidar/node_modules/fsevents": {
+      "version": "2.3.2",
+      "resolved": "https://registry.npmjs.org/fsevents/-/fsevents-2.3.2.tgz",
+      "integrity": "sha512-xiqMQR4xAeHTuB9uWm+fFRcIOgKBMiOBP+eXiyT7jsgVCq1bkVygt00oASowB7EdtpOHaaPgKt812P9ab+DDKA==",
+      "dev": true,
+      "hasInstallScript": true,
+      "optional": true,
+      "os": [
+        "darwin"
+      ],
+      "engines": {
+        "node": "^8.16.0 || ^10.6.0 || >=11.0.0"
       }
     },
     "node_modules/chokidar/node_modules/glob-parent": {
@@ -4751,6 +4782,15 @@
         "node": ">=0.10.0"
       }
     },
+    "node_modules/content": {
+      "version": "4.0.6",
+      "resolved": "https://registry.npmjs.org/content/-/content-4.0.6.tgz",
+      "integrity": "sha512-lR9ND3dXiMdmsE84K6l02rMdgiBVmtYWu1Vr/gfSGHcIcznBj2QxmSdUgDuNFOA+G9yrb1IIWkZ7aKtB6hDGyA==",
+      "deprecated": "This module has moved and is now available at @hapi/content. Please update your dependencies as this version is no longer maintained an may contain bugs and security issues.",
+      "dependencies": {
+        "boom": "7.x.x"
+      }
+    },
     "node_modules/content-disposition": {
       "version": "0.5.3",
       "dev": true,
@@ -5371,7 +5411,8 @@
     },
     "node_modules/db-migrate": {
       "version": "0.11.12",
-      "license": "MIT",
+      "resolved": "https://registry.npmjs.org/db-migrate/-/db-migrate-0.11.12.tgz",
+      "integrity": "sha512-HUS8T5A3sKGCi+hz9XMKMwAKfU9sqhpDufW9nbVSRc5wxDO695uxA5lDe+If0OdvwwQOVxOnEZqkzAAxgyeFWg==",
       "dependencies": {
         "balanced-match": "^1.0.0",
         "bluebird": "^3.1.1",
@@ -7349,8 +7390,10 @@
     },
     "node_modules/file-uri-to-path": {
       "version": "1.0.0",
-      "extraneous": true,
-      "license": "MIT"
+      "resolved": "https://registry.npmjs.org/file-uri-to-path/-/file-uri-to-path-1.0.0.tgz",
+      "integrity": "sha512-0Zt+s3L7Vf1biwWZ29aARiVYLx7iMGnEUl9x33fbB/j3jR81u/O2LbqK+Bm1CDSNDKVtJ/YjwY7TUd5SkeLQLw==",
+      "dev": true,
+      "optional": true
     },
     "node_modules/filesize": {
       "version": "3.6.1",
@@ -7666,6 +7709,25 @@
     "node_modules/fs.realpath": {
       "version": "1.0.0",
       "license": "ISC"
+    },
+    "node_modules/fsevents": {
+      "version": "1.2.13",
+      "resolved": "https://registry.npmjs.org/fsevents/-/fsevents-1.2.13.tgz",
+      "integrity": "sha512-oWb1Z6mkHIskLzEJ/XWX0srkpkTQ7vaopMQkyaEIoq0fmtFVxOthb8cCxeT+p3ynTdkk/RZwbgG4brR5BeWECw==",
+      "deprecated": "fsevents 1 will break on node v14+ and could be using insecure binaries. Upgrade to fsevents 2.",
+      "dev": true,
+      "hasInstallScript": true,
+      "optional": true,
+      "os": [
+        "darwin"
+      ],
+      "dependencies": {
+        "bindings": "^1.5.0",
+        "nan": "^2.12.1"
+      },
+      "engines": {
+        "node": ">= 4.0"
+      }
     },
     "node_modules/fstream": {
       "version": "1.0.12",
@@ -7997,45 +8059,12 @@
         "hoek": "6.x.x"
       }
     },
-    "node_modules/hapi/node_modules/ammo": {
-      "version": "3.0.3",
-      "license": "BSD-3-Clause",
-      "dependencies": {
-        "hoek": "6.x.x"
-      }
-    },
-    "node_modules/hapi/node_modules/b64": {
-      "version": "4.1.2",
-      "license": "BSD-3-Clause",
-      "dependencies": {
-        "hoek": "6.x.x"
-      }
-    },
     "node_modules/hapi/node_modules/big-time": {
       "version": "2.0.1",
       "license": "MIT",
       "engines": {
         "node": ">=6.0.0"
       }
-    },
-    "node_modules/hapi/node_modules/boom": {
-      "version": "7.2.2",
-      "license": "BSD-3-Clause",
-      "dependencies": {
-        "hoek": "6.x.x"
-      }
-    },
-    "node_modules/hapi/node_modules/bounce": {
-      "version": "1.2.2",
-      "license": "BSD-3-Clause",
-      "dependencies": {
-        "boom": "7.x.x",
-        "hoek": "6.x.x"
-      }
-    },
-    "node_modules/hapi/node_modules/bourne": {
-      "version": "1.1.1",
-      "license": "BSD-3-Clause"
     },
     "node_modules/hapi/node_modules/call": {
       "version": "5.0.3",
@@ -8063,13 +8092,6 @@
         "hoek": "6.x.x"
       }
     },
-    "node_modules/hapi/node_modules/content": {
-      "version": "4.0.6",
-      "license": "BSD-3-Clause",
-      "dependencies": {
-        "boom": "7.x.x"
-      }
-    },
     "node_modules/hapi/node_modules/cryptiles": {
       "version": "4.1.3",
       "license": "BSD-3-Clause",
@@ -8086,10 +8108,6 @@
         "joi": "14.x.x"
       }
     },
-    "node_modules/hapi/node_modules/hoek": {
-      "version": "6.0.1",
-      "license": "BSD-3-Clause"
-    },
     "node_modules/hapi/node_modules/iron": {
       "version": "5.0.6",
       "license": "BSD-3-Clause",
@@ -8100,47 +8118,12 @@
         "hoek": "6.x.x"
       }
     },
-    "node_modules/hapi/node_modules/joi": {
-      "version": "14.0.4",
-      "license": "BSD-3-Clause",
-      "dependencies": {
-        "hoek": "6.x.x",
-        "isemail": "3.x.x",
-        "topo": "3.x.x"
-      }
-    },
-    "node_modules/hapi/node_modules/mime-db": {
-      "version": "1.37.0",
-      "license": "MIT",
-      "engines": {
-        "node": ">= 0.6"
-      }
-    },
     "node_modules/hapi/node_modules/mimos": {
       "version": "4.0.2",
       "license": "BSD-3-Clause",
       "dependencies": {
         "hoek": "6.x.x",
         "mime-db": "1.x.x"
-      }
-    },
-    "node_modules/hapi/node_modules/nigel": {
-      "version": "3.0.4",
-      "license": "BSD-3-Clause",
-      "dependencies": {
-        "hoek": "6.x.x",
-        "vise": "3.x.x"
-      }
-    },
-    "node_modules/hapi/node_modules/pez": {
-      "version": "4.0.5",
-      "license": "BSD-3-Clause",
-      "dependencies": {
-        "b64": "4.x.x",
-        "boom": "7.x.x",
-        "content": "4.x.x",
-        "hoek": "6.x.x",
-        "nigel": "3.x.x"
       }
     },
     "node_modules/hapi/node_modules/podium": {
@@ -8180,46 +8163,9 @@
         "joi": "14.x.x"
       }
     },
-    "node_modules/hapi/node_modules/subtext": {
-      "version": "6.0.12",
-      "license": "BSD-3-Clause",
-      "dependencies": {
-        "boom": "7.x.x",
-        "bourne": "1.x.x",
-        "content": "4.x.x",
-        "hoek": "6.x.x",
-        "pez": "4.x.x",
-        "wreck": "14.x.x"
-      }
-    },
     "node_modules/hapi/node_modules/teamwork": {
       "version": "3.0.2",
       "license": "BSD-3-Clause"
-    },
-    "node_modules/hapi/node_modules/topo": {
-      "version": "3.0.3",
-      "license": "BSD-3-Clause",
-      "dependencies": {
-        "hoek": "6.x.x"
-      }
-    },
-    "node_modules/hapi/node_modules/vise": {
-      "version": "3.0.1",
-      "license": "BSD-3-Clause",
-      "dependencies": {
-        "hoek": "6.x.x"
-      },
-      "engines": {
-        "node": ">=8.12.0"
-      }
-    },
-    "node_modules/hapi/node_modules/wreck": {
-      "version": "14.1.3",
-      "license": "BSD-3-Clause",
-      "dependencies": {
-        "boom": "7.x.x",
-        "hoek": "6.x.x"
-      }
     },
     "node_modules/har-schema": {
       "version": "2.0.0",
@@ -10608,6 +10554,16 @@
       "dev": true,
       "license": "MIT"
     },
+    "node_modules/nigel": {
+      "version": "3.0.4",
+      "resolved": "https://registry.npmjs.org/nigel/-/nigel-3.0.4.tgz",
+      "integrity": "sha512-3SZCCS/duVDGxFpTROHEieC+itDo4UqL9JNUyQJv3rljudQbK6aqus5B4470OxhESPJLN93Qqxg16rH7DUjbfQ==",
+      "deprecated": "This module has moved and is now available at @hapi/nigel. Please update your dependencies as this version is no longer maintained an may contain bugs and security issues.",
+      "dependencies": {
+        "hoek": "6.x.x",
+        "vise": "3.x.x"
+      }
+    },
     "node_modules/no-case": {
       "version": "2.3.2",
       "dev": true,
@@ -11818,6 +11774,19 @@
     "node_modules/performance-now": {
       "version": "2.1.0",
       "license": "MIT"
+    },
+    "node_modules/pez": {
+      "version": "4.0.5",
+      "resolved": "https://registry.npmjs.org/pez/-/pez-4.0.5.tgz",
+      "integrity": "sha512-HvL8uiFIlkXbx/qw4B8jKDCWzo7Pnnd65Uvanf9OOCtb20MRcb9gtTVBf9NCnhETif1/nzbDHIjAWC/sUp7LIQ==",
+      "deprecated": "This module has moved and is now available at @hapi/pez. Please update your dependencies as this version is no longer maintained an may contain bugs and security issues.",
+      "dependencies": {
+        "b64": "4.x.x",
+        "boom": "7.x.x",
+        "content": "4.x.x",
+        "hoek": "6.x.x",
+        "nigel": "3.x.x"
+      }
     },
     "node_modules/picomatch": {
       "version": "2.3.0",
@@ -15272,6 +15241,20 @@
         "node": ">=8"
       }
     },
+    "node_modules/subtext": {
+      "version": "6.0.12",
+      "resolved": "https://registry.npmjs.org/subtext/-/subtext-6.0.12.tgz",
+      "integrity": "sha512-yT1wCDWVgqvL9BIkWzWqgj5spUSYo/Enu09iUV8t2ZvHcr2tKGTGg2kc9tUpVEsdhp1ihsZeTAiDqh0TQciTPQ==",
+      "deprecated": "This module has moved and is now available at @hapi/subtext. Please update your dependencies as this version is no longer maintained an may contain bugs and security issues.",
+      "dependencies": {
+        "boom": "7.x.x",
+        "bourne": "1.x.x",
+        "content": "4.x.x",
+        "hoek": "6.x.x",
+        "pez": "4.x.x",
+        "wreck": "14.x.x"
+      }
+    },
     "node_modules/supports-color": {
       "version": "5.5.0",
       "dev": true,
@@ -16371,6 +16354,15 @@
         "extsprintf": "^1.2.0"
       }
     },
+    "node_modules/vise": {
+      "version": "3.0.2",
+      "resolved": "https://registry.npmjs.org/vise/-/vise-3.0.2.tgz",
+      "integrity": "sha512-X52VtdRQbSBXdjcazRiY3eRgV3vTQ0B+7Wh8uC9cVv7lKfML5m9+9NHlbcgCY0R9EAqD1v/v7o9mhGh2A3ANFg==",
+      "deprecated": "This module has moved and is now available at @hapi/vise. Please update your dependencies as this version is no longer maintained an may contain bugs and security issues.",
+      "dependencies": {
+        "hoek": "6.x.x"
+      }
+    },
     "node_modules/vm-browserify": {
       "version": "1.1.2",
       "dev": true,
@@ -17282,6 +17274,17 @@
     "node_modules/wrappy": {
       "version": "1.0.2",
       "license": "ISC"
+    },
+    "node_modules/wreck": {
+      "version": "14.2.0",
+      "resolved": "https://registry.npmjs.org/wreck/-/wreck-14.2.0.tgz",
+      "integrity": "sha512-NFFft3SMgqrJbXEVfYifh+QDWFxni+98/I7ut7rLbz3F0XOypluHsdo3mdEYssGSirMobM3fGlqhyikbWKDn2Q==",
+      "deprecated": "This module has moved and is now available at @hapi/wreck. Please update your dependencies as this version is no longer maintained an may contain bugs and security issues.",
+      "dependencies": {
+        "boom": "7.x.x",
+        "bourne": "1.x.x",
+        "hoek": "6.x.x"
+      }
     },
     "node_modules/write": {
       "version": "0.2.1",
@@ -19590,6 +19593,14 @@
         "follow-redirects": "1.5.10"
       }
     },
+    "b64": {
+      "version": "4.1.2",
+      "resolved": "https://registry.npmjs.org/b64/-/b64-4.1.2.tgz",
+      "integrity": "sha512-+GUspBxlH3CJaxMUGUE1EBoWM6RKgWiYwUDal0qdf8m3ArnXNN1KzKVo5HOnE/FSq4HHyWf3TlHLsZI8PKQgrQ==",
+      "requires": {
+        "hoek": "6.x.x"
+      }
+    },
     "babel-code-frame": {
       "version": "6.26.0",
       "dev": true,
@@ -19759,7 +19770,10 @@
     },
     "bindings": {
       "version": "1.5.0",
-      "extraneous": true,
+      "resolved": "https://registry.npmjs.org/bindings/-/bindings-1.5.0.tgz",
+      "integrity": "sha512-p2q/t/mhvuOj/UeLlV6566GD/guowlr0hHxClI0W9m7MWYkL1F0hLo+0Aexs9HSPCtR1SXQ0TD3MMKrXZajbiQ==",
+      "dev": true,
+      "optional": true,
       "requires": {
         "file-uri-to-path": "1.0.0"
       }
@@ -19877,6 +19891,11 @@
         "boom": "7.x.x",
         "hoek": "6.x.x"
       }
+    },
+    "bourne": {
+      "version": "1.1.2",
+      "resolved": "https://registry.npmjs.org/bourne/-/bourne-1.1.2.tgz",
+      "integrity": "sha512-b2dgVkTZhkQirNMohgC00rWfpVqEi9y5tKM1k3JvoNx05ODtfQoPPd4js9CYFQoY0IM8LAmnJulEuWv74zjUOg=="
     },
     "brace-expansion": {
       "version": "1.1.11",
@@ -20256,6 +20275,13 @@
           "requires": {
             "to-regex-range": "^5.0.1"
           }
+        },
+        "fsevents": {
+          "version": "2.3.2",
+          "resolved": "https://registry.npmjs.org/fsevents/-/fsevents-2.3.2.tgz",
+          "integrity": "sha512-xiqMQR4xAeHTuB9uWm+fFRcIOgKBMiOBP+eXiyT7jsgVCq1bkVygt00oASowB7EdtpOHaaPgKt812P9ab+DDKA==",
+          "dev": true,
+          "optional": true
         },
         "glob-parent": {
           "version": "5.1.2",
@@ -20815,6 +20841,14 @@
       "version": "0.1.0",
       "dev": true
     },
+    "content": {
+      "version": "4.0.6",
+      "resolved": "https://registry.npmjs.org/content/-/content-4.0.6.tgz",
+      "integrity": "sha512-lR9ND3dXiMdmsE84K6l02rMdgiBVmtYWu1Vr/gfSGHcIcznBj2QxmSdUgDuNFOA+G9yrb1IIWkZ7aKtB6hDGyA==",
+      "requires": {
+        "boom": "7.x.x"
+      }
+    },
     "content-disposition": {
       "version": "0.5.3",
       "dev": true,
@@ -21260,6 +21294,8 @@
     },
     "db-migrate": {
       "version": "0.11.12",
+      "resolved": "https://registry.npmjs.org/db-migrate/-/db-migrate-0.11.12.tgz",
+      "integrity": "sha512-HUS8T5A3sKGCi+hz9XMKMwAKfU9sqhpDufW9nbVSRc5wxDO695uxA5lDe+If0OdvwwQOVxOnEZqkzAAxgyeFWg==",
       "requires": {
         "balanced-match": "^1.0.0",
         "bluebird": "^3.1.1",
@@ -22610,7 +22646,10 @@
     },
     "file-uri-to-path": {
       "version": "1.0.0",
-      "extraneous": true
+      "resolved": "https://registry.npmjs.org/file-uri-to-path/-/file-uri-to-path-1.0.0.tgz",
+      "integrity": "sha512-0Zt+s3L7Vf1biwWZ29aARiVYLx7iMGnEUl9x33fbB/j3jR81u/O2LbqK+Bm1CDSNDKVtJ/YjwY7TUd5SkeLQLw==",
+      "dev": true,
+      "optional": true
     },
     "filesize": {
       "version": "3.6.1",
@@ -22841,6 +22880,17 @@
     "fs.realpath": {
       "version": "1.0.0"
     },
+    "fsevents": {
+      "version": "1.2.13",
+      "resolved": "https://registry.npmjs.org/fsevents/-/fsevents-1.2.13.tgz",
+      "integrity": "sha512-oWb1Z6mkHIskLzEJ/XWX0srkpkTQ7vaopMQkyaEIoq0fmtFVxOthb8cCxeT+p3ynTdkk/RZwbgG4brR5BeWECw==",
+      "dev": true,
+      "optional": true,
+      "requires": {
+        "bindings": "^1.5.0",
+        "nan": "^2.12.1"
+      }
+    },
     "fstream": {
       "version": "1.0.12",
       "dev": true,
@@ -23057,36 +23107,8 @@
             "hoek": "6.x.x"
           }
         },
-        "ammo": {
-          "version": "3.0.3",
-          "requires": {
-            "hoek": "6.x.x"
-          }
-        },
-        "b64": {
-          "version": "4.1.2",
-          "requires": {
-            "hoek": "6.x.x"
-          }
-        },
         "big-time": {
           "version": "2.0.1"
-        },
-        "boom": {
-          "version": "7.2.2",
-          "requires": {
-            "hoek": "6.x.x"
-          }
-        },
-        "bounce": {
-          "version": "1.2.2",
-          "requires": {
-            "boom": "7.x.x",
-            "hoek": "6.x.x"
-          }
-        },
-        "bourne": {
-          "version": "1.1.1"
         },
         "call": {
           "version": "5.0.3",
@@ -23111,12 +23133,6 @@
             "hoek": "6.x.x"
           }
         },
-        "content": {
-          "version": "4.0.6",
-          "requires": {
-            "boom": "7.x.x"
-          }
-        },
         "cryptiles": {
           "version": "4.1.3",
           "requires": {
@@ -23131,9 +23147,6 @@
             "joi": "14.x.x"
           }
         },
-        "hoek": {
-          "version": "6.0.1"
-        },
         "iron": {
           "version": "5.0.6",
           "requires": {
@@ -23143,39 +23156,11 @@
             "hoek": "6.x.x"
           }
         },
-        "joi": {
-          "version": "14.0.4",
-          "requires": {
-            "hoek": "6.x.x",
-            "isemail": "3.x.x",
-            "topo": "3.x.x"
-          }
-        },
-        "mime-db": {
-          "version": "1.37.0"
-        },
         "mimos": {
           "version": "4.0.2",
           "requires": {
             "hoek": "6.x.x",
             "mime-db": "1.x.x"
-          }
-        },
-        "nigel": {
-          "version": "3.0.4",
-          "requires": {
-            "hoek": "6.x.x",
-            "vise": "3.x.x"
-          }
-        },
-        "pez": {
-          "version": "4.0.5",
-          "requires": {
-            "b64": "4.x.x",
-            "boom": "7.x.x",
-            "content": "4.x.x",
-            "hoek": "6.x.x",
-            "nigel": "3.x.x"
           }
         },
         "podium": {
@@ -23211,38 +23196,8 @@
             "joi": "14.x.x"
           }
         },
-        "subtext": {
-          "version": "6.0.12",
-          "requires": {
-            "boom": "7.x.x",
-            "bourne": "1.x.x",
-            "content": "4.x.x",
-            "hoek": "6.x.x",
-            "pez": "4.x.x",
-            "wreck": "14.x.x"
-          }
-        },
         "teamwork": {
           "version": "3.0.2"
-        },
-        "topo": {
-          "version": "3.0.3",
-          "requires": {
-            "hoek": "6.x.x"
-          }
-        },
-        "vise": {
-          "version": "3.0.1",
-          "requires": {
-            "hoek": "6.x.x"
-          }
-        },
-        "wreck": {
-          "version": "14.1.3",
-          "requires": {
-            "boom": "7.x.x",
-            "hoek": "6.x.x"
-          }
         }
       }
     },
@@ -24847,6 +24802,15 @@
       "version": "1.0.5",
       "dev": true
     },
+    "nigel": {
+      "version": "3.0.4",
+      "resolved": "https://registry.npmjs.org/nigel/-/nigel-3.0.4.tgz",
+      "integrity": "sha512-3SZCCS/duVDGxFpTROHEieC+itDo4UqL9JNUyQJv3rljudQbK6aqus5B4470OxhESPJLN93Qqxg16rH7DUjbfQ==",
+      "requires": {
+        "hoek": "6.x.x",
+        "vise": "3.x.x"
+      }
+    },
     "no-case": {
       "version": "2.3.2",
       "dev": true,
@@ -25646,6 +25610,18 @@
     },
     "performance-now": {
       "version": "2.1.0"
+    },
+    "pez": {
+      "version": "4.0.5",
+      "resolved": "https://registry.npmjs.org/pez/-/pez-4.0.5.tgz",
+      "integrity": "sha512-HvL8uiFIlkXbx/qw4B8jKDCWzo7Pnnd65Uvanf9OOCtb20MRcb9gtTVBf9NCnhETif1/nzbDHIjAWC/sUp7LIQ==",
+      "requires": {
+        "b64": "4.x.x",
+        "boom": "7.x.x",
+        "content": "4.x.x",
+        "hoek": "6.x.x",
+        "nigel": "3.x.x"
+      }
     },
     "picomatch": {
       "version": "2.3.0",
@@ -28109,6 +28085,19 @@
         }
       }
     },
+    "subtext": {
+      "version": "6.0.12",
+      "resolved": "https://registry.npmjs.org/subtext/-/subtext-6.0.12.tgz",
+      "integrity": "sha512-yT1wCDWVgqvL9BIkWzWqgj5spUSYo/Enu09iUV8t2ZvHcr2tKGTGg2kc9tUpVEsdhp1ihsZeTAiDqh0TQciTPQ==",
+      "requires": {
+        "boom": "7.x.x",
+        "bourne": "1.x.x",
+        "content": "4.x.x",
+        "hoek": "6.x.x",
+        "pez": "4.x.x",
+        "wreck": "14.x.x"
+      }
+    },
     "supports-color": {
       "version": "5.5.0",
       "dev": true,
@@ -28891,6 +28880,14 @@
         "extsprintf": "^1.2.0"
       }
     },
+    "vise": {
+      "version": "3.0.2",
+      "resolved": "https://registry.npmjs.org/vise/-/vise-3.0.2.tgz",
+      "integrity": "sha512-X52VtdRQbSBXdjcazRiY3eRgV3vTQ0B+7Wh8uC9cVv7lKfML5m9+9NHlbcgCY0R9EAqD1v/v7o9mhGh2A3ANFg==",
+      "requires": {
+        "hoek": "6.x.x"
+      }
+    },
     "vm-browserify": {
       "version": "1.1.2",
       "dev": true
@@ -29547,6 +29544,16 @@
     },
     "wrappy": {
       "version": "1.0.2"
+    },
+    "wreck": {
+      "version": "14.2.0",
+      "resolved": "https://registry.npmjs.org/wreck/-/wreck-14.2.0.tgz",
+      "integrity": "sha512-NFFft3SMgqrJbXEVfYifh+QDWFxni+98/I7ut7rLbz3F0XOypluHsdo3mdEYssGSirMobM3fGlqhyikbWKDn2Q==",
+      "requires": {
+        "boom": "7.x.x",
+        "bourne": "1.x.x",
+        "hoek": "6.x.x"
+      }
     },
     "write": {
       "version": "0.2.1",

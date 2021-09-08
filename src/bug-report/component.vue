@@ -22,8 +22,8 @@
           </v-flex>
           <v-flex xs6>
             <v-list-tile>
-              <v-checkbox v-model="deleted" v-on:change="emitUpdateSignal()"></v-checkbox>
-              <v-list-tile-title>Deleted</v-list-tile-title>
+              <v-checkbox v-model="manual" v-on:change="emitUpdateSignal()"></v-checkbox>
+              <v-list-tile-title>Manual</v-list-tile-title>
             </v-list-tile>
           </v-flex>
         </v-layout>
@@ -51,7 +51,8 @@
           </v-flex>
           <v-flex xs6>
             <v-list-tile>
-              <v-checkbox v-on:change="selectAll()" v-model="selectAllValue"></v-checkbox>
+              <!-- <v-checkbox v-on:change="selectAll()" v-model="selectAllValue"></v-checkbox> -->
+              <v-checkbox v-on:change="selectAll()" :value="reportsBulkDelete.length >= filteredReports.length && filteredReports.length > 0"></v-checkbox>
               <v-list-tile-title>Select all</v-list-tile-title>
             </v-list-tile>
           </v-flex>
@@ -86,33 +87,33 @@
 
         <v-subheader inset>Reports</v-subheader>
           <v-list two-line id='report-list'>
-          <template v-for="report in filteredReports">
-            <v-list-tile avatar  :key="report.filename" v-on:click="">
-              <v-list-tile-action>
-                <v-checkbox v-model="reportsBulkDelete"
-                  v-if="report.deleted_at == null"
-                  :value="report.filename"></v-checkbox>
-              </v-list-tile-action>
-              <v-list-tile-content v-on:click="info(report)">
-                <v-tooltip bottom>
-                  <template v-slot:activator="{ on }">
-                    <v-list-tile-title v-on="on">
-                      {{ report.title }}
-                    </v-list-tile-title>
-                  </template>
-                  <span>{{ report.title }}</span>
-                </v-tooltip>
-                <v-list-tile-sub-title class="text--primary">
-                  {{ report.version }}
-                </v-list-tile-sub-title>
-                <v-list-tile-sub-title>
-                  {{ report.created_at }}
-                </v-list-tile-sub-title>
-              </v-list-tile-content>
-            </v-list-tile>
-            <v-divider
-              ></v-divider>
-          </template>
+            <template v-for="report in filteredReports">
+              <v-list-tile avatar ripple :key="report.filename" :class="{'selected': isSelected(report.filename)}" v-on:click="">
+                <v-list-tile-action>
+                  <v-checkbox v-model="reportsBulkDelete"
+                    v-if="report.deleted_at == null"
+                    :value="report.filename"></v-checkbox>
+                </v-list-tile-action>
+                <v-list-tile-content v-on:click="info(report)">
+                  <v-tooltip bottom>
+                    <template v-slot:activator="{ on }">
+                      <v-list-tile-title v-on="on">
+                        {{ report.title }}
+                      </v-list-tile-title>
+                    </template>
+                    <span>{{ report.title }}</span>
+                  </v-tooltip>
+                  <v-list-tile-sub-title class="text--primary">
+                    {{ report.version }}
+                  </v-list-tile-sub-title>
+                  <v-list-tile-sub-title>
+                    {{ report.created_at }}
+                  </v-list-tile-sub-title>
+                </v-list-tile-content>
+              </v-list-tile>
+              <v-divider></v-divider>
+            </template>
+          </v-btn-toggle>
         </v-list>
 
       </v-list>
@@ -211,6 +212,13 @@
               </v-flex>
               <v-card>
                 <v-list dense subheader>
+                  <v-list-tile>
+                    <v-list-tile-content>
+                      <v-list-tile-title>{{ report.version }}</v-list-tile-title>
+                      <v-list-tile-sub-title>Version</v-list-tile-sub-title>
+                    </v-list-tile-content>
+                  </v-list-tile>
+                  <v-divider></v-divider>
                   <v-list-tile>
                     <v-list-tile-content>
                       <v-list-tile-title>{{ report.system.name }}</v-list-tile-title>

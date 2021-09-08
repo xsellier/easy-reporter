@@ -1,6 +1,8 @@
 .vscode/
 .data/
 
+.env
+
 config/local.json
 log/
 node_modules/

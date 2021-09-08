@@ -8,33 +8,33 @@
         <v-flex xs12 sm6 offset-sm3>
           <v-card>
             <v-select xs12 class="v-tabs__div" v-model="selectedGame" :items="games" label="Games" v-on:change="applicationChanged()"></v-select>
-<!--             <v-divider></v-divider>
+            <v-divider></v-divider>
 
-            <v-container grid-list-md text-xs-center>
+<!--             <v-container grid-list-md text-xs-center>
               <v-layout row wrap>
                 <v-flex xs6>
-                  <v-card dark color="secondary">
+                  <v-card class="blue">
                     <v-card-text class="px-0">6</v-card-text>
                   </v-card>
                 </v-flex>
                 <v-flex xs6>
-                  <v-card dark color="secondary">
+                  <v-card class="blue">
                     <v-card-text class="px-0">6</v-card-text>
                   </v-card>
                 </v-flex>
                 <v-flex xs6>
-                  <v-card dark color="secondary">
+                  <v-card class="blue">
                     <v-card-text class="px-0">6</v-card-text>
                   </v-card>
                 </v-flex>
                 <v-flex xs6>
-                  <v-card dark color="secondary">
+                  <v-card class="blue">
                     <v-card-text class="px-0">6</v-card-text>
                   </v-card>
                 </v-flex>
               </v-layout>
-            </v-container> -->
-
+            </v-container>
+ -->
           </v-card>
         </v-flex>
       </v-layout>

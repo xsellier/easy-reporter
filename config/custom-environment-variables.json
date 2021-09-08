@@ -11,8 +11,6 @@
     "secret_key": "SECRET_KEY"
   },
   "file": {
-    "token": "GITSHARE_TOKEN",
-    "secret": "GITSHARE_SECRET",
     "apiKey": "FIREBASE_API_KEY",
     "path": "FILEPATH_TMP",
     "authDomain": "FIREBASE_AUTH_DOMAIN",
