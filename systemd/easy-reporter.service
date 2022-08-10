@@ -1,0 +1,15 @@
+[Unit]
+Description=Easy Reporter
+Documentation=https://github.com/xsellier/easy-reporter
+After=network.target
+
+[Service]
+WorkingDirectory=/home/pi/work/easy-reporter
+Environment=NODE_PORT=3001
+Type=simple
+User=pi
+ExecStart=/usr/bin/npm start
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
