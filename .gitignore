@@ -2,10 +2,6 @@
 /tmp
 /node_modules
 
-# Generated
-/public/index.js
-
-
 # Credentials
 .data
 .env
