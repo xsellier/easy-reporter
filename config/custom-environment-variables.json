@@ -1,0 +1,33 @@
+{
+  "database": {
+    "user": "DB_USERNAME",
+    "password": "DB_PASSWORD"
+  },
+  "server": {
+    "port": "PORT",
+    "host": "HOST"
+  },
+  "authentication": {
+    "secret_key": "SECRET_KEY"
+  },
+  "file": {
+    "apiKey": "FIREBASE_API_KEY",
+    "path": "FILEPATH_TMP",
+    "authDomain": "FIREBASE_AUTH_DOMAIN",
+    "databaseURL": "FIREBASE_DATABASE_URL",
+    "projectId": "FIREBASE_PROJECT_ID",
+    "storageBucket": "FIREBASE_STORAGE_BUCKET",
+    "messagingSenderId": "FIREBASE_MESSENGER_SENDER_ID",
+    "appId": "FIREBASE_APP_ID"
+  },
+  "email": {
+    "configuration": {
+      "auth": {
+        "user": "EMAIL_USERNAME",
+        "pass": "EMAIL_PASSWORD"
+      }
+    },
+    "to": "EMAIL_TO"
+  },
+  "filedriver": "STORAGE_FILEDRIVER"
+}

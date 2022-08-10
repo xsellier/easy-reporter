@@ -1,0 +1,52 @@
+{
+  "database": {
+    "driver": "sqlite3",
+    "user": "dev",
+    "password": "passwordDev"
+  },
+  "sql": {
+    "encoding": "utf-8",
+    "relativeDirectory": "sql",
+    "pagination": 50
+  },
+  "logger": {
+    "namespace": "easy-error-reporter",
+    "level": "debug"
+  },
+  "session": {
+    "ttl": 7200
+  },
+  "server": {
+    "port": 1337,
+    "host": "127.0.0.1"
+  },
+  "website": {
+    "public": "public"
+  },
+  "authentication": {
+    "secret_key": "MY_VERY_SECRET_KEY"
+  },
+  "file": {
+    "path": "./tmp",
+    "apiKey": "MY_SECRET_SANTA",
+    "authDomain": "MY_SECRET_SANTA",
+    "databaseURL": "MY_SECRET_SANTA",
+    "projectId": "MY_SECRET_SANTA",
+    "storageBucket": "MY_SECRET_SANTA",
+    "messagingSenderId": "MY_SECRET_SANTA",
+    "appId": "MY_APP_ID"
+  },
+  "email": {
+    "configuration": {
+      "host": "smtp.zoho.com",
+      "port": 465,
+      "secure": true,
+      "auth": {
+        "user": "MY_SUPER_SECRET_EMAIL_USER",
+        "pass": "MY_SUPER_SECRET_EMAIL_PASS"
+      }
+    },
+    "to": "EMAIL_TO"
+  },
+  "fileDriver": "local"
+}

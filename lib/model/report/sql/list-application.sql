@@ -1,0 +1,2 @@
+SELECT DISTINCT name
+FROM report;
