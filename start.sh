@@ -1,7 +1,7 @@
 #!/bin/bash -e
 
 # Load environment variables
-. .env
+. ./.env
 
 echo "=========================="
 echo "Prepping the database"
