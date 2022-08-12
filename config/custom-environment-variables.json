@@ -27,7 +27,8 @@
         "pass": "EMAIL_PASSWORD"
       }
     },
-    "to": "EMAIL_TO"
+    "from_address": "EMAIL_FROM_ADDRESS",
+    "to_address": "EMAIL_TO_ADDRESS"
   },
   "filedriver": "STORAGE_FILEDRIVER"
 }

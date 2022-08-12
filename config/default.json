@@ -38,15 +38,16 @@
   },
   "email": {
     "configuration": {
-      "host": "smtp.zoho.com",
-      "port": 465,
-      "secure": true,
+      "host": "smtp-relay.sendinblue.com",
+      "port": 587,
+      "secure": false,
       "auth": {
         "user": "MY_SUPER_SECRET_EMAIL_USER",
         "pass": "MY_SUPER_SECRET_EMAIL_PASS"
       }
     },
-    "to": "EMAIL_TO"
+    "from_address": "EMAIL_FROM_ADDRESS",
+    "to_address": "EMAIL_TO_ADDRESS"
   },
   "fileDriver": "local"
 }

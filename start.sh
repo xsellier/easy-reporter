@@ -14,4 +14,4 @@ echo "=========================="
 echo "Let's start!"
 
 # Start the server
-/usr/bin/node lib/index.js
+/usr/local/bin/node lib/index.js

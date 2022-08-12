@@ -7,14 +7,13 @@
     "lib": "lib"
   },
   "scripts": {
+    "prepare": "npm run build",
     "dev": "rm -rf public/ && concurrently --kill-others \"./start.sh\" \"vue-cli-service build --watch\"",
     "lint": "node_modules/.bin/standard && vue-cli-service lint src/",
     "build": "rm -rf public/ && vue-cli-service build",
     "start-server": "mkdir -p .data && chmod -R a+w .data/ && node lib/index",
     "start": "sh ./start.sh",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "frontend": "vue-cli-service build --watch",
-    "heroku-postbuild": "npm install --only=dev --no-shrinkwrap && npm run build"
+    "frontend": "vue-cli-service build --watch"
   },
   "keywords": [
     "godot",
@@ -31,7 +30,7 @@
     "axios": "^0.21.4",
     "boom": "^7.3.0",
     "config": "^3.2.4",
-    "db-migrate": "^0.11.12",
+    "db-migrate": "^0.11.13",
     "db-migrate-sqlite3": "^0.4.0",
     "firebase": "^8.9.1",
     "glob": "^7.1.6",
