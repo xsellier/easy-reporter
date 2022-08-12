@@ -2,7 +2,11 @@
   "database": {
     "driver": "sqlite3",
     "user": "dev",
-    "password": "passwordDev"
+    "password": "passwordDev",
+    "directory": {
+      "path": ".data",
+      "absolute": false
+    }
   },
   "sql": {
     "encoding": "utf-8",

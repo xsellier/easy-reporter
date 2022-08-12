@@ -1,4 +1,10 @@
 {
+  "database": {
+    "directory": {
+      "path": "/opt/easy-reporter/sqlite3",
+      "absolute": true
+    }
+  },
   "logger": {
     "level": "info"
   },
