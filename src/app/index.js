@@ -156,6 +156,9 @@ export default {
           if (this.selectedGame == null && this.games.length > 0) {
             this.selectedGame = this.games[0]
           }
+
+          // Update the game
+          this.$refs.bugReports.application_name = this.selectedGame
         })
     },
     listReports: function () {
