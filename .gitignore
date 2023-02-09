@@ -1,6 +1,7 @@
 # Temporary files
 /tmp
 /node_modules
+/public/assets
 
 # Credentials
 .data
