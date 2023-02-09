@@ -8,12 +8,13 @@
   },
   "scripts": {
     "prepare": "npm run build",
-    "dev": "rm -rf public/ && concurrently --kill-others \"./start.sh\" \"vue-cli-service build --watch\"",
-    "lint": "node_modules/.bin/standard && vue-cli-service lint src/",
-    "build": "rm -rf public/ && vue-cli-service build",
+    "dev": "rm -rf public/ && concurrently --kill-others \"./start.sh\" \"vite build --watch\"",
+    "lint": "node_modules/.bin/standard",
+    "build": "rm -rf public/ && vite build",
     "start-server": "mkdir -p .data && chmod -R a+w .data/ && node lib/index",
     "start": "sh ./start.sh",
-    "frontend": "vue-cli-service build --watch"
+    "frontend": "vite build --watch",
+    "preview": "vite preview"
   },
   "keywords": [
     "godot",
@@ -26,7 +27,8 @@
   "license": "MIT",
   "dependencies": {
     "@firebase/app": "^0.6.29",
-    "@firebase/storage": "^0.6.2",
+    "@firebase/storage": "^0.11.1",
+    "autoprefixer": "^10.4.13",
     "axios": "^0.21.4",
     "boom": "^7.3.0",
     "config": "^3.2.4",
@@ -34,31 +36,31 @@
     "db-migrate-sqlite3": "^0.4.0",
     "firebase": "^8.9.1",
     "glob": "^7.1.6",
-    "hapi": "^17.8.5",
+    "hapi": "^17.9.*",
     "hapi-auth-bearer-token": "^6.1.2",
     "inert": "^5.1.3",
     "joi": "^14.3.1",
     "nodemailer": "^6.4.11",
+    "postcss": "^8.4.21",
     "request": "^2.88.0",
     "sqlite3": "^4.2.0",
+    "tailwindcss": "^3.2.4",
     "uuid": "^3.3.3",
-    "vue": "^2.6.11",
+    "vue": "^3.2.38",
     "vue-json-viewer": "^2.2.8",
-    "vuetify": "^1.5.21",
+    "vuetify": "^3.1.3",
+    "webfontloader": "^1.0.0",
     "xhr2": "^0.1.4"
   },
   "devDependencies": {
-    "@babel/polyfill": "^7.7.0",
-    "@vue/cli-plugin-babel": "^3.12.1",
-    "@vue/cli-plugin-eslint": "^3.12.1",
-    "@vue/cli-service": "^3.12.1",
+    "@vitejs/plugin-vue": "^3.0.3",
     "concurrently": "^4.1.2",
     "node-sass": "^4.14.1",
     "ora": "^5.1.0",
     "sass-loader": "^7.3.1",
     "standard": "^12.0.1",
-    "vue-cli-plugin-vuetify": "^0.4.6",
-    "vue-template-compiler": "^2.6.11"
+    "vite": "^4.1.1",
+    "vite-plugin-vuetify": "^1.0.0-alpha.12"
   },
   "eslintConfig": {
     "root": true,

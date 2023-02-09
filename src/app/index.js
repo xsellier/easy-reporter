@@ -15,6 +15,7 @@ export default {
     return {
       active: '',
       versions: {},
+      platforms: [],
       bugs: {},
       reports: [],
       reportsBulkDelete: [],
@@ -83,6 +84,7 @@ export default {
           return this.listReports()
         })
         .then(() => this.listVersions())
+        .then(() => this.listPlatforms())
         .then(() => this.listBugs())
         .catch((err) => {
           this.sending = false
@@ -113,6 +115,7 @@ export default {
           return this.listReports()
         })
         .then(() => this.listVersions())
+        .then(() => this.listPlatforms())
         .then(() => this.listBugs())
         .catch((err) => {
           this.$refs.errorSnackbar.show(`Login failed: ${err.message}`)
@@ -124,6 +127,21 @@ export default {
             this.$refs.loginForm.done()
           }
         })
+    },
+    logout: function () {
+      this.sending = true
+
+      return this.$http({
+        method: 'delete',
+        url: `/user/logout`,
+        headers: {
+          Authorization: `Bearer ${this.token}`
+        }
+      })
+      .then((response) => {
+        this.sending = false
+        this.token = null
+      })
     },
     applicationChanged: function () {
       if (!this.$refs.bugReports) {
@@ -137,6 +155,7 @@ export default {
     list: function () {
       return this.listReports()
         .then(() => this.listVersions())
+        .then(() => this.listPlatforms())
         .then(() => this.listBugs())
     },
     listApplications: function () {
@@ -169,10 +188,19 @@ export default {
       this.sending = true
 
       return this.$http({
-        method: 'get',
-        url: `/report/list/${this.selectedGame}/${this.$refs.bugReports.debug}/${this.$refs.bugReports.uploaded}/${this.$refs.bugReports.deleted}/${this.$refs.bugReports.fixed}/${this.$refs.bugReports.manual}/${this.$refs.bugReports.currentPage}`,
+        method: 'post',
+        url: `/report/list/${this.selectedGame}/${this.$refs.bugReports.currentPage}`,
         headers: {
           Authorization: `Bearer ${this.token}`
+        },
+        data: {
+          debug: this.$refs.bugReports.getCheckboxValue('debug'),
+          uploaded: this.$refs.bugReports.getCheckboxValue('uploaded'),
+          deleted: this.$refs.bugReports.getCheckboxValue('deleted'),
+          fixed: this.$refs.bugReports.getCheckboxValue('fixed'),
+          manual: this.$refs.bugReports.getCheckboxValue('manual'),
+          platform: this.$refs.bugReports.getSelectedPlatform(),
+          version: this.$refs.bugReports.getSelectedVersion()
         }
       })
         .then((response) => {
@@ -223,6 +251,34 @@ export default {
 
           this.sending = false
           this.$refs.errorSnackbar.show(`Cannot list versions: ${err.message}`)
+        })
+    },
+    listPlatforms: function () {
+      if (!this.$refs.bugReports) {
+        return Promise.resolve()
+      }
+
+      this.sending = true
+
+      return this.$http({
+        method: 'get',
+        url: `/report/list-platform/`,
+        headers: {
+          Authorization: `Bearer ${this.token}`
+        }
+      })
+        .then((response) => {
+          this.platforms = response.data
+          this.sending = false
+          this.$refs.bugReports.refreshPlatforms(this.platforms)
+        })
+        .catch((err) => {
+          if (err.response && err.response.status < 500) {
+            this.token = null
+          }
+
+          this.sending = false
+          this.$refs.errorSnackbar.show(`Cannot list platforms: ${err.message}`)
         })
     },
     listBugs: function () {

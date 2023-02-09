@@ -13,13 +13,13 @@ LEFT OUTER JOIN bug ON
   AND report.version = bug.version
 WHERE
       report.name = ?
-  AND report.debug = ?
-  AND report.uploaded = ?
-  AND (   bug.fixed IS__FIXED__ NULL
-       OR bug.fixed = ?
-      )
-  AND report.deleted_at IS__DELETED__ NULL
-  AND report.manual = ?
-
+  __DEBUG_CONDITION__
+  __UPDLOADED_CONDITION__
+  __FIXED_CONDITION__
+  __DELETED_AT_CONDITION__
+  __MANUAL_CONDITION__
+  __VERSION_CONDITION__
+  __PLATFORM_CONDITION__
 ORDER BY created_at DESC
+
 LIMIT 100;

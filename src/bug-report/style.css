@@ -1,10 +1,16 @@
-.logdump {  
-  font-family: "courier new" !important;
-  font-size: 12px !important;
+.logdump :deep textarea {  
+  font-family: "courier new";
+  font-size: 12px;
+}
+
+.card-log {
+  overflow-y: scroll;
+  max-height: 28.5vw;
+  width: 90%
 }
 
 #report-list {
-  height:512px;/* or any height you want */
+  height: 512px;/* or any height you want */
   overflow-y:auto
 }
 

@@ -7,11 +7,14 @@ export default {
       versions: {},
       versionKeys: [],
       versionSelected: 'None',
+
+      platformKeys: [],
+      platformSelected: 'None',
+
       reports: [],
       version: [],
       bugs: {},
       reportsBulkDelete: [],
-      manual: false,
       cache: {},
       report: null,
       username: '',
@@ -19,12 +22,15 @@ export default {
       filename: null,
       sending: false,
       token: null,
-      debug: false,
-      deleted: false,
-      uploaded: true,
-      fixed: false,
-      cracked: false,
-      selectAllValue: false,
+
+      // Query filters
+      manual: 0,
+      debug: 0,
+      deleted: 0,
+      uploaded: 0,
+      fixed: 0,
+      cracked: 0,
+
       totalPages: 1,
       currentPage: 1,
       totalItems: 0,
@@ -34,42 +40,88 @@ export default {
   },
   computed: {
     filteredReports: function () {
-      let self = this
+      return this.reports
+    },
 
-      return this.reports.filter(report => {
-        // Validate uploaded filter
-        var valid = report.uploaded == self.uploaded
+    selectAllValue: {
+      get: function() {
+        return this.reportsBulkDelete.length >= this.filteredReports.length && this.filteredReports.length > 0
+      },
 
-        // Validate deleted filter
-        valid &= (report.deleted_at != null) == self.deleted
+      set: function(value) {
+        // noop
+      }
+    },
 
-        // Validate debug filter
-        valid &= report.debug == self.debug
-
-        if (self.versionSelected != 'None') {
-          valid &= report.version == self.versionSelected
-        }
-
-        // Validate crack filter
-        var cracked = false
-
-        if (self.versions[report.version] != null) {
-          cracked = self.versions[report.version]
-        }
-
-        valid &= cracked == self.cracked
-
-        return valid
-      })
+    debugValue: {
+      get: function() {
+        return this.isCheckboxChecked('debug')
+      },
+      set: function(value) {
+        // noop
+      }
+    },
+    manualValue: {
+      get: function() {
+        return this.isCheckboxChecked('manual')
+      },
+      set: function(value) {
+        // noop
+      }
+    },
+    uploadedValue: {
+      get: function() {
+        return this.isCheckboxChecked('uploaded')
+      },
+      set: function(value) {
+        // noop
+      }
+    },
+    crackedValue: {
+      get: function() {
+        return this.isCheckboxChecked('cracked')
+      },
+      set: function(value) {
+        // noop
+      }
+    },
+    fixedValue: {
+      get: function() {
+        return this.isCheckboxChecked('fixed')
+      },
+      set: function(value) {
+        // noop
+      }
     }
   },
   methods: {
+    checkboxChange(modelName) {
+      this[modelName] = (this[modelName] + 1) % 3
+    },
+    isCheckboxChecked(modelName) {
+      return this[modelName] == 1
+    },
+    isCheckboxIndeterminate(modelName) {
+      return this[modelName] == 0
+    },
+    getCheckboxValue(modelName) {
+      if (this.isCheckboxChecked(modelName)) {
+        return true
+      }
+
+      if (this.isCheckboxIndeterminate(modelName)) {
+        return undefined
+      }
+
+      return false
+    },
+
     isSelected: function (reportName) {
       return reportName == this.selectedReport
     },
     selectAll: function () {
       if (this.reportsBulkDelete.length < this.filteredReports.length) {
-        this.reportsBulkDelete = this.filteredReports.map((report) => report.filename)
+        this.reportsBulkDelete = [].concat(this.filteredReports)
       } else {
         this.reportsBulkDelete = []
       }
@@ -119,6 +171,9 @@ export default {
 
         return acc
       }, [])
+    },
+    copyclipboard: function () {
+      navigator.clipboard.writeText(JSON.stringify(this.report.savegame))
     },
     downloadReport: function () {
       var dataStr =
@@ -187,6 +242,9 @@ export default {
           this.report.cracked = this.versions[this.report.version] || false
           this.report.fixed = (this.bugs[report.version] != null && this.bugs[report.version][report.title] != null) ? this.bugs[report.version][report.title] : false
           this.sending = false
+
+          // Change the value of the read value
+          this.reports.filter((itemReport) => itemReport.filename == report.filename).forEach((itemReport) => itemReport.read = '1')
 
           this.selectedReport = report.filename
         })
@@ -287,6 +345,7 @@ export default {
     refreshReports: function (list, pMaxPage, pTotalItems) {
       this.sending = false
       this.reports = list
+      this.reportsBulkDelete = []
       this.totalPages = pMaxPage
       this.currentPage = Math.min(this.currentPage, pMaxPage)
       this.totalItems = pTotalItems
@@ -301,6 +360,19 @@ export default {
     refreshBugs: function (list) {
       this.sending = false
       this.bugs = list
+    },
+
+    refreshPlatforms: function (list) {
+      this.sending = false
+      this.platformKeys = ['None'].concat(list)
+    },
+    
+    getSelectedPlatform: function() {
+      return this.platformSelected != 'None' ? this.platformSelected : undefined
+    },
+
+    getSelectedVersion: function() {
+      return this.versionSelected != 'None' ? this.versionSelected : undefined
     }
   }
 }

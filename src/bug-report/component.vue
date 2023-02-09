@@ -1,310 +1,191 @@
-<template v-if="token">
-  <v-layout fill-height>
-    <v-navigation-drawer>
-      <v-list dense>
-        <v-layout wrap align-center>
-          <v-flex>
-            <v-list-tile ></v-list-tile>
-          </v-flex>
-          <v-flex>
-            <v-list-tile >
-              <v-select :items="versionKeys" v-model="versionSelected" label="Version"></v-select>
-            </v-list-tile>
-          </v-flex>
-        </v-layout>
+<template>
+  <v-toolbar color="grey-lighten-4" flat>
+    <v-spacer></v-spacer>
+    <v-select :items="versionKeys" v-model="versionSelected" label="Version"></v-select>
+    <v-spacer></v-spacer>
+    <v-select :items="platformKeys" v-model="platformSelected" label="Platform"></v-select>
+    <v-spacer></v-spacer>
+  </v-toolbar>
+  <v-toolbar>
+    <v-checkbox label="Debug" @click="checkboxChange('debug')" v-model="debugValue" :indeterminate="isCheckboxIndeterminate('debug')"></v-checkbox>
+    <v-checkbox label="Manual" @click="checkboxChange('manual')" v-model="manualValue" :indeterminate="isCheckboxIndeterminate('manual')"></v-checkbox>
+    <v-checkbox label="Uploaded" @click="checkboxChange('uploaded')" v-model="uploadedValue" :indeterminate="isCheckboxIndeterminate('uploaded')"></v-checkbox>
+    <v-checkbox label="Cracked" @click="checkboxChange('cracked')" v-model="crackedValue" :indeterminate="isCheckboxIndeterminate('cracked')"></v-checkbox>
+    <v-checkbox label="Fixed" @click="checkboxChange('fixed')" v-model="fixedValue" :indeterminate="isCheckboxIndeterminate('fixed')"></v-checkbox>
+    <v-checkbox label="Select All" @click="selectAll()" v-model="selectAllValue"></v-checkbox>
+    <!-- v-on:change="selectAll()" :model-value="reportsBulkDelete.length >= filteredReports.length && filteredReports.length > 0"></v-checkbox> -->
 
-        <v-layout>
-          <v-flex xs6>
-            <v-list-tile>
-              <v-checkbox v-model="debug" v-on:change="emitUpdateSignal()"></v-checkbox>
-              <v-list-tile-title>Debug</v-list-tile-title>
-            </v-list-tile>
-          </v-flex>
-          <v-flex xs6>
-            <v-list-tile>
-              <v-checkbox v-model="manual" v-on:change="emitUpdateSignal()"></v-checkbox>
-              <v-list-tile-title>Manual</v-list-tile-title>
-            </v-list-tile>
-          </v-flex>
-        </v-layout>
-        <v-layout>
-          <v-flex xs6>
-            <v-list-tile>
-              <v-checkbox v-model="uploaded" v-on:change="emitUpdateSignal()"></v-checkbox>
-              <v-list-tile-title>Uploaded</v-list-tile-title>
-            </v-list-tile>
-          </v-flex>
-          <v-flex xs6>
-            <v-list-tile>
-              <v-checkbox v-model="cracked"></v-checkbox>
-              <v-list-tile-title>Cracked</v-list-tile-title>
-            </v-list-tile>
-          </v-flex>
-        </v-layout>
-
-        <v-layout>
-          <v-flex xs6>
-            <v-list-tile>
-              <v-checkbox v-model="fixed" v-on:change="emitUpdateSignal()"></v-checkbox>
-              <v-list-tile-title>Fixed</v-list-tile-title>
-            </v-list-tile>
-          </v-flex>
-          <v-flex xs6>
-            <v-list-tile>
-              <!-- <v-checkbox v-on:change="selectAll()" v-model="selectAllValue"></v-checkbox> -->
-              <v-checkbox v-on:change="selectAll()" :value="reportsBulkDelete.length >= filteredReports.length && filteredReports.length > 0"></v-checkbox>
-              <v-list-tile-title>Select all</v-list-tile-title>
-            </v-list-tile>
-          </v-flex>
-        </v-layout>
-
-        <v-layout>
-          <v-flex xs6>
-            <v-list-tile>
-              <v-btn color="primary" dark small v-on:click="list">Refresh</v-btn>
-            </v-list-tile>
-          </v-flex>
-          <v-flex xs6  v-if="reportsBulkDelete.length > 0">
-            <v-list-tile>
-              <v-btn color="warning" dark small v-on:click="bulkDelete()">Delete</v-btn>
-            </v-list-tile>
-          </v-flex>
-        </v-layout>
-
-        <v-layout wrap align-center>
-          <v-list-tile d-flex>
-            <v-pagination v-model="currentPage" :length="totalPages" v-on:input="changePage()" v-on:next="emitUpdateSignal()" v-on:previous="emitUpdateSignal()"></v-pagination>
-          </v-list-tile>
-        </v-layout>
-
-        <v-layout wrap align-center>
-          <v-list-tile d-flex>
-              <v-list-tile-title>Items: {{ filteredReports.length }} / {{ totalItems }}</v-list-tile-title>
-          </v-list-tile>
-        </v-layout>
-
-        <v-divider inset></v-divider>
-
-        <v-subheader inset>Reports</v-subheader>
-          <v-list two-line id='report-list'>
-            <template v-for="report in filteredReports">
-              <v-list-tile avatar ripple :key="report.filename" :class="{'selected': isSelected(report.filename)}" v-on:click="">
-                <v-list-tile-action>
-                  <v-checkbox v-model="reportsBulkDelete"
-                    v-if="report.deleted_at == null"
-                    :value="report.filename"></v-checkbox>
-                </v-list-tile-action>
-                <v-list-tile-content v-on:click="info(report)">
-                  <v-tooltip bottom>
-                    <template v-slot:activator="{ on }">
-                      <v-list-tile-title v-on="on">
-                        {{ report.title }}
-                      </v-list-tile-title>
-                    </template>
-                    <span>{{ report.title }}</span>
-                  </v-tooltip>
-                  <v-list-tile-sub-title class="text--primary">
-                    {{ report.version }}
-                  </v-list-tile-sub-title>
-                  <v-list-tile-sub-title>
-                    {{ report.created_at }}
-                  </v-list-tile-sub-title>
-                </v-list-tile-content>
-              </v-list-tile>
-              <v-divider></v-divider>
-            </template>
-          </v-btn-toggle>
-        </v-list>
-
-      </v-list>
-    </v-navigation-drawer>
-    <v-container fluid fill-height>
-      <v-layout
-        justify-center
-        align-center
-        row wrap
-      >
-        <template v-if="sending">
-          <v-progress-linear :indeterminate="true"></v-progress-linear>
-        </template>
-        <template v-if="report != null">
-          <v-layout row wrap>
-            <v-flex xs12 tag="h1" class="headline" v-if="report.data != null">{{ report.data.error }}</v-flex>
-            <v-flex xs12 tag="h1" class="headline" v-if="report.data == null">Custom bug report</v-flex>
-            <v-spacer></v-spacer>
-            <v-flex xs12>
-              <v-btn
-                color="info"
-                :disabled="sending"
-                @click="downloadReport()"
-              >Download</v-btn>
-              <v-btn
-                color="warning"
-                :disabled="sending"
-                @click="deleteReport()"
-              >Delete</v-btn>
-              <v-btn
-                color="error"
-                :disabled="sending"
-                @click="flagVersionAsCracked()"
-                v-if="!report.cracked"
-              >Flag version as cracked</v-btn>
-              <v-btn
-                color="info"
-                :disabled="sending"
-                @click="unflagVersionAsCracked()"
-                v-if="report.cracked"
-              >Unflag version as cracked</v-btn>
-              <v-btn
-                color="info"
-                :disabled="sending"
-                @click="flagBugAsFixed()"
-                v-if="!report.fixed"
-              >Flag bug as fixed</v-btn>
-              <v-btn
-                color="warning"
-                :disabled="sending"
-                @click="unflagBugAsFixed()"
-                v-if="report.fixed"
-              >Unflag bug as fixed</v-btn>
-            </v-flex>
-            <v-layout column>
-              <v-flex xs7 v-if="report.dump">
-                <v-textarea
-                  class="logdump"
-                  readonly
-                  full-width
-                  rows=4
-                  no-resize
-                  :value="report.dump"
-                ></v-textarea>
-              </v-flex>
-              <v-flex xs7 v-if="report.logdump">
-                <v-textarea
-                  class="logdump"
-                  readonly
-                  full-width
-                  rows=29
-                  no-resize
-                  box
-                  :value="report.logdump"
-                ></v-textarea>
-              </v-flex>
-            </v-layout>
-            <v-flex xs2>
-              <v-card v-if="report.data != null">
-                <v-toolbar dense>
-                  {{report.data.source_func}}<br />
-                  {{ report.data.source_file }} ({{ report.data.source_line}})
-                </v-toolbar>
-                <v-list dense>
-                  <template v-for="item in formatCallstack(report.data.callstack)">
-                    <v-list-tile :key="item.name">
-                      <v-list-tile-content>
-                        {{ item.name }} ({{ item.line }})
-                      </v-list-tile-content>
-                    </v-list-tile>
-                  </template>
-                </v-list>
-              </v-card>
-              <v-flex v-if="report.data != null">
-                <v-list-tile ></v-list-tile>
-              </v-flex>
-              <v-card>
-                <v-list dense subheader>
-                  <v-list-tile>
-                    <v-list-tile-content>
-                      <v-list-tile-title>{{ report.version }}</v-list-tile-title>
-                      <v-list-tile-sub-title>Version</v-list-tile-sub-title>
-                    </v-list-tile-content>
-                  </v-list-tile>
-                  <v-divider></v-divider>
-                  <v-list-tile>
-                    <v-list-tile-content>
-                      <v-list-tile-title>{{ report.system.name }}</v-list-tile-title>
-                      <v-list-tile-sub-title>OS</v-list-tile-sub-title>
-                    </v-list-tile-content>
-                  </v-list-tile>
-                  <v-divider></v-divider>
-                  <v-list-tile>
-                    <v-list-tile-content>
-                      <v-list-tile-title>{{ report.system.cpu.thread }}</v-list-tile-title>
-                      <v-list-tile-sub-title>Can thread</v-list-tile-sub-title>
-                    </v-list-tile-content>
-                  </v-list-tile>
-                  <v-divider></v-divider>
-                  <v-list-tile>
-                    <v-list-tile-content>
-                      <v-list-tile-title>{{ report.system.cpu.count }}</v-list-tile-title>
-                      <v-list-tile-sub-title>CPU count</v-list-tile-sub-title>
-                    </v-list-tile-content>
-                  </v-list-tile>
-                  <v-divider></v-divider>
-                  <v-list-tile>
-                    <v-list-tile-content>
-                      <v-list-tile-title>{{ report.system.cpu.model }}</v-list-tile-title>
-                      <v-list-tile-sub-title>Model</v-list-tile-sub-title>
-                    </v-list-tile-content>
-                  </v-list-tile>
-                  <v-divider></v-divider>
-                  <v-list-tile>
-                    <v-list-tile-content>
-                      <v-list-tile-title>{{ report.system.locale }}</v-list-tile-title>
-                      <v-list-tile-sub-title>Locale</v-list-tile-sub-title>
-                    </v-list-tile-content>
-                  </v-list-tile>
-                  <v-divider></v-divider>
-                  <v-list-tile>
-                    <v-list-tile-content>
-                      <v-list-tile-title>{{ report.system.screen.vsync }}</v-list-tile-title>
-                      <v-list-tile-sub-title>VSync</v-list-tile-sub-title>
-                    </v-list-tile-content>
-                  </v-list-tile>
-                  <v-divider></v-divider>
-                  <v-list-tile>
-                    <v-list-tile-content>
-                      <v-list-tile-title>{{ report.system.screen.resolution }}</v-list-tile-title>
-                      <v-list-tile-sub-title>Resolution</v-list-tile-sub-title>
-                    </v-list-tile-content>
-                  </v-list-tile>
-                  <v-divider></v-divider>
-                  <v-list-tile>
-                    <v-list-tile-content>
-                      <v-list-tile-title>{{ report.system.screen.fullscreen }}</v-list-tile-title>
-                      <v-list-tile-sub-title>Fullscreen</v-list-tile-sub-title>
-                    </v-list-tile-content>
-                  </v-list-tile>
-                  <v-divider></v-divider>
-                  <v-list-tile>
-                    <v-list-tile-content>
-                      <v-list-tile-title>{{ report.system.screen.size }}</v-list-tile-title>
-                      <v-list-tile-sub-title>Window size</v-list-tile-sub-title>
-                    </v-list-tile-content>
-                  </v-list-tile>
-                  <v-divider></v-divider>
-                  <v-tooltip bottom>
-                    <template v-slot:activator="{ on }">
-                      <v-list-tile>
-                        <v-list-tile-content>
-                          <v-list-tile-title v-on="on">{{ report.system.executable }}</v-list-tile-title>
-                          <v-list-tile-sub-title>Executable</v-list-tile-sub-title>
-                        </v-list-tile-content>
-                      </v-list-tile>
-                    </template>
-                    <span>{{ report.system.executable }}</span>
-                  </v-tooltip>
-                </v-list>
-              </v-card>
-            </v-flex>
-          </v-layout>
-        </template>
-      </v-layout>
-    </v-container>
-    <v-footer color="indigo" app inset>
-      <span class="white--text">&copy; Easy reporter 2019</span>
+    <v-btn color="primary" v-on:click="list">Refresh</v-btn>
+    <v-btn :disabled="reportsBulkDelete.length == 0" color="warning" v-on:click="bulkDelete()">Delete</v-btn>
+  </v-toolbar>
+  <v-navigation-drawer>
+    <v-list lines="three" select-strategy="multiple" density="compact" nav>
+      <v-list-subheader>Reports ({{ filteredReports.length }} / {{ totalItems }})</v-list-subheader>
+      <v-list-item v-for="report in filteredReports" :key="report.filename" :class="{'selected': isSelected(report.filename)}"
+      active-color="primary" >
+      <template v-slot:prepend>
+        <v-checkbox-btn v-model="reportsBulkDelete" :value="report" v-if="report.deleted_at == null"></v-checkbox-btn>
+        <v-list-item-media>
+          <v-icon icon="mdi-eye" v-if="report.read == 1"></v-icon>
+          <v-icon icon="mdi-eye-off" v-if="report.read == 0"></v-icon>
+        </v-list-item-media>
+      </template>
+      <div v-on:click="info(report)">
+        <v-list-item-title>{{ report.filename }}</v-list-item-title>
+        <v-list-item-subtitle>
+          {{ report.title }}
+        </v-list-item-subtitle>
+        <v-tooltip activator="parent" location="right">
+          <v-list lines="one" dense>
+            <v-list-item>
+              <v-list-item-title>{{ report.created_at }}</v-list-item-title>
+              <template v-slot:append>
+                <v-icon icon="mdi-bug" v-if="report.debug == 1"></v-icon>
+              </template>
+             <v-list-item-subtitle>Creation date</v-list-item-subtitle>
+            </v-list-item>
+            <v-list-item>
+              <v-list-item-title>{{ report.version }}</v-list-item-title>
+              <v-list-item-subtitle>Version</v-list-item-subtitle>
+              <template v-slot:append>
+                <v-icon icon="mdi-puzzle" v-if="report.manual == 1"></v-icon>
+              </template>
+            </v-list-item>
+            <v-list-item>
+              <v-list-item-title>{{ report.platform }}</v-list-item-title>
+              <v-list-item-subtitle>Platform</v-list-item-subtitle>
+              <template v-slot:append>
+                <v-icon icon="mdi-upload" v-if="report.uploaded == 1"></v-icon>
+                <v-icon icon="mdi-delete" v-if="report.deleted_at != null"></v-icon>
+              </template>
+            </v-list-item>
+          </v-list>
+        </v-tooltip>
+      </div>
+    </v-list-item>
+  </v-list>
+  <v-divider></v-divider>
+  <template v-slot:append>
+    <v-footer>
+      <v-row justify="center" no-gutters>
+        <v-pagination v-model="currentPage" :length="totalPages" v-on:input="changePage()" v-on:next="emitUpdateSignal()" v-on:previous="emitUpdateSignal()"></v-pagination>
+      </v-row>
     </v-footer>
-  </v-layout>
-</template>
+  </template>
+</v-navigation-drawer>
+<v-content>
+  <v-container>
+    <v-progress-linear v-if="sending" :indeterminate="true"></v-progress-linear>
+    <template v-if="report != null">
+      <v-row>
+        <v-col>
+          <v-row dense>
+            <v-col><v-btn color="info" :disabled="sending" @click="downloadReport()" >Download</v-btn></v-col>
+            <v-col><v-btn color="info" :disabled="sending" @click="copyclipboard()" >Copy Savegame</v-btn></v-col>
+            <v-col><v-btn color="warning" :disabled="sending" @click="deleteReport()" >Delete</v-btn></v-col>
+            <v-col><v-btn color="error" :disabled="sending" @click="flagVersionAsCracked()" v-if="!report.cracked">Flag version as cracked</v-btn></v-col>
+            <v-col><v-btn color="info" :disabled="sending" @click="unflagVersionAsCracked()" v-if="report.cracked">Unflag version as cracked</v-btn></v-col>
+            <v-col><v-btn color="info" :disabled="sending" @click="flagBugAsFixed()" v-if="!report.fixed">Flag bug as fixed</v-btn></v-col>
+            <v-col><v-btn color="warning" :disabled="sending" @click="unflagBugAsFixed()" v-if="report.fixed">Unflag bug as fixed</v-btn></v-col>
+          </v-row>
+          <v-row dense>
+            <div class="text-h5" v-if="report.data != null">{{ report.data.error }}</div>
+            <div class="text-h5" v-if="report.data == null">Custom bug report</div>
+          </v-row>
+          <v-row>
+            <v-card class="mx-auto" width="90%" flat>
+              <v-textarea class="logdump" v-if="report.dump" 
+              auto-grow rows="1" label="User input" readonly full-width no-resize v-model="report.dump"></v-textarea>
+            </v-card>
+            <v-card class="mx-auto card-log" flat>
+              <v-textarea class="logdump" v-if="report.logdump"
+              auto-grow label="Log dump" readonly full-width no-resize v-model="report.logdump"></v-textarea>
+            </v-card>
+          </v-row>
+        </v-col>
+        <v-col cols="2">
+          <v-card v-if="report.data != null">
+            <template v-slot:title>
+              {{report.data.source_func}}
+            </template>
 
+            <template v-slot:subtitle>
+              {{ report.data.source_file }} ({{ report.data.source_line}})
+            </template>
+            <v-list dense>
+              <v-list-item v-for="item in formatCallstack(report.data.callstack)" :key="item.name" :title="item.name" :subtitle="item.line">
+                <v-tooltip activator="parent" location="left">({{ item.line }}) {{ item.name }}</v-tooltip>
+              </v-list-item>
+            </v-list>
+          </v-card>
+          <v-card v-if="report.data == null">
+            <template v-slot:title>
+              No stack trace
+            </template>
+
+            <template v-slot:subtitle>
+              Custom bug report
+            </template>
+          </v-card>
+
+          <v-card>
+            <template v-slot:title>
+              Hardware specifications
+            </template>
+
+            <v-list dense subheader>
+              <v-list-item>
+                <v-list-item-title>{{ report.version }}</v-list-item-title>
+                <v-list-item-subtitle>Version</v-list-item-subtitle>
+              </v-list-item>
+              <v-list-item>
+                <v-list-item-title>{{ report.system.name }}</v-list-item-title>
+                <v-list-item-subtitle>OS</v-list-item-subtitle>
+              </v-list-item>
+              <v-list-item>
+                <v-list-item-title>{{ report.system.cpu.thread }}</v-list-item-title>
+                <v-list-item-subtitle>Can thread</v-list-item-subtitle>
+              </v-list-item>
+              <v-list-item>
+                <v-list-item-title>{{ report.system.cpu.count }}</v-list-item-title>
+                <v-list-item-subtitle>CPU count</v-list-item-subtitle>
+              </v-list-item>
+              <v-list-item>
+                <v-list-item-title>{{ report.system.cpu.model }}</v-list-item-title>
+                <v-list-item-subtitle>Model</v-list-item-subtitle>
+              </v-list-item>
+              <v-list-item>
+                <v-list-item-title>{{ report.system.locale }}</v-list-item-title>
+                <v-list-item-subtitle>Locale</v-list-item-subtitle>
+              </v-list-item>
+              <v-list-item>
+                <v-list-item-title>{{ report.system.screen.vsync }}</v-list-item-title>
+                <v-list-item-subtitle>VSync</v-list-item-subtitle>
+              </v-list-item>
+              <v-list-item>
+                <v-list-item-title>{{ report.system.screen.resolution }}</v-list-item-title>
+                <v-list-item-subtitle>Resolution</v-list-item-subtitle>
+              </v-list-item>
+              <v-list-item>
+                <v-list-item-title>{{ report.system.screen.fullscreen }}</v-list-item-title>
+                <v-list-item-subtitle>Fullscreen</v-list-item-subtitle>
+              </v-list-item>
+              <v-list-item>
+                <v-list-item-title>{{ report.system.screen.size }}</v-list-item-title>
+                <v-list-item-subtitle>Window size</v-list-item-subtitle>
+              </v-list-item>
+              <v-list-item>
+                <v-list-item-title>{{ report.system.executable }}</v-list-item-title>
+                <v-list-item-subtitle>Executable</v-list-item-subtitle>
+                <v-tooltip activator="parent" location="bottom">{{ report.system.executable }}</v-tooltip>
+              </v-list-item>
+            </v-list>
+          </v-card>
+        </v-col>
+      </v-row>
+    </template>
+  </v-container>
+</v-content>
+</template>
 <script src="./index.js"></script>
 <style src="./style.css" scoped></style>

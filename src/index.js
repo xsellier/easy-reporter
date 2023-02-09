@@ -1,20 +1,26 @@
-import '@babel/polyfill'
-
-// Packages
-import axios from 'axios'
-import Vue from 'vue'
-import Vuetify from 'vuetify'
+import { createApp } from 'vue'
+import App from './app/component.vue'
+import Axios from 'axios';
 
 import JsonViewer from 'vue-json-viewer'
 
-import App from './app/component.vue'
+// Vuetify
+import 'vuetify/styles'
+import { createVuetify } from 'vuetify'
+import { aliases, mdi } from 'vuetify/iconsets/mdi'
 
-Vue.use(Vuetify)
-Vue.use(JsonViewer)
-
-Vue.prototype.$http = axios
-
-new Vue({
-  el: '#app',
-  render: h => h(App)
+const vuetify = createVuetify({
+  ssr: true,
+  icons: {
+    defaultSet: 'mdi',
+    aliases,
+    sets: {
+      mdi,
+    }
+  }
 })
+
+const app = createApp(App)
+
+app.config.globalProperties.$http = Axios
+app.use(vuetify).mount('#app')
