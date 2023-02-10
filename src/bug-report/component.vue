@@ -68,7 +68,7 @@
   <template v-slot:append>
     <v-footer>
       <v-row justify="center" no-gutters>
-        <v-pagination v-model="currentPage" :length="totalPages" v-on:input="changePage()" v-on:next="emitUpdateSignal()" v-on:previous="emitUpdateSignal()"></v-pagination>
+        <v-pagination v-model="currentPage" :length="totalPages" v-on:input="changePage()" v-on:next="emitUpdateSignal()" v-on:previous="emitUpdateSignal()" size="x-small" total-visible=5></v-pagination>
       </v-row>
     </v-footer>
   </template>
