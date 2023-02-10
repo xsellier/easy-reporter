@@ -194,11 +194,11 @@ export default {
           Authorization: `Bearer ${this.token}`
         },
         data: {
-          debug: this.$refs.bugReports.getCheckboxValue('debug'),
+          debug: this.$refs.bugReports.debug,
           uploaded: this.$refs.bugReports.getCheckboxValue('uploaded'),
           deleted: this.$refs.bugReports.getCheckboxValue('deleted'),
           fixed: this.$refs.bugReports.getCheckboxValue('fixed'),
-          manual: this.$refs.bugReports.getCheckboxValue('manual'),
+          manual: this.$refs.bugReports.manual,
           platform: this.$refs.bugReports.getSelectedPlatform(),
           version: this.$refs.bugReports.getSelectedVersion()
         }

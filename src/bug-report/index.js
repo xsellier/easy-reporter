@@ -24,11 +24,11 @@ export default {
       token: null,
 
       // Query filters
-      manual: 0,
-      debug: 0,
-      deleted: 0,
-      uploaded: 0,
-      fixed: 0,
+      manual: false,
+      debug: false,
+      deleted: 2,
+      uploaded: 1,
+      fixed: 2,
       cracked: 0,
 
       totalPages: 1,
@@ -53,22 +53,6 @@ export default {
       }
     },
 
-    debugValue: {
-      get: function() {
-        return this.isCheckboxChecked('debug')
-      },
-      set: function(value) {
-        // noop
-      }
-    },
-    manualValue: {
-      get: function() {
-        return this.isCheckboxChecked('manual')
-      },
-      set: function(value) {
-        // noop
-      }
-    },
     uploadedValue: {
       get: function() {
         return this.isCheckboxChecked('uploaded')

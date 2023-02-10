@@ -7,8 +7,8 @@
     <v-spacer></v-spacer>
   </v-toolbar>
   <v-toolbar>
-    <v-checkbox label="Debug" @click="checkboxChange('debug')" v-model="debugValue" :indeterminate="isCheckboxIndeterminate('debug')"></v-checkbox>
-    <v-checkbox label="Manual" @click="checkboxChange('manual')" v-model="manualValue" :indeterminate="isCheckboxIndeterminate('manual')"></v-checkbox>
+    <v-checkbox label="Debug" v-model="debug"></v-checkbox>
+    <v-checkbox label="Manual" v-model="manual"></v-checkbox>
     <v-checkbox label="Uploaded" @click="checkboxChange('uploaded')" v-model="uploadedValue" :indeterminate="isCheckboxIndeterminate('uploaded')"></v-checkbox>
     <v-checkbox label="Cracked" @click="checkboxChange('cracked')" v-model="crackedValue" :indeterminate="isCheckboxIndeterminate('cracked')"></v-checkbox>
     <v-checkbox label="Fixed" @click="checkboxChange('fixed')" v-model="fixedValue" :indeterminate="isCheckboxIndeterminate('fixed')"></v-checkbox>
@@ -108,13 +108,13 @@
             <template v-slot:title>
               {{report.data.source_func}}
             </template>
-
+            <v-tooltip activator="parent" location="left">{{report.data.source_func}} ({{ report.data.source_file }}:{{ report.data.source_line}})</v-tooltip>
             <template v-slot:subtitle>
               {{ report.data.source_file }} ({{ report.data.source_line}})
             </template>
             <v-list dense>
               <v-list-item v-for="item in formatCallstack(report.data.callstack)" :key="item.name" :title="item.name" :subtitle="item.line">
-                <v-tooltip activator="parent" location="left">({{ item.line }}) {{ item.name }}</v-tooltip>
+                <v-tooltip activator="parent" location="left">{{ item.name }}:{{ item.line }}</v-tooltip>
               </v-list-item>
             </v-list>
           </v-card>
