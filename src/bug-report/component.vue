@@ -13,7 +13,6 @@
     <v-checkbox label="Cracked" @click="checkboxChange('cracked')" v-model="crackedValue" :indeterminate="isCheckboxIndeterminate('cracked')"></v-checkbox>
     <v-checkbox label="Fixed" @click="checkboxChange('fixed')" v-model="fixedValue" :indeterminate="isCheckboxIndeterminate('fixed')"></v-checkbox>
     <v-checkbox label="Select All" @click="selectAll()" v-model="selectAllValue"></v-checkbox>
-    <!-- v-on:change="selectAll()" :model-value="reportsBulkDelete.length >= filteredReports.length && filteredReports.length > 0"></v-checkbox> -->
 
     <v-btn color="primary" v-on:click="list">Refresh</v-btn>
     <v-btn :disabled="reportsBulkDelete.length == 0" color="warning" v-on:click="bulkDelete()">Delete</v-btn>
@@ -31,12 +30,16 @@
         </v-list-item-media>
       </template>
       <div v-on:click="info(report)">
-        <v-list-item-title>{{ report.filename }}</v-list-item-title>
+        <v-list-item-title>{{ report.title }}</v-list-item-title>
         <v-list-item-subtitle>
-          {{ report.title }}
+          {{ report.filename }}
         </v-list-item-subtitle>
         <v-tooltip activator="parent" location="right">
           <v-list lines="one" dense>
+            <v-list-item>
+              <v-list-item-title>{{ report.title }}</v-list-item-title>
+             <v-list-item-subtitle>{{ report.filename }}</v-list-item-subtitle>
+            </v-list-item>
             <v-list-item>
               <v-list-item-title>{{ report.created_at }}</v-list-item-title>
               <template v-slot:append>
