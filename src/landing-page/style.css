@@ -1,0 +1,73 @@
+#main-container {
+  background: url('/images/background.jpg') no-repeat center fixed;
+  background-size: cover;
+}
+
+.the-big-one {
+  margin-top: 256px;
+  margin-left: 128px;
+  max-width: 650px;
+  color: #fefefe;
+  font-size: 64px;
+  line-height: 1.4em;
+  font-weight: 600;
+}
+
+.catchphrase {
+  font-size: 24px;
+  margin: auto;
+}
+
+.catchicon {
+  font-size: 64px;
+  align-self: center;
+}
+
+.word-important {
+  font-variant: small-caps slashed-zero;
+  font-size: 144px;
+  margin-left: 64px;
+  font-weight: 900;
+}
+
+.v-toolbar-title {
+  font-weight: 600;
+  color: #fefefe;
+}
+
+.v-card {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  flex-wrap: nowrap;
+}
+
+.v-card-actions {
+  display: flex;
+  justify-content: center;
+}
+
+.feature-item {
+  width: 256px;
+  height: 200px;
+  color: #fefefe;
+}
+
+.login-form {
+  width: 256px;
+}
+
+.feature-item-list {
+  width: 80%;
+  max-width: 1280px;
+}
+
+.tool-title {
+  background-color: rgb(63, 81, 181);
+  color: #fefefe;
+  font-size: 36px;
+  width: 100%;
+  text-align: center;
+  padding: 16px;
+  font-weight: 900;
+}

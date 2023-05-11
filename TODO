@@ -1,0 +1,35 @@
+# TODO
+Ajouter du sel (demande a la sardine pour du sel premium)
+Gérer de sutilisateurs
+
+Projets:
+  Actions liées au projet:
+  - Lister les projets (drop down)
+  - Archiver
+  - Créer
+  - Renommager
+  - Changer clé
+  - Changer identifiant
+  - Mettre un projet en favoris
+  - Voir la liste des membres (pouvoir en exclure/ajouter)
+  - Transférer paternité du projet
+  
+  Actions liées aux versions dans un projet:
+  - Lister les versions (drop down)
+  - Voir la qualité de la version (nombre de bugs + regressions)
+  - Voir la proportion des bugs par OS
+  - Rechercher un bug en particulier
+  - Lister les bugs
+  - Filtrer les bugs
+
+  Acions liées a Steam:
+  - Voir le nombre de revues (positives / negatives)
+  - Voir le nombre de joueurs concurrents (CCU)
+  - Gérer les clés Steam
+
+Vues:
+- Landing page (DONE)
+- Dashboard
+  - Barre en haut qui liste les projets.
+  - Bouton qui permet de modifier le profil utilisateur (changer mot de passe, nom d'utilisateur...)
+  - Montre un court résumer du projet principal

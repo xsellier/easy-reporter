@@ -3,12 +3,12 @@ export default {
   data: () => ({
     valid: false,
     sending: false,
-    username: '',
+    username: null,
     passwordShow: false,
-    password: '',
+    password: null,
     rules: {
-      username: value => !!value || 'Username is required',
-      password: value => !!value || 'Password is required'
+      username: (value) => !!value || 'Username is required',
+      password: (value) => !!value || 'Password is required'
     }
   }),
   methods: {

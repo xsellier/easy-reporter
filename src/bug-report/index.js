@@ -123,23 +123,23 @@ export default {
           reports: this.reportsBulkDelete
         }
       })
-        .then(() => {
-          this.report = null
-          this.filename = null
+      .then(() => {
+        this.report = null
+        this.filename = null
 
-          this.sending = false
-          this.reportsBulkDelete = []
+        this.sending = false
+        this.reportsBulkDelete = []
 
-          return this.list()
-        })
-        .catch((err) => {
-          if (err.response && err.response.status < 500) {
-            this.token = null
-          }
+        return this.list()
+      })
+      .catch((err) => {
+        if (err.response && err.response.status < 500) {
+          this.token = null
+        }
 
-          this.sending = false
-          this.$emit('error', this.token, `Cannot delete reports: ${err.message}`)
-        })
+        this.sending = false
+        this.$emit('error', this.token, `Cannot delete reports: ${err.message}`)
+      })
     },
     formatCallstack: function (callstack) {
       return callstack.reduce((acc, item, index) => {
@@ -181,22 +181,22 @@ export default {
           Authorization: `Bearer ${this.token}`
         }
       })
-        .then(() => {
-          this.report = null
-          this.filename = null
+      .then(() => {
+        this.report = null
+        this.filename = null
 
-          this.sending = false
+        this.sending = false
 
-          return this.list()
-        })
-        .catch((err) => {
-          if (err.response && err.response.status < 500) {
-            this.token = null
-          }
+        return this.list()
+      })
+      .catch((err) => {
+        if (err.response && err.response.status < 500) {
+          this.token = null
+        }
 
-          this.sending = false
-          this.$emit('error', this.token, `Cannot delete report: ${err.message}`)
-        })
+        this.sending = false
+        this.$emit('error', this.token, `Cannot delete report: ${err.message}`)
+      })
     },
     info: function (report) {
       this.selectedReport = null
@@ -216,30 +216,30 @@ export default {
           Authorization: `Bearer ${this.token}`
         }
       })
-        .then((response) => {
-          let rawReport = pako.ungzip(atob(response.data), { to: 'string' })
+      .then((response) => {
+        let rawReport = pako.ungzip(atob(response.data), { to: 'string' })
 
-          this.filename = report.filename
-          this.report = JSON.parse(rawReport)
-          this.report.version = report.version
-          this.report.title = report.title
-          this.report.cracked = this.versions[this.report.version] || false
-          this.report.fixed = (this.bugs[report.version] != null && this.bugs[report.version][report.title] != null) ? this.bugs[report.version][report.title] : false
-          this.sending = false
+        this.filename = report.filename
+        this.report = JSON.parse(rawReport)
+        this.report.version = report.version
+        this.report.title = report.title
+        this.report.cracked = this.versions[this.report.version] || false
+        this.report.fixed = (this.bugs[report.version] != null && this.bugs[report.version][report.title] != null) ? this.bugs[report.version][report.title] : false
+        this.sending = false
 
-          // Change the value of the read value
-          this.reports.filter((itemReport) => itemReport.filename == report.filename).forEach((itemReport) => itemReport.read = '1')
+        // Change the value of the read value
+        this.reports.filter((itemReport) => itemReport.filename == report.filename).forEach((itemReport) => itemReport.read = '1')
 
-          this.selectedReport = report.filename
-        })
-        .catch((err) => {
-          if (err.response && err.response.status < 500) {
-            this.token = null
-          }
+        this.selectedReport = report.filename
+      })
+      .catch((err) => {
+        if (err.response && err.response.status < 500) {
+          this.token = null
+        }
 
-          this.sending = false
-          this.$emit('error', this.token, `Cannot download report: ${err.message}`)
-        })
+        this.sending = false
+        this.$emit('error', this.token, `Cannot download report: ${err.message}`)
+      })
     },
     flagVersionAsCracked: function () {
       return this._setFlagVersionCracked(true)
@@ -260,20 +260,20 @@ export default {
           cracked: cracked
         }
       })
-        .then(() => {
-          this.versions[this.report.version] = cracked
-          this.report.cracked = cracked
-          this.sending = false
-          this.$forceUpdate()
-        })
-        .catch((err) => {
-          if (err.response && err.response.status < 500) {
-            this.token = null
-          }
+      .then(() => {
+        this.versions[this.report.version] = cracked
+        this.report.cracked = cracked
+        this.sending = false
+        this.$forceUpdate()
+      })
+      .catch((err) => {
+        if (err.response && err.response.status < 500) {
+          this.token = null
+        }
 
-          this.sending = false
-          this.$emit('error', this.token, `Cannot download report: ${err.message}`)
-        })
+        this.sending = false
+        this.$emit('error', this.token, `Cannot download report: ${err.message}`)
+      })
     },
     flagBugAsFixed: function () {
       return this._setFlagBugFixed(true)
@@ -295,10 +295,71 @@ export default {
           fixed: fixed
         }
       })
-        .then(() => {
-          this.report.fixed = fixed
+      .then(() => {
+        this.report.fixed = fixed
+        this.sending = false
+        this.$forceUpdate()
+      })
+      .catch((err) => {
+        if (err.response && err.response.status < 500) {
+          this.token = null
+        }
+
+        this.sending = false
+        this.$emit('error', this.token, `Cannot download report: ${err.message}`)
+      })
+    },
+    initialize: function (pToken, pApplicationName) {
+      this.token = pToken
+      this.application_name = pApplicationName
+    },
+    changePage: function () {
+      this.emitUpdateSignal()
+    },
+    emitUpdateSignal: function () {
+      this.reportsBulkDelete = []
+      this.sending = true
+
+      return this.listReports()
+    },
+    list: function () {
+      this.sending = true
+
+      return this.listReports()
+        .then(() => this.listVersions())
+        .then(() => this.listPlatforms())
+        .then(() => this.listBugs())
+    },
+    listReports: function () {
+      this.sending = true
+
+      return this.$http({
+        method: 'post',
+        url: `/report/list/${this.selectedGame}/${this.currentPage}`,
+        headers: {
+          Authorization: `Bearer ${this.token}`
+        },
+        data: {
+          debug: this.debug,
+          uploaded: this.getCheckboxValue('uploaded'),
+          deleted: this.getCheckboxValue('deleted'),
+          fixed: this.getCheckboxValue('fixed'),
+          manual: this.manual,
+          platform: this.getSelectedPlatform(),
+          version: this.getSelectedVersion()
+        }
+      })
+        .then((response) => {
+          response.data.list.sort((a, b) => {
+            return a.created_at < b.created_at
+          })
+
           this.sending = false
-          this.$forceUpdate()
+          this.reports = response.data.list
+          this.reportsBulkDelete = []
+          this.totalPages = response.data.maxPage
+          this.currentPage = Math.min(this.currentPage, pMaxPage)
+          this.totalItems = response.data.total
         })
         .catch((err) => {
           if (err.response && err.response.status < 500) {
@@ -306,51 +367,94 @@ export default {
           }
 
           this.sending = false
-          this.$emit('error', this.token, `Cannot download report: ${err.message}`)
+          this.$emit('error', this.token, `Cannot list reports: ${err.message}`)
         })
     },
-    login: function (token) {
-      this.token = token
-    },
-    changePage: function () {
-      this.reportsBulkDelete = []
-      this.emitUpdateSignal()
-    },
-    emitUpdateSignal: function () {
+    listVersions: function () {
       this.sending = true
 
-      this.$emit('updateFilters')
+      return this.$http({
+        method: 'get',
+        url: `/version/list/${this.selectedGame}`,
+        headers: {
+          Authorization: `Bearer ${this.token}`
+        }
+      })
+      .then((response) => {
+        this.versions = response.data.reduce((acc, item) => {
+          acc[item.name] = item.cracked
+
+          return acc
+        }, {})
+        this.sending = false
+        this.versions = list
+        this.versionKeys = ['None'].concat(Object.keys(list))
+      })
+      .catch((err) => {
+        if (err.response && err.response.status < 500) {
+          this.token = null
+        }
+
+        this.sending = false
+        this.$emit('error', this.token, `Cannot list versions: ${err.message}`)
+      })
     },
-    list: function () {
+    listPlatforms: function () {
       this.sending = true
 
-      this.$emit('list')
-    },
-    refreshReports: function (list, pMaxPage, pTotalItems) {
-      this.sending = false
-      this.reports = list
-      this.reportsBulkDelete = []
-      this.totalPages = pMaxPage
-      this.currentPage = Math.min(this.currentPage, pMaxPage)
-      this.totalItems = pTotalItems
-    },
+      return this.$http({
+        method: 'get',
+        url: `/report/list-platform/`,
+        headers: {
+          Authorization: `Bearer ${this.token}`
+        }
+      })
+      .then((response) => {
+        this.sending = false
+        this.platformKeys = ['None'].concat(response.data)
+      })
+      .catch((err) => {
+        if (err.response && err.response.status < 500) {
+          this.token = null
+        }
 
-    refreshVersions: function (list) {
-      this.sending = false
-      this.versions = list
-      this.versionKeys = ['None'].concat(Object.keys(list))
+        this.platformKeys = ['None']
+        this.sending = false
+        this.$emit('error', this.token, `Cannot list platforms: ${err.message}`)
+      })
     },
+    listBugs: function () {
+      this.sending = true
 
-    refreshBugs: function (list) {
-      this.sending = false
-      this.bugs = list
-    },
+      return this.$http({
+        method: 'get',
+        url: `/bug/list/${this.selectedGame}`,
+        headers: {
+          Authorization: `Bearer ${this.token}`
+        }
+      })
+      .then((response) => {
+        this.bugs = response.data.reduce((acc, item) => {
+          if (acc[item.version] == null) {
+            acc[item.version] = {}
+          }
 
-    refreshPlatforms: function (list) {
-      this.sending = false
-      this.platformKeys = ['None'].concat(list)
+          acc[item.version][item.title] = item.fixed
+
+          return acc
+        }, {})
+        this.sending = false
+      })
+      .catch((err) => {
+        if (err.response && err.response.status < 500) {
+          this.token = null
+        }
+
+        this.sending = false
+        this.$emit('error', this.token, `Cannot list bugs: ${err.message}`)
+      })
     },
-    
+   
     getSelectedPlatform: function() {
       return this.platformSelected != 'None' ? this.platformSelected : undefined
     },

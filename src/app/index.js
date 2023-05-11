@@ -2,6 +2,7 @@ import ErrorSnackbar from '../error-snackbar/component.vue'
 import BugReports from '../bug-report/component.vue'
 import LoginForm from '../login-form/component.vue'
 import CreateAdminForm from '../create-admin-form/component.vue'
+import LandingPage from '../landing-page/component.vue'
 
 export default {
   name: 'Application',
@@ -9,23 +10,24 @@ export default {
     ErrorSnackbar,
     BugReports,
     LoginForm,
-    CreateAdminForm
+    CreateAdminForm,
+    LandingPage
   },
   data () {
     return {
+      tabView: 'dashboard',
       active: '',
       versions: {},
       platforms: [],
       bugs: {},
       reports: [],
-      reportsBulkDelete: [],
       cache: {},
       report: null,
       username: '',
       password: '',
       filename: null,
       sending: false,
-      connectionInitialized: false,
+      setupWizard: false,
       token: null,
       manual: false,
       debug: false,
@@ -57,7 +59,7 @@ export default {
       headers: {}
     })
       .then((response) => {
-        this.connectionInitialized = response.data
+        this.setupWizard = response.data
       })
   },
   methods: {
@@ -78,14 +80,11 @@ export default {
           this.token = response.data
           this.sending = false
 
-          this.connectionInitialized = true
+          this.setupWizard = true
           this.$refs.createAdminForm.done()
 
-          return this.listReports()
+          return this.listApplications()
         })
-        .then(() => this.listVersions())
-        .then(() => this.listPlatforms())
-        .then(() => this.listBugs())
         .catch((err) => {
           this.sending = false
           this.$refs.createAdminForm.done()
@@ -111,12 +110,6 @@ export default {
 
           return this.listApplications()
         })
-        .then(() => {
-          return this.listReports()
-        })
-        .then(() => this.listVersions())
-        .then(() => this.listPlatforms())
-        .then(() => this.listBugs())
         .catch((err) => {
           this.$refs.errorSnackbar.show(`Login failed: ${err.message}`)
 
@@ -143,20 +136,12 @@ export default {
         this.token = null
       })
     },
-    applicationChanged: function () {
+    openBugList: function () {
       if (!this.$refs.bugReports) {
         return Promise.resolve()
       }
 
-      this.$refs.bugReports.application_name = this.selectedGame
-
-      return this.list()
-    },
-    list: function () {
-      return this.listReports()
-        .then(() => this.listVersions())
-        .then(() => this.listPlatforms())
-        .then(() => this.listBugs())
+      this.$refs.bugReports.initialize(this.token, this.selectedGame)
     },
     listApplications: function () {
       this.sending = true
@@ -168,155 +153,21 @@ export default {
           Authorization: `Bearer ${this.token}`
         }
       })
-        .then((response) => {
-          this.sending = false
-          this.games = response.data
+      .then((response) => {
+        this.sending = false
+        this.games = response.data
 
-          if (this.selectedGame == null && this.games.length > 0) {
-            this.selectedGame = this.games[0]
-          }
+        if (this.selectedGame == null && this.games.length > 0) {
+          this.selectedGame = this.games[0]
+        }
 
-          // Update the game
+        // Update the game
+        if (this.$refs.bugReports) {
           this.$refs.bugReports.application_name = this.selectedGame
-        })
-    },
-    listReports: function () {
-      if (!this.$refs.bugReports) {
-        return Promise.resolve()
-      }
-
-      this.sending = true
-
-      return this.$http({
-        method: 'post',
-        url: `/report/list/${this.selectedGame}/${this.$refs.bugReports.currentPage}`,
-        headers: {
-          Authorization: `Bearer ${this.token}`
-        },
-        data: {
-          debug: this.$refs.bugReports.debug,
-          uploaded: this.$refs.bugReports.getCheckboxValue('uploaded'),
-          deleted: this.$refs.bugReports.getCheckboxValue('deleted'),
-          fixed: this.$refs.bugReports.getCheckboxValue('fixed'),
-          manual: this.$refs.bugReports.manual,
-          platform: this.$refs.bugReports.getSelectedPlatform(),
-          version: this.$refs.bugReports.getSelectedVersion()
         }
-      })
-        .then((response) => {
-          this.reports = response.data.list
-          this.reports.sort((a, b) => {
-            return a.created_at < b.created_at
-          })
-          this.sending = false
-          this.$refs.bugReports.login(this.token)
-          this.$refs.bugReports.refreshReports(this.reports, response.data.maxPage, response.data.total)
-        })
-        .catch((err) => {
-          if (err.response && err.response.status < 500) {
-            this.token = null
-          }
 
-          this.sending = false
-          this.$refs.errorSnackbar.show(`Cannot list reports: ${err.message}`)
-        })
-    },
-    listVersions: function () {
-      if (!this.$refs.bugReports) {
         return Promise.resolve()
-      }
-
-      this.sending = true
-
-      return this.$http({
-        method: 'get',
-        url: `/version/list/${this.selectedGame}`,
-        headers: {
-          Authorization: `Bearer ${this.token}`
-        }
       })
-        .then((response) => {
-          this.versions = response.data.reduce((acc, item) => {
-            acc[item.name] = item.cracked
-
-            return acc
-          }, {})
-          this.sending = false
-          this.$refs.bugReports.refreshVersions(this.versions)
-        })
-        .catch((err) => {
-          if (err.response && err.response.status < 500) {
-            this.token = null
-          }
-
-          this.sending = false
-          this.$refs.errorSnackbar.show(`Cannot list versions: ${err.message}`)
-        })
-    },
-    listPlatforms: function () {
-      if (!this.$refs.bugReports) {
-        return Promise.resolve()
-      }
-
-      this.sending = true
-
-      return this.$http({
-        method: 'get',
-        url: `/report/list-platform/`,
-        headers: {
-          Authorization: `Bearer ${this.token}`
-        }
-      })
-        .then((response) => {
-          this.platforms = response.data
-          this.sending = false
-          this.$refs.bugReports.refreshPlatforms(this.platforms)
-        })
-        .catch((err) => {
-          if (err.response && err.response.status < 500) {
-            this.token = null
-          }
-
-          this.sending = false
-          this.$refs.errorSnackbar.show(`Cannot list platforms: ${err.message}`)
-        })
-    },
-    listBugs: function () {
-      if (!this.$refs.bugReports) {
-        return Promise.resolve()
-      }
-
-      this.sending = true
-
-      return this.$http({
-        method: 'get',
-        url: `/bug/list/${this.selectedGame}`,
-        headers: {
-          Authorization: `Bearer ${this.token}`
-        }
-      })
-        .then((response) => {
-          this.bugs = response.data.reduce((acc, item) => {
-            if (acc[item.version] == null) {
-              acc[item.version] = {}
-            }
-
-            acc[item.version][item.title] = item.fixed
-
-            return acc
-          }, {})
-          this.sending = false
-
-          this.$refs.bugReports.refreshBugs(this.bugs)
-        })
-        .catch((err) => {
-          if (err.response && err.response.status < 500) {
-            this.token = null
-          }
-
-          this.sending = false
-          this.$refs.errorSnackbar.show(`Cannot list bugs: ${err.message}`)
-        })
     }
   }
 }

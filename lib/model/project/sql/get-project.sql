@@ -1,4 +1,4 @@
--- ? : project id
+-- ? : steam id
 SELECT * FROM project
-  WHERE id == ?
+  WHERE steam_id == ?
   LIMIT 1;

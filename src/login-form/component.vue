@@ -8,30 +8,36 @@
       </v-toolbar>
       <v-card-text>
         <v-text-field
-        v-model="username"
-        :rules="[rules.username]"
-        label="Username"
-        value=""
-        required></v-text-field>
+          v-model="username"
+          :rules="[rules.username]"
+          label="Username"
+          clearable
+          required>
+          
+        </v-text-field>
         <v-text-field 
-        v-model="password"
-        :append-icon="passwordShow ? 'visibility' : 'visibility_off'"
-        :rules="[rules.password]"
-        :type="passwordShow ? 'text' : 'password'"
-        label="Password"
-        required
-        @click:append="passwordShow = !passwordShow"></v-text-field>
+          v-model="password"
+          :append-icon="passwordShow ? 'mdi-eye' : 'mdi-eye-off'"
+          :rules="[rules.password]"
+          :type="passwordShow ? 'text' : 'password'"
+          label="Password"
+          clearable
+          required
+          @click:append="passwordShow = !passwordShow">
+        </v-text-field>
       </v-card-text>
       <v-card-actions>
         <v-spacer></v-spacer>
         <v-btn
-        :disabled="sending || !valid"
-        depressed
-        small
-        value=""
-        type="submit"
-        color="primary"
-        @click="login">Login</v-btn>
+          :disabled="sending || !valid"
+          depressed
+          small
+          value=""
+          type="submit"
+          color="primary"
+          @click="login">
+          Login
+        </v-btn>
       </v-card-actions>
     </v-card>
   </v-form>

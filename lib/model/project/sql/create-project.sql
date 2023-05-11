@@ -1,9 +1,10 @@
+-- ? : project id
 -- ? : project name
 -- ? : secret
 -- ? : user_id
 WITH created_project AS (
-  INSERT INTO project (name, created_at)
-  VALUES (?, ?, DateTime('now'))
+  INSERT INTO project (steam_id, name, created_at)
+  VALUES (?, ?, ?, DateTime('now'))
   RETURNING id, secret
 ),
 INSERT INTO project_user (user_id, project_id, is_admin)

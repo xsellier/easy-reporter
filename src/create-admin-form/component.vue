@@ -11,16 +11,19 @@
           v-model="username"
           :rules="[rules.username]"
           label="Username"
-          value=""
-          required></v-text-field>
+          clearable
+          required>
+          
+        </v-text-field>
         <v-text-field 
           v-model="password"
-          :append-icon="passwordShow ? 'visibility' : 'visibility_off'"
+          :append-icon="passwordShow ? 'mdi-eye' : 'mdi-eye-off'"
           :rules="[rules.password]"
           :type="passwordShow ? 'text' : 'password'"
           label="Password"
           required
-          @click:append="passwordShow = !passwordShow"></v-text-field>
+          @click:append="passwordShow = !passwordShow">
+        </v-text-field>
       </v-form>
     </v-card-text>
     <v-card-actions>
@@ -31,7 +34,9 @@
         small
         value=""
         color="primary"
-        @click="createAdmin">Create admin</v-btn>
+        @click="createAdmin">
+        Create admin
+      </v-btn>
     </v-card-actions>
   </v-card>
 </template>

@@ -7,8 +7,8 @@ export default {
     passwordShow: false,
     password: '',
     rules: {
-      username: value => !!value || 'Username is required',
-      password: value => !!value || 'Password is required'
+      username: (value) => !!value || 'Username is required',
+      password: (value) => !!value || 'Password is required'
     }
   }),
   methods: {
