@@ -7,30 +7,28 @@
         <v-img class="mr-3" aspect-ratio="1/1" src="/images/logo.png" height="32px" width="32px"></v-img>
       </v-toolbar-side-icon>
       <v-toolbar-title>Made by Binogure Studio</v-toolbar-title>
-      
-      
+
       <v-menu :close-on-content-click="false" v-model="loginMenu">
         <template v-slot:activator="{ props }">
-          <v-btn variant="outlined" rounded v-bind="props" color="#fefefe">
+          <v-btn variant="outlined" rounded v-bind="props" color="#fefefe" @click="validateForm()">
             Login
           </v-btn>
         </template>
-        <v-form class="formclass" ref="form" v-model="valid" @submit.prevent="login">
-            <v-card max-width="512" class="mx-auto login-form">
-              <v-card-text>
-                <v-text-field v-model="username" :rules="[rules.username]" label="Username" clearable required></v-text-field>
-                <v-text-field v-model="password" :append-icon="passwordShow ? 'mdi-eye' : 'mdi-eye-off'" :rules="[rules.password]"
-                  :type="passwordShow ? 'text' : 'password'" label="Password" clearable required @click:append="passwordShow = !passwordShow">
-                </v-text-field>
-              </v-card-text>
-              <v-card-actions>
-                <v-btn :disabled="sending || !valid" type="submit" variant="flat" color="primary" @click="login">
-                  Login
-                </v-btn>
-              </v-card-actions>
-            </v-card>
-          </v-form>
-
+        <v-form class="formclass" ref="form" v-model="valid" @submit.prevent="login" validate-on="input">
+          <v-card max-width="512" class="mx-auto login-form">
+            <v-card-text>
+              <v-text-field v-model="username" :rules="[rules.username]" label="Username" clearable required></v-text-field>
+              <v-text-field v-model="password" :append-icon="passwordShow ? 'mdi-eye' : 'mdi-eye-off'" :rules="[rules.password]"
+                :type="passwordShow ? 'text' : 'password'" label="Password" clearable required @click:append="passwordShow = !passwordShow">
+              </v-text-field>
+            </v-card-text>
+            <v-card-actions>
+              <v-btn :disabled="sending || !valid" type="submit" variant="flat" color="indigo">
+                Login
+              </v-btn>
+            </v-card-actions>
+          </v-card>
+        </v-form>
       </v-menu>
       <v-divider class="border-opacity-0" color="info" vertical thickness="8"></v-divider>
       <v-tooltip text="No yet implemented" location="bottom">

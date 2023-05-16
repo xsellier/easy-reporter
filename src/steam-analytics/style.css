@@ -1,0 +1,55 @@
+.steam-analytics-container {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  padding: 24px;
+  margin: auto;
+}
+
+.steam-analytics-row {
+  display: flex;
+  flex-direction: row;
+}
+
+.steam-analytics-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.steam-analytics-description {
+  font-size: 14px;
+}
+
+.steam-analytics-value {
+  font-size: 16px;
+  font-weight: bold;
+  min-width: 64px;
+  display: inline-block;
+  text-align: center;
+}
+
+.steam-analytics-select {
+  width: 200px;
+}
+
+.review-list {
+  width: 65%;
+  margin: 24px;
+}
+
+.steam-analytics-summary {
+  width: 35%;
+  margin: 24px;
+}
+
+.steam-analytics-center {
+  margin: auto;
+}
+
+.steam-summary-card {
+  padding: 12px;
+}
+
+.steam-summary-item {
+  padding: 6px;
+}

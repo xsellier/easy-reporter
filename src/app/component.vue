@@ -1,54 +1,71 @@
 <template>
-  <v-app>
-    <!-- Wizard form //-->
-    <v-app-bar color="indigo" v-if="!setupWizard">
-      <v-divider class="border-opacity-0" color="info" vertical thickness="32"></v-divider>
-      <v-toolbar-side-icon>
-        <v-img class="mr-3" aspect-ratio="1/1" src="/images/logo.png" height="32px" width="32px"></v-img>
-      </v-toolbar-side-icon>
-      <v-toolbar-title>Indie Maker Tool</v-toolbar-title>
-    </v-app-bar>
+  <div>
+    <v-app>
+      <!-- Wizard form //-->
+      <v-app-bar color="indigo" v-if="!setupAdminWizard">
+        <v-divider class="border-opacity-0" color="info" vertical thickness="32"></v-divider>
+        <v-toolbar-side-icon>
+          <v-img class="mr-3" aspect-ratio="1/1" src="/images/logo.png" height="32px" width="32px"></v-img>
+        </v-toolbar-side-icon>
+        <v-toolbar-title>Indie Maker Tool</v-toolbar-title>
+      </v-app-bar>
 
-    <!-- Wizard done - not logged in //-->    
-    <LandingPage ref="loginForm" v-if="!token && setupWizard" v-on:login="login"></LandingPage>
+      <!-- Wizard done - not logged in //-->    
+      <LandingPage v-if="!token && setupAdminWizard" @loggedIn="loggedIn" @error="showError"></LandingPage>
 
-    <!-- User logged in //-->
-    <v-app-bar color="indigo" v-if="token && setupWizard">
-      <v-toolbar-title>Indie Maker Tool</v-toolbar-title>
-      <v-spacer></v-spacer>
-      <v-select class="v-tabs__div" v-model="selectedGame" :items="games" label="Games" @update:modelValue="applicationChanged()"></v-select>
-      <v-btn icon @click="logout">
-        <v-icon>mdi-logout</v-icon>
-      </v-btn>
-    </v-app-bar>
+      <!-- User logged in //-->
+      <v-app-bar color="indigo" v-if="token && setupAdminWizard">
+        <v-toolbar-title>Indie Maker Tool</v-toolbar-title>
+        <v-spacer></v-spacer>
+        <v-btn icon @click="openProjectDialog" class="mx-2">
+          <v-icon>mdi-home-plus-outline</v-icon>
+        </v-btn>
+        <v-select class="v-tabs__div" v-model="selectedApplication" :items="applications" item-title="name" label="Games" return-object></v-select>
+        <v-btn icon @click="logout" class="mx-2">
+          <v-icon>mdi-logout</v-icon>
+        </v-btn>
+      </v-app-bar>
 
-    <v-app-bar color="white" v-if="token && setupWizard">
-      <v-spacer></v-spacer>
-      <v-tabs v-model="tabView" v-if="token && setupWizard">
-        <v-tab value="dashboard">Dashboard</v-tab>
-        <v-tab value="buglist" @click="openBugList">Bug list</v-tab>
-        <v-tab value="steamanalytics">Analytics Steam</v-tab>
-        <v-tab value="settings">Settings</v-tab>
-      </v-tabs>
-      <v-spacer></v-spacer>
-    </v-app-bar>
+      <v-app-bar color="white" v-if="token && setupAdminWizard">
+        <v-spacer></v-spacer>
+        <v-tabs v-model="tabView" v-if="setupProjectWizard">
+          <v-tab value="buglist">Bug List</v-tab>
+          <v-tab value="steamanalytics" :disabled="!isSteamIdValid()">Analytics Steam</v-tab>
+          <v-tab value="reportList">Report list</v-tab>
+          <v-tab value="settings">Settings</v-tab>
+        </v-tabs>
+        <v-spacer></v-spacer>
+      </v-app-bar>
 
-    <v-main>
-      <CreateAdminForm ref="createAdminForm" v-if="!setupWizard" v-on:createAdmin="createAdmin"></CreateAdminForm>
-      <v-window v-model="tabView" v-if="token && setupWizard">
-        <v-window-item value="dashboard"></v-window-item>
-        <v-window-item value="steamanalytics"></v-window-item>
-        <v-window-item value="settings"></v-window-item>
-        <v-window-item value="buglist">
-          <BugReports ref="bugReports" v-on:list="list" v-on:updateFilters="listReports" v-on:error="showError"></BugReports>
-        </v-window-item>
-      </v-window>
-      <ErrorSnackbar ref="errorSnackbar"></ErrorSnackbar>
-    </v-main>
-    <v-footer color="indigo" app inset>
-      <span class="white--text">&copy; Binogure Studio 2023</span>
-    </v-footer>
-  </v-app>
+      <v-main>
+        <CreateAdminForm v-if="!setupAdminWizard" @adminCreated="adminCreated" @error="showError"></CreateAdminForm>
+        <CreateProjectForm ref="createProjectForm" @projectCreated="projectCreated" @error="showError" :token="token"></CreateProjectForm>
+        
+        <v-window v-model="tabView" v-if="token && setupAdminWizard && selectedApplication != null">
+          <v-window-item value="buglist">
+            <BugList @error="showError" :token="token" :application_data="selectedApplication"></BugList>
+          </v-window-item>
+          <v-window-item value="steamanalytics">
+            <SteamAnalytics @error="showError" :token="token" :application_data="selectedApplication"></SteamAnalytics>
+          </v-window-item>
+          <v-window-item value="reportList">
+            <ReportList @error="showError" :token="token" :application_data="selectedApplication"></ReportList>
+          </v-window-item>
+          <v-window-item value="settings">
+            <ProjectSettings @error="showError" @updateApplicationData="updateApplicationData" :token="token" :application_data="selectedApplication"></ProjectSettings>
+          </v-window-item>
+        </v-window>
+        <ErrorSnackbar :error="errorObject" :message="errorMesage"></ErrorSnackbar>
+      </v-main>
+      <v-footer color="indigo" app inset>
+        <span class="white--text">&copy; Binogure Studio 2023</span>
+      </v-footer>
+    </v-app>
+
+    <div class="scroll-button">
+      <v-btn v-show="showButton" color="indigo" @click="scrollToTop" icon="mdi-arrow-up"></v-btn>
+    </div>
+  </div>
 </template>
 
 <script src="./index.js"></script>

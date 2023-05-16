@@ -2,3 +2,9 @@
   background-color: #0092e9;
   color: #fefefe;
 }
+
+.scroll-button {
+  position: fixed;
+  right: 64px;
+  bottom: 64px;
+}

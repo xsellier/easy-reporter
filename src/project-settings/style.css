@@ -1,0 +1,14 @@
+.vertical-division {
+  display: flex;
+  flex-direction: row;
+}
+
+.member-list {
+  width: 65%;
+  margin: 64px;
+}
+
+.settings {
+  width: 35%;
+  margin: 64px;
+}

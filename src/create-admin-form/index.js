@@ -15,10 +15,19 @@ export default {
     createAdmin: function () {
       this.sending = true
 
-      this.$emit('createAdmin')
-    },
-    done: function () {
-      this.sending = false
+      return this.$http.post(`/admin/create`, {
+        username: this.username,
+        password: this.password
+      })
+      .then((response) => {
+        this.sending = false
+
+        return this.$emit('adminCreated', response.data)
+      })
+      .catch((err) => {
+        this.sending = false
+        this.$emit('error', 'Cannot create admin', err)
+      })
     }
   }
 }

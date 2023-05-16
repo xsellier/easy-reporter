@@ -33,3 +33,7 @@ Vues:
   - Barre en haut qui liste les projets.
   - Bouton qui permet de modifier le profil utilisateur (changer mot de passe, nom d'utilisateur...)
   - Montre un court résumer du projet principal
+
+
+Nice to have
+Ajouter une vérification pour Steam afin de vérifier si le rapport de bug provient d'un joueur qui possède le jeu

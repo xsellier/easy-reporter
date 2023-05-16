@@ -3,5 +3,4 @@
 -- ? : project id
 UPDATE project
   SET name = ?, secret = ?
-  WHERE id = ?
-  RETURNING secret;
+  WHERE id = ?;

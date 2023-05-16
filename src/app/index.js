@@ -1,54 +1,50 @@
 import ErrorSnackbar from '../error-snackbar/component.vue'
-import BugReports from '../bug-report/component.vue'
-import LoginForm from '../login-form/component.vue'
-import CreateAdminForm from '../create-admin-form/component.vue'
+import ReportList from '../report-list/component.vue'
 import LandingPage from '../landing-page/component.vue'
+import ProjectSettings from '../project-settings/component.vue'
+import SteamAnalytics from '../steam-analytics/component.vue'
+import BugList from '../bug-list/component.vue'
+
+import CreateAdminForm from '../create-admin-form/component.vue'
+import CreateProjectForm from '../create-project-form/component.vue'
 
 export default {
   name: 'Application',
   components: {
     ErrorSnackbar,
-    BugReports,
-    LoginForm,
+    ReportList,
     CreateAdminForm,
-    LandingPage
+    CreateProjectForm,
+    LandingPage,
+    ProjectSettings,
+    SteamAnalytics,
+    BugList
   },
   data () {
     return {
       tabView: 'dashboard',
       active: '',
-      versions: {},
-      platforms: [],
-      bugs: {},
-      reports: [],
-      cache: {},
-      report: null,
       username: '',
       password: '',
-      filename: null,
       sending: false,
-      setupWizard: false,
+
+      setupAdminWizard: false,
+      setupProjectWizard: false,
+
       token: null,
-      manual: false,
-      debug: false,
-      deleted: false,
-      uploaded: true,
-      selectedGame: null,
-      games: []
+      selectedApplication: null,
+      applications: [],
+
+      showButton: false,
+      errorMesage: null,
+      errorObject: null
     }
   },
-  computed: {
-    filteredReports: function () {
-      let self = this
-
-      return this.reports.filter((report) => {
-        return (
-          report.uploaded == self.uploaded &&
-          (report.deleted_at != null) == self.deleted &&
-          report.debug == self.debug
-        )
-      })
-    }
+  mounted() {
+    window.addEventListener("scroll", this.handleScroll)
+  },
+  beforeDestroy() {
+    window.removeEventListener("scroll", this.handleScroll)
   },
   beforeMount: function () {
     this.sending = true
@@ -57,69 +53,40 @@ export default {
       method: 'get',
       url: '/admin/exists',
       headers: {}
+    }).then((response) => {
+      this.setupAdminWizard = response.data
     })
-      .then((response) => {
-        this.setupWizard = response.data
-      })
   },
   methods: {
-    showError: function (token, message) {
+     handleScroll() {
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+
+      this.showButton = scrollTop > 150
+    },
+    scrollToTop() {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      })
+    },
+    showError: function (message, error) {
+      this.errorMesage = message
+      this.errorObject = error
+    },
+    adminCreated: function (token) {
+      this.token = token
+      this.setupAdminWizard = true
+    },
+    loggedIn: function(token) {
       this.token = token
 
-      this.$refs.errorSnackbar.show(message)
+      return this.listApplications()
     },
-    createAdmin: function () {
-      this.sending = true
-
-      this.$http
-        .post(`/admin/create`, {
-          username: this.$refs.createAdminForm.username,
-          password: this.$refs.createAdminForm.password
-        })
-        .then((response) => {
-          this.token = response.data
-          this.sending = false
-
-          this.setupWizard = true
-          this.$refs.createAdminForm.done()
-
-          return this.listApplications()
-        })
-        .catch((err) => {
-          this.sending = false
-          this.$refs.createAdminForm.done()
-          this.token = null
-
-          this.$refs.errorSnackbar.show(`Login failed: ${err.message}`)
-        })
+    isSteamIdValid: function () {
+      return this.selectedApplication != null && parseInt(this.selectedApplication.steam_id) > 0
     },
-    login: function () {
-      this.sending = true
-      this.$http
-        .post(`/user/login`, {
-          username: this.$refs.loginForm.username,
-          password: this.$refs.loginForm.password
-        })
-        .then((response) => {
-          if (this.$refs.loginForm) {
-            this.$refs.loginForm.done()
-          }
-
-          this.token = response.data
-          this.sending = false
-
-          return this.listApplications()
-        })
-        .catch((err) => {
-          this.$refs.errorSnackbar.show(`Login failed: ${err.message}`)
-
-          this.sending = false
-          this.token = null
-
-          if (this.$refs.loginForm) {
-            this.$refs.loginForm.done()
-          }
-        })
+    projectCreated: function(id, name) {
+      return this.listApplications()
     },
     logout: function () {
       this.sending = true
@@ -134,40 +101,48 @@ export default {
       .then((response) => {
         this.sending = false
         this.token = null
+        this.selectedApplication = null
+        this.games = []
       })
     },
-    openBugList: function () {
-      if (!this.$refs.bugReports) {
-        return Promise.resolve()
-      }
-
-      this.$refs.bugReports.initialize(this.token, this.selectedGame)
+    openProjectDialog: function () {
+      this.$refs.createProjectForm.openDialog()
     },
     listApplications: function () {
       this.sending = true
 
       return this.$http({
         method: 'get',
-        url: `/report/list-application/`,
+        url: `/project/list`,
         headers: {
           Authorization: `Bearer ${this.token}`
         }
       })
       .then((response) => {
         this.sending = false
-        this.games = response.data
 
-        if (this.selectedGame == null && this.games.length > 0) {
-          this.selectedGame = this.games[0]
+        if (response.data.length > 0) {
+          this.setupProjectWizard = true
+          this.applications = response.data
+
+        } else {
+          this.$refs.createProjectForm.forceOpenDialog()
+          this.setupProjectWizard = false
+          this.applications = []
         }
-
-        // Update the game
-        if (this.$refs.bugReports) {
-          this.$refs.bugReports.application_name = this.selectedGame
+        
+        if (this.selectedApplication == null && this.applications.length > 0) {
+          this.selectedApplication = this.applications[0]
         }
 
         return Promise.resolve()
       })
+    },
+    updateApplicationData: function (applicationData) {
+      this.selectedApplication.name = applicationData.name
+      this.selectedApplication.steam_id = applicationData.steam_id
+      this.selectedApplication.id = applicationData.id
+      this.selectedApplication.email = applicationData.email
     }
   }
 }

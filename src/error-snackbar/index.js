@@ -1,15 +1,19 @@
 export default {
   name: 'ErrorSnackbar',
+  props: ['error', 'message'],
   data: () => ({
     showSnackbar: false,
     position: 'center',
-    duration: 10000,
-    message: ''
+    duration: 10000
   }),
-  methods: {
-    show: function (message) {
-      this.message = message
-      this.showSnackbar = true
+  computed: {
+    errorMessage: function () {
+      return (this.error != null && this.message != null) ? `${this.message}: '${this.error.message}'`: null
+    }
+  },
+  watch: {
+    errorMessage: function () {
+      this.showSnackbar = this.errorMessage != null
     }
   }
 }

@@ -2,5 +2,4 @@
 -- ? : project id
 UPDATE project
   SET email = ?
-  WHERE id = ?
-  RETURNING email;
+  WHERE id = ?;
