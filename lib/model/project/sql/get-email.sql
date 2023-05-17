@@ -1,4 +1,4 @@
--- ? : project id
+-- ? : application id
 SELECT email FROM project
-  WHERE id == ?
+  WHERE steam_id == ?
   LIMIT 1;
