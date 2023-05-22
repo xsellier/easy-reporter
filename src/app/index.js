@@ -8,6 +8,8 @@ import BugList from '../bug-list/component.vue'
 import CreateAdminForm from '../create-admin-form/component.vue'
 import CreateProjectForm from '../create-project-form/component.vue'
 
+import { ref } from 'vue'
+
 export default {
   name: 'Application',
   components: {
@@ -34,10 +36,18 @@ export default {
       token: null,
       selectedApplication: null,
       applications: [],
+      versionList: [],
 
       showButton: false,
       errorMesage: null,
-      errorObject: null
+      errorObject: null,
+
+      reportData: null
+    }
+  },
+  watch: {
+    selectedApplication() {
+      return this.listVersions()
     }
   },
   mounted() {
@@ -74,11 +84,11 @@ export default {
       this.errorObject = error
     },
     adminCreated: function (token) {
-      this.token = token
+      this.token = ref(token)
       this.setupAdminWizard = true
     },
     loggedIn: function(token) {
-      this.token = token
+      this.token = ref(token)
 
       return this.listApplications()
     },
@@ -100,7 +110,7 @@ export default {
       })
       .then((response) => {
         this.sending = false
-        this.token = null
+        this.token = ref(null)
         this.selectedApplication = null
         this.games = []
       })
@@ -134,8 +144,37 @@ export default {
         if (this.selectedApplication == null && this.applications.length > 0) {
           this.selectedApplication = this.applications[0]
         }
+      })
+      .catch((err) => {
+        if (err.response && err.response.status < 500) {
+          this.token = null
+        }
 
-        return Promise.resolve()
+        this.sending = false
+        this.showError('Cannot list versions', err)
+      })
+    },
+    listVersions: function () {
+      this.sending = true
+
+      return this.$http({
+        method: 'get',
+        url: `/version/list/${this.selectedApplication.name}`,
+        headers: {
+          Authorization: `Bearer ${this.token}`
+        }
+      })
+      .then((response) => {
+        this.versionList = response.data
+        this.sending = false
+      })
+      .catch((err) => {
+        if (err.response && err.response.status < 500) {
+          this.token = null
+        }
+
+        this.sending = false
+        this.showError('Cannot list versions', err)
       })
     },
     updateApplicationData: function (applicationData) {
@@ -143,6 +182,10 @@ export default {
       this.selectedApplication.steam_id = applicationData.steam_id
       this.selectedApplication.id = applicationData.id
       this.selectedApplication.email = applicationData.email
+    },
+    openReportView: function (reportToView) {
+      this.tabView = 'reportList'
+      this.reportData = reportToView
     }
   }
 }

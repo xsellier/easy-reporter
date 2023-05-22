@@ -1,6 +1,6 @@
 export default {
   name: 'ReportList',
-  props: ['application_data', 'token'],
+  props: ['application_data', 'token', 'version_list', 'report_data'],
   emits: ['update:token'],
   data: () => ({
     versions: {},
@@ -12,7 +12,6 @@ export default {
 
     reports: [],
     version: [],
-    bugs: {},
     reportsBulkDelete: [],
     cache: {},
     report: null,
@@ -76,12 +75,36 @@ export default {
     }
   },
   watch: {
+    report_data(reportInfomations) {
+      return this.info(reportInfomations)
+    },
     application_data() {
       return this.list()
+    },
+    version_list(versionList) {
+      this.versions = versionList.reduce((acc, item) => {
+        acc[item.name] = item.cracked
+
+        return acc
+      }, {})
+      this.versionKeys = ['None'].concat(Object.keys(this.versions))
+      this.versionSelected = this.versionKeys[0]
+      
     }
   },
   mounted() {
+    this.versions = this.version_list.reduce((acc, item) => {
+      acc[item.name] = item.cracked
+
+      return acc
+    }, {})
+    this.versionKeys = ['None'].concat(Object.keys(this.versions))
+    this.versionSelected = this.versionKeys[0]
+
     return this.list()
+      .then(() => {
+        return this.info(this.report_data)
+      })
   },
   methods: {
     getPlatformIcon: function (platformName) {
@@ -233,20 +256,20 @@ export default {
         }
       })
       .then((response) => {
-        let rawReport = pako.ungzip(atob(response.data), { to: 'string' })
+        let rawReport = pako.ungzip(atob(response.data.data), { to: 'string' })
 
-        this.filename = report.filename
+        this.filename = response.data.filename
         this.report = JSON.parse(rawReport)
-        this.report.version = report.version
-        this.report.title = report.title
-        this.report.cracked = this.versions[this.report.version] || false
-        this.report.fixed = (this.bugs[report.version] != null && this.bugs[report.version][report.title] != null) ? this.bugs[report.version][report.title] : false
+        this.report.version = response.data.version
+        this.report.title = response.data.title
+        this.report.cracked = this.versions[response.data.version] || false
+        this.report.fixed = response.data.fixed
         this.sending = false
 
         // Change the value of the read value
-        this.reports.filter((itemReport) => itemReport.filename == report.filename).forEach((itemReport) => itemReport.read = '1')
+        this.reports.filter((itemReport) => itemReport.filename == response.data.filename).forEach((itemReport) => itemReport.read = '1')
 
-        this.selectedReport = report.filename
+        this.selectedReport = response.data.filename
       })
       .catch((err) => {
         if (err.response && err.response.status < 500) {
@@ -326,21 +349,13 @@ export default {
       })
     },
     changePage: function () {
-      this.emitUpdateSignal()
-    },
-    emitUpdateSignal: function () {
-      this.reportsBulkDelete = []
-      this.sending = true
-
       return this.listReports()
     },
     list: function () {
       this.sending = true
 
       return this.listReports()
-        .then(() => this.listVersions())
         .then(() => this.listPlatforms())
-        .then(() => this.listBugs())
     },
     listReports: function () {
       this.sending = true
@@ -382,34 +397,7 @@ export default {
         this.$emit('error', 'Cannot list reports', err)
       })
     },
-    listVersions: function () {
-      this.sending = true
-
-      return this.$http({
-        method: 'get',
-        url: `/version/list/${this.application_data.name}`,
-        headers: {
-          Authorization: `Bearer ${this.token}`
-        }
-      })
-      .then((response) => {
-        this.versions = response.data.reduce((acc, item) => {
-          acc[item.name] = item.cracked
-
-          return acc
-        }, {})
-        this.sending = false
-        this.versionKeys = ['None'].concat(Object.keys(this.versions))
-      })
-      .catch((err) => {
-        if (err.response && err.response.status < 500) {
-          this.$emit('update:token', null)
-        }
-
-        this.sending = false
-        this.$emit('error', 'Cannot list versions', err)
-      })
-    },
+ 
     listPlatforms: function () {
       this.sending = true
 
@@ -432,37 +420,6 @@ export default {
         this.platformKeys = ['None']
         this.sending = false
         this.$emit('error', 'Cannot list platforms', err)
-      })
-    },
-    listBugs: function () {
-      this.sending = true
-
-      return this.$http({
-        method: 'get',
-        url: `/bug/list/${this.application_data.name}`,
-        headers: {
-          Authorization: `Bearer ${this.token}`
-        }
-      })
-      .then((response) => {
-        this.bugs = response.data.reduce((acc, item) => {
-          if (acc[item.version] == null) {
-            acc[item.version] = {}
-          }
-
-          acc[item.version][item.title] = item.fixed
-
-          return acc
-        }, {})
-        this.sending = false
-      })
-      .catch((err) => {
-        if (err.response && err.response.status < 500) {
-          this.$emit('update:token', null)
-        }
-
-        this.sending = false
-        this.$emit('error', 'Cannot list bugs', err)
       })
     },
    

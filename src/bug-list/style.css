@@ -1,0 +1,45 @@
+.toolbar-first {
+  padding-top: 16px;
+}
+
+.bug-list-column {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+.bug-list-column-details {
+  width: 100%;
+}
+
+.bug-list-column-list {
+  width: 256px;
+  overflow-y: scroll;
+}
+
+.bug-list-footer {
+  bottom: 32px;
+  margin: auto;
+  align-self: center;
+}
+
+.bug-list-list {
+  display: block;
+  height: calc(100vh - var(--title-height) - var(--subtitle-height) - var(--footer-height) - var(--pagination-height));
+  overflow-y: scroll;
+}
+
+.selected {
+  background-color: #c7eaff;
+  color: #013a5c;
+}
+
+.bug-list-tooltip {
+  background-color: transparent;
+  color: white;
+}
+
+.bug-list-informations {
+  max-width: 800px;
+  margin: auto;
+}

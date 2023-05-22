@@ -1,0 +1,2129 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"v-",
+				"v-list-item-title"
+			],
+			[
+				"rota",
+				"rotation_index"
+			],
+			[
+				"gamee",
+				"gameengine_controller"
+			],
+			[
+				"intiai",
+				"initialize"
+			],
+			[
+				"gameen",
+				"gameengine_model"
+			],
+			[
+				"game_en",
+				"game_engine_model"
+			],
+			[
+				"COM",
+				"COMPONENTS_TYPE"
+			],
+			[
+				"tuto",
+				"tutoriel_controller"
+			],
+			[
+				"tutoriel",
+				"tutoriel_controller"
+			],
+			[
+				"get_server",
+				"get_server_load"
+			],
+			[
+				"server",
+				"server_model"
+			],
+			[
+				"CONN",
+				"CONNECT_ONESHOT"
+			],
+			[
+				"cha",
+				"character_accessory"
+			],
+			[
+				"get",
+				"get_value"
+			],
+			[
+				"charac",
+				"character_accessory"
+			],
+			[
+				"_unlock",
+				"_unlock_achievement_price"
+			],
+			[
+				"resolution",
+				"resolution_manager"
+			],
+			[
+				"reso",
+				"resolution_manager"
+			],
+			[
+				"get_orin",
+				"get_origin()"
+			],
+			[
+				"viewport",
+				"viewport_node"
+			],
+			[
+				"came",
+				"camera_node"
+			],
+			[
+				"get_global",
+				"get_global_pos"
+			],
+			[
+				"get_",
+				"get_nodes_in_group"
+			],
+			[
+				"MAX",
+				"MAX_ACCURACY"
+			],
+			[
+				"_update_text",
+				"_update_texture"
+			],
+			[
+				"employee",
+				"employee_model"
+			],
+			[
+				"CONNECT",
+				"CONNECT_ONESHOT"
+			],
+			[
+				"Res",
+				"ResourcePreloader"
+			],
+			[
+				"Refere",
+				"ReferenceFrame"
+			],
+			[
+				"genera",
+				"generate_textures"
+			],
+			[
+				"set_",
+				"set_modulate"
+			],
+			[
+				"employe",
+				"employee_utils"
+			],
+			[
+				"get_charac",
+				"get_character_colors"
+			],
+			[
+				"set_pre",
+				"set_pressed_button"
+			],
+			[
+				"chara",
+				"character_colors"
+			],
+			[
+				"max",
+				"maximum_value"
+			],
+			[
+				"draw_circl",
+				"draw_circle(...)"
+			],
+			[
+				"CONNEC",
+				"CONNECT_DEFERRED"
+			],
+			[
+				"game",
+				"game_data"
+			],
+			[
+				"get_s",
+				"get_size"
+			],
+			[
+				"draw_texture_rect",
+				"draw_texture_rect_region(...)"
+			],
+			[
+				"draw_tect",
+				"draw_texture_rect(...)"
+			],
+			[
+				"backgrou",
+				"background_node"
+			],
+			[
+				"key",
+				"key_font_color"
+			],
+			[
+				"config",
+				"configuration_manager"
+			],
+			[
+				"_update_min",
+				"_update_min_max_step"
+			],
+			[
+				"margin",
+				"margin_right"
+			],
+			[
+				"for",
+				"format_currency"
+			],
+			[
+				"curre",
+				"currency_model"
+			],
+			[
+				"empty",
+				"empty_node"
+			],
+			[
+				"draw_textu",
+				"draw_texture_rect_region(...)"
+			],
+			[
+				"control",
+				"control_size"
+			],
+			[
+				"draw_texture_",
+				"draw_texture_rect(...)"
+			],
+			[
+				"draw_texture",
+				"draw_texture_rect_region"
+			],
+			[
+				"get_child",
+				"get_child_count"
+			],
+			[
+				"num",
+				"number_utils"
+			],
+			[
+				"mini",
+				"minimum_position"
+			],
+			[
+				"min_ma",
+				"min_max_color"
+			],
+			[
+				"end_re",
+				"end_rect_region"
+			],
+			[
+				"number",
+				"number_utils"
+			],
+			[
+				"draw_lin",
+				"draw_line(...)"
+			],
+			[
+				"MARGIN",
+				"MARGIN_LEFT"
+			],
+			[
+				"draw_str",
+				"draw_string(...)"
+			],
+			[
+				"get_mini",
+				"get_minimum_size()"
+			],
+			[
+				"get_minim",
+				"get_minimum_size()"
+			],
+			[
+				"draw_styl",
+				"draw_style_box(...)"
+			],
+			[
+				"draw_te",
+				"draw_texture_rect"
+			],
+			[
+				"MOUSE_",
+				"MOUSE_MOTION"
+			],
+			[
+				"set_process",
+				"set_process_input"
+			],
+			[
+				"GRA",
+				"GRABBER_NORMAL"
+			],
+			[
+				"min",
+				"minimum_filter"
+			],
+			[
+				"draw_tex",
+				"draw_texture_rect_region"
+			],
+			[
+				"fore",
+				"foreground_range_texture"
+			],
+			[
+				"draw_line",
+				"draw_line(...)"
+			],
+			[
+				"avai",
+				"availability_label"
+			],
+			[
+				"resour",
+				"resource_manager"
+			],
+			[
+				"accept",
+				"accept_event()"
+			],
+			[
+				"__curren",
+				"__current_state"
+			],
+			[
+				"DARKGRE",
+				"DARKGREEN_COLOR"
+			],
+			[
+				"availab",
+				"availability"
+			],
+			[
+				"co",
+				"common_color_utils"
+			],
+			[
+				"DARK",
+				"DARKYELLOW_COLOR"
+			],
+			[
+				"get_select",
+				"get_selected_metadata"
+			],
+			[
+				"concur",
+				"concurrent_list"
+			],
+			[
+				"get_chil",
+				"get_children"
+			],
+			[
+				"get_comp",
+				"get_company_name"
+			],
+			[
+				"__",
+				"__owned_shares"
+			],
+			[
+				"CON",
+				"CONNECT_DEFERRED"
+			],
+			[
+				"TRANS_",
+				"TRANS_LINEAR"
+			],
+			[
+				"TRANS",
+				"TRANS_BOUNCE"
+			],
+			[
+				"remake",
+				"remake_model"
+			],
+			[
+				"indie",
+				"indie_model"
+			],
+			[
+				"button",
+				"button_name"
+			],
+			[
+				"_sort",
+				"_sort_function"
+			],
+			[
+				"Vector",
+				"Vector2"
+			],
+			[
+				"Vec",
+				"Vector2Array"
+			],
+			[
+				"match",
+				"match_utils"
+			],
+			[
+				"fon",
+				"font_color"
+			],
+			[
+				"custom",
+				"custom_fonts"
+			],
+			[
+				"typ",
+				"type_list"
+			],
+			[
+				"get_type_weight_fr",
+				"get_type_weight_from_data"
+			],
+			[
+				"type",
+				"type_list"
+			],
+			[
+				"set_proce",
+				"set_process_input"
+			],
+			[
+				"close_p",
+				"close_popup"
+			],
+			[
+				"current_ga",
+				"current_game_data"
+			],
+			[
+				"postmor",
+				"postmortem_model"
+			],
+			[
+				"t",
+				"type_list"
+			],
+			[
+				"get_gam",
+				"get_game_type_label"
+			],
+			[
+				"gametyp",
+				"gametype_model"
+			],
+			[
+				"genre_textu",
+				"genre_texture_list"
+			],
+			[
+				"genre_texture",
+				"genre_texture_list"
+			],
+			[
+				"ge",
+				"gametype_model.get_type_by_type_list"
+			],
+			[
+				"arra",
+				"array_utils"
+			],
+			[
+				"gamety",
+				"gametype_model"
+			],
+			[
+				"GREY",
+				"GREYBLUE_COLOR"
+			],
+			[
+				"mort",
+				"mortgages"
+			],
+			[
+				"get_line",
+				"get_line_edit"
+			],
+			[
+				"form",
+				"format_currency"
+			],
+			[
+				"get_child_",
+				"get_child_count()"
+			],
+			[
+				"set",
+				"set_foreground_texture"
+			],
+			[
+				"resource",
+				"resource_manager"
+			],
+			[
+				"is",
+				"is_inside_tree"
+			],
+			[
+				"current_game",
+				"current_game_data"
+			],
+			[
+				"market",
+				"marketing_model"
+			],
+			[
+				"tar",
+				"target_name"
+			],
+			[
+				"interpolate",
+				"interpolate_property"
+			],
+			[
+				"mirror-",
+				"mirror-animated"
+			],
+			[
+				"set_Pre",
+				"set_pressed"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "TODO",
+			"settings":
+			{
+				"buffer_size": 1299,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			},
+			"undo_stack":
+			[
+				[
+					17,
+					1,
+					"insert",
+					{
+						"characters": "\n\n-"
+					},
+					"AwAAAHUEAAAAAAAAdgQAAAAAAAAAAAAAdgQAAAAAAAB3BAAAAAAAAAAAAAB3BAAAAAAAAHgEAAAAAAAAAAAAAA",
+					"AQAAAAAAAAABAAAAdQQAAAAAAAB1BAAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					18,
+					1,
+					"insert",
+					{
+						"characters": " Pouvoir"
+					},
+					"CAAAAHgEAAAAAAAAeQQAAAAAAAAAAAAAeQQAAAAAAAB6BAAAAAAAAAAAAAB6BAAAAAAAAHsEAAAAAAAAAAAAAHsEAAAAAAAAfAQAAAAAAAAAAAAAfAQAAAAAAAB9BAAAAAAAAAAAAAB9BAAAAAAAAH4EAAAAAAAAAAAAAH4EAAAAAAAAfwQAAAAAAAAAAAAAfwQAAAAAAACABAAAAAAAAAAAAAA",
+					"AQAAAAAAAAABAAAAeAQAAAAAAAB4BAAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					19,
+					1,
+					"insert",
+					{
+						"characters": " marquer"
+					},
+					"CAAAAIAEAAAAAAAAgQQAAAAAAAAAAAAAgQQAAAAAAACCBAAAAAAAAAAAAACCBAAAAAAAAIMEAAAAAAAAAAAAAIMEAAAAAAAAhAQAAAAAAAAAAAAAhAQAAAAAAACFBAAAAAAAAAAAAACFBAAAAAAAAIYEAAAAAAAAAAAAAIYEAAAAAAAAhwQAAAAAAAAAAAAAhwQAAAAAAACIBAAAAAAAAAAAAAA",
+					"AQAAAAAAAAABAAAAgAQAAAAAAACABAAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					20,
+					1,
+					"insert",
+					{
+						"characters": " un"
+					},
+					"AwAAAIgEAAAAAAAAiQQAAAAAAAAAAAAAiQQAAAAAAACKBAAAAAAAAAAAAACKBAAAAAAAAIsEAAAAAAAAAAAAAA",
+					"AQAAAAAAAAABAAAAiAQAAAAAAACIBAAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					21,
+					1,
+					"insert",
+					{
+						"characters": " bug"
+					},
+					"BAAAAIsEAAAAAAAAjAQAAAAAAAAAAAAAjAQAAAAAAACNBAAAAAAAAAAAAACNBAAAAAAAAI4EAAAAAAAAAAAAAI4EAAAAAAAAjwQAAAAAAAAAAAAA",
+					"AQAAAAAAAAABAAAAiwQAAAAAAACLBAAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					22,
+					1,
+					"insert",
+					{
+						"characters": " comme"
+					},
+					"BgAAAI8EAAAAAAAAkAQAAAAAAAAAAAAAkAQAAAAAAACRBAAAAAAAAAAAAACRBAAAAAAAAJIEAAAAAAAAAAAAAJIEAAAAAAAAkwQAAAAAAAAAAAAAkwQAAAAAAACUBAAAAAAAAAAAAACUBAAAAAAAAJUEAAAAAAAAAAAAAA",
+					"AQAAAAAAAAABAAAAjwQAAAAAAACPBAAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					23,
+					1,
+					"insert",
+					{
+						"characters": " fixé/no"
+					},
+					"CAAAAJUEAAAAAAAAlgQAAAAAAAAAAAAAlgQAAAAAAACXBAAAAAAAAAAAAACXBAAAAAAAAJgEAAAAAAAAAAAAAJgEAAAAAAAAmQQAAAAAAAAAAAAAmQQAAAAAAACaBAAAAAAAAAAAAACaBAAAAAAAAJsEAAAAAAAAAAAAAJsEAAAAAAAAnAQAAAAAAAAAAAAAnAQAAAAAAACdBAAAAAAAAAAAAAA",
+					"AQAAAAAAAAABAAAAlQQAAAAAAACVBAAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					24,
+					1,
+					"insert",
+					{
+						"characters": "n"
+					},
+					"AQAAAJ0EAAAAAAAAngQAAAAAAAAAAAAA",
+					"AQAAAAAAAAABAAAAnQQAAAAAAACdBAAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					25,
+					1,
+					"insert",
+					{
+						"characters": " fixé"
+					},
+					"BQAAAJ4EAAAAAAAAnwQAAAAAAAAAAAAAnwQAAAAAAACgBAAAAAAAAAAAAACgBAAAAAAAAKEEAAAAAAAAAAAAAKEEAAAAAAAAogQAAAAAAAAAAAAAogQAAAAAAACjBAAAAAAAAAAAAAA",
+					"AQAAAAAAAAABAAAAngQAAAAAAACeBAAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					26,
+					1,
+					"insert",
+					{
+						"characters": " depuis"
+					},
+					"BwAAAKMEAAAAAAAApAQAAAAAAAAAAAAApAQAAAAAAAClBAAAAAAAAAAAAAClBAAAAAAAAKYEAAAAAAAAAAAAAKYEAAAAAAAApwQAAAAAAAAAAAAApwQAAAAAAACoBAAAAAAAAAAAAACoBAAAAAAAAKkEAAAAAAAAAAAAAKkEAAAAAAAAqgQAAAAAAAAAAAAA",
+					"AQAAAAAAAAABAAAAowQAAAAAAACjBAAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					27,
+					1,
+					"insert",
+					{
+						"characters": " la"
+					},
+					"AwAAAKoEAAAAAAAAqwQAAAAAAAAAAAAAqwQAAAAAAACsBAAAAAAAAAAAAACsBAAAAAAAAK0EAAAAAAAAAAAAAA",
+					"AQAAAAAAAAABAAAAqgQAAAAAAACqBAAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					28,
+					1,
+					"insert",
+					{
+						"characters": " lsite"
+					},
+					"BgAAAK0EAAAAAAAArgQAAAAAAAAAAAAArgQAAAAAAACvBAAAAAAAAAAAAACvBAAAAAAAALAEAAAAAAAAAAAAALAEAAAAAAAAsQQAAAAAAAAAAAAAsQQAAAAAAACyBAAAAAAAAAAAAACyBAAAAAAAALMEAAAAAAAAAAAAAA",
+					"AQAAAAAAAAABAAAArQQAAAAAAACtBAAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					29,
+					1,
+					"insert",
+					{
+						"characters": " des"
+					},
+					"BAAAALMEAAAAAAAAtAQAAAAAAAAAAAAAtAQAAAAAAAC1BAAAAAAAAAAAAAC1BAAAAAAAALYEAAAAAAAAAAAAALYEAAAAAAAAtwQAAAAAAAAAAAAA",
+					"AQAAAAAAAAABAAAAswQAAAAAAACzBAAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					30,
+					1,
+					"insert",
+					{
+						"characters": " bugs"
+					},
+					"BQAAALcEAAAAAAAAuAQAAAAAAAAAAAAAuAQAAAAAAAC5BAAAAAAAAAAAAAC5BAAAAAAAALoEAAAAAAAAAAAAALoEAAAAAAAAuwQAAAAAAAAAAAAAuwQAAAAAAAC8BAAAAAAAAAAAAAA",
+					"AQAAAAAAAAABAAAAtwQAAAAAAAC3BAAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					31,
+					1,
+					"insert",
+					{
+						"characters": "\n-"
+					},
+					"AgAAALwEAAAAAAAAvQQAAAAAAAAAAAAAvQQAAAAAAAC+BAAAAAAAAAAAAAA",
+					"AQAAAAAAAAABAAAAvAQAAAAAAAC8BAAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					32,
+					1,
+					"insert",
+					{
+						"characters": " Ajouter"
+					},
+					"CAAAAL4EAAAAAAAAvwQAAAAAAAAAAAAAvwQAAAAAAADABAAAAAAAAAAAAADABAAAAAAAAMEEAAAAAAAAAAAAAMEEAAAAAAAAwgQAAAAAAAAAAAAAwgQAAAAAAADDBAAAAAAAAAAAAADDBAAAAAAAAMQEAAAAAAAAAAAAAMQEAAAAAAAAxQQAAAAAAAAAAAAAxQQAAAAAAADGBAAAAAAAAAAAAAA",
+					"AQAAAAAAAAABAAAAvgQAAAAAAAC+BAAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					33,
+					1,
+					"insert",
+					{
+						"characters": " des"
+					},
+					"BAAAAMYEAAAAAAAAxwQAAAAAAAAAAAAAxwQAAAAAAADIBAAAAAAAAAAAAADIBAAAAAAAAMkEAAAAAAAAAAAAAMkEAAAAAAAAygQAAAAAAAAAAAAA",
+					"AQAAAAAAAAABAAAAxgQAAAAAAADGBAAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					34,
+					1,
+					"insert",
+					{
+						"characters": " bugs"
+					},
+					"BQAAAMoEAAAAAAAAywQAAAAAAAAAAAAAywQAAAAAAADMBAAAAAAAAAAAAADMBAAAAAAAAM0EAAAAAAAAAAAAAM0EAAAAAAAAzgQAAAAAAAAAAAAAzgQAAAAAAADPBAAAAAAAAAAAAAA",
+					"AQAAAAAAAAABAAAAygQAAAAAAADKBAAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					35,
+					1,
+					"insert",
+					{
+						"characters": " a"
+					},
+					"AgAAAM8EAAAAAAAA0AQAAAAAAAAAAAAA0AQAAAAAAADRBAAAAAAAAAAAAAA",
+					"AQAAAAAAAAABAAAAzwQAAAAAAADPBAAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					36,
+					1,
+					"insert",
+					{
+						"characters": " une"
+					},
+					"BAAAANEEAAAAAAAA0gQAAAAAAAAAAAAA0gQAAAAAAADTBAAAAAAAAAAAAADTBAAAAAAAANQEAAAAAAAAAAAAANQEAAAAAAAA1QQAAAAAAAAAAAAA",
+					"AQAAAAAAAAABAAAA0QQAAAAAAADRBAAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					37,
+					1,
+					"insert",
+					{
+						"characters": " ignoreList,"
+					},
+					"DAAAANUEAAAAAAAA1gQAAAAAAAAAAAAA1gQAAAAAAADXBAAAAAAAAAAAAADXBAAAAAAAANgEAAAAAAAAAAAAANgEAAAAAAAA2QQAAAAAAAAAAAAA2QQAAAAAAADaBAAAAAAAAAAAAADaBAAAAAAAANsEAAAAAAAAAAAAANsEAAAAAAAA3AQAAAAAAAAAAAAA3AQAAAAAAADdBAAAAAAAAAAAAADdBAAAAAAAAN4EAAAAAAAAAAAAAN4EAAAAAAAA3wQAAAAAAAAAAAAA3wQAAAAAAADgBAAAAAAAAAAAAADgBAAAAAAAAOEEAAAAAAAAAAAAAA",
+					"AQAAAAAAAAABAAAA1QQAAAAAAADVBAAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					38,
+					1,
+					"insert",
+					{
+						"characters": " de"
+					},
+					"AwAAAOEEAAAAAAAA4gQAAAAAAAAAAAAA4gQAAAAAAADjBAAAAAAAAAAAAADjBAAAAAAAAOQEAAAAAAAAAAAAAA",
+					"AQAAAAAAAAABAAAA4QQAAAAAAADhBAAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					39,
+					1,
+					"insert",
+					{
+						"characters": " sorte"
+					},
+					"BgAAAOQEAAAAAAAA5QQAAAAAAAAAAAAA5QQAAAAAAADmBAAAAAAAAAAAAADmBAAAAAAAAOcEAAAAAAAAAAAAAOcEAAAAAAAA6AQAAAAAAAAAAAAA6AQAAAAAAADpBAAAAAAAAAAAAADpBAAAAAAAAOoEAAAAAAAAAAAAAA",
+					"AQAAAAAAAAABAAAA5AQAAAAAAADkBAAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					40,
+					1,
+					"insert",
+					{
+						"characters": " a"
+					},
+					"AgAAAOoEAAAAAAAA6wQAAAAAAAAAAAAA6wQAAAAAAADsBAAAAAAAAAAAAAA",
+					"AQAAAAAAAAABAAAA6gQAAAAAAADqBAAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					41,
+					1,
+					"insert",
+					{
+						"characters": " ce"
+					},
+					"AwAAAOwEAAAAAAAA7QQAAAAAAAAAAAAA7QQAAAAAAADuBAAAAAAAAAAAAADuBAAAAAAAAO8EAAAAAAAAAAAAAA",
+					"AQAAAAAAAAABAAAA7AQAAAAAAADsBAAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					42,
+					1,
+					"insert",
+					{
+						"characters": " que"
+					},
+					"BAAAAO8EAAAAAAAA8AQAAAAAAAAAAAAA8AQAAAAAAADxBAAAAAAAAAAAAADxBAAAAAAAAPIEAAAAAAAAAAAAAPIEAAAAAAAA8wQAAAAAAAAAAAAA",
+					"AQAAAAAAAAABAAAA7wQAAAAAAADvBAAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					43,
+					1,
+					"insert",
+					{
+						"characters": " ces"
+					},
+					"BAAAAPMEAAAAAAAA9AQAAAAAAAAAAAAA9AQAAAAAAAD1BAAAAAAAAAAAAAD1BAAAAAAAAPYEAAAAAAAAAAAAAPYEAAAAAAAA9wQAAAAAAAAAAAAA",
+					"AQAAAAAAAAABAAAA8wQAAAAAAADzBAAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					44,
+					1,
+					"insert",
+					{
+						"characters": " bugs"
+					},
+					"BQAAAPcEAAAAAAAA+AQAAAAAAAAAAAAA+AQAAAAAAAD5BAAAAAAAAAAAAAD5BAAAAAAAAPoEAAAAAAAAAAAAAPoEAAAAAAAA+wQAAAAAAAAAAAAA+wQAAAAAAAD8BAAAAAAAAAAAAAA",
+					"AQAAAAAAAAABAAAA9wQAAAAAAAD3BAAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					45,
+					1,
+					"insert",
+					{
+						"characters": " soient"
+					},
+					"BwAAAPwEAAAAAAAA/QQAAAAAAAAAAAAA/QQAAAAAAAD+BAAAAAAAAAAAAAD+BAAAAAAAAP8EAAAAAAAAAAAAAP8EAAAAAAAAAAUAAAAAAAAAAAAAAAUAAAAAAAABBQAAAAAAAAAAAAABBQAAAAAAAAIFAAAAAAAAAAAAAAIFAAAAAAAAAwUAAAAAAAAAAAAA",
+					"AQAAAAAAAAABAAAA/AQAAAAAAAD8BAAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					46,
+					1,
+					"insert",
+					{
+						"characters": " juste"
+					},
+					"BgAAAAMFAAAAAAAABAUAAAAAAAAAAAAABAUAAAAAAAAFBQAAAAAAAAAAAAAFBQAAAAAAAAYFAAAAAAAAAAAAAAYFAAAAAAAABwUAAAAAAAAAAAAABwUAAAAAAAAIBQAAAAAAAAAAAAAIBQAAAAAAAAkFAAAAAAAAAAAAAA",
+					"AQAAAAAAAAABAAAAAwUAAAAAAAADBQAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					47,
+					1,
+					"insert",
+					{
+						"characters": " ignoŕes"
+					},
+					"CAAAAAkFAAAAAAAACgUAAAAAAAAAAAAACgUAAAAAAAALBQAAAAAAAAAAAAALBQAAAAAAAAwFAAAAAAAAAAAAAAwFAAAAAAAADQUAAAAAAAAAAAAADQUAAAAAAAAOBQAAAAAAAAAAAAAOBQAAAAAAAA8FAAAAAAAAAAAAAA8FAAAAAAAAEAUAAAAAAAAAAAAAEAUAAAAAAAARBQAAAAAAAAAAAAA",
+					"AQAAAAAAAAABAAAACQUAAAAAAAAJBQAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					48,
+					1,
+					"insert",
+					{
+						"characters": " par"
+					},
+					"BAAAABEFAAAAAAAAEgUAAAAAAAAAAAAAEgUAAAAAAAATBQAAAAAAAAAAAAATBQAAAAAAABQFAAAAAAAAAAAAABQFAAAAAAAAFQUAAAAAAAAAAAAA",
+					"AQAAAAAAAAABAAAAEQUAAAAAAAARBQAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					49,
+					1,
+					"insert",
+					{
+						"characters": " le"
+					},
+					"AwAAABUFAAAAAAAAFgUAAAAAAAAAAAAAFgUAAAAAAAAXBQAAAAAAAAAAAAAXBQAAAAAAABgFAAAAAAAAAAAAAA",
+					"AQAAAAAAAAABAAAAFQUAAAAAAAAVBQAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					50,
+					1,
+					"insert",
+					{
+						"characters": " backend"
+					},
+					"CAAAABgFAAAAAAAAGQUAAAAAAAAAAAAAGQUAAAAAAAAaBQAAAAAAAAAAAAAaBQAAAAAAABsFAAAAAAAAAAAAABsFAAAAAAAAHAUAAAAAAAAAAAAAHAUAAAAAAAAdBQAAAAAAAAAAAAAdBQAAAAAAAB4FAAAAAAAAAAAAAB4FAAAAAAAAHwUAAAAAAAAAAAAAHwUAAAAAAAAgBQAAAAAAAAAAAAA",
+					"AQAAAAAAAAABAAAAGAUAAAAAAAAYBQAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					51,
+					1,
+					"insert",
+					{
+						"characters": " "
+					},
+					"AQAAACAFAAAAAAAAIQUAAAAAAAAAAAAA",
+					"AQAAAAAAAAABAAAAIAUAAAAAAAAgBQAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					52,
+					1,
+					"insert_snippet",
+					{
+						"contents": "($0)"
+					},
+					"AQAAACEFAAAAAAAAIwUAAAAAAAAAAAAA",
+					"AQAAAAAAAAABAAAAIQUAAAAAAAAhBQAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					53,
+					1,
+					"insert",
+					{
+						"characters": "rapport"
+					},
+					"BwAAACIFAAAAAAAAIwUAAAAAAAAAAAAAIwUAAAAAAAAkBQAAAAAAAAAAAAAkBQAAAAAAACUFAAAAAAAAAAAAACUFAAAAAAAAJgUAAAAAAAAAAAAAJgUAAAAAAAAnBQAAAAAAAAAAAAAnBQAAAAAAACgFAAAAAAAAAAAAACgFAAAAAAAAKQUAAAAAAAAAAAAA",
+					"AQAAAAAAAAABAAAAIgUAAAAAAAAiBQAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					54,
+					1,
+					"insert",
+					{
+						"characters": " non"
+					},
+					"BAAAACkFAAAAAAAAKgUAAAAAAAAAAAAAKgUAAAAAAAArBQAAAAAAAAAAAAArBQAAAAAAACwFAAAAAAAAAAAAACwFAAAAAAAALQUAAAAAAAAAAAAA",
+					"AQAAAAAAAAABAAAAKQUAAAAAAAApBQAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					55,
+					1,
+					"insert",
+					{
+						"characters": " télé"
+					},
+					"BQAAAC0FAAAAAAAALgUAAAAAAAAAAAAALgUAAAAAAAAvBQAAAAAAAAAAAAAvBQAAAAAAADAFAAAAAAAAAAAAADAFAAAAAAAAMQUAAAAAAAAAAAAAMQUAAAAAAAAyBQAAAAAAAAAAAAA",
+					"AQAAAAAAAAABAAAALQUAAAAAAAAtBQAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					56,
+					1,
+					"insert",
+					{
+						"characters": "ca"
+					},
+					"AgAAADIFAAAAAAAAMwUAAAAAAAAAAAAAMwUAAAAAAAA0BQAAAAAAAAAAAAA",
+					"AQAAAAAAAAABAAAAMgUAAAAAAAAyBQAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					57,
+					3,
+					"delete_word",
+					{
+						"forward": false
+					},
+					"AwAAAC4FAAAAAAAALgUAAAAAAAAIAAAAdMOpbMOpY2EqBQAAAAAAACoFAAAAAAAABAAAAG5vbiAiBQAAAAAAACIFAAAAAAAACAAAAHJhcHBvcnQg",
+					"AQAAAAAAAAABAAAANAUAAAAAAAA0BQAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					58,
+					1,
+					"run_macro_file",
+					{
+						"file": "res://Packages/Default/Delete Left Right.sublime-macro"
+					},
+					"AgAAACEFAAAAAAAAIQUAAAAAAAABAAAAKCEFAAAAAAAAIQUAAAAAAAABAAAAKQ",
+					"AQAAAAAAAAABAAAAIgUAAAAAAAAiBQAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					59,
+					1,
+					"left_delete",
+					null,
+					"AQAAACAFAAAAAAAAIAUAAAAAAAABAAAAIA",
+					"AQAAAAAAAAABAAAAIQUAAAAAAAAhBQAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					60,
+					1,
+					"insert",
+					{
+						"characters": ","
+					},
+					"AQAAACAFAAAAAAAAIQUAAAAAAAAAAAAA",
+					"AQAAAAAAAAABAAAAIAUAAAAAAAAgBQAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					61,
+					1,
+					"insert",
+					{
+						"characters": " stocké"
+					},
+					"BwAAACEFAAAAAAAAIgUAAAAAAAAAAAAAIgUAAAAAAAAjBQAAAAAAAAAAAAAjBQAAAAAAACQFAAAAAAAAAAAAACQFAAAAAAAAJQUAAAAAAAAAAAAAJQUAAAAAAAAmBQAAAAAAAAAAAAAmBQAAAAAAACcFAAAAAAAAAAAAACcFAAAAAAAAKAUAAAAAAAAAAAAA",
+					"AQAAAAAAAAABAAAAIQUAAAAAAAAhBQAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					62,
+					1,
+					"delete_word",
+					{
+						"forward": false
+					},
+					"AQAAACIFAAAAAAAAIgUAAAAAAAAHAAAAc3RvY2vDqQ",
+					"AQAAAAAAAAABAAAAKAUAAAAAAAAoBQAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					63,
+					2,
+					"left_delete",
+					null,
+					"AgAAACEFAAAAAAAAIQUAAAAAAAABAAAAICAFAAAAAAAAIAUAAAAAAAABAAAALA",
+					"AQAAAAAAAAABAAAAIgUAAAAAAAAiBQAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					64,
+					1,
+					"insert",
+					{
+						"characters": ")"
+					},
+					"AQAAACAFAAAAAAAAIQUAAAAAAAAAAAAA",
+					"AQAAAAAAAAABAAAAIAUAAAAAAAAgBQAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					67,
+					2,
+					"left_delete",
+					null,
+					"AgAAAA8FAAAAAAAADwUAAAAAAAABAAAAZQ4FAAAAAAAADgUAAAAAAAACAAAAxZU",
+					"AQAAAAAAAAABAAAAEAUAAAAAAAAQBQAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					68,
+					1,
+					"insert",
+					{
+						"characters": "ré"
+					},
+					"AgAAAA4FAAAAAAAADwUAAAAAAAAAAAAADwUAAAAAAAAQBQAAAAAAAAAAAAA",
+					"AQAAAAAAAAABAAAADgUAAAAAAAAOBQAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					71,
+					1,
+					"insert",
+					{
+						"characters": "\n*"
+					},
+					"AgAAAHYEAAAAAAAAdwQAAAAAAAAAAAAAdwQAAAAAAAB4BAAAAAAAAAAAAAA",
+					"AQAAAAAAAAABAAAAdgQAAAAAAAB2BAAAAAAAAP///////+9/"
+				],
+				[
+					72,
+					1,
+					"left_delete",
+					null,
+					"AQAAAHcEAAAAAAAAdwQAAAAAAAABAAAAKg",
+					"AQAAAAAAAAABAAAAeAQAAAAAAAB4BAAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					73,
+					1,
+					"insert",
+					{
+						"characters": "#"
+					},
+					"AQAAAHcEAAAAAAAAeAQAAAAAAAAAAAAA",
+					"AQAAAAAAAAABAAAAdwQAAAAAAAB3BAAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					74,
+					1,
+					"insert",
+					{
+						"characters": " TODO"
+					},
+					"BQAAAHgEAAAAAAAAeQQAAAAAAAAAAAAAeQQAAAAAAAB6BAAAAAAAAAAAAAB6BAAAAAAAAHsEAAAAAAAAAAAAAHsEAAAAAAAAfAQAAAAAAAAAAAAAfAQAAAAAAAB9BAAAAAAAAAAAAAA",
+					"AQAAAAAAAAABAAAAeAQAAAAAAAB4BAAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					81,
+					2,
+					"right_delete",
+					null,
+					"AgAAAMEAAAAAAAAAwQAAAAAAAAABAAAAYcEAAAAAAAAAwQAAAAAAAAABAAAAZw",
+					"AQAAAAAAAAABAAAAwQAAAAAAAADBAAAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					85,
+					1,
+					"right_delete",
+					null,
+					"AQAAAO4AAAAAAAAA7gAAAAAAAAABAAAALQ",
+					"AQAAAAAAAAABAAAA7gAAAAAAAADuAAAAAAAAAAAAAAAAADRA"
+				],
+				[
+					86,
+					1,
+					"insert",
+					{
+						"characters": "x"
+					},
+					"AQAAAO4AAAAAAAAA7wAAAAAAAAAAAAAA",
+					"AQAAAAAAAAABAAAA7gAAAAAAAADuAAAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					90,
+					1,
+					"right_delete",
+					null,
+					"AQAAAEkBAAAAAAAASQEAAAAAAAABAAAALQ",
+					"AQAAAAAAAAABAAAASQEAAAAAAABJAQAAAAAAAAAAAAAAADRA"
+				],
+				[
+					91,
+					1,
+					"insert",
+					{
+						"characters": "x"
+					},
+					"AQAAAEkBAAAAAAAASgEAAAAAAAAAAAAA",
+					"AQAAAAAAAAABAAAASQEAAAAAAABJAQAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					95,
+					1,
+					"right_delete",
+					null,
+					"AQAAAMABAAAAAAAAwAEAAAAAAAABAAAALQ",
+					"AQAAAAAAAAABAAAAwAEAAAAAAADAAQAAAAAAAAAAAAAAADRA"
+				],
+				[
+					96,
+					1,
+					"insert",
+					{
+						"characters": "x"
+					},
+					"AQAAAMABAAAAAAAAwQEAAAAAAAAAAAAA",
+					"AQAAAAAAAAABAAAAwAEAAAAAAADAAQAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					99,
+					1,
+					"right_delete",
+					null,
+					"AQAAAAECAAAAAAAAAQIAAAAAAAABAAAALQ",
+					"AQAAAAAAAAABAAAAAQIAAAAAAAABAgAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					100,
+					1,
+					"insert",
+					{
+						"characters": "x"
+					},
+					"AQAAAAECAAAAAAAAAgIAAAAAAAAAAAAA",
+					"AQAAAAAAAAABAAAAAQIAAAAAAAABAgAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					103,
+					1,
+					"right_delete",
+					null,
+					"AQAAACgCAAAAAAAAKAIAAAAAAAABAAAALQ",
+					"AQAAAAAAAAABAAAAKAIAAAAAAAAoAgAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					104,
+					1,
+					"insert",
+					{
+						"characters": "x"
+					},
+					"AQAAACgCAAAAAAAAKQIAAAAAAAAAAAAA",
+					"AQAAAAAAAAABAAAAKAIAAAAAAAAoAgAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					109,
+					1,
+					"right_delete",
+					null,
+					"AQAAAMQCAAAAAAAAxAIAAAAAAAABAAAALQ",
+					"AQAAAAAAAAABAAAAxAIAAAAAAADEAgAAAAAAAAAAAAAAADRA"
+				],
+				[
+					110,
+					1,
+					"insert",
+					{
+						"characters": "x"
+					},
+					"AQAAAMQCAAAAAAAAxQIAAAAAAAAAAAAA",
+					"AQAAAAAAAAABAAAAxAIAAAAAAADEAgAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					113,
+					1,
+					"right_delete",
+					null,
+					"AQAAAPQCAAAAAAAA9AIAAAAAAAABAAAALQ",
+					"AQAAAAAAAAABAAAA9AIAAAAAAAD0AgAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					114,
+					1,
+					"insert",
+					{
+						"characters": "x"
+					},
+					"AQAAAPQCAAAAAAAA9QIAAAAAAAAAAAAA",
+					"AQAAAAAAAAABAAAA9AIAAAAAAAD0AgAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					120,
+					1,
+					"right_delete",
+					null,
+					"AQAAAF8DAAAAAAAAXwMAAAAAAAABAAAALQ",
+					"AQAAAAAAAAABAAAAXwMAAAAAAABfAwAAAAAAAAAAAAAAADRA"
+				],
+				[
+					121,
+					1,
+					"insert",
+					{
+						"characters": "x"
+					},
+					"AQAAAF8DAAAAAAAAYAMAAAAAAAAAAAAA",
+					"AQAAAAAAAAABAAAAXwMAAAAAAABfAwAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					124,
+					1,
+					"right_delete",
+					null,
+					"AQAAAMQDAAAAAAAAxAMAAAAAAAABAAAALQ",
+					"AQAAAAAAAAABAAAAxAMAAAAAAADEAwAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					125,
+					1,
+					"insert",
+					{
+						"characters": "x"
+					},
+					"AQAAAMQDAAAAAAAAxQMAAAAAAAAAAAAA",
+					"AQAAAAAAAAABAAAAxAMAAAAAAADEAwAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					129,
+					1,
+					"cut",
+					null,
+					"AQAAAHwEAAAAAAAAfAQAAAAAAACtAAAALSBQb3V2b2lyIG1hcnF1ZXIgdW4gYnVnIGNvbW1lIGZpeMOpL25vbiBmaXjDqSBkZXB1aXMgbGEgbHNpdGUgZGVzIGJ1Z3MKLSBBam91dGVyIGRlcyBidWdzIGEgdW5lIGlnbm9yZUxpc3QsIGRlIHNvcnRlIGEgY2UgcXVlIGNlcyBidWdzIHNvaWVudCBqdXN0ZSBpZ25vcsOpcyBwYXIgbGUgYmFja2VuZCk",
+					"AQAAAAAAAAABAAAAJgUAAAAAAAB8BAAAAAAAAAAAAAAAAAAA"
+				],
+				[
+					132,
+					1,
+					"insert",
+					{
+						"characters": "\n"
+					},
+					"AQAAAPMDAAAAAAAA9AMAAAAAAAAAAAAA",
+					"AQAAAAAAAAABAAAA8wMAAAAAAADzAwAAAAAAAAAAAAAAAAAA"
+				],
+				[
+					134,
+					1,
+					"insert",
+					{
+						"characters": "\n"
+					},
+					"AQAAAPMDAAAAAAAA9AMAAAAAAAAAAAAA",
+					"AQAAAAAAAAABAAAA8wMAAAAAAADzAwAAAAAAAAAAAAAAAAAA"
+				],
+				[
+					135,
+					1,
+					"paste",
+					null,
+					"AQAAAPQDAAAAAAAAngQAAAAAAAAAAAAA",
+					"AQAAAAAAAAABAAAA9AMAAAAAAAD0AwAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					138,
+					2,
+					"right_delete",
+					null,
+					"AQAAAB8FAAAAAAAAHwUAAAAAAAAJAAAACgojIFRPRE8K",
+					"AQAAAAAAAAABAAAAKAUAAAAAAAAfBQAAAAAAAAAAAAAAAAAA"
+				],
+				[
+					141,
+					1,
+					"right_delete",
+					null,
+					"AQAAAPQDAAAAAAAA9AMAAAAAAAABAAAALQ",
+					"AQAAAAAAAAABAAAA9AMAAAAAAAD0AwAAAAAAAAAAAAAAAAAA"
+				],
+				[
+					142,
+					1,
+					"insert",
+					{
+						"characters": "x"
+					},
+					"AQAAAPQDAAAAAAAA9QMAAAAAAAAAAAAA",
+					"AQAAAAAAAAABAAAA9AMAAAAAAAD0AwAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					145,
+					1,
+					"right_delete",
+					null,
+					"AQAAADoEAAAAAAAAOgQAAAAAAAABAAAALQ",
+					"AQAAAAAAAAABAAAAOgQAAAAAAAA6BAAAAAAAAAAAAAAAAAAA"
+				],
+				[
+					146,
+					1,
+					"insert",
+					{
+						"characters": "x"
+					},
+					"AQAAADoEAAAAAAAAOwQAAAAAAAAAAAAA",
+					"AQAAAAAAAAABAAAAOgQAAAAAAAA6BAAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					148,
+					1,
+					"right_delete",
+					null,
+					"AQAAAJ8EAAAAAAAAnwQAAAAAAAABAAAACg",
+					"AQAAAAAAAAABAAAAnwQAAAAAAACfBAAAAAAAAAAAAAAAACRA"
+				],
+				[
+					150,
+					2,
+					"right_delete",
+					null,
+					"AgAAAJ8EAAAAAAAAnwQAAAAAAAAMAAAATmljZSB0byBoYXZlnwQAAAAAAACfBAAAAAAAAAEAAAAK",
+					"AQAAAAAAAAABAAAAnwQAAAAAAACrBAAAAAAAAP///////+9/"
+				],
+				[
+					151,
+					1,
+					"insert",
+					{
+						"characters": "x"
+					},
+					"AQAAAJ8EAAAAAAAAoAQAAAAAAAAAAAAA",
+					"AQAAAAAAAAABAAAAnwQAAAAAAACfBAAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					152,
+					1,
+					"insert",
+					{
+						"characters": " "
+					},
+					"AQAAAKAEAAAAAAAAoQQAAAAAAAAAAAAA",
+					"AQAAAAAAAAABAAAAoAQAAAAAAACgBAAAAAAAAAAAAAAAAPC/"
+				]
+			]
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"rein",
+				"Indentation: Reindent Lines"
+			],
+			[
+				"json",
+				"JSON Reindent: reindent file or selection"
+			],
+			[
+				"JSON",
+				"JSON Reindent: reindent file or selection"
+			],
+			[
+				"gdscr",
+				"Set Syntax: GDScript (Godot Engine)"
+			],
+			[
+				"lower",
+				"Convert Case: Lower Case"
+			],
+			[
+				"markdown",
+				"Markdown Preview: Preview in Browser"
+			],
+			[
+				"upper",
+				"Convert Case: Upper Case"
+			],
+			[
+				"gdscript",
+				"Set Syntax: GDScript (Godot Engine)"
+			],
+			[
+				"gds",
+				"Set Syntax: GDScript (Godot Engine)"
+			],
+			[
+				"lisp",
+				"Set Syntax: Lisp"
+			],
+			[
+				"sort",
+				"Sort Lines"
+			],
+			[
+				"JON",
+				"JSON Reindent: reindent file or selection"
+			],
+			[
+				"upp",
+				"Convert Case: Upper Case"
+			],
+			[
+				"log",
+				"Set Syntax: Git Log"
+			],
+			[
+				"syntax",
+				"Set Syntax: LaTeX Log"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"JSOn",
+				"JSON Reindent: reindent file or selection"
+			],
+			[
+				"yaml",
+				"Set Syntax: YAML"
+			],
+			[
+				"J",
+				"JSON Reindent: reindent file or selection"
+			],
+			[
+				"javascript",
+				"Set Syntax: JavaScript"
+			],
+			[
+				"glsl",
+				"Set Syntax: GLSL"
+			],
+			[
+				"set syntax ba",
+				"Set Syntax: Bash"
+			],
+			[
+				"shell",
+				"Terminus: List Shells"
+			],
+			[
+				"uPPER",
+				"Convert Case: Upper Case"
+			],
+			[
+				"gdscrip",
+				"Set Syntax: GDScript (Godot Engine)"
+			],
+			[
+				"gdscip",
+				"Set Syntax: GDScript (Godot Engine)"
+			],
+			[
+				"Lower",
+				"Convert Case: Lower Case"
+			],
+			[
+				"UPPER",
+				"Convert Case: Upper Case"
+			],
+			[
+				"python",
+				"Set Syntax: Python"
+			],
+			[
+				"perl",
+				"Set Syntax: Perl"
+			],
+			[
+				"UPP",
+				"Convert Case: Upper Case"
+			],
+			[
+				"gdsc",
+				"Set Syntax: GDScript (Godot Engine)"
+			],
+			[
+				"pytho",
+				"Set Syntax: Python"
+			],
+			[
+				"lo",
+				"Convert Case: Lower Case"
+			],
+			[
+				"r",
+				"Indentation: Reindent Lines"
+			],
+			[
+				"reinde",
+				"Indentation: Reindent Lines"
+			],
+			[
+				"reind",
+				"Indentation: Reindent Lines"
+			],
+			[
+				"preview",
+				"Markdown Preview: Preview in Browser"
+			],
+			[
+				"html",
+				"Set Syntax: HTML"
+			],
+			[
+				"remove",
+				"Package Control: Remove Package"
+			],
+			[
+				"beau",
+				"HTMLBeautify"
+			],
+			[
+				"reindent",
+				"JSON Reindent: reindent file or selection"
+			],
+			[
+				"rei",
+				"Indentation: Reindent Lines"
+			],
+			[
+				"previ",
+				"Markdown Preview: Preview in Browser"
+			],
+			[
+				"javasc",
+				"Set Syntax: JavaScript"
+			],
+			[
+				"up",
+				"Convert Case: Upper Case"
+			],
+			[
+				"UP",
+				"Convert Case: Upper Case"
+			],
+			[
+				"JSO",
+				"JSON Reindent: reindent file or selection"
+			],
+			[
+				"gdlint",
+				"Package Control: Advanced Install Package"
+			],
+			[
+				"GLSL",
+				"Set Syntax: GLSL"
+			],
+			[
+				"gls",
+				"View: Toggle Side Bar"
+			],
+			[
+				"GLGS",
+				"View: Toggle Side Bar"
+			],
+			[
+				"jso",
+				"JSON Reindent: reindent file or selection"
+			],
+			[
+				"Up",
+				"Package Control: Upgrade Package"
+			],
+			[
+				"c#",
+				"Set Syntax: C#"
+			],
+			[
+				"js",
+				"JSON Reindent: reindent file or selection"
+			],
+			[
+				"LOWER",
+				"Convert Case: Lower Case"
+			],
+			[
+				"fold",
+				"Code Folding: Fold Tag Attributes"
+			],
+			[
+				"gl",
+				"Set Syntax: GLSL"
+			],
+			[
+				"reload",
+				"SublimeLinter: Reload SublimeLinter and its Plugins"
+			],
+			[
+				"sublime",
+				"Preferences: SublimeLinter Settings"
+			],
+			[
+				"lint",
+				"SublimeLinter: Show All Errors"
+			],
+			[
+				"linter",
+				"Preferences: SublimeLinter Settings"
+			],
+			[
+				"packa",
+				"Package Control: List Packages"
+			],
+			[
+				"golint",
+				"Package Control: Install Package"
+			],
+			[
+				"create",
+				"Package Control: Create Package File"
+			],
+			[
+				"user",
+				"SublimeLinter: Reload SublimeLinter and its Plugins"
+			],
+			[
+				"brow",
+				"Preferences: Browse Packages"
+			],
+			[
+				"reinden",
+				"Indentation: Reindent Lines"
+			],
+			[
+				"inden",
+				"Indentation: Reindent Lines"
+			],
+			[
+				"indent",
+				"Indentation: Reindent Lines"
+			],
+			[
+				"INSTALL",
+				"Package Control: Install Package"
+			],
+			[
+				"remo",
+				"Package Control: Remove Package"
+			],
+			[
+				"plain",
+				"Set Syntax: Plain Text"
+			],
+			[
+				"lex",
+				"Set Syntax: OCamllex"
+			],
+			[
+				"lowe",
+				"Convert Case: Lower Case"
+			],
+			[
+				"markdo",
+				"Set Syntax: Markdown"
+			],
+			[
+				"package",
+				"Package Control: List Packages"
+			],
+			[
+				"UPper",
+				"Convert Case: Upper Case"
+			],
+			[
+				"c++",
+				"Set Syntax: C++"
+			],
+			[
+				"settings",
+				"Preferences: Settings"
+			],
+			[
+				"theme",
+				"UI: Select Color Scheme"
+			],
+			[
+				"terminal",
+				"Terminal: Open"
+			],
+			[
+				"mark",
+				"Markdown Preview: Preview in Browser"
+			],
+			[
+				"previw",
+				"Markdown Preview: Preview in Browser"
+			],
+			[
+				"setting",
+				"Preferences: Settings"
+			],
+			[
+				"prefe",
+				"Preferences: Browse Packages"
+			],
+			[
+				"pref",
+				"Preferences: Settings"
+			],
+			[
+				"format",
+				"Snippet: for (…) {…} (Improved Native For-Loop)"
+			]
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 454.0,
+		"history":
+		[
+			"ls",
+			"q",
+			"ls",
+			"quit",
+			"ls",
+			"python",
+			"ls",
+			"import urllib.request,os,hashlib; h = '6f4c264a24d933ce70df5dedcf1dcaee' + 'ebe013ee18cced0ef93d5f746d80ef60'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by) "
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/home/binogure/work/github/xsellier/easy-reporter"
+	],
+	"file_history":
+	[
+		"/home/binogure/work/github/xsellier/easy-reporter/lib/module/report/index.js",
+		"/home/binogure/work/github/xsellier/easy-reporter/src/report-list/component.vue",
+		"/home/binogure/work/github/xsellier/easy-reporter/lib/model/report/index.js",
+		"/home/binogure/work/github/xsellier/easy-reporter/src/report-list/index.js",
+		"/home/binogure/work/github/xsellier/easy-reporter/lib/model/report/sql/get-report-details.sql",
+		"/home/binogure/work/github/xsellier/easy-reporter/src/bug-list/component.vue",
+		"/home/binogure/work/github/xsellier/easy-reporter/src/bug-list/index.js",
+		"/home/binogure/work/github/xsellier/easy-reporter/src/app/index.js",
+		"/home/binogure/work/github/xsellier/easy-reporter/src/app/component.vue",
+		"/home/binogure/work/github/xsellier/easy-reporter/lib/model/bug/sql/list-bug.sql",
+		"/home/binogure/work/github/xsellier/easy-reporter/src/bug-list/style.css",
+		"/home/binogure/work/github/xsellier/easy-reporter/lib/model/bug/sql/info.sql",
+		"/home/binogure/work/github/xsellier/easy-reporter/lib/model/bug/index.js",
+		"/home/binogure/work/github/xsellier/easy-reporter/lib/route/bug/info.js",
+		"/home/binogure/work/github/xsellier/easy-reporter/lib/module/bug/index.js",
+		"/home/binogure/work/github/xsellier/easy-reporter/src/report-list/style.css",
+		"/home/binogure/work/github/xsellier/easy-reporter/src/index.js",
+		"/home/binogure/work/github/xsellier/easy-reporter/lib/route/bug/list.js",
+		"/home/binogure/work/github/xsellier/easy-reporter/lib/route/report/list.js",
+		"/home/binogure/work/github/xsellier/easy-reporter/lib/model/bug/sql/count-bug.sql",
+		"/home/binogure/work/github/xsellier/easy-reporter/migrations/20230522000001-add-column.js",
+		"/home/binogure/work/github/xsellier/easy-reporter/migrations/20230511000002-add-column.js",
+		"/home/binogure/work/github/xsellier/easy-reporter/lib/model/bug/sql/is-fixed.sql",
+		"/home/binogure/work/github/xsellier/easy-reporter/src/app/style.css",
+		"/home/binogure/work/github/xsellier/easy-reporter/src/project-settings/index.js",
+		"/home/binogure/Downloads/_reports_c6f535b0-a2a8-48b1-9750-69bf2f69a8a0.gz.json",
+		"/home/binogure/work/github/xsellier/easy-reporter/lib/model/project/sql/is-project-admin.sql",
+		"/home/binogure/work/github/xsellier/easy-reporter/lib/module/project/index.js",
+		"/home/binogure/work/github/xsellier/easy-reporter/lib/model/project/index.js",
+		"/home/binogure/work/github/xsellier/easy-reporter/src/project-settings/component.vue",
+		"/home/binogure/work/github/xsellier/easy-reporter/lib/model/project/sql/get-secret.sql",
+		"/home/binogure/work/github/xsellier/easy-reporter/lib/model/project/sql/get-project.sql",
+		"/home/binogure/work/github/xsellier/easy-reporter/lib/model/project/sql/get-email.sql",
+		"/home/binogure/work/github/xsellier/CityGameStudio/game/scripts/steam/main.gd",
+		"/home/binogure/work/github/xsellier/CityGameStudio/game/scripts/errorhandler.gd",
+		"/home/binogure/work/github/xsellier/CityGameStudio/game/scripts/store-manager.gd",
+		"/home/binogure/work/github/xsellier/CityGameStudio/game/scripts/game/game-over.gd",
+		"/home/binogure/work/github/xsellier/CityGameStudio/game/scripts/game/custom-platform/devkit-panel-details.gd",
+		"/home/binogure/work/github/xsellier/CityGameStudio/game/scripts/game/gui/simple-slider.gd",
+		"/home/binogure/work/github/binogure-studio/city-game-studio-website/index.html",
+		"/home/binogure/work/github/xsellier/CityGameStudio/game/addons/GDCharts/script.gd",
+		"/home/binogure/work/github/binogure-studio/city-game-studio-website/css/style.css",
+		"/home/binogure/work/github/binogure-studio/city-game-studio-i18n/languages/en.yml",
+		"/home/binogure/work/github/binogure-studio/city-game-studio-i18n/achievements/en.yml",
+		"/home/binogure/work/github/xsellier/CityGameStudio/game/scripts/controllers/custom-platform.gd",
+		"/home/binogure/work/github/xsellier/CityGameStudio/game/data/achievement.gd",
+		"/home/binogure/work/github/xsellier/CityGameStudio/game/scripts/utils/employee.gd",
+		"/home/binogure/work/github/xsellier/CityGameStudio/game/scripts/game/studio/character.gd",
+		"/home/binogure/work/github/xsellier/CityGameStudio/game/scripts/controllers/employee.gd",
+		"/home/binogure/work/github/xsellier/CityGameStudio/game/scripts/models/employee.gd",
+		"/home/binogure/work/github/xsellier/CityGameStudio/game/scripts/controllers/game-update.gd",
+		"/home/binogure/work/github/xsellier/CityGameStudio/game/scripts/effects/boucing-arrow.gd",
+		"/home/binogure/work/github/xsellier/CityGameStudio/game/scripts/game/release/released-game-item.gd",
+		"/home/binogure/work/github/xsellier/CityGameStudio/game/scenes/effects/bouncing-arrow.tscn",
+		"/home/binogure/work/github/xsellier/CityGameStudio/game/data/game-data.gd",
+		"/home/binogure/work/github/binogure-studio/city-game-studio-i18n/languages/tr.yml",
+		"/home/binogure/work/github/xsellier/CityGameStudio/game/scripts/game/concurrent/trade.gd",
+		"/home/binogure/work/github/binogure-studio/city-game-studio-i18n/languages/ru.yml",
+		"/home/binogure/work/github/binogure-studio/city-game-studio-i18n/languages/pt.yml",
+		"/home/binogure/work/github/binogure-studio/city-game-studio-i18n/languages/pt-br.yml",
+		"/home/binogure/work/github/binogure-studio/city-game-studio-i18n/languages/pl.yml",
+		"/home/binogure/work/github/binogure-studio/city-game-studio-i18n/languages/nl.yml",
+		"/home/binogure/work/github/binogure-studio/city-game-studio-i18n/languages/ja.yml",
+		"/home/binogure/work/github/binogure-studio/city-game-studio-i18n/languages/it.yml",
+		"/home/binogure/work/github/binogure-studio/city-game-studio-i18n/languages/es.yml",
+		"/home/binogure/work/github/binogure-studio/city-game-studio-i18n/languages/ko.yml",
+		"/home/binogure/work/github/binogure-studio/city-game-studio-i18n/languages/zh.yml",
+		"/home/binogure/work/github/binogure-studio/city-game-studio-i18n/languages/de.yml",
+		"/home/binogure/work/github/binogure-studio/city-game-studio-i18n/languages/th.yml",
+		"/home/binogure/work/github/binogure-studio/city-game-studio-i18n/languages/fr.yml",
+		"/home/binogure/work/github/xsellier/CityGameStudio/TODO",
+		"/home/binogure/work/github/xsellier/CityGameStudio/game/scripts/utils/hmac-sha256.gd",
+		"/home/binogure/.godot/app_userdata/CityGameStudio/bug.cgs",
+		"/home/binogure/work/github/xsellier/CityGameStudio/game/scripts/controllers/post-mortem.gd",
+		"/home/binogure/work/github/xsellier/CityGameStudio/game/scripts/controllers/convention.gd",
+		"/home/binogure/work/github/xsellier/CityGameStudio/game/scripts/controllers/concurrent-trading.gd",
+		"/home/binogure/work/github/xsellier/CityGameStudio/game/scripts/models/game.gd",
+		"/home/binogure/work/github/xsellier/CityGameStudio/game/scripts/models/game-engine.gd",
+		"/home/binogure/work/github/xsellier/CityGameStudio/game/scripts/game/project/generic.gd",
+		"/home/binogure/work/github/xsellier/CityGameStudio/game/scripts/controllers/studio.gd",
+		"/home/binogure/work/github/xsellier/CityGameStudio/game/scripts/game/studio/item/pickable-object.gd",
+		"/home/binogure/work/github/xsellier/CityGameStudio/game/scripts/game/studio/main.gd",
+		"/home/binogure/work/github/xsellier/CityGameStudio/game/scripts/sprite/studio/generic.gd",
+		"/home/binogure/work/github/xsellier/CityGameStudio/game/scripts/game/studio/building/wall.gd",
+		"/home/binogure/work/github/xsellier/CityGameStudio/game/scripts/game/studio/building/generic.gd",
+		"/home/binogure/work/github/xsellier/CityGameStudio/game/scripts/controllers/studio-generator.gd",
+		"/home/binogure/work/github/xsellier/CityGameStudio/game/scripts/sprite/studio/wall.gd",
+		"/home/binogure/work/github/xsellier/CityGameStudio/steamdb-rating.js",
+		"/home/binogure/Downloads/CGS/depot_726840_2230670606045760068-1/mod.json",
+		"/home/binogure/work/github/xsellier/CityGameStudio/game/data/game-platform.gd",
+		"/home/binogure/work/github/xsellier/CityGameStudio/game/data/custom-platform.gd",
+		"/home/binogure/work/github/xsellier/CityGameStudio/game/scripts/game/studio/building/building.gd",
+		"/home/binogure/work/github/xsellier/CityGameStudio/game/scripts/game/studio/building/building-floor.gd",
+		"/home/binogure/work/github/xsellier/CityGameStudio/game/scripts/game/map/main.gd",
+		"/home/binogure/work/github/xsellier/CityGameStudio/game/texture/studio/building/floor-1.flags",
+		"/home/binogure/work/github/xsellier/CityGameStudio/game/scripts/controllers/staff.gd",
+		"/home/binogure/work/github/xsellier/CityGameStudio/game/data/player.gd",
+		"/home/binogure/work/github/xsellier/CityGameStudio/game/scripts/models/player.gd",
+		"/home/binogure/work/github/xsellier/CityGameStudio/game/data/happiness.gd",
+		"/home/binogure/work/github/xsellier/CityGameStudio/game/scripts/game/staff/university-developer.gd",
+		"/home/binogure/work/github/xsellier/CityGameStudio/game/data/tutoriel.gd",
+		"/home/binogure/work/github/xsellier/CityGameStudio/game/scripts/game/custom-platform/devkit-panel.gd",
+		"/home/binogure/work/github/xsellier/CityGameStudio/game/scripts/game/gui/catalog-game-list.gd",
+		"/home/binogure/work/github/xsellier/CityGameStudio/game/scripts/game/project/game-engine/feature-list-popup-item.gd",
+		"/home/binogure/work/github/xsellier/CityGameStudio/game/scripts/game/project/game-engine-item.gd",
+		"/home/binogure/work/github/xsellier/CityGameStudio/game/scripts/game/project/game-engine/feature-list-popup.gd",
+		"/home/binogure/work/github/xsellier/CityGameStudio/game/scripts/game/concurrent/concurrent-overall-studio-item.gd",
+		"/home/binogure/work/github/xsellier/CityGameStudio/game/scripts/controllers/game-engine.gd",
+		"/home/binogure/work/github/xsellier/CityGameStudio/game/scripts/game/project/release-required-points.gd",
+		"/home/binogure/work/github/xsellier/CityGameStudio/game/data/credits.gd",
+		"/home/binogure/work/github/xsellier/CityGameStudio/game/scripts/game/project/gameport-item.gd",
+		"/home/binogure/work/github/xsellier/CityGameStudio/assets/platforms/create/mod.json",
+		"/home/binogure/work/github/xsellier/CityGameStudio/game/scripts/configuration.gd",
+		"/home/binogure/work/github/xsellier/CityGameStudio/game/scripts/effects/achievements.gd",
+		"/home/binogure/work/github/xsellier/CityGameStudio/game/scripts/game/map/studio-list.gd",
+		"/home/binogure/work/github/xsellier/CityGameStudio/game/scripts/game/gui/double-slider.gd",
+		"/home/binogure/work/github/xsellier/CityGameStudio/game/scripts/globals-manager.gd",
+		"/home/binogure/work/github/xsellier/CityGameStudio/game/scripts/option/main.gd",
+		"/home/binogure/work/github/xsellier/CityGameStudio/article-AI",
+		"/home/binogure/Marketing/CGS/email/newsletter-fr.html",
+		"/home/binogure/Téléchargements/mediacenter/cgs-bot/configs/images/FREE-KEYS.txt",
+		"/home/binogure/work/github/xsellier/CityGameStudio/game/data/version.gd",
+		"/home/binogure/work/github/xsellier/CityGameStudio/game/scripts/models/platform.gd",
+		"/home/binogure/work/github/binogure-studio/city-game-studio-website/js/interface.js",
+		"/home/binogure/tmp/mailing-list.csv",
+		"/home/binogure/work/github/xsellier/CityGameStudio/game/scripts/game/studio/employee-info.gd",
+		"/home/binogure/work/github/xsellier/CityGameStudio/design/custom-game-engine.md",
+		"/home/binogure/work/github/xsellier/CityGameStudio/game/scripts/controllers/tutoriel.gd"
+	],
+	"find":
+	{
+		"height": 50.0
+	},
+	"find_in_files":
+	{
+		"height": 493.0,
+		"where_history":
+		[
+			"/home/binogure/work/github/xsellier/easy-reporter/lib,<project filters>",
+			"/home/binogure/work/github/xsellier/easy-reporter/src,<project filters>"
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"bugs",
+			"listBugs",
+			"bugs",
+			"info",
+			"})\n",
+			"console.log",
+			"report.",
+			"report_data",
+			"reportData",
+			"info",
+			"reportData",
+			"openReportView",
+			"info",
+			" report",
+			"reportFilename",
+			"ref",
+			"subheader",
+			"getPlatformIcon",
+			"[0] ",
+			"content",
+			"isSelected",
+			"totalItems",
+			"versionKeys",
+			"versionSelected",
+			"versions",
+			"versionKeys",
+			"version_list",
+			"versionList",
+			"filteredReports",
+			"        <",
+			"{\n",
+			"listBugs",
+			"listVersions",
+			"versions",
+			"this.version",
+			"getSelectedPlatform",
+			"getSelectedVersion",
+			"report-list",
+			"report-list-column-list",
+			"bugs",
+			"listBugs",
+			"emitUpdateSignal",
+			"changePage",
+			"v-footer",
+			"resultPerPage",
+			"listVersions",
+			"versions",
+			"versionSelected",
+			"checkboxChange",
+			"this.token",
+			"token",
+			"update:token",
+			"isProjectAdmin(userId, projectId"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"scrollbar_highlights": true,
+		"show_context": true,
+		"use_buffer2": true,
+		"use_gitignore": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "TODO",
+					"selected": true,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1299,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1185,
+								1185
+							]
+						],
+						"settings":
+						{
+							"origPos":
+							[
+								0.0,
+								0.0
+							],
+							"syncScroll": false,
+							"syntax": "Packages/Text/Plain text.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"stack_multiselect": false,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 34.0
+	},
+	"input":
+	{
+		"height": 275.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.SublimeLinter":
+	{
+		"height": 259.0
+	},
+	"output.SublimeLinter Messages":
+	{
+		"height": 531.0
+	},
+	"output.Terminus":
+	{
+		"height": 298.0
+	},
+	"output.doc":
+	{
+		"height": 0.0
+	},
+	"output.exec":
+	{
+		"height": 460.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"output.help":
+	{
+		"height": 611.0
+	},
+	"output.mdpopups":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "I18N: Import",
+	"project": "easy-reporter.sublime-project",
+	"replace":
+	{
+		"height": 64.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"lower",
+				"i18n/node_modules/sprintf-js/bower.json"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 490.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 740.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": false,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 486.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

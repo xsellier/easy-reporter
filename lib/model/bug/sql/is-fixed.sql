@@ -3,5 +3,8 @@
 -- ? : version
 SELECT fixed
 FROM bug
-WHERE name = ? AND title = ? AND version = ?
+WHERE
+  name = ? AND
+  title = ? AND
+  version = ?
 LIMIT 1;

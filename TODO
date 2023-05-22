@@ -7,33 +7,34 @@ Projets:
   - Lister les projets (drop down)
   - Archiver
   - Créer
-  - Renommager
+  - Renommer
   - Changer clé
   - Changer identifiant
-  - Mettre un projet en favoris
+  x Mettre un projet en favoris
   - Voir la liste des membres (pouvoir en exclure/ajouter)
-  - Transférer paternité du projet
+  x Transférer paternité du projet
   
   Actions liées aux versions dans un projet:
   - Lister les versions (drop down)
-  - Voir la qualité de la version (nombre de bugs + regressions)
-  - Voir la proportion des bugs par OS
-  - Rechercher un bug en particulier
+  x Voir la qualité de la version (nombre de bugs + regressions)
+  x Voir la proportion des bugs par OS
+  x Rechercher un bug en particulier
   - Lister les bugs
   - Filtrer les bugs
 
   Acions liées a Steam:
   - Voir le nombre de revues (positives / negatives)
-  - Voir le nombre de joueurs concurrents (CCU)
-  - Gérer les clés Steam
+  x Voir le nombre de joueurs concurrents (CCU)
+  x Gérer les clés Steam
 
 Vues:
 - Landing page (DONE)
 - Dashboard
   - Barre en haut qui liste les projets.
-  - Bouton qui permet de modifier le profil utilisateur (changer mot de passe, nom d'utilisateur...)
-  - Montre un court résumer du projet principal
+  x Bouton qui permet de modifier le profil utilisateur (changer mot de passe, nom d'utilisateur...)
+  x Montre un court résumer du projet principal
 
 
-Nice to have
-Ajouter une vérification pour Steam afin de vérifier si le rapport de bug provient d'un joueur qui possède le jeu
+x Pouvoir marquer un bug comme fixé/non fixé depuis la lsite des bugs
+x Ajouter des bugs a une ignoreList, de sorte a ce que ces bugs soient juste ignorés par le backend)
+x Ajouter une vérification pour Steam afin de vérifier si le rapport de bug provient d'un joueur qui possède le jeu

@@ -1,4 +1,4 @@
-.logdump :deep textarea {  
+.logdump :deep(textarea) {  
   font-family: "courier new";
   font-size: 12px;
 }
@@ -21,4 +21,36 @@
 
 .toolbar-first {
   padding-top: 16px;
+}
+
+.report-list-column {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+.report-list-column-details {
+  width: 100%;
+}
+
+.report-list-column-list {
+  width: 256px;
+  overflow-y: scroll;
+}
+
+.report-list-footer {
+  bottom: 32px;
+  margin: auto;
+  align-self: center;
+}
+
+.report-list-list {
+  display: block;
+  height: calc(100vh - var(--title-height) - var(--subtitle-height) - var(--footer-height) - var(--pagination-height));
+  overflow-y: scroll;
+}
+
+.report-list-tooltip {
+  background-color: transparent;
+  color: white;
 }

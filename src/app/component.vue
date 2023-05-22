@@ -17,9 +17,8 @@
       <v-app-bar color="indigo" v-if="token && setupAdminWizard">
         <v-toolbar-title>Indie Maker Tool</v-toolbar-title>
         <v-spacer></v-spacer>
-        <v-btn icon @click="openProjectDialog" class="mx-2">
-          <v-icon>mdi-home-plus-outline</v-icon>
-        </v-btn>
+        <v-btn icon="mdi-book-refresh" @click="listVersions" class="mx-2"></v-btn>
+        <v-btn icon="mdi-home-plus-outline" @click="openProjectDialog" class="mx-2"></v-btn>
         <v-select class="v-tabs__div" v-model="selectedApplication" :items="applications" item-title="name" label="Games" return-object></v-select>
         <v-btn icon @click="logout" class="mx-2">
           <v-icon>mdi-logout</v-icon>
@@ -39,20 +38,20 @@
 
       <v-main>
         <CreateAdminForm v-if="!setupAdminWizard" @adminCreated="adminCreated" @error="showError"></CreateAdminForm>
-        <CreateProjectForm ref="createProjectForm" @projectCreated="projectCreated" @error="showError" :token="token"></CreateProjectForm>
+        <CreateProjectForm ref="createProjectForm" @projectCreated="projectCreated" @error="showError" v-model:token="token"></CreateProjectForm>
         
         <v-window v-model="tabView" v-if="token && setupAdminWizard && selectedApplication != null">
           <v-window-item value="buglist">
-            <BugList @error="showError" :token="token" :application_data="selectedApplication"></BugList>
+            <BugList @error="showError" @openReport="openReportView" v-model:token="token" :application_data="selectedApplication" :version_list="versionList"></BugList>
           </v-window-item>
           <v-window-item value="steamanalytics">
-            <SteamAnalytics @error="showError" :token="token" :application_data="selectedApplication"></SteamAnalytics>
+            <SteamAnalytics @error="showError" v-model:token="token" :application_data="selectedApplication"></SteamAnalytics>
           </v-window-item>
           <v-window-item value="reportList">
-            <ReportList @error="showError" :token="token" :application_data="selectedApplication"></ReportList>
+            <ReportList @error="showError" v-model:token="token" :application_data="selectedApplication" :version_list="versionList" :report_data="reportData"></ReportList>
           </v-window-item>
           <v-window-item value="settings">
-            <ProjectSettings @error="showError" @updateApplicationData="updateApplicationData" :token="token" :application_data="selectedApplication"></ProjectSettings>
+            <ProjectSettings @error="showError" @updateApplicationData="updateApplicationData" v-model:token="token" :application_data="selectedApplication"></ProjectSettings>
           </v-window-item>
         </v-window>
         <ErrorSnackbar :error="errorObject" :message="errorMesage"></ErrorSnackbar>
@@ -69,4 +68,4 @@
 </template>
 
 <script src="./index.js"></script>
-<style src="./style.css" scoped></style>
+<style src="./style.css"></style>

@@ -1,3 +1,10 @@
+:root {
+  --title-height: 64px;
+  --subtitle-height: 64px;
+  --footer-height: 40px;
+  --pagination-height: 32px;
+}
+
 .blue {
   background-color: #0092e9;
   color: #fefefe;
