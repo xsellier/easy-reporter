@@ -9,6 +9,7 @@ export default {
 
     selectedBug: null,
     sending: false,
+    ignored: false,
     fixed: 0,
 
     bugList: [],
@@ -95,6 +96,66 @@ export default {
       return 'mdi-apple'
     },
 
+    setFlagBugIgnored: function (bugTitle, isIgnored) {
+      this.sending = true
+
+      return this.$http({
+        method: 'post',
+        url: `/bug/ignore`,
+        headers: {
+          Authorization: `Bearer ${this.token}`
+        },
+        data: {
+          name: this.application_data.name,
+          title: this.selectedBug.title,
+          ignore: isIgnored
+        }
+      })
+      .then(() => {
+        this.selectedBug.ignored = isIgnored
+        this.sending = false
+      })
+      .catch((err) => {
+        if (err.response && err.response.status < 500) {
+          this.$emit('update:token', null)
+        }
+
+        this.sending = false
+        this.$emit('error', 'Cannot update bug', err)
+      })
+    },
+
+    setFlagBugFixed: function (bugData, isFixed) {
+      this.sending = true
+
+      return this.$http({
+        method: 'post',
+        url: `/bug/fixed`,
+        headers: {
+          Authorization: `Bearer ${this.token}`
+        },
+        data: {
+          name: this.application_data.name,
+          version: bugData.version,
+          title: this.selectedBug.title,
+          fixed: isFixed
+        }
+      })
+      .then(() => {
+        bugData.fixed = isFixed
+
+        this.sending = false
+      })
+      .catch((err) => {
+        if (err.response && err.response.status < 500) {
+          this.$emit('update:token', null)
+        }
+
+        this.sending = false
+        this.$emit('error', 'Cannot update bug', err)
+      })
+    },
+
     info: function (bugData) {
       this.sending = true
 
@@ -109,6 +170,7 @@ export default {
         }
       })
       .then((response) => {
+        this.sending = false
         this.selectedBug = bugData
         this.bugInformations = response.data
       })
@@ -137,6 +199,7 @@ export default {
         },
         data: {
           fixed: this.getCheckboxValue('fixed'),
+          ignored: this.ignored,
           version: this.getSelectedVersion()
         }
       })

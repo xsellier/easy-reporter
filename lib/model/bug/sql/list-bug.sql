@@ -1,10 +1,14 @@
 -- ? : application name
-SELECT updated_at, title
+SELECT bug.updated_at, bug.title, ignored_bug.ignore as ignored
 FROM bug
+LEFT JOIN ignored_bug ON
+      bug.title = ignored_bug.title
+  AND bug.name = ignored_bug.name
 WHERE
-      name = ?
+      bug.name = ?
+      __IGNORE_CONDITION__
       __FIXED_CONDITION__
       __VERSION_CONDITION__
-GROUP BY title
-ORDER BY updated_at DESC
+GROUP BY bug.title
+ORDER BY bug.updated_at DESC
 LIMIT ? OFFSET ?;

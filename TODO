@@ -35,6 +35,6 @@ Vues:
   x Montre un court résumer du projet principal
 
 
-x Pouvoir marquer un bug comme fixé/non fixé depuis la lsite des bugs
-x Ajouter des bugs a une ignoreList, de sorte a ce que ces bugs soient juste ignorés par le backend)
+- Pouvoir marquer un bug comme fixé/non fixé depuis la liste des bugs
+x Ajouter des bugs a une ignoreList, de sorte a ce que ces bugs soient juste ignorés par le backend
 x Ajouter une vérification pour Steam afin de vérifier si le rapport de bug provient d'un joueur qui possède le jeu

@@ -86,7 +86,7 @@
         <v-btn color="indigo" v-on:click="list">Refresh</v-btn>
         <v-btn :disabled="reportsBulkDelete.length == 0" color="warning" v-on:click="bulkDelete()">Delete</v-btn>
       </v-toolbar>
-      <v-content>
+      <div class="report-list-details">
         <v-container>
           <v-progress-linear v-if="sending" :indeterminate="true"></v-progress-linear>
           <template v-if="report != null">
@@ -96,10 +96,10 @@
                   <v-col><v-btn color="info" :disabled="sending" @click="downloadReport()" >Download</v-btn></v-col>
                   <v-col><v-btn color="info" :disabled="sending" @click="copyclipboard()" >Copy Savegame</v-btn></v-col>
                   <v-col><v-btn color="warning" :disabled="sending" @click="deleteReport()" >Delete</v-btn></v-col>
-                  <v-col><v-btn color="error" :disabled="sending" @click="flagVersionAsCracked()" v-if="!report.cracked">Flag version as cracked</v-btn></v-col>
-                  <v-col><v-btn color="info" :disabled="sending" @click="unflagVersionAsCracked()" v-if="report.cracked">Unflag version as cracked</v-btn></v-col>
-                  <v-col><v-btn color="info" :disabled="sending" @click="flagBugAsFixed()" v-if="!report.fixed">Flag bug as fixed</v-btn></v-col>
-                  <v-col><v-btn color="warning" :disabled="sending" @click="unflagBugAsFixed()" v-if="report.fixed">Unflag bug as fixed</v-btn></v-col>
+                  <v-col><v-btn color="error" :disabled="sending" @click="setFlagVersionCracked(true)" v-if="!report.cracked">Flag version as cracked</v-btn></v-col>
+                  <v-col><v-btn color="info" :disabled="sending" @click="setFlagVersionCracked(false)" v-if="report.cracked">Unflag version as cracked</v-btn></v-col>
+                  <v-col><v-btn color="info" :disabled="sending" @click="setFlagBugFixed(true)" v-if="!report.fixed">Flag bug as fixed</v-btn></v-col>
+                  <v-col><v-btn color="warning" :disabled="sending" @click="setFlagBugFixed(false)" v-if="report.fixed">Unflag bug as fixed</v-btn></v-col>
                 </v-row>
                 <v-row dense>
                   <div class="text-h5" v-if="report.data != null">{{ report.data.error }}</div>
@@ -107,30 +107,29 @@
                 </v-row>
                 <v-row>
                   <v-card class="mx-auto" width="90%" flat>
-                    <v-textarea class="logdump" v-if="report.dump" 
-                    auto-grow rows="1" label="User input" readonly full-width no-resize v-model="report.dump"></v-textarea>
+                    <v-textarea class="logdump" v-if="report.dump"  auto-grow rows="1" label="User input" readonly full-width no-resize v-model="report.dump"></v-textarea>
                   </v-card>
                   <v-card class="mx-auto card-log" flat>
-                    <v-textarea class="logdump" v-if="report.logdump"
-                    auto-grow label="Log dump" readonly full-width no-resize v-model="report.logdump"></v-textarea>
+                    <v-textarea class="logdump" v-if="report.logdump" auto-grow label="Log dump" readonly full-width no-resize v-model="report.logdump"></v-textarea>
                   </v-card>
                 </v-row>
               </v-col>
               <v-col cols="2">
-                <v-card v-if="report.data != null">
-                  <template v-slot:title>
-                    {{report.data.source_func}}
-                  </template>
-                  <v-tooltip activator="parent" location="left">{{report.data.source_func}} ({{ report.data.source_file }}:{{ report.data.source_line}})</v-tooltip>
-                  <template v-slot:subtitle>
-                    {{ report.data.source_file }} ({{ report.data.source_line}})
-                  </template>
-                  <v-list dense>
-                    <v-list-item v-for="item in formatCallstack(report.data.callstack)" :key="item.name" :title="item.name" :subtitle="item.line">
-                      <v-tooltip activator="parent" location="left">{{ item.name }}:{{ item.line }}</v-tooltip>
-                    </v-list-item>
-                  </v-list>
-                </v-card>
+                <v-expansion-panels>
+                  <v-expansion-panel class="pa-0">
+                    <v-expansion-panel-title class="pa-1">{{report.data.source_func}} ({{ report.data.source_file }}:{{ report.data.source_line}})</v-expansion-panel-title>
+                    <v-expansion-panel-text class="report-list-stacktrace">
+                      <v-list density="compact" :lines="false" nav>
+                        <v-list-item :title="report.data.source_file" :subtitle="report.data.source_line">
+                          <v-tooltip activator="parent" location="left">{{ report.data.source_file }}:{{ report.data.source_line }}</v-tooltip>
+                        </v-list-item>
+                        <v-list-item v-for="item in formatCallstack(report.data.callstack)" :key="item.name" :title="item.name" :subtitle="item.line">
+                          <v-tooltip activator="parent" location="left">{{ item.name }}:{{ item.line }}</v-tooltip>
+                        </v-list-item>
+                      </v-list>
+                    </v-expansion-panel-text>
+                  </v-expansion-panel>
+                </v-expansion-panels>
                 <v-card v-if="report.data == null">
                   <template v-slot:title>
                     No stack trace
@@ -198,7 +197,7 @@
             </v-row>
           </template>
         </v-container>
-      </v-content>
+      </div>
     </div>
   </div>
 </template>

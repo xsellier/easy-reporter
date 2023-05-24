@@ -1,5 +1,5 @@
 -- ? : application name
-SELECT COUNT(DISTINCT title)
+SELECT COUNT(DISTINCT title) as count
 FROM bug
 WHERE
       name = ?

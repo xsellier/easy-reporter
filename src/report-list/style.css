@@ -3,9 +3,13 @@
   font-size: 12px;
 }
 
+.report-list-stacktrace :deep(div) {
+  padding: 0px 2px 1px 2px;
+}
+
 .card-log {
   overflow-y: scroll;
-  max-height: 28.5vw;
+  max-height: 25vw;
   width: 90%
 }
 
@@ -53,4 +57,10 @@
 .report-list-tooltip {
   background-color: transparent;
   color: white;
+}
+
+.report-list-details {
+  display: block;
+  height: calc(100vh - var(--title-height) - var(--subtitle-height) - var(--footer-height) - var(--report-list-toolbar-size));
+  overflow-y: scroll;
 }

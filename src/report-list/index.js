@@ -280,13 +280,9 @@ export default {
         this.$emit('error', 'Cannot download report', err)
       })
     },
-    flagVersionAsCracked: function () {
-      return this._setFlagVersionCracked(true)
-    },
-    unflagVersionAsCracked: function () {
-      return this._setFlagVersionCracked(false)
-    },
-    _setFlagVersionCracked: function (cracked) {
+    setFlagVersionCracked: function (cracked) {
+      this.sending = true
+
       return this.$http({
         method: 'post',
         url: `/version/update`,
@@ -311,19 +307,15 @@ export default {
         }
 
         this.sending = false
-        this.$emit('error', 'Cannot download report', err)
+        this.$emit('error', 'Cannot update report cracked status', err)
       })
     },
-    flagBugAsFixed: function () {
-      return this._setFlagBugFixed(true)
-    },
-    unflagBugAsFixed: function () {
-      return this._setFlagBugFixed(false)
-    },
-    _setFlagBugFixed: function (fixed) {
+    setFlagBugFixed: function (fixed) {
+      this.sending = true
+
       return this.$http({
         method: 'post',
-        url: `/bug/update`,
+        url: `/bug/fixed`,
         headers: {
           Authorization: `Bearer ${this.token}`
         },
@@ -345,7 +337,7 @@ export default {
         }
 
         this.sending = false
-        this.$emit('error', 'Cannot download report', err)
+        this.$emit('error', 'Cannot update report fixed status', err)
       })
     },
     changePage: function () {
