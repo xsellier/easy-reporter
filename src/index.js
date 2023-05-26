@@ -2,8 +2,6 @@ import { createApp } from 'vue'
 import App from './app/component.vue'
 import Axios from 'axios';
 
-import JsonViewer from 'vue-json-viewer'
-
 // Vuetify
 import 'vuetify/styles'
 import { createVuetify } from 'vuetify'

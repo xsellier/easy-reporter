@@ -38,23 +38,23 @@
 
       <v-main>
         <CreateAdminForm v-if="!setupAdminWizard" @adminCreated="adminCreated" @error="showError"></CreateAdminForm>
-        <CreateProjectForm ref="createProjectForm" @projectCreated="projectCreated" @error="showError" v-model:token="token"></CreateProjectForm>
+        <CreateProjectForm ref="createProjectForm" @projectCreated="projectCreated" @error="showError" @info="showInfo" v-model:token="token"></CreateProjectForm>
         
         <v-window v-model="tabView" v-if="token && setupAdminWizard && selectedApplication != null">
           <v-window-item value="buglist">
-            <BugList @error="showError" @openReport="openReportView" v-model:token="token" :application_data="selectedApplication" :version_list="versionList"></BugList>
+            <BugList @error="showError" @info="showInfo" @openReport="openReportView" v-model:token="token" :application_data="selectedApplication" :version_list="versionList"></BugList>
           </v-window-item>
           <v-window-item value="steamanalytics">
-            <SteamAnalytics @error="showError" v-model:token="token" :application_data="selectedApplication"></SteamAnalytics>
+            <SteamAnalytics @error="showError" @info="showInfo" v-model:token="token" :application_data="selectedApplication"></SteamAnalytics>
           </v-window-item>
           <v-window-item value="reportList">
-            <ReportList @error="showError" v-model:token="token" :application_data="selectedApplication" :version_list="versionList" :report_data="reportData"></ReportList>
+            <ReportList @error="showError" @info="showInfo" v-model:token="token" :application_data="selectedApplication" :version_list="versionList" :report_data="reportData"></ReportList>
           </v-window-item>
           <v-window-item value="settings">
-            <ProjectSettings @error="showError" @updateApplicationData="updateApplicationData" v-model:token="token" :application_data="selectedApplication"></ProjectSettings>
+            <ProjectSettings @error="showError" @info="showInfo" @updateApplicationData="updateApplicationData" v-model:token="token" :application_data="selectedApplication"></ProjectSettings>
           </v-window-item>
         </v-window>
-        <ErrorSnackbar :error="errorObject" :message="errorMesage"></ErrorSnackbar>
+        <NotificationSnackbar :infoMessage="infoMessage" :errorObject="errorObject" :errorMessage="errorMesage"></NotificationSnackbar>
       </v-main>
       <v-footer color="indigo" app inset>
         <span class="white--text">&copy; Binogure Studio 2023</span>

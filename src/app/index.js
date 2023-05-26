@@ -1,4 +1,4 @@
-import ErrorSnackbar from '../error-snackbar/component.vue'
+import NotificationSnackbar from '../notification-snackbar/component.vue'
 import ReportList from '../report-list/component.vue'
 import LandingPage from '../landing-page/component.vue'
 import ProjectSettings from '../project-settings/component.vue'
@@ -13,7 +13,7 @@ import { ref } from 'vue'
 export default {
   name: 'Application',
   components: {
-    ErrorSnackbar,
+    NotificationSnackbar,
     ReportList,
     CreateAdminForm,
     CreateProjectForm,
@@ -41,6 +41,8 @@ export default {
       showButton: false,
       errorMesage: null,
       errorObject: null,
+
+      infoMessage: null,
 
       reportData: null
     }
@@ -82,6 +84,9 @@ export default {
     showError: function (message, error) {
       this.errorMesage = message
       this.errorObject = error
+    },
+    showInfo: function (message) {
+      this.infoMessage = message
     },
     adminCreated: function (token) {
       this.token = ref(token)
@@ -151,7 +156,7 @@ export default {
         }
 
         this.sending = false
-        this.showError('Cannot list versions', err)
+        this.showError('Cannot list projects', err)
       })
     },
     listVersions: function () {
@@ -159,13 +164,13 @@ export default {
 
       return this.$http({
         method: 'get',
-        url: `/version/list/${this.selectedApplication.name}`,
+        url: `/report/list-version/${this.selectedApplication.name}`,
         headers: {
           Authorization: `Bearer ${this.token}`
         }
       })
       .then((response) => {
-        this.versionList = response.data
+        this.versionList = ['None'].concat(response.data)
         this.sending = false
       })
       .catch((err) => {

@@ -1,6 +1,6 @@
 -- ? : application name
 -- ? : bug title
-SELECT ignored
+SELECT ignore
 FROM ignored_bug
 WHERE
   name = ? AND

@@ -4,6 +4,14 @@
 		"selected_items":
 		[
 			[
+				"app",
+				"applicationId"
+			],
+			[
+				"applic",
+				"application_name"
+			],
+			[
 				"v-",
 				"v-list-item-title"
 			],
@@ -506,14 +514,6 @@
 			[
 				"interpolate",
 				"interpolate_property"
-			],
-			[
-				"mirror-",
-				"mirror-animated"
-			],
-			[
-				"set_Pre",
-				"set_pressed"
 			]
 		]
 	},
@@ -523,829 +523,29 @@
 			"file": "TODO",
 			"settings":
 			{
-				"buffer_size": 1299,
+				"buffer_size": 1339,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			},
 			"undo_stack":
 			[
 				[
-					17,
+					5,
 					1,
-					"insert",
-					{
-						"characters": "\n\n-"
-					},
-					"AwAAAHUEAAAAAAAAdgQAAAAAAAAAAAAAdgQAAAAAAAB3BAAAAAAAAAAAAAB3BAAAAAAAAHgEAAAAAAAAAAAAAA",
-					"AQAAAAAAAAABAAAAdQQAAAAAAAB1BAAAAAAAAAAAAAAAAPC/"
+					"right_delete",
+					null,
+					"AQAAAJ4EAAAAAAAAngQAAAAAAAABAAAAeA",
+					"AQAAAAAAAAABAAAAngQAAAAAAACeBAAAAAAAAAAAAAAAAAAA"
 				],
 				[
-					18,
+					6,
 					1,
 					"insert",
 					{
-						"characters": " Pouvoir"
+						"characters": "-"
 					},
-					"CAAAAHgEAAAAAAAAeQQAAAAAAAAAAAAAeQQAAAAAAAB6BAAAAAAAAAAAAAB6BAAAAAAAAHsEAAAAAAAAAAAAAHsEAAAAAAAAfAQAAAAAAAAAAAAAfAQAAAAAAAB9BAAAAAAAAAAAAAB9BAAAAAAAAH4EAAAAAAAAAAAAAH4EAAAAAAAAfwQAAAAAAAAAAAAAfwQAAAAAAACABAAAAAAAAAAAAAA",
-					"AQAAAAAAAAABAAAAeAQAAAAAAAB4BAAAAAAAAAAAAAAAAPC/"
-				],
-				[
-					19,
-					1,
-					"insert",
-					{
-						"characters": " marquer"
-					},
-					"CAAAAIAEAAAAAAAAgQQAAAAAAAAAAAAAgQQAAAAAAACCBAAAAAAAAAAAAACCBAAAAAAAAIMEAAAAAAAAAAAAAIMEAAAAAAAAhAQAAAAAAAAAAAAAhAQAAAAAAACFBAAAAAAAAAAAAACFBAAAAAAAAIYEAAAAAAAAAAAAAIYEAAAAAAAAhwQAAAAAAAAAAAAAhwQAAAAAAACIBAAAAAAAAAAAAAA",
-					"AQAAAAAAAAABAAAAgAQAAAAAAACABAAAAAAAAAAAAAAAAPC/"
-				],
-				[
-					20,
-					1,
-					"insert",
-					{
-						"characters": " un"
-					},
-					"AwAAAIgEAAAAAAAAiQQAAAAAAAAAAAAAiQQAAAAAAACKBAAAAAAAAAAAAACKBAAAAAAAAIsEAAAAAAAAAAAAAA",
-					"AQAAAAAAAAABAAAAiAQAAAAAAACIBAAAAAAAAAAAAAAAAPC/"
-				],
-				[
-					21,
-					1,
-					"insert",
-					{
-						"characters": " bug"
-					},
-					"BAAAAIsEAAAAAAAAjAQAAAAAAAAAAAAAjAQAAAAAAACNBAAAAAAAAAAAAACNBAAAAAAAAI4EAAAAAAAAAAAAAI4EAAAAAAAAjwQAAAAAAAAAAAAA",
-					"AQAAAAAAAAABAAAAiwQAAAAAAACLBAAAAAAAAAAAAAAAAPC/"
-				],
-				[
-					22,
-					1,
-					"insert",
-					{
-						"characters": " comme"
-					},
-					"BgAAAI8EAAAAAAAAkAQAAAAAAAAAAAAAkAQAAAAAAACRBAAAAAAAAAAAAACRBAAAAAAAAJIEAAAAAAAAAAAAAJIEAAAAAAAAkwQAAAAAAAAAAAAAkwQAAAAAAACUBAAAAAAAAAAAAACUBAAAAAAAAJUEAAAAAAAAAAAAAA",
-					"AQAAAAAAAAABAAAAjwQAAAAAAACPBAAAAAAAAAAAAAAAAPC/"
-				],
-				[
-					23,
-					1,
-					"insert",
-					{
-						"characters": " fixé/no"
-					},
-					"CAAAAJUEAAAAAAAAlgQAAAAAAAAAAAAAlgQAAAAAAACXBAAAAAAAAAAAAACXBAAAAAAAAJgEAAAAAAAAAAAAAJgEAAAAAAAAmQQAAAAAAAAAAAAAmQQAAAAAAACaBAAAAAAAAAAAAACaBAAAAAAAAJsEAAAAAAAAAAAAAJsEAAAAAAAAnAQAAAAAAAAAAAAAnAQAAAAAAACdBAAAAAAAAAAAAAA",
-					"AQAAAAAAAAABAAAAlQQAAAAAAACVBAAAAAAAAAAAAAAAAPC/"
-				],
-				[
-					24,
-					1,
-					"insert",
-					{
-						"characters": "n"
-					},
-					"AQAAAJ0EAAAAAAAAngQAAAAAAAAAAAAA",
-					"AQAAAAAAAAABAAAAnQQAAAAAAACdBAAAAAAAAAAAAAAAAPC/"
-				],
-				[
-					25,
-					1,
-					"insert",
-					{
-						"characters": " fixé"
-					},
-					"BQAAAJ4EAAAAAAAAnwQAAAAAAAAAAAAAnwQAAAAAAACgBAAAAAAAAAAAAACgBAAAAAAAAKEEAAAAAAAAAAAAAKEEAAAAAAAAogQAAAAAAAAAAAAAogQAAAAAAACjBAAAAAAAAAAAAAA",
+					"AQAAAJ4EAAAAAAAAnwQAAAAAAAAAAAAA",
 					"AQAAAAAAAAABAAAAngQAAAAAAACeBAAAAAAAAAAAAAAAAPC/"
-				],
-				[
-					26,
-					1,
-					"insert",
-					{
-						"characters": " depuis"
-					},
-					"BwAAAKMEAAAAAAAApAQAAAAAAAAAAAAApAQAAAAAAAClBAAAAAAAAAAAAAClBAAAAAAAAKYEAAAAAAAAAAAAAKYEAAAAAAAApwQAAAAAAAAAAAAApwQAAAAAAACoBAAAAAAAAAAAAACoBAAAAAAAAKkEAAAAAAAAAAAAAKkEAAAAAAAAqgQAAAAAAAAAAAAA",
-					"AQAAAAAAAAABAAAAowQAAAAAAACjBAAAAAAAAAAAAAAAAPC/"
-				],
-				[
-					27,
-					1,
-					"insert",
-					{
-						"characters": " la"
-					},
-					"AwAAAKoEAAAAAAAAqwQAAAAAAAAAAAAAqwQAAAAAAACsBAAAAAAAAAAAAACsBAAAAAAAAK0EAAAAAAAAAAAAAA",
-					"AQAAAAAAAAABAAAAqgQAAAAAAACqBAAAAAAAAAAAAAAAAPC/"
-				],
-				[
-					28,
-					1,
-					"insert",
-					{
-						"characters": " lsite"
-					},
-					"BgAAAK0EAAAAAAAArgQAAAAAAAAAAAAArgQAAAAAAACvBAAAAAAAAAAAAACvBAAAAAAAALAEAAAAAAAAAAAAALAEAAAAAAAAsQQAAAAAAAAAAAAAsQQAAAAAAACyBAAAAAAAAAAAAACyBAAAAAAAALMEAAAAAAAAAAAAAA",
-					"AQAAAAAAAAABAAAArQQAAAAAAACtBAAAAAAAAAAAAAAAAPC/"
-				],
-				[
-					29,
-					1,
-					"insert",
-					{
-						"characters": " des"
-					},
-					"BAAAALMEAAAAAAAAtAQAAAAAAAAAAAAAtAQAAAAAAAC1BAAAAAAAAAAAAAC1BAAAAAAAALYEAAAAAAAAAAAAALYEAAAAAAAAtwQAAAAAAAAAAAAA",
-					"AQAAAAAAAAABAAAAswQAAAAAAACzBAAAAAAAAAAAAAAAAPC/"
-				],
-				[
-					30,
-					1,
-					"insert",
-					{
-						"characters": " bugs"
-					},
-					"BQAAALcEAAAAAAAAuAQAAAAAAAAAAAAAuAQAAAAAAAC5BAAAAAAAAAAAAAC5BAAAAAAAALoEAAAAAAAAAAAAALoEAAAAAAAAuwQAAAAAAAAAAAAAuwQAAAAAAAC8BAAAAAAAAAAAAAA",
-					"AQAAAAAAAAABAAAAtwQAAAAAAAC3BAAAAAAAAAAAAAAAAPC/"
-				],
-				[
-					31,
-					1,
-					"insert",
-					{
-						"characters": "\n-"
-					},
-					"AgAAALwEAAAAAAAAvQQAAAAAAAAAAAAAvQQAAAAAAAC+BAAAAAAAAAAAAAA",
-					"AQAAAAAAAAABAAAAvAQAAAAAAAC8BAAAAAAAAAAAAAAAAPC/"
-				],
-				[
-					32,
-					1,
-					"insert",
-					{
-						"characters": " Ajouter"
-					},
-					"CAAAAL4EAAAAAAAAvwQAAAAAAAAAAAAAvwQAAAAAAADABAAAAAAAAAAAAADABAAAAAAAAMEEAAAAAAAAAAAAAMEEAAAAAAAAwgQAAAAAAAAAAAAAwgQAAAAAAADDBAAAAAAAAAAAAADDBAAAAAAAAMQEAAAAAAAAAAAAAMQEAAAAAAAAxQQAAAAAAAAAAAAAxQQAAAAAAADGBAAAAAAAAAAAAAA",
-					"AQAAAAAAAAABAAAAvgQAAAAAAAC+BAAAAAAAAAAAAAAAAPC/"
-				],
-				[
-					33,
-					1,
-					"insert",
-					{
-						"characters": " des"
-					},
-					"BAAAAMYEAAAAAAAAxwQAAAAAAAAAAAAAxwQAAAAAAADIBAAAAAAAAAAAAADIBAAAAAAAAMkEAAAAAAAAAAAAAMkEAAAAAAAAygQAAAAAAAAAAAAA",
-					"AQAAAAAAAAABAAAAxgQAAAAAAADGBAAAAAAAAAAAAAAAAPC/"
-				],
-				[
-					34,
-					1,
-					"insert",
-					{
-						"characters": " bugs"
-					},
-					"BQAAAMoEAAAAAAAAywQAAAAAAAAAAAAAywQAAAAAAADMBAAAAAAAAAAAAADMBAAAAAAAAM0EAAAAAAAAAAAAAM0EAAAAAAAAzgQAAAAAAAAAAAAAzgQAAAAAAADPBAAAAAAAAAAAAAA",
-					"AQAAAAAAAAABAAAAygQAAAAAAADKBAAAAAAAAAAAAAAAAPC/"
-				],
-				[
-					35,
-					1,
-					"insert",
-					{
-						"characters": " a"
-					},
-					"AgAAAM8EAAAAAAAA0AQAAAAAAAAAAAAA0AQAAAAAAADRBAAAAAAAAAAAAAA",
-					"AQAAAAAAAAABAAAAzwQAAAAAAADPBAAAAAAAAAAAAAAAAPC/"
-				],
-				[
-					36,
-					1,
-					"insert",
-					{
-						"characters": " une"
-					},
-					"BAAAANEEAAAAAAAA0gQAAAAAAAAAAAAA0gQAAAAAAADTBAAAAAAAAAAAAADTBAAAAAAAANQEAAAAAAAAAAAAANQEAAAAAAAA1QQAAAAAAAAAAAAA",
-					"AQAAAAAAAAABAAAA0QQAAAAAAADRBAAAAAAAAAAAAAAAAPC/"
-				],
-				[
-					37,
-					1,
-					"insert",
-					{
-						"characters": " ignoreList,"
-					},
-					"DAAAANUEAAAAAAAA1gQAAAAAAAAAAAAA1gQAAAAAAADXBAAAAAAAAAAAAADXBAAAAAAAANgEAAAAAAAAAAAAANgEAAAAAAAA2QQAAAAAAAAAAAAA2QQAAAAAAADaBAAAAAAAAAAAAADaBAAAAAAAANsEAAAAAAAAAAAAANsEAAAAAAAA3AQAAAAAAAAAAAAA3AQAAAAAAADdBAAAAAAAAAAAAADdBAAAAAAAAN4EAAAAAAAAAAAAAN4EAAAAAAAA3wQAAAAAAAAAAAAA3wQAAAAAAADgBAAAAAAAAAAAAADgBAAAAAAAAOEEAAAAAAAAAAAAAA",
-					"AQAAAAAAAAABAAAA1QQAAAAAAADVBAAAAAAAAAAAAAAAAPC/"
-				],
-				[
-					38,
-					1,
-					"insert",
-					{
-						"characters": " de"
-					},
-					"AwAAAOEEAAAAAAAA4gQAAAAAAAAAAAAA4gQAAAAAAADjBAAAAAAAAAAAAADjBAAAAAAAAOQEAAAAAAAAAAAAAA",
-					"AQAAAAAAAAABAAAA4QQAAAAAAADhBAAAAAAAAAAAAAAAAPC/"
-				],
-				[
-					39,
-					1,
-					"insert",
-					{
-						"characters": " sorte"
-					},
-					"BgAAAOQEAAAAAAAA5QQAAAAAAAAAAAAA5QQAAAAAAADmBAAAAAAAAAAAAADmBAAAAAAAAOcEAAAAAAAAAAAAAOcEAAAAAAAA6AQAAAAAAAAAAAAA6AQAAAAAAADpBAAAAAAAAAAAAADpBAAAAAAAAOoEAAAAAAAAAAAAAA",
-					"AQAAAAAAAAABAAAA5AQAAAAAAADkBAAAAAAAAAAAAAAAAPC/"
-				],
-				[
-					40,
-					1,
-					"insert",
-					{
-						"characters": " a"
-					},
-					"AgAAAOoEAAAAAAAA6wQAAAAAAAAAAAAA6wQAAAAAAADsBAAAAAAAAAAAAAA",
-					"AQAAAAAAAAABAAAA6gQAAAAAAADqBAAAAAAAAAAAAAAAAPC/"
-				],
-				[
-					41,
-					1,
-					"insert",
-					{
-						"characters": " ce"
-					},
-					"AwAAAOwEAAAAAAAA7QQAAAAAAAAAAAAA7QQAAAAAAADuBAAAAAAAAAAAAADuBAAAAAAAAO8EAAAAAAAAAAAAAA",
-					"AQAAAAAAAAABAAAA7AQAAAAAAADsBAAAAAAAAAAAAAAAAPC/"
-				],
-				[
-					42,
-					1,
-					"insert",
-					{
-						"characters": " que"
-					},
-					"BAAAAO8EAAAAAAAA8AQAAAAAAAAAAAAA8AQAAAAAAADxBAAAAAAAAAAAAADxBAAAAAAAAPIEAAAAAAAAAAAAAPIEAAAAAAAA8wQAAAAAAAAAAAAA",
-					"AQAAAAAAAAABAAAA7wQAAAAAAADvBAAAAAAAAAAAAAAAAPC/"
-				],
-				[
-					43,
-					1,
-					"insert",
-					{
-						"characters": " ces"
-					},
-					"BAAAAPMEAAAAAAAA9AQAAAAAAAAAAAAA9AQAAAAAAAD1BAAAAAAAAAAAAAD1BAAAAAAAAPYEAAAAAAAAAAAAAPYEAAAAAAAA9wQAAAAAAAAAAAAA",
-					"AQAAAAAAAAABAAAA8wQAAAAAAADzBAAAAAAAAAAAAAAAAPC/"
-				],
-				[
-					44,
-					1,
-					"insert",
-					{
-						"characters": " bugs"
-					},
-					"BQAAAPcEAAAAAAAA+AQAAAAAAAAAAAAA+AQAAAAAAAD5BAAAAAAAAAAAAAD5BAAAAAAAAPoEAAAAAAAAAAAAAPoEAAAAAAAA+wQAAAAAAAAAAAAA+wQAAAAAAAD8BAAAAAAAAAAAAAA",
-					"AQAAAAAAAAABAAAA9wQAAAAAAAD3BAAAAAAAAAAAAAAAAPC/"
-				],
-				[
-					45,
-					1,
-					"insert",
-					{
-						"characters": " soient"
-					},
-					"BwAAAPwEAAAAAAAA/QQAAAAAAAAAAAAA/QQAAAAAAAD+BAAAAAAAAAAAAAD+BAAAAAAAAP8EAAAAAAAAAAAAAP8EAAAAAAAAAAUAAAAAAAAAAAAAAAUAAAAAAAABBQAAAAAAAAAAAAABBQAAAAAAAAIFAAAAAAAAAAAAAAIFAAAAAAAAAwUAAAAAAAAAAAAA",
-					"AQAAAAAAAAABAAAA/AQAAAAAAAD8BAAAAAAAAAAAAAAAAPC/"
-				],
-				[
-					46,
-					1,
-					"insert",
-					{
-						"characters": " juste"
-					},
-					"BgAAAAMFAAAAAAAABAUAAAAAAAAAAAAABAUAAAAAAAAFBQAAAAAAAAAAAAAFBQAAAAAAAAYFAAAAAAAAAAAAAAYFAAAAAAAABwUAAAAAAAAAAAAABwUAAAAAAAAIBQAAAAAAAAAAAAAIBQAAAAAAAAkFAAAAAAAAAAAAAA",
-					"AQAAAAAAAAABAAAAAwUAAAAAAAADBQAAAAAAAAAAAAAAAPC/"
-				],
-				[
-					47,
-					1,
-					"insert",
-					{
-						"characters": " ignoŕes"
-					},
-					"CAAAAAkFAAAAAAAACgUAAAAAAAAAAAAACgUAAAAAAAALBQAAAAAAAAAAAAALBQAAAAAAAAwFAAAAAAAAAAAAAAwFAAAAAAAADQUAAAAAAAAAAAAADQUAAAAAAAAOBQAAAAAAAAAAAAAOBQAAAAAAAA8FAAAAAAAAAAAAAA8FAAAAAAAAEAUAAAAAAAAAAAAAEAUAAAAAAAARBQAAAAAAAAAAAAA",
-					"AQAAAAAAAAABAAAACQUAAAAAAAAJBQAAAAAAAAAAAAAAAPC/"
-				],
-				[
-					48,
-					1,
-					"insert",
-					{
-						"characters": " par"
-					},
-					"BAAAABEFAAAAAAAAEgUAAAAAAAAAAAAAEgUAAAAAAAATBQAAAAAAAAAAAAATBQAAAAAAABQFAAAAAAAAAAAAABQFAAAAAAAAFQUAAAAAAAAAAAAA",
-					"AQAAAAAAAAABAAAAEQUAAAAAAAARBQAAAAAAAAAAAAAAAPC/"
-				],
-				[
-					49,
-					1,
-					"insert",
-					{
-						"characters": " le"
-					},
-					"AwAAABUFAAAAAAAAFgUAAAAAAAAAAAAAFgUAAAAAAAAXBQAAAAAAAAAAAAAXBQAAAAAAABgFAAAAAAAAAAAAAA",
-					"AQAAAAAAAAABAAAAFQUAAAAAAAAVBQAAAAAAAAAAAAAAAPC/"
-				],
-				[
-					50,
-					1,
-					"insert",
-					{
-						"characters": " backend"
-					},
-					"CAAAABgFAAAAAAAAGQUAAAAAAAAAAAAAGQUAAAAAAAAaBQAAAAAAAAAAAAAaBQAAAAAAABsFAAAAAAAAAAAAABsFAAAAAAAAHAUAAAAAAAAAAAAAHAUAAAAAAAAdBQAAAAAAAAAAAAAdBQAAAAAAAB4FAAAAAAAAAAAAAB4FAAAAAAAAHwUAAAAAAAAAAAAAHwUAAAAAAAAgBQAAAAAAAAAAAAA",
-					"AQAAAAAAAAABAAAAGAUAAAAAAAAYBQAAAAAAAAAAAAAAAPC/"
-				],
-				[
-					51,
-					1,
-					"insert",
-					{
-						"characters": " "
-					},
-					"AQAAACAFAAAAAAAAIQUAAAAAAAAAAAAA",
-					"AQAAAAAAAAABAAAAIAUAAAAAAAAgBQAAAAAAAAAAAAAAAPC/"
-				],
-				[
-					52,
-					1,
-					"insert_snippet",
-					{
-						"contents": "($0)"
-					},
-					"AQAAACEFAAAAAAAAIwUAAAAAAAAAAAAA",
-					"AQAAAAAAAAABAAAAIQUAAAAAAAAhBQAAAAAAAAAAAAAAAPC/"
-				],
-				[
-					53,
-					1,
-					"insert",
-					{
-						"characters": "rapport"
-					},
-					"BwAAACIFAAAAAAAAIwUAAAAAAAAAAAAAIwUAAAAAAAAkBQAAAAAAAAAAAAAkBQAAAAAAACUFAAAAAAAAAAAAACUFAAAAAAAAJgUAAAAAAAAAAAAAJgUAAAAAAAAnBQAAAAAAAAAAAAAnBQAAAAAAACgFAAAAAAAAAAAAACgFAAAAAAAAKQUAAAAAAAAAAAAA",
-					"AQAAAAAAAAABAAAAIgUAAAAAAAAiBQAAAAAAAAAAAAAAAPC/"
-				],
-				[
-					54,
-					1,
-					"insert",
-					{
-						"characters": " non"
-					},
-					"BAAAACkFAAAAAAAAKgUAAAAAAAAAAAAAKgUAAAAAAAArBQAAAAAAAAAAAAArBQAAAAAAACwFAAAAAAAAAAAAACwFAAAAAAAALQUAAAAAAAAAAAAA",
-					"AQAAAAAAAAABAAAAKQUAAAAAAAApBQAAAAAAAAAAAAAAAPC/"
-				],
-				[
-					55,
-					1,
-					"insert",
-					{
-						"characters": " télé"
-					},
-					"BQAAAC0FAAAAAAAALgUAAAAAAAAAAAAALgUAAAAAAAAvBQAAAAAAAAAAAAAvBQAAAAAAADAFAAAAAAAAAAAAADAFAAAAAAAAMQUAAAAAAAAAAAAAMQUAAAAAAAAyBQAAAAAAAAAAAAA",
-					"AQAAAAAAAAABAAAALQUAAAAAAAAtBQAAAAAAAAAAAAAAAPC/"
-				],
-				[
-					56,
-					1,
-					"insert",
-					{
-						"characters": "ca"
-					},
-					"AgAAADIFAAAAAAAAMwUAAAAAAAAAAAAAMwUAAAAAAAA0BQAAAAAAAAAAAAA",
-					"AQAAAAAAAAABAAAAMgUAAAAAAAAyBQAAAAAAAAAAAAAAAPC/"
-				],
-				[
-					57,
-					3,
-					"delete_word",
-					{
-						"forward": false
-					},
-					"AwAAAC4FAAAAAAAALgUAAAAAAAAIAAAAdMOpbMOpY2EqBQAAAAAAACoFAAAAAAAABAAAAG5vbiAiBQAAAAAAACIFAAAAAAAACAAAAHJhcHBvcnQg",
-					"AQAAAAAAAAABAAAANAUAAAAAAAA0BQAAAAAAAAAAAAAAAPC/"
-				],
-				[
-					58,
-					1,
-					"run_macro_file",
-					{
-						"file": "res://Packages/Default/Delete Left Right.sublime-macro"
-					},
-					"AgAAACEFAAAAAAAAIQUAAAAAAAABAAAAKCEFAAAAAAAAIQUAAAAAAAABAAAAKQ",
-					"AQAAAAAAAAABAAAAIgUAAAAAAAAiBQAAAAAAAAAAAAAAAPC/"
-				],
-				[
-					59,
-					1,
-					"left_delete",
-					null,
-					"AQAAACAFAAAAAAAAIAUAAAAAAAABAAAAIA",
-					"AQAAAAAAAAABAAAAIQUAAAAAAAAhBQAAAAAAAAAAAAAAAPC/"
-				],
-				[
-					60,
-					1,
-					"insert",
-					{
-						"characters": ","
-					},
-					"AQAAACAFAAAAAAAAIQUAAAAAAAAAAAAA",
-					"AQAAAAAAAAABAAAAIAUAAAAAAAAgBQAAAAAAAAAAAAAAAPC/"
-				],
-				[
-					61,
-					1,
-					"insert",
-					{
-						"characters": " stocké"
-					},
-					"BwAAACEFAAAAAAAAIgUAAAAAAAAAAAAAIgUAAAAAAAAjBQAAAAAAAAAAAAAjBQAAAAAAACQFAAAAAAAAAAAAACQFAAAAAAAAJQUAAAAAAAAAAAAAJQUAAAAAAAAmBQAAAAAAAAAAAAAmBQAAAAAAACcFAAAAAAAAAAAAACcFAAAAAAAAKAUAAAAAAAAAAAAA",
-					"AQAAAAAAAAABAAAAIQUAAAAAAAAhBQAAAAAAAAAAAAAAAPC/"
-				],
-				[
-					62,
-					1,
-					"delete_word",
-					{
-						"forward": false
-					},
-					"AQAAACIFAAAAAAAAIgUAAAAAAAAHAAAAc3RvY2vDqQ",
-					"AQAAAAAAAAABAAAAKAUAAAAAAAAoBQAAAAAAAAAAAAAAAPC/"
-				],
-				[
-					63,
-					2,
-					"left_delete",
-					null,
-					"AgAAACEFAAAAAAAAIQUAAAAAAAABAAAAICAFAAAAAAAAIAUAAAAAAAABAAAALA",
-					"AQAAAAAAAAABAAAAIgUAAAAAAAAiBQAAAAAAAAAAAAAAAPC/"
-				],
-				[
-					64,
-					1,
-					"insert",
-					{
-						"characters": ")"
-					},
-					"AQAAACAFAAAAAAAAIQUAAAAAAAAAAAAA",
-					"AQAAAAAAAAABAAAAIAUAAAAAAAAgBQAAAAAAAAAAAAAAAPC/"
-				],
-				[
-					67,
-					2,
-					"left_delete",
-					null,
-					"AgAAAA8FAAAAAAAADwUAAAAAAAABAAAAZQ4FAAAAAAAADgUAAAAAAAACAAAAxZU",
-					"AQAAAAAAAAABAAAAEAUAAAAAAAAQBQAAAAAAAAAAAAAAAPC/"
-				],
-				[
-					68,
-					1,
-					"insert",
-					{
-						"characters": "ré"
-					},
-					"AgAAAA4FAAAAAAAADwUAAAAAAAAAAAAADwUAAAAAAAAQBQAAAAAAAAAAAAA",
-					"AQAAAAAAAAABAAAADgUAAAAAAAAOBQAAAAAAAAAAAAAAAPC/"
-				],
-				[
-					71,
-					1,
-					"insert",
-					{
-						"characters": "\n*"
-					},
-					"AgAAAHYEAAAAAAAAdwQAAAAAAAAAAAAAdwQAAAAAAAB4BAAAAAAAAAAAAAA",
-					"AQAAAAAAAAABAAAAdgQAAAAAAAB2BAAAAAAAAP///////+9/"
-				],
-				[
-					72,
-					1,
-					"left_delete",
-					null,
-					"AQAAAHcEAAAAAAAAdwQAAAAAAAABAAAAKg",
-					"AQAAAAAAAAABAAAAeAQAAAAAAAB4BAAAAAAAAAAAAAAAAPC/"
-				],
-				[
-					73,
-					1,
-					"insert",
-					{
-						"characters": "#"
-					},
-					"AQAAAHcEAAAAAAAAeAQAAAAAAAAAAAAA",
-					"AQAAAAAAAAABAAAAdwQAAAAAAAB3BAAAAAAAAAAAAAAAAPC/"
-				],
-				[
-					74,
-					1,
-					"insert",
-					{
-						"characters": " TODO"
-					},
-					"BQAAAHgEAAAAAAAAeQQAAAAAAAAAAAAAeQQAAAAAAAB6BAAAAAAAAAAAAAB6BAAAAAAAAHsEAAAAAAAAAAAAAHsEAAAAAAAAfAQAAAAAAAAAAAAAfAQAAAAAAAB9BAAAAAAAAAAAAAA",
-					"AQAAAAAAAAABAAAAeAQAAAAAAAB4BAAAAAAAAAAAAAAAAPC/"
-				],
-				[
-					81,
-					2,
-					"right_delete",
-					null,
-					"AgAAAMEAAAAAAAAAwQAAAAAAAAABAAAAYcEAAAAAAAAAwQAAAAAAAAABAAAAZw",
-					"AQAAAAAAAAABAAAAwQAAAAAAAADBAAAAAAAAAAAAAAAAAPC/"
-				],
-				[
-					85,
-					1,
-					"right_delete",
-					null,
-					"AQAAAO4AAAAAAAAA7gAAAAAAAAABAAAALQ",
-					"AQAAAAAAAAABAAAA7gAAAAAAAADuAAAAAAAAAAAAAAAAADRA"
-				],
-				[
-					86,
-					1,
-					"insert",
-					{
-						"characters": "x"
-					},
-					"AQAAAO4AAAAAAAAA7wAAAAAAAAAAAAAA",
-					"AQAAAAAAAAABAAAA7gAAAAAAAADuAAAAAAAAAAAAAAAAAPC/"
-				],
-				[
-					90,
-					1,
-					"right_delete",
-					null,
-					"AQAAAEkBAAAAAAAASQEAAAAAAAABAAAALQ",
-					"AQAAAAAAAAABAAAASQEAAAAAAABJAQAAAAAAAAAAAAAAADRA"
-				],
-				[
-					91,
-					1,
-					"insert",
-					{
-						"characters": "x"
-					},
-					"AQAAAEkBAAAAAAAASgEAAAAAAAAAAAAA",
-					"AQAAAAAAAAABAAAASQEAAAAAAABJAQAAAAAAAAAAAAAAAPC/"
-				],
-				[
-					95,
-					1,
-					"right_delete",
-					null,
-					"AQAAAMABAAAAAAAAwAEAAAAAAAABAAAALQ",
-					"AQAAAAAAAAABAAAAwAEAAAAAAADAAQAAAAAAAAAAAAAAADRA"
-				],
-				[
-					96,
-					1,
-					"insert",
-					{
-						"characters": "x"
-					},
-					"AQAAAMABAAAAAAAAwQEAAAAAAAAAAAAA",
-					"AQAAAAAAAAABAAAAwAEAAAAAAADAAQAAAAAAAAAAAAAAAPC/"
-				],
-				[
-					99,
-					1,
-					"right_delete",
-					null,
-					"AQAAAAECAAAAAAAAAQIAAAAAAAABAAAALQ",
-					"AQAAAAAAAAABAAAAAQIAAAAAAAABAgAAAAAAAAAAAAAAAPC/"
-				],
-				[
-					100,
-					1,
-					"insert",
-					{
-						"characters": "x"
-					},
-					"AQAAAAECAAAAAAAAAgIAAAAAAAAAAAAA",
-					"AQAAAAAAAAABAAAAAQIAAAAAAAABAgAAAAAAAAAAAAAAAPC/"
-				],
-				[
-					103,
-					1,
-					"right_delete",
-					null,
-					"AQAAACgCAAAAAAAAKAIAAAAAAAABAAAALQ",
-					"AQAAAAAAAAABAAAAKAIAAAAAAAAoAgAAAAAAAAAAAAAAAPC/"
-				],
-				[
-					104,
-					1,
-					"insert",
-					{
-						"characters": "x"
-					},
-					"AQAAACgCAAAAAAAAKQIAAAAAAAAAAAAA",
-					"AQAAAAAAAAABAAAAKAIAAAAAAAAoAgAAAAAAAAAAAAAAAPC/"
-				],
-				[
-					109,
-					1,
-					"right_delete",
-					null,
-					"AQAAAMQCAAAAAAAAxAIAAAAAAAABAAAALQ",
-					"AQAAAAAAAAABAAAAxAIAAAAAAADEAgAAAAAAAAAAAAAAADRA"
-				],
-				[
-					110,
-					1,
-					"insert",
-					{
-						"characters": "x"
-					},
-					"AQAAAMQCAAAAAAAAxQIAAAAAAAAAAAAA",
-					"AQAAAAAAAAABAAAAxAIAAAAAAADEAgAAAAAAAAAAAAAAAPC/"
-				],
-				[
-					113,
-					1,
-					"right_delete",
-					null,
-					"AQAAAPQCAAAAAAAA9AIAAAAAAAABAAAALQ",
-					"AQAAAAAAAAABAAAA9AIAAAAAAAD0AgAAAAAAAAAAAAAAAPC/"
-				],
-				[
-					114,
-					1,
-					"insert",
-					{
-						"characters": "x"
-					},
-					"AQAAAPQCAAAAAAAA9QIAAAAAAAAAAAAA",
-					"AQAAAAAAAAABAAAA9AIAAAAAAAD0AgAAAAAAAAAAAAAAAPC/"
-				],
-				[
-					120,
-					1,
-					"right_delete",
-					null,
-					"AQAAAF8DAAAAAAAAXwMAAAAAAAABAAAALQ",
-					"AQAAAAAAAAABAAAAXwMAAAAAAABfAwAAAAAAAAAAAAAAADRA"
-				],
-				[
-					121,
-					1,
-					"insert",
-					{
-						"characters": "x"
-					},
-					"AQAAAF8DAAAAAAAAYAMAAAAAAAAAAAAA",
-					"AQAAAAAAAAABAAAAXwMAAAAAAABfAwAAAAAAAAAAAAAAAPC/"
-				],
-				[
-					124,
-					1,
-					"right_delete",
-					null,
-					"AQAAAMQDAAAAAAAAxAMAAAAAAAABAAAALQ",
-					"AQAAAAAAAAABAAAAxAMAAAAAAADEAwAAAAAAAAAAAAAAAPC/"
-				],
-				[
-					125,
-					1,
-					"insert",
-					{
-						"characters": "x"
-					},
-					"AQAAAMQDAAAAAAAAxQMAAAAAAAAAAAAA",
-					"AQAAAAAAAAABAAAAxAMAAAAAAADEAwAAAAAAAAAAAAAAAPC/"
-				],
-				[
-					129,
-					1,
-					"cut",
-					null,
-					"AQAAAHwEAAAAAAAAfAQAAAAAAACtAAAALSBQb3V2b2lyIG1hcnF1ZXIgdW4gYnVnIGNvbW1lIGZpeMOpL25vbiBmaXjDqSBkZXB1aXMgbGEgbHNpdGUgZGVzIGJ1Z3MKLSBBam91dGVyIGRlcyBidWdzIGEgdW5lIGlnbm9yZUxpc3QsIGRlIHNvcnRlIGEgY2UgcXVlIGNlcyBidWdzIHNvaWVudCBqdXN0ZSBpZ25vcsOpcyBwYXIgbGUgYmFja2VuZCk",
-					"AQAAAAAAAAABAAAAJgUAAAAAAAB8BAAAAAAAAAAAAAAAAAAA"
-				],
-				[
-					132,
-					1,
-					"insert",
-					{
-						"characters": "\n"
-					},
-					"AQAAAPMDAAAAAAAA9AMAAAAAAAAAAAAA",
-					"AQAAAAAAAAABAAAA8wMAAAAAAADzAwAAAAAAAAAAAAAAAAAA"
-				],
-				[
-					134,
-					1,
-					"insert",
-					{
-						"characters": "\n"
-					},
-					"AQAAAPMDAAAAAAAA9AMAAAAAAAAAAAAA",
-					"AQAAAAAAAAABAAAA8wMAAAAAAADzAwAAAAAAAAAAAAAAAAAA"
-				],
-				[
-					135,
-					1,
-					"paste",
-					null,
-					"AQAAAPQDAAAAAAAAngQAAAAAAAAAAAAA",
-					"AQAAAAAAAAABAAAA9AMAAAAAAAD0AwAAAAAAAAAAAAAAAPC/"
-				],
-				[
-					138,
-					2,
-					"right_delete",
-					null,
-					"AQAAAB8FAAAAAAAAHwUAAAAAAAAJAAAACgojIFRPRE8K",
-					"AQAAAAAAAAABAAAAKAUAAAAAAAAfBQAAAAAAAAAAAAAAAAAA"
-				],
-				[
-					141,
-					1,
-					"right_delete",
-					null,
-					"AQAAAPQDAAAAAAAA9AMAAAAAAAABAAAALQ",
-					"AQAAAAAAAAABAAAA9AMAAAAAAAD0AwAAAAAAAAAAAAAAAAAA"
-				],
-				[
-					142,
-					1,
-					"insert",
-					{
-						"characters": "x"
-					},
-					"AQAAAPQDAAAAAAAA9QMAAAAAAAAAAAAA",
-					"AQAAAAAAAAABAAAA9AMAAAAAAAD0AwAAAAAAAAAAAAAAAPC/"
-				],
-				[
-					145,
-					1,
-					"right_delete",
-					null,
-					"AQAAADoEAAAAAAAAOgQAAAAAAAABAAAALQ",
-					"AQAAAAAAAAABAAAAOgQAAAAAAAA6BAAAAAAAAAAAAAAAAAAA"
-				],
-				[
-					146,
-					1,
-					"insert",
-					{
-						"characters": "x"
-					},
-					"AQAAADoEAAAAAAAAOwQAAAAAAAAAAAAA",
-					"AQAAAAAAAAABAAAAOgQAAAAAAAA6BAAAAAAAAAAAAAAAAPC/"
-				],
-				[
-					148,
-					1,
-					"right_delete",
-					null,
-					"AQAAAJ8EAAAAAAAAnwQAAAAAAAABAAAACg",
-					"AQAAAAAAAAABAAAAnwQAAAAAAACfBAAAAAAAAAAAAAAAACRA"
-				],
-				[
-					150,
-					2,
-					"right_delete",
-					null,
-					"AgAAAJ8EAAAAAAAAnwQAAAAAAAAMAAAATmljZSB0byBoYXZlnwQAAAAAAACfBAAAAAAAAAEAAAAK",
-					"AQAAAAAAAAABAAAAnwQAAAAAAACrBAAAAAAAAP///////+9/"
-				],
-				[
-					151,
-					1,
-					"insert",
-					{
-						"characters": "x"
-					},
-					"AQAAAJ8EAAAAAAAAoAQAAAAAAAAAAAAA",
-					"AQAAAAAAAAABAAAAnwQAAAAAAACfBAAAAAAAAAAAAAAAAPC/"
-				],
-				[
-					152,
-					1,
-					"insert",
-					{
-						"characters": " "
-					},
-					"AQAAAKAEAAAAAAAAoQQAAAAAAAAAAAAA",
-					"AQAAAAAAAAABAAAAoAQAAAAAAACgBAAAAAAAAAAAAAAAAPC/"
 				]
 			]
 		}
@@ -1750,30 +950,93 @@
 	],
 	"file_history":
 	[
-		"/home/binogure/work/github/xsellier/easy-reporter/lib/module/report/index.js",
+		"/home/binogure/work/github/xsellier/easy-reporter/src/report-list/index.js",
+		"/home/binogure/work/github/xsellier/easy-reporter/lib/route/report/list.js",
 		"/home/binogure/work/github/xsellier/easy-reporter/src/report-list/component.vue",
 		"/home/binogure/work/github/xsellier/easy-reporter/lib/model/report/index.js",
-		"/home/binogure/work/github/xsellier/easy-reporter/src/report-list/index.js",
+		"/home/binogure/work/github/xsellier/easy-reporter/lib/module/report/index.js",
+		"/home/binogure/work/github/xsellier/easy-reporter/lib/model/report/sql/list-report.sql",
 		"/home/binogure/work/github/xsellier/easy-reporter/lib/model/report/sql/get-report-details.sql",
-		"/home/binogure/work/github/xsellier/easy-reporter/src/bug-list/component.vue",
-		"/home/binogure/work/github/xsellier/easy-reporter/src/bug-list/index.js",
+		"/home/binogure/work/github/xsellier/easy-reporter/lib/route/report/update.js",
+		"/home/binogure/work/github/xsellier/easy-reporter/lib/model/report/sql/flag-report-as-cracked.sql",
+		"/home/binogure/work/github/xsellier/easy-reporter/lib/model/report/sql/read-report.sql",
 		"/home/binogure/work/github/xsellier/easy-reporter/src/app/index.js",
+		"/home/binogure/work/github/xsellier/easy-reporter/src/bug-list/index.js",
+		"/home/binogure/work/github/xsellier/easy-reporter/lib/route/report/list-platform.js",
+		"/home/binogure/work/github/xsellier/easy-reporter/lib/route/report/list-version.js",
+		"/home/binogure/work/github/xsellier/easy-reporter/lib/route/steam/ownership.js",
+		"/home/binogure/work/github/xsellier/easy-reporter/migrations/20230526000002-drop-version-table.js",
+		"/home/binogure/work/github/xsellier/easy-reporter/src/bug-list/component.vue",
 		"/home/binogure/work/github/xsellier/easy-reporter/src/app/component.vue",
+		"/home/binogure/work/github/xsellier/easy-reporter/lib/route/report/summary.js",
+		"/home/binogure/work/github/xsellier/easy-reporter/lib/module/version/index.js",
+		"/home/binogure/work/github/xsellier/easy-reporter/lib/model/report/sql/list-version.sql",
+		"/home/binogure/work/github/xsellier/easy-reporter/lib/model/report/sql/list-platform.sql",
+		"/home/binogure/work/github/xsellier/easy-reporter/lib/module/steam/index.js",
+		"/home/binogure/work/github/xsellier/easy-reporter/TODO",
+		"/home/binogure/work/github/xsellier/easy-reporter/lib/resource/local.js",
+		"/home/binogure/work/github/xsellier/easy-reporter/lib/util/zlib-async.js",
+		"/home/binogure/work/github/xsellier/easy-reporter/lib/model/user/index.js",
+		"/home/binogure/work/github/xsellier/easy-reporter/lib/route/steam/review.js",
+		"/home/binogure/work/github/xsellier/easy-reporter/yarn.lock",
+		"/home/binogure/work/github/xsellier/easy-reporter/lib/resource/server.js",
+		"/home/binogure/work/github/xsellier/easy-reporter/package.json",
+		"/home/binogure/work/github/xsellier/easy-reporter/lib/route/user/create.js",
+		"/home/binogure/work/github/xsellier/easy-reporter/lib/route/user/login.js",
+		"/home/binogure/work/github/xsellier/easy-reporter/lib/route/user/update-name.js",
+		"/home/binogure/work/github/xsellier/easy-reporter/lib/route/user/update-password.js",
+		"/home/binogure/work/github/xsellier/easy-reporter/lib/route/version/list.js",
+		"/home/binogure/work/github/xsellier/easy-reporter/lib/route/version/update.js",
+		"/home/binogure/work/github/xsellier/easy-reporter/lib/route/report/bulk-delete.js",
+		"/home/binogure/work/github/xsellier/easy-reporter/lib/route/report/download.js",
+		"/home/binogure/work/github/xsellier/easy-reporter/lib/route/report/purge.js",
+		"/home/binogure/work/github/xsellier/easy-reporter/lib/route/report/upload.js",
+		"/home/binogure/work/github/xsellier/easy-reporter/lib/route/report/delete.js",
+		"/home/binogure/work/github/xsellier/easy-reporter/lib/route/project/update-steam-id.js",
+		"/home/binogure/work/github/xsellier/easy-reporter/lib/route/project/update-secret.js",
+		"/home/binogure/work/github/xsellier/easy-reporter/lib/route/project/update-name.js",
+		"/home/binogure/work/github/xsellier/easy-reporter/lib/route/project/update-email.js",
+		"/home/binogure/work/github/xsellier/easy-reporter/lib/route/project/create.js",
+		"/home/binogure/work/github/xsellier/easy-reporter/lib/route/bug/info.js",
+		"/home/binogure/work/github/xsellier/easy-reporter/lib/route/bug/list.js",
+		"/home/binogure/work/github/xsellier/easy-reporter/lib/route/bug/fixed.js",
+		"/home/binogure/work/github/xsellier/easy-reporter/lib/route/bug/ignore.js",
+		"/home/binogure/work/github/xsellier/easy-reporter/lib/module/authentication/index.js",
+		"/home/binogure/work/github/xsellier/easy-reporter/lib/index.js",
+		"/home/binogure/work/github/xsellier/easy-reporter/lib/route/admin/create.js",
+		"/home/binogure/work/github/xsellier/easy-reporter/lib/resource/firebase.js",
+		"/home/binogure/work/github/xsellier/easy-reporter/lib/route/admin/exists.js",
+		"/home/binogure/work/github/xsellier/easy-reporter/migrations/20230526000001-add-ignore-list.js",
+		"/home/binogure/work/github/xsellier/easy-reporter/lib/model/report/sql/create-report.sql",
+		"/home/binogure/work/github/xsellier/easy-reporter/lib/model/bug/sql/is-ignored.sql",
+		"/home/binogure/work/github/xsellier/easy-reporter/config/default.json",
+		"/home/binogure/work/github/xsellier/easy-reporter/config/custom-environment-variables.json",
+		"/home/binogure/work/github/xsellier/easy-reporter/.env",
+		"/home/binogure/work/github/xsellier/easy-reporter/lib/route/proxy/index.js",
+		"/home/binogure/work/github/xsellier/easy-reporter/lib/resource/file.js",
+		"/home/binogure/work/github/xsellier/easy-reporter/src/index.js",
+		"/home/binogure/work/github/xsellier/easy-reporter/src/steam-analytics/index.js",
+		"/home/binogure/work/github/xsellier/easy-reporter/lib/model/bug/sql/count-bug.sql",
 		"/home/binogure/work/github/xsellier/easy-reporter/lib/model/bug/sql/list-bug.sql",
+		"/home/binogure/work/github/xsellier/easy-reporter/lib/model/bug/index.js",
+		"/home/binogure/work/github/xsellier/easy-reporter/src/notification-snackbar/index.js",
+		"/home/binogure/work/github/xsellier/easy-reporter/src/notification-snackbar/component.vue",
+		"/home/binogure/work/github/xsellier/easy-reporter/src/app/style.css",
+		"/home/binogure/work/github/xsellier/easy-reporter/src/error-snackbar/component.vue",
 		"/home/binogure/work/github/xsellier/easy-reporter/src/bug-list/style.css",
 		"/home/binogure/work/github/xsellier/easy-reporter/lib/model/bug/sql/info.sql",
-		"/home/binogure/work/github/xsellier/easy-reporter/lib/model/bug/index.js",
-		"/home/binogure/work/github/xsellier/easy-reporter/lib/route/bug/info.js",
+		"/home/binogure/work/github/xsellier/easy-reporter/lib/model/bug/sql/ignore-bug.sql",
 		"/home/binogure/work/github/xsellier/easy-reporter/lib/module/bug/index.js",
+		"/home/binogure/work/github/xsellier/easy-reporter/lib/model/bug/sql/create-bug.sql",
+		"/home/binogure/work/github/xsellier/easy-reporter/lib/model/bug/sql/is-fixed.sql",
+		"/home/binogure/work/github/xsellier/easy-reporter/migrations/20230524000001-add-ignore-list.js",
+		"/home/binogure/work/github/xsellier/easy-reporter/migrations/20230524000001-add-column.js",
 		"/home/binogure/work/github/xsellier/easy-reporter/src/report-list/style.css",
-		"/home/binogure/work/github/xsellier/easy-reporter/src/index.js",
-		"/home/binogure/work/github/xsellier/easy-reporter/lib/route/bug/list.js",
-		"/home/binogure/work/github/xsellier/easy-reporter/lib/route/report/list.js",
-		"/home/binogure/work/github/xsellier/easy-reporter/lib/model/bug/sql/count-bug.sql",
+		"/home/binogure/work/github/xsellier/easy-reporter/lib/route/bug/update.js",
+		"/home/binogure/work/github/xsellier/easy-reporter/lib/model/bug/sql/create-or-forget-bug.sql",
+		"/home/binogure/work/github/xsellier/easy-reporter/lib/model/report/sql/count-report.sql",
 		"/home/binogure/work/github/xsellier/easy-reporter/migrations/20230522000001-add-column.js",
 		"/home/binogure/work/github/xsellier/easy-reporter/migrations/20230511000002-add-column.js",
-		"/home/binogure/work/github/xsellier/easy-reporter/lib/model/bug/sql/is-fixed.sql",
-		"/home/binogure/work/github/xsellier/easy-reporter/src/app/style.css",
 		"/home/binogure/work/github/xsellier/easy-reporter/src/project-settings/index.js",
 		"/home/binogure/Downloads/_reports_c6f535b0-a2a8-48b1-9750-69bf2f69a8a0.gz.json",
 		"/home/binogure/work/github/xsellier/easy-reporter/lib/model/project/sql/is-project-admin.sql",
@@ -1814,70 +1077,7 @@
 		"/home/binogure/work/github/binogure-studio/city-game-studio-i18n/languages/nl.yml",
 		"/home/binogure/work/github/binogure-studio/city-game-studio-i18n/languages/ja.yml",
 		"/home/binogure/work/github/binogure-studio/city-game-studio-i18n/languages/it.yml",
-		"/home/binogure/work/github/binogure-studio/city-game-studio-i18n/languages/es.yml",
-		"/home/binogure/work/github/binogure-studio/city-game-studio-i18n/languages/ko.yml",
-		"/home/binogure/work/github/binogure-studio/city-game-studio-i18n/languages/zh.yml",
-		"/home/binogure/work/github/binogure-studio/city-game-studio-i18n/languages/de.yml",
-		"/home/binogure/work/github/binogure-studio/city-game-studio-i18n/languages/th.yml",
-		"/home/binogure/work/github/binogure-studio/city-game-studio-i18n/languages/fr.yml",
-		"/home/binogure/work/github/xsellier/CityGameStudio/TODO",
-		"/home/binogure/work/github/xsellier/CityGameStudio/game/scripts/utils/hmac-sha256.gd",
-		"/home/binogure/.godot/app_userdata/CityGameStudio/bug.cgs",
-		"/home/binogure/work/github/xsellier/CityGameStudio/game/scripts/controllers/post-mortem.gd",
-		"/home/binogure/work/github/xsellier/CityGameStudio/game/scripts/controllers/convention.gd",
-		"/home/binogure/work/github/xsellier/CityGameStudio/game/scripts/controllers/concurrent-trading.gd",
-		"/home/binogure/work/github/xsellier/CityGameStudio/game/scripts/models/game.gd",
-		"/home/binogure/work/github/xsellier/CityGameStudio/game/scripts/models/game-engine.gd",
-		"/home/binogure/work/github/xsellier/CityGameStudio/game/scripts/game/project/generic.gd",
-		"/home/binogure/work/github/xsellier/CityGameStudio/game/scripts/controllers/studio.gd",
-		"/home/binogure/work/github/xsellier/CityGameStudio/game/scripts/game/studio/item/pickable-object.gd",
-		"/home/binogure/work/github/xsellier/CityGameStudio/game/scripts/game/studio/main.gd",
-		"/home/binogure/work/github/xsellier/CityGameStudio/game/scripts/sprite/studio/generic.gd",
-		"/home/binogure/work/github/xsellier/CityGameStudio/game/scripts/game/studio/building/wall.gd",
-		"/home/binogure/work/github/xsellier/CityGameStudio/game/scripts/game/studio/building/generic.gd",
-		"/home/binogure/work/github/xsellier/CityGameStudio/game/scripts/controllers/studio-generator.gd",
-		"/home/binogure/work/github/xsellier/CityGameStudio/game/scripts/sprite/studio/wall.gd",
-		"/home/binogure/work/github/xsellier/CityGameStudio/steamdb-rating.js",
-		"/home/binogure/Downloads/CGS/depot_726840_2230670606045760068-1/mod.json",
-		"/home/binogure/work/github/xsellier/CityGameStudio/game/data/game-platform.gd",
-		"/home/binogure/work/github/xsellier/CityGameStudio/game/data/custom-platform.gd",
-		"/home/binogure/work/github/xsellier/CityGameStudio/game/scripts/game/studio/building/building.gd",
-		"/home/binogure/work/github/xsellier/CityGameStudio/game/scripts/game/studio/building/building-floor.gd",
-		"/home/binogure/work/github/xsellier/CityGameStudio/game/scripts/game/map/main.gd",
-		"/home/binogure/work/github/xsellier/CityGameStudio/game/texture/studio/building/floor-1.flags",
-		"/home/binogure/work/github/xsellier/CityGameStudio/game/scripts/controllers/staff.gd",
-		"/home/binogure/work/github/xsellier/CityGameStudio/game/data/player.gd",
-		"/home/binogure/work/github/xsellier/CityGameStudio/game/scripts/models/player.gd",
-		"/home/binogure/work/github/xsellier/CityGameStudio/game/data/happiness.gd",
-		"/home/binogure/work/github/xsellier/CityGameStudio/game/scripts/game/staff/university-developer.gd",
-		"/home/binogure/work/github/xsellier/CityGameStudio/game/data/tutoriel.gd",
-		"/home/binogure/work/github/xsellier/CityGameStudio/game/scripts/game/custom-platform/devkit-panel.gd",
-		"/home/binogure/work/github/xsellier/CityGameStudio/game/scripts/game/gui/catalog-game-list.gd",
-		"/home/binogure/work/github/xsellier/CityGameStudio/game/scripts/game/project/game-engine/feature-list-popup-item.gd",
-		"/home/binogure/work/github/xsellier/CityGameStudio/game/scripts/game/project/game-engine-item.gd",
-		"/home/binogure/work/github/xsellier/CityGameStudio/game/scripts/game/project/game-engine/feature-list-popup.gd",
-		"/home/binogure/work/github/xsellier/CityGameStudio/game/scripts/game/concurrent/concurrent-overall-studio-item.gd",
-		"/home/binogure/work/github/xsellier/CityGameStudio/game/scripts/controllers/game-engine.gd",
-		"/home/binogure/work/github/xsellier/CityGameStudio/game/scripts/game/project/release-required-points.gd",
-		"/home/binogure/work/github/xsellier/CityGameStudio/game/data/credits.gd",
-		"/home/binogure/work/github/xsellier/CityGameStudio/game/scripts/game/project/gameport-item.gd",
-		"/home/binogure/work/github/xsellier/CityGameStudio/assets/platforms/create/mod.json",
-		"/home/binogure/work/github/xsellier/CityGameStudio/game/scripts/configuration.gd",
-		"/home/binogure/work/github/xsellier/CityGameStudio/game/scripts/effects/achievements.gd",
-		"/home/binogure/work/github/xsellier/CityGameStudio/game/scripts/game/map/studio-list.gd",
-		"/home/binogure/work/github/xsellier/CityGameStudio/game/scripts/game/gui/double-slider.gd",
-		"/home/binogure/work/github/xsellier/CityGameStudio/game/scripts/globals-manager.gd",
-		"/home/binogure/work/github/xsellier/CityGameStudio/game/scripts/option/main.gd",
-		"/home/binogure/work/github/xsellier/CityGameStudio/article-AI",
-		"/home/binogure/Marketing/CGS/email/newsletter-fr.html",
-		"/home/binogure/Téléchargements/mediacenter/cgs-bot/configs/images/FREE-KEYS.txt",
-		"/home/binogure/work/github/xsellier/CityGameStudio/game/data/version.gd",
-		"/home/binogure/work/github/xsellier/CityGameStudio/game/scripts/models/platform.gd",
-		"/home/binogure/work/github/binogure-studio/city-game-studio-website/js/interface.js",
-		"/home/binogure/tmp/mailing-list.csv",
-		"/home/binogure/work/github/xsellier/CityGameStudio/game/scripts/game/studio/employee-info.gd",
-		"/home/binogure/work/github/xsellier/CityGameStudio/design/custom-game-engine.md",
-		"/home/binogure/work/github/xsellier/CityGameStudio/game/scripts/controllers/tutoriel.gd"
+		"/home/binogure/work/github/binogure-studio/city-game-studio-i18n/languages/es.yml"
 	],
 	"find":
 	{
@@ -1888,6 +1088,14 @@
 		"height": 493.0,
 		"where_history":
 		[
+			"/home/binogure/work/github/xsellier/easy-reporter/lib/route/report,<project filters>",
+			"/home/binogure/work/github/xsellier/easy-reporter/lib,<project filters>",
+			"/home/binogure/work/github/xsellier/easy-reporter/lib/model/bug/sql,<project filters>",
+			"/home/binogure/work/github/xsellier/easy-reporter/src,<project filters>",
+			"/home/binogure/work/github/xsellier/easy-reporter/lib,<project filters>",
+			"/home/binogure/work/github/xsellier/easy-reporter/src,<project filters>",
+			"/home/binogure/work/github/xsellier/easy-reporter/lib/model,<project filters>",
+			"/home/binogure/work/github/xsellier/easy-reporter/lib/module,<project filters>",
 			"/home/binogure/work/github/xsellier/easy-reporter/lib,<project filters>",
 			"/home/binogure/work/github/xsellier/easy-reporter/src,<project filters>"
 		]
@@ -1897,6 +1105,92 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"__FIXED_CONDITION__",
+			"getReportDetails",
+			"version",
+			"cracked",
+			"version",
+			"setFlagVersionCracked",
+			"filename",
+			"this.report.filename",
+			"flagReportAsCracked",
+			"setFlagVersionCracked",
+			"cracked",
+			"name}",
+			"name",
+			"application_data",
+			"list-platform",
+			"VersionModel",
+			"../../model/version",
+			"platformKeys",
+			"versions",
+			"versionKeys",
+			"versions",
+			"this.version",
+			"version_list",
+			"versionList",
+			"version_list",
+			"cracked",
+			"listVersion",
+			"Platform",
+			"decrypt",
+			"retrieveUserData",
+			"owner",
+			"appownership",
+			"hapi",
+			"hapi-auth-bearer-token",
+			"xhr2",
+			"encodeURIComponent",
+			"ignored",
+			"VersionModel",
+			"SteamModule",
+			"retrieveUserReview",
+			"selectedApplication",
+			"application_data",
+			"info",
+			"application_data",
+			"user_id",
+			"SteamModel",
+			"application.store",
+			"hmac",
+			"require('request')",
+			"request",
+			"require('request')",
+			"JsonViewer",
+			"vue-json-viewer",
+			"Version",
+			"this.list()",
+			"listPlatforms",
+			"list-platform",
+			"e",
+			"info",
+			"showInfo",
+			"infoMessage",
+			"errorsnackbar",
+			"@error=\"showError\" ",
+			"banner",
+			"selectedBug",
+			"list-subheader",
+			"ignore_bug",
+			"ignored",
+			"bug",
+			"__FIXED_CONDITION__",
+			"ignore_bug",
+			"name",
+			"data.data",
+			"setFlagIgnored",
+			"BugModel",
+			".update",
+			":text",
+			"class=\"",
+			"v-content",
+			"Upating",
+			"Updating",
+			"$forceUpdate",
+			"flagBugAsFixed",
+			"fixed",
+			"sending",
+			"totalItems",
 			"bugs",
 			"listBugs",
 			"bugs",
@@ -1938,18 +1232,7 @@
 			"report-list-column-list",
 			"bugs",
 			"listBugs",
-			"emitUpdateSignal",
-			"changePage",
-			"v-footer",
-			"resultPerPage",
-			"listVersions",
-			"versions",
-			"versionSelected",
-			"checkboxChange",
-			"this.token",
-			"token",
-			"update:token",
-			"isProjectAdmin(userId, projectId"
+			"emitUpdateSignal"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -1978,15 +1261,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1299,
+						"buffer_size": 1339,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1185,
-								1185
+								1339,
+								1339
 							]
 						],
 						"settings":
@@ -2121,7 +1404,7 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 486.0,
+	"side_bar_width": 411.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{

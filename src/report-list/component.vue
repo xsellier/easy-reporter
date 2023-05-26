@@ -70,7 +70,7 @@
     <div class="report-list-column-details">
       <v-toolbar class="toolbar-first">
         <v-spacer></v-spacer>
-        <v-select :items="versionKeys" v-model="versionSelected" label="Version"></v-select>
+        <v-select :items="version_list" v-model="versionSelected" label="Version"></v-select>
         <v-spacer></v-spacer>
         <v-select :items="platformKeys" v-model="platformSelected" label="Platform"></v-select>
         <v-spacer></v-spacer>
@@ -96,8 +96,8 @@
                   <v-col><v-btn color="info" :disabled="sending" @click="downloadReport()" >Download</v-btn></v-col>
                   <v-col><v-btn color="info" :disabled="sending" @click="copyclipboard()" >Copy Savegame</v-btn></v-col>
                   <v-col><v-btn color="warning" :disabled="sending" @click="deleteReport()" >Delete</v-btn></v-col>
-                  <v-col><v-btn color="error" :disabled="sending" @click="setFlagVersionCracked(true)" v-if="!report.cracked">Flag version as cracked</v-btn></v-col>
-                  <v-col><v-btn color="info" :disabled="sending" @click="setFlagVersionCracked(false)" v-if="report.cracked">Unflag version as cracked</v-btn></v-col>
+                  <v-col><v-btn color="error" :disabled="sending" @click="setFlagReportCracked(true)" v-if="!report.cracked">Flag report as cracked</v-btn></v-col>
+                  <v-col><v-btn color="info" :disabled="sending" @click="setFlagReportCracked(false)" v-if="report.cracked">Unflag report as cracked</v-btn></v-col>
                   <v-col><v-btn color="info" :disabled="sending" @click="setFlagBugFixed(true)" v-if="!report.fixed">Flag bug as fixed</v-btn></v-col>
                   <v-col><v-btn color="warning" :disabled="sending" @click="setFlagBugFixed(false)" v-if="report.fixed">Unflag bug as fixed</v-btn></v-col>
                 </v-row>

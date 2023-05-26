@@ -3,14 +3,12 @@ export default {
   props: ['application_data', 'token', 'version_list'],
   emits: ['update:token'],
   data: () => ({
-    versions: {},
-    versionKeys: [],
     versionSelected: 'None',
 
     selectedBug: null,
     sending: false,
     ignored: false,
-    fixed: 0,
+    fixed: 2,
 
     bugList: [],
     bugInformations: [],
@@ -34,23 +32,13 @@ export default {
       return this.list()
     },
     version_list(versionList) {
-      this.versions = versionList.reduce((acc, item) => {
-        acc[item.name] = item.cracked
 
-        return acc
-      }, {})
-      this.versionKeys = ['None'].concat(Object.keys(this.versions))
-      this.versionSelected = this.versionKeys[0]
+      this.versionSelected = versionList[0]
     }
   },
   mounted() {
-    this.versions = this.version_list.reduce((acc, item) => {
-      acc[item.name] = item.cracked
 
-      return acc
-    }, {})
-    this.versionKeys = ['None'].concat(Object.keys(this.versions))
-    this.versionSelected = this.versionKeys[0]
+    this.versionSelected = this.version_list[0]
 
     return this.list()
   },
@@ -114,6 +102,7 @@ export default {
       .then(() => {
         this.selectedBug.ignored = isIgnored
         this.sending = false
+        this.$emit('info', `"${bugTitle}" ${isIgnored ? 'flagged' : 'unflagged'} as ignored`)
       })
       .catch((err) => {
         if (err.response && err.response.status < 500) {
@@ -145,6 +134,7 @@ export default {
         bugData.fixed = isFixed
 
         this.sending = false
+        this.$emit('info', `"${this.selectedBug.title}" ${isFixed ? 'flagged' : 'unflagged'} as fixed`)
       })
       .catch((err) => {
         if (err.response && err.response.status < 500) {

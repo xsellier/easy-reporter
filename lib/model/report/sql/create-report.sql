@@ -5,5 +5,5 @@
 -- ? : version
 -- ? : title
 -- ? : manual
-INSERT INTO report (name, created_at, filename, debug, platform, version, title, manual)
-VALUES (?, DateTime('now'), ?, ?, ?, ?, ?, ?);
+INSERT INTO report (name, created_at, filename, debug, platform, version, title, manual, cracked)
+VALUES (?, DateTime('now'), ?, ?, ?, ?, ?, ?, ?);

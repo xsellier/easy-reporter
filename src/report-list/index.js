@@ -3,8 +3,6 @@ export default {
   props: ['application_data', 'token', 'version_list', 'report_data'],
   emits: ['update:token'],
   data: () => ({
-    versions: {},
-    versionKeys: [],
     versionSelected: 'None',
 
     platformKeys: [],
@@ -26,7 +24,7 @@ export default {
     deleted: 2,
     uploaded: 1,
     fixed: 2,
-    cracked: 0,
+    cracked: 2,
 
     totalPages: 1,
     currentPage: 1,
@@ -82,29 +80,15 @@ export default {
       return this.list()
     },
     version_list(versionList) {
-      this.versions = versionList.reduce((acc, item) => {
-        acc[item.name] = item.cracked
 
-        return acc
-      }, {})
-      this.versionKeys = ['None'].concat(Object.keys(this.versions))
-      this.versionSelected = this.versionKeys[0]
-      
+      this.versionSelected = versionList[0]
     }
   },
   mounted() {
-    this.versions = this.version_list.reduce((acc, item) => {
-      acc[item.name] = item.cracked
-
-      return acc
-    }, {})
-    this.versionKeys = ['None'].concat(Object.keys(this.versions))
-    this.versionSelected = this.versionKeys[0]
+    this.versionSelected = this.version_list[0]
 
     return this.list()
-      .then(() => {
-        return this.info(this.report_data)
-      })
+      .then(() => this.info(this.report_data))
   },
   methods: {
     getPlatformIcon: function (platformName) {
@@ -242,7 +226,7 @@ export default {
       this.report = null
       this.filename = null
 
-      if (report.deleted_at != null || !report.uploaded) {
+      if (report == null || report.deleted_at != null || !report.uploaded) {
         return
       }
 
@@ -250,7 +234,7 @@ export default {
 
       this.$http({
         method: 'get',
-        url: `/report/${encodeURIComponent(report.filename)}`,
+        url: `/report/${encodeURIComponent(report.filename)}/${encodeURIComponent(this.application_data.name)}`,
         headers: {
           Authorization: `Bearer ${this.token}`
         }
@@ -262,8 +246,8 @@ export default {
         this.report = JSON.parse(rawReport)
         this.report.version = response.data.version
         this.report.title = response.data.title
-        this.report.cracked = this.versions[response.data.version] || false
         this.report.fixed = response.data.fixed
+        this.report.cracked = response.data.cracked
         this.sending = false
 
         // Change the value of the read value
@@ -280,23 +264,22 @@ export default {
         this.$emit('error', 'Cannot download report', err)
       })
     },
-    setFlagVersionCracked: function (cracked) {
+
+    setFlagReportCracked: function (cracked) {
       this.sending = true
 
       return this.$http({
-        method: 'post',
-        url: `/version/update`,
+        method: 'put',
+        url: `/report/update`,
         headers: {
           Authorization: `Bearer ${this.token}`
         },
         data: {
-          application_name: this.application_data.name,
-          name: this.report.version,
+          filename: this.filename,
           cracked: cracked
         }
       })
       .then(() => {
-        this.versions[this.report.version] = cracked
         this.report.cracked = cracked
         this.sending = false
         this.$forceUpdate()
@@ -344,8 +327,6 @@ export default {
       return this.listReports()
     },
     list: function () {
-      this.sending = true
-
       return this.listReports()
         .then(() => this.listPlatforms())
     },
@@ -363,6 +344,7 @@ export default {
           uploaded: this.getCheckboxValue('uploaded'),
           deleted: this.getCheckboxValue('deleted'),
           fixed: this.getCheckboxValue('fixed'),
+          cracked: this.getCheckboxValue('cracked'),
           manual: this.manual,
           platform: this.getSelectedPlatform(),
           version: this.getSelectedVersion()
@@ -395,7 +377,7 @@ export default {
 
       return this.$http({
         method: 'get',
-        url: `/report/list-platform/`,
+        url: `/report/list-platform/${encodeURIComponent(this.application_data.name)}`,
         headers: {
           Authorization: `Bearer ${this.token}`
         }

@@ -53,5 +53,8 @@
     "from_address": "EMAIL_FROM_ADDRESS",
     "to_address": "EMAIL_TO_ADDRESS"
   },
+  "steam": {
+    "apikey": "STEAM_APIKEY"
+  },
   "fileDriver": "local"
 }

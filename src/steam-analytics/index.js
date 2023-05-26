@@ -50,7 +50,7 @@ export default {
       return `https://steamdb.info/app/${this.application_data.steam_id}/graphs/`
     },
     getReviewLink(reviewData) {
-      return `https://steamcommunity.com/profiles/${reviewData.author.steamid}/recommended/${this.application_data.steam_id} `
+      return `https://steamcommunity.com/profiles/${reviewData.author.steamid}/recommended/${this.application_data.steam_id}`
     },
     getRating: function (positiveVotes, negativeVotes) {
       const totalVotes = positiveVotes + negativeVotes;

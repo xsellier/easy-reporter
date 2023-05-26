@@ -1,4 +1,4 @@
 -- ? : application name
-SELECT DISTINCT platform
+SELECT DISTINCT version
 FROM report
 WHERE name = ?;

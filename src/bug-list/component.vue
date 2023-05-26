@@ -20,35 +20,35 @@
     <div class="bug-list-column-details">
       <v-toolbar class="toolbar-first">
         <v-spacer></v-spacer>
-        <v-select :items="versionKeys" v-model="versionSelected" label="Version"></v-select>
+        <v-select :items="version_list" v-model="versionSelected" label="Version"></v-select>
         <v-spacer></v-spacer>
         <v-checkbox label="Fixed" @click="checkboxChange('fixed')" v-model="fixedValue" :indeterminate="isCheckboxIndeterminate('fixed')"></v-checkbox>
         <v-checkbox label="Show ignored bugs" v-model="ignored"></v-checkbox>
         <v-btn color="indigo" :disabled="sending" v-on:click="list">Refresh</v-btn>
         <v-spacer></v-spacer>
       </v-toolbar>
-      <v-list lines="two" class="bug-list-informations" v-if="selectedBug != null">
-        <v-list-subheader inset>{{ selectedBug.title }}</v-list-subheader>
-        <v-btn @click="setFlagBugIgnored(selectedBug.title, false)" v-if="selectedBug.ignored == 1">Remove from ignore list</v-btn>
-        <v-btn @click="setFlagBugIgnored(selectedBug.title, true)" v-if="selectedBug.ignored != 1">Add to ignore list</v-btn>
-        <v-list-item v-for="bugreport in bugInformations" :key="bugreport.filename">
-          <v-list-item-subtitle>Number of report: {{ bugreport.number_of_report }}</v-list-item-subtitle>
-          <v-list-item-title>Version {{ bugreport.version }}</v-list-item-title>
-          <v-list-item-subtitle>{{ bugreport.created_at }}</v-list-item-subtitle>
+      <div class="bug-list-informations" v-if="selectedBug != null">
+        <v-btn :prepend-icon="selectedBug.ignored ? 'mdi-bell-off' : 'mdi-bell'" class="text-none" variant="text" @click="setFlagBugIgnored(selectedBug.title, !selectedBug.ignored)">{{ selectedBug.title }}</v-btn>
+        <v-list lines="two">
+          <v-list-item v-for="bugreport in bugInformations" :key="bugreport.filename">
+            <v-list-item-subtitle>Number of report: {{ bugreport.number_of_report }}</v-list-item-subtitle>
+            <v-list-item-title>Version {{ bugreport.version }}</v-list-item-title>
+            <v-list-item-subtitle>{{ bugreport.created_at }}</v-list-item-subtitle>
 
-          <template v-slot:prepend>
-            <v-avatar>
-              <v-icon color="indigo">{{ getPlatformIcon(bugreport.platform.toLowerCase()) }}</v-icon>
-            </v-avatar>
-          </template>
-          <template v-slot:append>
-            <v-btn :disabled="sending" color="green-lighten-2" icon="mdi-check-circle" variant="text" v-if="bugreport.fixed == 1" @click="setFlagBugFixed(bugreport, false)"></v-btn>
-            <v-btn :disabled="sending" color="red-lighten-3" icon="mdi-message-alert" variant="text" v-if="bugreport.fixed != 1" @click="setFlagBugFixed(bugreport, true)"></v-btn>
-            <v-btn :disabled="sending" color="grey-darken-1" icon="mdi-folder-open" variant="text" @click="openReport(bugreport.filename, bugreport.version)"></v-btn>
-            <v-btn :disabled="sending" color="grey-darken-1" icon="mdi-refresh-circle" variant="text" @click="info(selectedBug)"></v-btn>
-          </template>
-        </v-list-item>
-      </v-list>
+            <template v-slot:prepend>
+              <v-avatar>
+                <v-icon color="indigo">{{ getPlatformIcon(bugreport.platform.toLowerCase()) }}</v-icon>
+              </v-avatar>
+            </template>
+            <template v-slot:append>
+              <v-btn :disabled="sending" color="green-lighten-2" icon="mdi-check-circle" variant="text" v-if="bugreport.fixed == 1" @click="setFlagBugFixed(bugreport, false)"></v-btn>
+              <v-btn :disabled="sending" color="red-lighten-3" icon="mdi-message-alert" variant="text" v-if="bugreport.fixed != 1" @click="setFlagBugFixed(bugreport, true)"></v-btn>
+              <v-btn :disabled="sending" color="grey-darken-1" icon="mdi-folder-open" variant="text" @click="openReport(bugreport.filename, bugreport.version)"></v-btn>
+              <v-btn :disabled="sending" color="grey-darken-1" icon="mdi-refresh-circle" variant="text" @click="info(selectedBug)"></v-btn>
+            </template>
+          </v-list-item>
+        </v-list>
+      </div>
     </div>
   </div>
 </template>
