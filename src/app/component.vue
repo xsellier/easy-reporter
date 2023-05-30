@@ -17,8 +17,18 @@
       <v-app-bar color="indigo" v-if="token && setupAdminWizard">
         <v-toolbar-title>Indie Maker Tool</v-toolbar-title>
         <v-spacer></v-spacer>
-        <v-btn icon="mdi-book-refresh" @click="listVersions" class="mx-2"></v-btn>
-        <v-btn icon="mdi-home-plus-outline" @click="openProjectDialog" class="mx-2"></v-btn>
+        <v-btn color="white" icon="mdi-book-refresh" @click="listVersions" class="mx-2">
+          <v-icon>mdi-book-refresh</v-icon>
+          <v-tooltip activator="parent" location="bottom" text="Refresh applications versions"></v-tooltip>
+        </v-btn>
+        <v-btn color="white" icon="mdi-key" @click="openJoinProjectDialog" class="mx-2">
+          <v-icon>mdi-key</v-icon>
+          <v-tooltip activator="parent" location="bottom" text="Add new project using an invitation key"></v-tooltip>
+        </v-btn>
+        <v-btn color="white" icon="mdi-home-plus-outline" @click="openCreateProjectDialog" class="mx-2" v-if="userType < 2">
+          <v-icon>mdi-home-plus-outline</v-icon>
+          <v-tooltip activator="parent" location="bottom" text="Create a new project"></v-tooltip>
+        </v-btn>
         <v-select class="v-tabs__div" v-model="selectedApplication" :items="applications" item-title="name" label="Games" return-object></v-select>
         <v-btn icon @click="logout" class="mx-2">
           <v-icon>mdi-logout</v-icon>
@@ -32,13 +42,15 @@
           <v-tab value="steamanalytics" :disabled="!isSteamIdValid()">Analytics Steam</v-tab>
           <v-tab value="reportList">Report list</v-tab>
           <v-tab value="settings">Settings</v-tab>
+          <v-tab value="administration" v-if="userType == 0">Administration</v-tab>
         </v-tabs>
         <v-spacer></v-spacer>
       </v-app-bar>
 
       <v-main>
         <CreateAdminForm v-if="!setupAdminWizard" @adminCreated="adminCreated" @error="showError"></CreateAdminForm>
-        <CreateProjectForm ref="createProjectForm" @projectCreated="projectCreated" @error="showError" @info="showInfo" v-model:token="token"></CreateProjectForm>
+        <CreateProjectForm ref="createProjectForm" @projectCreated="projectCreated" @error="showError" @info="showInfo" v-model:token="token" v-if="userType < 2"></CreateProjectForm>
+        <JoinProjectForm ref="joinProjectForm" @projectJoined="projectCreated" @error="showError" @info="showInfo" v-model:token="token"></JoinProjectForm>
         
         <v-window v-model="tabView" v-if="token && setupAdminWizard && selectedApplication != null">
           <v-window-item value="buglist">
@@ -53,10 +65,13 @@
           <v-window-item value="settings">
             <ProjectSettings @error="showError" @info="showInfo" @updateApplicationData="updateApplicationData" v-model:token="token" :application_data="selectedApplication"></ProjectSettings>
           </v-window-item>
+          <v-window-item value="administration" v-if="userType == 0">
+            <Administration @error="showError" @info="showInfo" v-model:token="token"></Administration>
+          </v-window-item>
         </v-window>
         <NotificationSnackbar :infoMessage="infoMessage" :errorObject="errorObject" :errorMessage="errorMesage"></NotificationSnackbar>
       </v-main>
-      <v-footer color="indigo" app inset>
+      <v-footer color="indigo" app inset id="application-footer">
         <span class="white--text">&copy; Binogure Studio 2023</span>
       </v-footer>
     </v-app>

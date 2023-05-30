@@ -30,7 +30,8 @@ export default {
     currentPage: 1,
     totalItems: 0,
 
-    selectedReport: null
+    selectedReport: null,
+    computedMaxRow: 1
   }),
   computed: {
     filteredReports: function () {
@@ -84,13 +85,29 @@ export default {
       this.versionSelected = versionList[0]
     }
   },
+  beforeDestroy() {
+    window.removeEventListener("resize", this.handleResize)
+  },
   mounted() {
+    window.addEventListener("resize", this.handleResize)
     this.versionSelected = this.version_list[0]
 
     return this.list()
       .then(() => this.info(this.report_data))
+      .then(() => this.handleResize())
   },
   methods: {
+    handleResize: function () {
+      if (this.$refs.reportDetails == null) {
+        return setTimeout(this.handleResize, 10)
+      }
+
+      const windowHeight = window.innerHeight || document.documentElement.scrollHeight || document.body.scrollHeight || 0
+      const reportDetailsRectangle = this.$refs.reportDetails.getBoundingClientRect()
+      const remainingHeight = windowHeight - (reportDetailsRectangle.top + 64)
+
+      this.computedMaxRow = Math.max(Math.floor(remainingHeight / 19.5), 7)
+    },
     getPlatformIcon: function (platformName) {
       if (platformName == 'windows') {
         return 'mdi-microsoft-windows'

@@ -87,34 +87,29 @@
         <v-btn :disabled="reportsBulkDelete.length == 0" color="warning" v-on:click="bulkDelete()">Delete</v-btn>
       </v-toolbar>
       <div class="report-list-details">
-        <v-container>
+        <v-container class="report-details-v-container">
           <v-progress-linear v-if="sending" :indeterminate="true"></v-progress-linear>
           <template v-if="report != null">
-            <v-row>
+            <div class="report-list-column">
+              <div class="report-list-report-details">
+                <div class="report-list-column pb-2">
+                  <v-btn color="info" :disabled="sending" @click="downloadReport()" >Download</v-btn>&nbsp;
+                  <v-btn color="info" :disabled="sending" @click="copyclipboard()" >Copy Savegame</v-btn>&nbsp;
+                  <v-btn color="warning" :disabled="sending" @click="deleteReport()" >Delete</v-btn>&nbsp;
+                  <v-btn color="error" :disabled="sending" @click="setFlagReportCracked(true)" v-if="!report.cracked">Flag report as cracked</v-btn>&nbsp;
+                  <v-btn color="info" :disabled="sending" @click="setFlagReportCracked(false)" v-if="report.cracked">Unflag report as cracked</v-btn>&nbsp;
+                  <v-btn color="info" :disabled="sending" @click="setFlagBugFixed(true)" v-if="!report.fixed">Flag bug as fixed</v-btn>&nbsp;
+                  <v-btn color="warning" :disabled="sending" @click="setFlagBugFixed(false)" v-if="report.fixed">Unflag bug as fixed</v-btn>
+                </div>
+                <div class="text-h5">{{ report.data != null ? report.data.error : "Custom bug report" }}</div>
+                <v-container fluid class="report-details-v-container">
+                  <v-textarea class="logdump" v-if="report.dump" rows="1" label="User input" readonly full-width no-resize v-model="report.dump"></v-textarea>
+                </v-container>
+                <v-container fluid class="report-details-v-container">
+                  <v-textarea class="logdump logdump-complete" ref="reportDetails" v-if="report.logdump" label="Log dump" auto-grow :max-rows="computedMaxRow" no-resize readonly full-width v-model="report.logdump"></v-textarea>
+                </v-container>
+              </div>
               <v-col>
-                <v-row dense>
-                  <v-col><v-btn color="info" :disabled="sending" @click="downloadReport()" >Download</v-btn></v-col>
-                  <v-col><v-btn color="info" :disabled="sending" @click="copyclipboard()" >Copy Savegame</v-btn></v-col>
-                  <v-col><v-btn color="warning" :disabled="sending" @click="deleteReport()" >Delete</v-btn></v-col>
-                  <v-col><v-btn color="error" :disabled="sending" @click="setFlagReportCracked(true)" v-if="!report.cracked">Flag report as cracked</v-btn></v-col>
-                  <v-col><v-btn color="info" :disabled="sending" @click="setFlagReportCracked(false)" v-if="report.cracked">Unflag report as cracked</v-btn></v-col>
-                  <v-col><v-btn color="info" :disabled="sending" @click="setFlagBugFixed(true)" v-if="!report.fixed">Flag bug as fixed</v-btn></v-col>
-                  <v-col><v-btn color="warning" :disabled="sending" @click="setFlagBugFixed(false)" v-if="report.fixed">Unflag bug as fixed</v-btn></v-col>
-                </v-row>
-                <v-row dense>
-                  <div class="text-h5" v-if="report.data != null">{{ report.data.error }}</div>
-                  <div class="text-h5" v-if="report.data == null">Custom bug report</div>
-                </v-row>
-                <v-row>
-                  <v-card class="mx-auto" width="90%" flat>
-                    <v-textarea class="logdump" v-if="report.dump"  auto-grow rows="1" label="User input" readonly full-width no-resize v-model="report.dump"></v-textarea>
-                  </v-card>
-                  <v-card class="mx-auto card-log" flat>
-                    <v-textarea class="logdump" v-if="report.logdump" auto-grow label="Log dump" readonly full-width no-resize v-model="report.logdump"></v-textarea>
-                  </v-card>
-                </v-row>
-              </v-col>
-              <v-col cols="2">
                 <v-expansion-panels>
                   <v-expansion-panel class="pa-0">
                     <v-expansion-panel-title class="pa-1">{{report.data.source_func}} ({{ report.data.source_file }}:{{ report.data.source_line}})</v-expansion-panel-title>
@@ -194,7 +189,7 @@
                   </v-list>
                 </v-card>
               </v-col>
-            </v-row>
+            </div>
           </template>
         </v-container>
       </div>

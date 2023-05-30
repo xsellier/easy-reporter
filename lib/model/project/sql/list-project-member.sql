@@ -1,5 +1,5 @@
 -- ? : project_id
-SELECT account.username, account.id, project_user.is_admin
+SELECT user.username, user.id, project_user.is_admin
   FROM project_user
-  LEFT JOIN account ON project_user.user_id = account.id
+  LEFT JOIN user ON project_user.user_id = user.id
   WHERE project_id = ?;

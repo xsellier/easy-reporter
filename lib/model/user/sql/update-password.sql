@@ -1,5 +1,5 @@
 -- ? : hashed_password
 -- ? : id
-UPDATE account
+UPDATE user
 SET hashed_password = ?
 WHERE id = ?;

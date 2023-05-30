@@ -10,11 +10,11 @@
 
       <v-menu :close-on-content-click="false" v-model="loginMenu">
         <template v-slot:activator="{ props }">
-          <v-btn variant="outlined" rounded v-bind="props" color="#fefefe" @click="validateForm()">
+          <v-btn variant="outlined" rounded v-bind="props" color="#fefefe" @click="validateLoginForm()">
             Login
           </v-btn>
         </template>
-        <v-form class="formclass" ref="form" v-model="valid" @submit.prevent="login" validate-on="input">
+        <v-form class="formclass" ref="loginForm" v-model="loginValid" @submit.prevent="login" validate-on="input">
           <v-card max-width="512" class="mx-auto login-form">
             <v-card-text>
               <v-text-field v-model="username" :rules="[rules.username]" label="Username" clearable required></v-text-field>
@@ -23,7 +23,7 @@
               </v-text-field>
             </v-card-text>
             <v-card-actions>
-              <v-btn :disabled="sending || !valid" type="submit" variant="flat" color="indigo">
+              <v-btn :disabled="sending || !loginValid" type="submit" variant="flat" color="indigo">
                 Login
               </v-btn>
             </v-card-actions>
@@ -31,13 +31,29 @@
         </v-form>
       </v-menu>
       <v-divider class="border-opacity-0" color="info" vertical thickness="8"></v-divider>
-      <v-tooltip text="No yet implemented" location="bottom">
+      <v-menu :close-on-content-click="false" v-model="signInMenu">
         <template v-slot:activator="{ props }">
-          <v-btn @click="showSignIn" variant="flat" rounded color="#ff6363" v-bind="props">
+          <v-btn variant="flat" rounded v-bind="props" color="#ff6363" @click="validateSignInForm()">
             Sign In
           </v-btn>
         </template>
-      </v-tooltip>
+        <v-form class="formclass" ref="signInForm" v-model="signInValid" @submit.prevent="signin" validate-on="input">
+          <v-card max-width="512" class="mx-auto login-form">
+            <v-card-text>
+              <v-text-field v-model="invitation" :rules="[rules.invitation]" label="Invitation key" clearable required></v-text-field>
+              <v-text-field v-model="username" :rules="[rules.username]" label="Username" clearable required></v-text-field>
+              <v-text-field v-model="password" :append-icon="passwordShow ? 'mdi-eye' : 'mdi-eye-off'" :rules="[rules.password]"
+                :type="passwordShow ? 'text' : 'password'" label="Password" clearable required @click:append="passwordShow = !passwordShow">
+              </v-text-field>
+            </v-card-text>
+            <v-card-actions>
+              <v-btn :disabled="sending || !signInValid" type="submit" variant="flat" color="indigo">
+                Sign In
+              </v-btn>
+            </v-card-actions>
+          </v-card>
+        </v-form>
+      </v-menu>
       <v-divider class="border-opacity-0" color="info" vertical thickness="128"></v-divider>
     </v-toolbar>
     <div class="the-big-one">Designed by indies for <span class="word-important">indies</span></div>

@@ -4,15 +4,18 @@ import LandingPage from '../landing-page/component.vue'
 import ProjectSettings from '../project-settings/component.vue'
 import SteamAnalytics from '../steam-analytics/component.vue'
 import BugList from '../bug-list/component.vue'
+import Administration from '../administration/component.vue'
 
 import CreateAdminForm from '../create-admin-form/component.vue'
 import CreateProjectForm from '../create-project-form/component.vue'
+import JoinProjectForm from '../join-project-form/component.vue'
 
 import { ref } from 'vue'
 
 export default {
   name: 'Application',
   components: {
+    Administration,
     NotificationSnackbar,
     ReportList,
     CreateAdminForm,
@@ -20,6 +23,7 @@ export default {
     LandingPage,
     ProjectSettings,
     SteamAnalytics,
+    JoinProjectForm,
     BugList
   },
   data () {
@@ -34,6 +38,7 @@ export default {
       setupProjectWizard: false,
 
       token: null,
+      userType: 0,
       selectedApplication: null,
       applications: [],
       versionList: [],
@@ -95,7 +100,56 @@ export default {
     loggedIn: function(token) {
       this.token = ref(token)
 
-      return this.listApplications()
+      return this.getUserType()
+        .then(() => this.listApplications())
+    },
+    addProjectToList: function () {
+
+    },
+    inviteManager: function () {
+
+    },
+    getUserType: function () {
+      this.sending = true
+
+      return this.$http({
+        method: 'get',
+        url: `/user/type`,
+        headers: {
+          Authorization: `Bearer ${this.token}`
+        }
+      })
+      .then((response) => {
+        this.sending = false
+        this.userType = response.data
+      })
+      .catch((err) => {
+        if (err.response && err.response.status < 500) {
+          this.token = null
+        }
+
+        this.sending = false
+        this.showError('Cannot get user type', err)
+      })
+    },
+    deleteUser: function () {
+      this.sending = true
+
+      return this.$http({
+        method: 'delete',
+        url: `/user`,
+        headers: {
+          Authorization: `Bearer ${this.token}`
+        }
+      })
+      .then((response) => {
+        this.sending = false
+        this.token = ref(null)
+        this.selectedApplication = null
+        this.games = []
+
+        this.showInfo('User has been deleted')
+      })
     },
     isSteamIdValid: function () {
       return this.selectedApplication != null && parseInt(this.selectedApplication.steam_id) > 0
@@ -118,9 +172,14 @@ export default {
         this.token = ref(null)
         this.selectedApplication = null
         this.games = []
+
+        this.showInfo('Logged out')
       })
     },
-    openProjectDialog: function () {
+    openJoinProjectDialog: function () {
+      this.$refs.joinProjectForm.openDialog()
+    },
+    openCreateProjectDialog: function () {
       this.$refs.createProjectForm.openDialog()
     },
     listApplications: function () {
@@ -135,17 +194,22 @@ export default {
       })
       .then((response) => {
         this.sending = false
-
         if (response.data.length > 0) {
           this.setupProjectWizard = true
           this.applications = response.data
 
         } else {
-          this.$refs.createProjectForm.forceOpenDialog()
-          this.setupProjectWizard = false
           this.applications = []
+
+          if (this.userType < 2) {
+            this.$refs.createProjectForm.forceOpenDialog()
+            this.setupProjectWizard = false
+          } else {
+            this.$refs.joinProjectForm.forceOpenDialog()
+            this.setupProjectWizard = false
+          }
         }
-        
+
         if (this.selectedApplication == null && this.applications.length > 0) {
           this.selectedApplication = this.applications[0]
         }
@@ -164,14 +228,14 @@ export default {
 
       return this.$http({
         method: 'get',
-        url: `/report/list-version/${this.selectedApplication.name}`,
+        url: `/report/list-version/${encodeURIComponent(this.selectedApplication.name)}`,
         headers: {
           Authorization: `Bearer ${this.token}`
         }
       })
       .then((response) => {
-        this.versionList = ['None'].concat(response.data)
         this.sending = false
+        this.versionList = ['None'].concat(response.data)
       })
       .catch((err) => {
         if (err.response && err.response.status < 500) {

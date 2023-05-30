@@ -1,5 +1,5 @@
 -- ? : name
 -- ? : id
-UPDATE account
+UPDATE user
 SET name = ?
 WHERE id = ?;

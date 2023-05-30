@@ -1,2 +1,2 @@
-SELECT COUNT(*) as count FROM account
+SELECT COUNT(*) as count FROM user
 LIMIT 1;

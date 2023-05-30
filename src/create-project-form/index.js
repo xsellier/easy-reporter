@@ -8,6 +8,7 @@ export default {
     projectReceived: false,
     applicationName: '',
     applicationSecret: '',
+    applicationToken: '',
     secret: '',
     applicationId: 0,
     id: 0,
@@ -18,6 +19,7 @@ export default {
       applicationName: (value) => !!value || 'Application name is required',
       applicationId: (value) => !value || /^[0-9]+$/.test(value) || 'Invalid steam id',
       applicationSecret: (value) => /^[A-Fa-f0-9]{64}$/.test(value) || 'Invalid secret, must be a 64 hexadecimal string',
+      applicationToken: (value) => !!value || 'Application token is required',
       email: (value) => !value || /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(value) || 'Invalid email address'
     }
   }),
@@ -47,6 +49,7 @@ export default {
       this.applicationSecret = ''
       this.applicationName = ''
       this.applicationId = 0
+      this.applicationToken = ''
       this.email = ''
       this.id = 0
 
@@ -64,12 +67,14 @@ export default {
         data: {
           name: this.applicationName,
           applicationId: this.applicationId,
+          apiToken: this.applicationToken,
           secret: this.applicationSecret,
           email: this.email
         }
       })
       .then((response) => {
         this.applicationSecret = response.data.secret
+        this.applicationToken = response.data.apiToken
         this.id = response.data.id
         this.projectReceived = true
         this.sending = false

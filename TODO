@@ -1,6 +1,6 @@
 # TODO
-Ajouter du sel (demande a la sardine pour du sel premium)
-Gérer de sutilisateurs
+- Ajouter du sel
+x Gérer des utilisateurs
 
 Projets:
   Actions liées au projet:
@@ -13,7 +13,8 @@ Projets:
   x Mettre un projet en favoris
   - Voir la liste des membres (pouvoir en exclure/ajouter)
   x Transférer paternité du projet
-  
+  - Vérifier paternité du projet avant de faire la moindre requete
+
   Actions liées aux versions dans un projet:
   - Lister les versions (drop down)
   x Voir la qualité de la version (nombre de bugs + regressions)
@@ -34,8 +35,12 @@ Vues:
   x Bouton qui permet de modifier le profil utilisateur (changer mot de passe, nom d'utilisateur...)
   x Montre un court résumer du projet principal
 
-
 - Pouvoir marquer un bug comme fixé/non fixé depuis la liste des bugs
 - Ajouter des bugs a une ignoreList, de sorte a ce que ces bugs soient juste ignorés par le backend
 - Ajouter une vérification pour Steam afin de vérifier si le rapport de bug provient d'un joueur qui possède le jeu
 - Trier les bugs par ordre chronologique
+- Le log dump n'affiche pas toutes les lignes
+- Attacher une clé Steam par projet et non par instance d'easy-reporter
+- Quand est-ce qu'un membre a joint un groupe
+- Petite popup de boarding histoire de savoir ou on met les pieds
+- Inviter un utilisateur existant a un projet

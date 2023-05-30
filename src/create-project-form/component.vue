@@ -15,6 +15,8 @@
             </v-text-field>
             <v-text-field v-model="applicationSecret" :rules="[rules.applicationSecret]" label="Application secret" clearable required>
             </v-text-field>
+            <v-text-field v-model="applicationToken" :rules="[rules.applicationToken]" label="Application API token" clearable required>
+            </v-text-field>
             <v-text-field  v-model="email" :rules="[rules.email]" label="Notification email" clearable>
             </v-text-field>
           </v-form>

@@ -1,13 +1,18 @@
 export default {
   name: 'LandingPage',
   data: () => ({
-    valid: false,
     sending: false,
+    loginValid: false,
     loginMenu: false,
+
+    signInValid: false,
+    signInMenu: false,
     username: null,
     passwordShow: false,
     password: null,
+    invitation: null,
     rules: {
+      invitation: (value) => !!value || 'Invitation key is required',
       username: (value) => !!value || 'Username is required',
       password: (value) => !!value || 'Password is required'
     }
@@ -30,14 +35,41 @@ export default {
         this.$emit('error', 'Login failed', err)
       })
     },
-    validateForm: function () {
-      if (!this.$refs.form) {
+    signin: function () {
+       this.sending = true
+
+      return this.$http.post(`/invitation/consume`, {
+        invitation: this.invitation,
+        username: this.username,
+        password: this.password
+      })
+      .then((response) => {
+        this.sending = false
+
+        return this.$emit('loggedIn', response.data)
+      })
+      .catch((err) => {
+        this.sending = false
+        this.$emit('error', 'Login failed', err)
+      })
+    },
+    validateSignInForm: function () {
+      if (!this.$refs.signInForm) {
         return setTimeout(() => {
-          this.validateForm()
+          this.validateSignInForm()
         }, 50)
       }
 
-      this.$refs.form.validate()
+      this.$refs.signInForm.validate()
+    },
+    validateLoginForm: function () {
+      if (!this.$refs.loginForm) {
+        return setTimeout(() => {
+          this.validateLoginForm()
+        }, 50)
+      }
+
+      this.$refs.loginForm.validate()
     }
   }
 }

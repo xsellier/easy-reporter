@@ -1,3 +1,3 @@
 -- ? : The name of the account to retrieve
-SELECT * FROM account
+SELECT * FROM user
 WHERE username = ?;
