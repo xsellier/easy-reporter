@@ -8,7 +8,7 @@
   },
   "scripts": {
     "prepare": "npm run build",
-    "dev": "rm -rf public/ && concurrently --kill-others \"./start.sh\" \"vite build --watch\"",
+    "dev": "NODE_ENV=dev rm -rf public/ && concurrently --kill-others \"./start.sh\" \"vite build --watch\"",
     "lint": "node_modules/.bin/standard",
     "build": "rm -rf public/ && vite build",
     "start-server": "mkdir -p .data && chmod -R a+w .data/ && node lib/index",

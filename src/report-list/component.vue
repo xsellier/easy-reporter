@@ -17,8 +17,8 @@
                 <v-icon icon="mdi-eye" v-if="report.read == 1"></v-icon>
                 <v-icon icon="mdi-eye-off" v-if="report.read == 0"></v-icon>
               </v-chip>
-              <v-chip pill=true size="x-small" v-if="report.uploaded == 1">
-                <v-icon icon="mdi-upload"></v-icon>
+              <v-chip pill=true size="x-small" v-if="report.legit == 1">
+                <v-icon icon="mdi-check-decagram"></v-icon>
               </v-chip>
               <v-chip pill=true size="x-small" v-if="report.deleted_at != null">
                 <v-icon icon="mdi-delete"></v-icon>
@@ -101,7 +101,11 @@
                   <v-btn color="info" :disabled="sending" @click="setFlagBugFixed(true)" v-if="!report.fixed">Flag bug as fixed</v-btn>&nbsp;
                   <v-btn color="warning" :disabled="sending" @click="setFlagBugFixed(false)" v-if="report.fixed">Unflag bug as fixed</v-btn>
                 </div>
-                <div class="text-h5">{{ report.data != null ? report.data.error : "Custom bug report" }}</div>
+                <div class="text-h5">
+                  <v-icon icon="mdi-check-decagram" v-if="report.legit == 1"  color="success" size="x-small"></v-icon>
+                  <v-icon icon="mdi-spider" v-if="report.cracked == 1"  color="warning" size="x-small"></v-icon>
+                  {{ report.data != null ? report.data.error : "Custom bug report" }}
+              </div>
                 <v-container fluid class="report-details-v-container">
                   <v-textarea class="logdump" v-if="report.dump" rows="1" label="User input" readonly full-width no-resize v-model="report.dump"></v-textarea>
                 </v-container>

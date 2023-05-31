@@ -9,6 +9,7 @@ export default {
     email: '',
     secret: '',
     apiToken: '',
+    archived: false,
     is_admin: false,
 
     sending: false,
@@ -29,6 +30,7 @@ export default {
       this.project_id = value.id
       this.email = value.email
       this.is_admin = value.is_admin
+      this.archived = value.archived
 
       return this.listMember()
         .then(() => this.listInvitation())
@@ -40,6 +42,7 @@ export default {
     this.project_id = this.application_data.id
     this.email = this.application_data.email
     this.is_admin = this.application_data.is_admin
+    this.archived = this.application_data.archived
 
     return this.listMember()
       .then(() => this.listInvitation())
@@ -190,7 +193,8 @@ export default {
         name: this.application_name,
         steam_id: this.application_id,
         id: this.project_id,
-        email: this.email
+        email: this.email,
+        archived: this.archived
       })
     },
     updateApplicationName: function () {
@@ -331,7 +335,33 @@ export default {
       })
     },
     archiveProject: function () {
-      console.log('NOT YET IMPLEMENTED')
+      this.sending = true
+
+      return this.$http({
+        method: 'put',
+        url: `/project/archive`,
+        headers: {
+          Authorization: `Bearer ${this.token}`
+        },
+        data: {
+          archive: !this.archived,
+          projectId: this.project_id
+        }
+      })
+      .then((response) => {
+        this.sending = false
+        this.archived = !this.archived
+
+        this.emitUpdate()
+      })
+      .catch((err) => {
+        if (err.response && err.response.status < 500) {
+          this.$emit('update:token', null)
+        }
+
+        this.sending = false
+        this.$emit('error', 'Cannot update application API token', err)
+      })
     }
   }
 }

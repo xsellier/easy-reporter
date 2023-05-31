@@ -5,5 +5,7 @@
 -- ? : version
 -- ? : title
 -- ? : manual
-INSERT INTO report (name, created_at, filename, debug, platform, version, title, manual, cracked)
-VALUES (?, DateTime('now'), ?, ?, ?, ?, ?, ?, ?);
+-- ? : cracked
+-- ? : legit
+INSERT INTO report (name, created_at, filename, debug, platform, version, title, manual, cracked, legit)
+VALUES (?, DateTime('now'), ?, ?, ?, ?, ?, ?, ?, ?);

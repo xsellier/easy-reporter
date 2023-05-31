@@ -29,7 +29,15 @@
           <v-icon>mdi-home-plus-outline</v-icon>
           <v-tooltip activator="parent" location="bottom" text="Create a new project"></v-tooltip>
         </v-btn>
-        <v-select class="v-tabs__div" v-model="selectedApplication" :items="applications" item-title="name" label="Games" return-object></v-select>
+        <v-select v-model="selectedApplication" :items="applications" label="Games" item-title="name" :item-props="true" return-object>
+          <template v-slot:item="{ props }" >
+            <v-list-item v-bind="props">
+              <template v-slot:prepend>
+                <v-icon :disabled="isProjectFavorite(props)" @click="setFavoriteProject(props)">{{ computeProjectFavoriteIcon(props) }}</v-icon>
+              </template>
+            </v-list-item>
+          </template>
+        </v-select>
         <v-btn icon @click="logout" class="mx-2">
           <v-icon>mdi-logout</v-icon>
         </v-btn>

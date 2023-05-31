@@ -51,8 +51,8 @@
           </v-list-item>
         </v-list>
         <v-card-actions>
-          <v-btn :disabled="sending || !is_admin" variant="flat" color="error" prepend-icon="mdi-trash-can" @click="archiveProject()">Archive</v-btn>
-          <v-btn :disabled="sending" variant="flat" color="indigo" prepend-icon="mdi-refresh" @click="listMember">refresh member list</v-btn>
+          <v-btn :disabled="sending || !is_admin" variant="flat" color="error" prepend-icon="mdi-trash-can" @click="archiveProject()">{{ archived ? "Unarchive": "Archive" }}</v-btn>
+          <v-btn :disabled="sending" variant="flat" color="indigo" prepend-icon="mdi-refresh" @click="listMember()">refresh member list</v-btn>
         </v-card-actions>
       </v-card>
     </div>

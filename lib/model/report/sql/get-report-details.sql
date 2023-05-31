@@ -1,5 +1,5 @@
 -- ? : filename
-SELECT report.filename, report.title, report.version, bug.fixed, report.cracked
+SELECT report.filename, report.title, report.version, bug.fixed, report.cracked, report.legit
 FROM report
 LEFT JOIN bug ON
       bug.name = report.name

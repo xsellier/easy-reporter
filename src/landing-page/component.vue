@@ -80,7 +80,7 @@
       <v-col cols="12" sm="4" align="center">
         <v-card class="feature-item ma-2 pa-2" color="#393e46">
           <v-icon class="catchicon">mdi-key-variant</v-icon>
-          <div class="catchphrase">Manage Steam keys</div>
+          <div class="catchphrase">Manage Steam reviews</div>
         </v-card>
       </v-col>
     </v-row>

@@ -1,6 +1,6 @@
 # TODO
 - Ajouter du sel
-x Gérer des utilisateurs
+- Gérer des utilisateurs
 
 Projets:
   Actions liées au projet:
@@ -10,9 +10,8 @@ Projets:
   - Renommer
   - Changer clé
   - Changer identifiant
-  x Mettre un projet en favoris
+  - Mettre un projet en favoris
   - Voir la liste des membres (pouvoir en exclure/ajouter)
-  x Transférer paternité du projet
   - Vérifier paternité du projet avant de faire la moindre requete
 
   Actions liées aux versions dans un projet:
@@ -44,3 +43,17 @@ Vues:
 - Quand est-ce qu'un membre a joint un groupe
 - Petite popup de boarding histoire de savoir ou on met les pieds
 - Inviter un utilisateur existant a un projet
+- Une fois le bug validé grace a l'API de Steam, marquer le rapport comme legit et afficher une icone sur le front-end
+
+Administration
+- Liste des membres (pagination)
+  - Nombre maximum de projet (10)
+  - Bannir/débannir un membre
+  - Un membre ne peut pas être supprimé s'il est admin d'un projet
+  x Transférer la paternité d'un projet
+  - Désarchiver/Archiver un projet
+
+- Liste des invitations
+  - Créer
+  - Supprimer
+  - Ajouter de la pagination

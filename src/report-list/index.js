@@ -265,6 +265,7 @@ export default {
         this.report.title = response.data.title
         this.report.fixed = response.data.fixed
         this.report.cracked = response.data.cracked
+        this.report.legit = response.data.legit
         this.sending = false
 
         // Change the value of the read value

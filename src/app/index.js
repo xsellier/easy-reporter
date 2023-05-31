@@ -30,12 +30,14 @@ export default {
     return {
       tabView: 'dashboard',
       active: '',
-      username: '',
-      password: '',
       sending: false,
 
       setupAdminWizard: false,
       setupProjectWizard: false,
+
+      userId: 0,
+      username: '',
+      userFavoriteProjectId: 0,
 
       token: null,
       userType: 0,
@@ -93,12 +95,19 @@ export default {
     showInfo: function (message) {
       this.infoMessage = message
     },
-    adminCreated: function (token) {
-      this.token = ref(token)
+    adminCreated: function (userData) {
+      this.token = ref(userData.token)
+      this.userId = userData.id
+      this.username = userData.username
+      this.userFavoriteProjectId = userData.projectId
+
       this.setupAdminWizard = true
     },
-    loggedIn: function(token) {
-      this.token = ref(token)
+    loggedIn: function(userData) {
+      this.token = ref(userData.token)
+      this.userId = userData.id
+      this.username = userData.username
+      this.userFavoriteProjectId = userData.projectId
 
       return this.getUserType()
         .then(() => this.listApplications())
@@ -132,6 +141,39 @@ export default {
         this.showError('Cannot get user type', err)
       })
     },
+    isProjectFavorite: function (projectData) {
+      return projectData.id == this.userFavoriteProjectId
+    },
+    computeProjectFavoriteIcon: function (projectData) {
+      return projectData.id == this.userFavoriteProjectId ? 'mdi-star' : 'mdi-star-outline'
+    },
+    setFavoriteProject: function (projectData) {
+      this.sending = true
+
+      return this.$http({
+        method: 'put',
+        url: `/project/favorite`,
+        headers: {
+          Authorization: `Bearer ${this.token}`
+        },
+        data: {
+          projectId: projectData.id
+        }
+      })
+      .then((response) => {
+        this.sending = false
+        this.userFavoriteProjectId = projectData.id
+      })
+      .catch((err) => {
+        if (err.response && err.response.status < 500) {
+          this.token = null
+        }
+
+        this.sending = false
+        this.showError('Cannot change favorite project', err)
+      })
+      console.log(`Changing favorite project ${projectData.id}`)
+    },
     deleteUser: function () {
       this.sending = true
 
@@ -155,6 +197,8 @@ export default {
       return this.selectedApplication != null && parseInt(this.selectedApplication.steam_id) > 0
     },
     projectCreated: function(id, name) {
+      this.userFavoriteProjectId = id
+
       return this.listApplications()
     },
     logout: function () {
@@ -210,8 +254,16 @@ export default {
           }
         }
 
-        if (this.selectedApplication == null && this.applications.length > 0) {
-          this.selectedApplication = this.applications[0]
+        if (this.applications.length > 0) {
+          let index = this.applications.reduce((acc, item, index) => {
+            if (item.id == this.userFavoriteProjectId) {
+              return index
+            }
+
+            return acc
+          }, 0)
+
+          this.selectedApplication = this.applications[index]
         }
       })
       .catch((err) => {
@@ -251,6 +303,7 @@ export default {
       this.selectedApplication.steam_id = applicationData.steam_id
       this.selectedApplication.id = applicationData.id
       this.selectedApplication.email = applicationData.email
+      this.selectedApplication.archived = applicationData.archived
     },
     openReportView: function (reportToView) {
       this.tabView = 'reportList'
