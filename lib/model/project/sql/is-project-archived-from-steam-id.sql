@@ -2,5 +2,5 @@
 SELECT archived
 FROM project
 WHERE
-  id = ? 
+  steam_id = ? 
 LIMIT 1;
