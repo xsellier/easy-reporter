@@ -160,7 +160,7 @@ export default {
           Authorization: `Bearer ${this.token}`
         },
         data: {
-          reports: this.reportsBulkDelete
+          reports: this.reportsBulkDelete.map((item) => item.filename)
         }
       })
       .then(() => {
