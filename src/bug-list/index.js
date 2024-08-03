@@ -77,7 +77,7 @@ export default {
         return 'mdi-microsoft-windows'
       }
 
-      if (platformName == 'x11') {
+      if (platformName == 'x11' || platformName == 'linux') {
         return 'mdi-debian'
       }
 

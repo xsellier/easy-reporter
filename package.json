@@ -34,7 +34,8 @@
     "axios": "^0.21.4",
     "config": "^3.2.4",
     "db-migrate": "^0.11.13",
-    "db-migrate-sqlite3": "^0.4.0",
+    "db-migrate-sqlite3": "^1.0.2",
+    "discord.js": "^14.0.0",
     "firebase": "^8.9.1",
     "glob": "^7.1.6",
     "hapi-auth-bearer-token": "*",
@@ -42,10 +43,10 @@
     "joi": "^17.9.2",
     "nodemailer": "^6.4.11",
     "postcss": "^8.4.21",
-    "sqlite3": "^4.2.0",
+    "sqlite3": "^5.1.0",
     "superagent": "^8.0.9",
     "tailwindcss": "^3.2.4",
-    "uuid": "^3.3.3",
+    "uuid": "^7.0.0",
     "vue": "^3.2.38",
     "vuetify": "^3.1.3",
     "webfontloader": "^1.0.0",
@@ -57,7 +58,7 @@
     "node-sass": "^4.14.1",
     "ora": "^5.1.0",
     "sass-loader": "^7.3.1",
-    "standard": "^12.0.1",
+    "standard": "^17.0.1",
     "vite": "^4.1.1",
     "vite-plugin-vuetify": "^1.0.0-alpha.12"
   },
@@ -86,7 +87,7 @@
     "not ie <= 8"
   ],
   "engines": {
-    "node": "14.x"
+    "node": "22.x"
   },
   "standard": {
     "ignore": [

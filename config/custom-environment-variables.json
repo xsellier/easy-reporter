@@ -20,6 +20,13 @@
     "messagingSenderId": "FIREBASE_MESSENGER_SENDER_ID",
     "appId": "FIREBASE_APP_ID"
   },
+  "discord": {
+    "server_id": "DISCORD_PUBLIC_SERVER_ID",
+    "public_key": "DISCORD_PUBLIC_KEY",
+    "client_secret": "DISCORD_CLIENT_SECRET",
+    "client_id": "DISCORD_CLIENT_ID",
+    "token": "DISCORD_SECRET_TOKEN"
+  },
   "email": {
     "configuration": {
       "auth": {

@@ -1,0 +1,29 @@
+.vertical-division {
+  display: flex;
+  flex-direction: row;
+}
+
+.list {
+  width: 65%;
+  margin: 64px;
+  display: flex;
+  flex-direction: column;
+}
+
+.member-list {
+  width: 65%;
+  margin: 64px;
+}
+
+.settings {
+  width: 35%;
+  margin: 64px;
+}
+
+.steam-key-list {
+  column-count: 3
+}
+
+.discord-user-list {
+  column-count: 3
+}

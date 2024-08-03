@@ -17,6 +17,14 @@
     "namespace": "easy-error-reporter",
     "level": "debug"
   },
+  "discord": {
+    "server_id": "PUBLIC_SERVER_ID",
+    "public_key": "MY_VERY_PUBLIC_KEY",
+    "client_secret": "MY_VERY_CLIENT_SECRET",
+    "client_id": "MY_VERY_PUBLIC_CLIENT_ID",
+    "token": "MY_VERY_SECRET_TOKEN",
+    "bot_permission_integer": 19097907752022
+  },
   "session": {
     "ttl": 7200
   },

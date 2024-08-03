@@ -49,6 +49,7 @@
           <v-tab value="buglist">Bug List</v-tab>
           <v-tab value="steamanalytics" :disabled="!isSteamIdValid()">Analytics Steam</v-tab>
           <v-tab value="reportList">Report list</v-tab>
+          <v-tab value="playtests">Playtests</v-tab>
           <v-tab value="settings">Settings</v-tab>
           <v-tab value="administration" v-if="userType == 0">Administration</v-tab>
         </v-tabs>
@@ -70,6 +71,9 @@
           <v-window-item value="reportList">
             <ReportList @error="showError" @info="showInfo" v-model:token="token" :application_data="selectedApplication" :version_list="versionList" :report_data="reportData"></ReportList>
           </v-window-item>
+          <v-window-item value="playtests">
+            <Playtests @error="showError" @info="showInfo" v-model:token="token" :application_data="selectedApplication"></Playtests>
+          </v-window-item>
           <v-window-item value="settings">
             <ProjectSettings @error="showError" @info="showInfo" @updateApplicationData="updateApplicationData" v-model:token="token" :application_data="selectedApplication"></ProjectSettings>
           </v-window-item>
@@ -80,7 +84,7 @@
         <NotificationSnackbar :infoMessage="infoMessage" :errorObject="errorObject" :errorMessage="errorMesage"></NotificationSnackbar>
       </v-main>
       <v-footer color="indigo" app inset id="application-footer">
-        <span class="white--text">&copy; Binogure Studio 2023</span>
+        <span class="white--text">&copy; Binogure Studio 2025</span>
       </v-footer>
     </v-app>
 

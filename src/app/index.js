@@ -1,6 +1,7 @@
 import NotificationSnackbar from '../notification-snackbar/component.vue'
 import ReportList from '../report-list/component.vue'
 import LandingPage from '../landing-page/component.vue'
+import Playtests from '../playtests/component.vue'
 import ProjectSettings from '../project-settings/component.vue'
 import SteamAnalytics from '../steam-analytics/component.vue'
 import BugList from '../bug-list/component.vue'
@@ -24,6 +25,7 @@ export default {
     ProjectSettings,
     SteamAnalytics,
     JoinProjectForm,
+    Playtests,
     BugList
   },
   data () {
