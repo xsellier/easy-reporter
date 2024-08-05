@@ -1,3 +1,5 @@
+import { useDate } from 'vuetify'
+
 export default {
   name: 'Playtests',
   props:['token', 'application_data'],
@@ -7,6 +9,8 @@ export default {
 
     formPlaytest: false, 
     formSteamKey: false,
+
+    numberOfSteamKeyToSend: 0,
 
     playtestEnabled: false,
     playtestDiscordChannelId: 0,
@@ -98,6 +102,29 @@ export default {
       return `https://steamcommunity.com/id/${steamAccountId}`
     },
 
+    computeAvailableKeys: function(steamKeyList) {
+      return steamKeyList.filter((steamKeyData) => steamKeyData.discord_user_id == null).length
+    },
+
+    obfuscateSteamKey: function(steamKeyValue) {
+      let firstPart = steamKeyValue.substr(0, 4)
+      let lastPart = steamKeyValue.substr(4).replaceAll(/.{1}/gi, '*')
+
+      return `${firstPart}${lastPart}`
+    },
+
+    getVerifySteamKeyUrl: function(steamKeyValue) {
+      return `https://partner.steamgames.com/querycdkey/cdkey?cdkey=${steamKeyValue}&method=V%C3%A9rifier`
+    },
+
+    computeActivePlaytester: function(discordUserList) {
+      let filteredDiscordUserList = discordUserList.filter((discordUserData) => {
+        return discordUserData.steam_key != null && discordUserData.registered == 1 && discordUserData.present == 1
+      })
+
+      return filteredDiscordUserList.length
+    },
+
     assignSteamKey: function(discordUserId) {
       this.sending = true
 
@@ -161,6 +188,65 @@ export default {
       navigator.clipboard.writeText(value)
     },
 
+    formatDate: function(value) {
+      return useDate().format(value, 'keyboardDate')
+    },
+
+    updateDiscordUserFeedback: function(feedbackReceived, discordUserId) {
+      this.sending = true
+
+      return this.$http({
+        method: 'put',
+        url: `/playtest/${this.project_id}/${discordUserId}/feedback`,
+        headers: {
+          Authorization: `Bearer ${this.token}`
+        },
+        data: {
+          feedback: feedbackReceived
+        }
+      })
+      .then((response) => {
+        this.sending = false
+
+        return this.listDiscordUsers()
+      })
+      .catch((err) => {
+        if (err.response && err.response.status < 500) {
+          this.$emit('update:token', null)
+        }
+
+        this.sending = false
+        this.$emit('error', 'Cannot update discord user feedback', err)
+      })
+    },
+
+    sendDMFeedback: function() {
+      if (!this.playtestCreated) {
+        return Promise.resolve()
+      }
+
+      this.sending = true
+
+      return this.$http({
+        method: 'post',
+        url: `/playtest/${this.project_id}/sendDMFeedback`,
+        headers: {
+          Authorization: `Bearer ${this.token}`
+        }
+      })
+      .then((response) => {
+        this.sending = false
+      })
+      .catch((err) => {
+        if (err.response && err.response.status < 500) {
+          this.$emit('update:token', null)
+        }
+
+        this.sending = false
+        this.$emit('error', 'Cannot send DM feedback', err)
+      })
+    },
+
     listDiscordUsers: function() {
       if (!this.playtestCreated) {
         this.discordUserList = []
@@ -188,6 +274,40 @@ export default {
 
         this.sending = false
         this.$emit('error', 'Cannot list steam keys', err)
+      })
+    },
+
+    computeSteamKeyToSend: function() {
+      return Math.min(this.computeAvailableKeys(this.steamKeyList), this.discordUserList.length - this.computeActivePlaytester(this.discordUserList))
+    },
+
+    sendSteamKeys: function() {
+      this.sending = true
+
+      return this.$http({
+        method: 'put',
+        url: `/playtest/${this.project_id}/sendSteamKeys`,
+        headers: {
+          Authorization: `Bearer ${this.token}`
+        },
+        data: {
+          amount: this.numberOfSteamKeyToSend
+        }
+      })
+      .then((response) => {
+        this.sending = false
+        this.numberOfSteamKeyToSend = 0
+
+        return this.listSteamKeys()
+          .then(() => this.listDiscordUsers())
+      })
+      .catch((err) => {
+        if (err.response && err.response.status < 500) {
+          this.$emit('update:token', null)
+        }
+
+        this.sending = false
+        this.$emit('error', 'Cannot send steam keys', err)
       })
     },
 
@@ -247,19 +367,107 @@ export default {
     },
 
     updatePlaytestEnabled: function () {
-      // TODO
+      this.sending = true
+
+      return this.$http({
+        method: 'put',
+        url: `/playtest/${this.project_id}/toggle`,
+        headers: {
+          Authorization: `Bearer ${this.token}`
+        },
+        data: {
+          enabled: this.playtestEnabled
+        }
+      })
+      .then((response) => {
+        this.sending = false
+      })
+      .catch((err) => {
+        if (err.response && err.response.status < 500) {
+          this.$emit('update:token', null)
+        }
+
+        this.sending = false
+        this.$emit('error', 'Cannot update playtest activation', err)
+      })
     },
 
     updatePlaytestDiscordChannelId: function () {
-      // TODO
+      this.sending = true
+
+      return this.$http({
+        method: 'put',
+        url: `/playtest/${this.project_id}/discordChannelId`,
+        headers: {
+          Authorization: `Bearer ${this.token}`
+        },
+        data: {
+          discordChannelId: this.playtestDiscordChannelId
+        }
+      })
+      .then((response) => {
+        this.sending = false
+      })
+      .catch((err) => {
+        if (err.response && err.response.status < 500) {
+          this.$emit('update:token', null)
+        }
+
+        this.sending = false
+        this.$emit('error', 'Cannot update playtest discord channel id', err)
+      })
     },
 
     updatePlaytestMessage: function () {
-      // TODO
+      this.sending = true
+
+      return this.$http({
+        method: 'put',
+        url: `/playtest/${this.project_id}/message`,
+        headers: {
+          Authorization: `Bearer ${this.token}`
+        },
+        data: {
+          message: this.playtestMessage
+        }
+      })
+      .then((response) => {
+        this.sending = false
+      })
+      .catch((err) => {
+        if (err.response && err.response.status < 500) {
+          this.$emit('update:token', null)
+        }
+
+        this.sending = false
+        this.$emit('error', 'Cannot update playtest message', err)
+      })
     },
 
     updatePlaytestFormUrl: function () {
-      // TODO
+      this.sending = true
+
+      return this.$http({
+        method: 'put',
+        url: `/playtest/${this.project_id}/formUrl`,
+        headers: {
+          Authorization: `Bearer ${this.token}`
+        },
+        data: {
+          formUrl: this.playtestFormUrl
+        }
+      })
+      .then((response) => {
+        this.sending = false
+      })
+      .catch((err) => {
+        if (err.response && err.response.status < 500) {
+          this.$emit('update:token', null)
+        }
+
+        this.sending = false
+        this.$emit('error', 'Cannot update form URL', err)
+      })
     },
 
     upsertPlaytest: function () {
