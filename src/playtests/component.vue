@@ -72,6 +72,9 @@
               <v-text-field :disabled="sending || !is_admin" v-model="playtestDiscordChannelId" label="Discord Channel Id" :rules="[rules.playtestDiscordChannelId]" :append-icon="playtestCreated ? 'mdi-content-save' : ''" @click:append="updatePlaytestDiscordChannelId"></v-text-field>
             </v-list-item>
             <v-list-item>
+              <v-text-field :disabled="sending || !is_admin" v-model="playtestDiscordRoleId" label="Discord Role Id" :rules="[rules.playtestDiscordRoleId]" :append-icon="playtestCreated ? 'mdi-content-save' : ''" @click:append="updatePlaytestDiscordRoleId"></v-text-field>
+            </v-list-item>
+            <v-list-item>
               <v-textarea :disabled="sending || !is_admin" v-model="playtestMessage" label="Message" :rules="[rules.playtestMessage]" :append-icon="playtestCreated ? 'mdi-content-save' : ''" @click:append="updatePlaytestMessage"></v-textarea>
             </v-list-item>
             <v-list-item>

@@ -14,6 +14,7 @@ export default {
 
     playtestEnabled: false,
     playtestDiscordChannelId: 0,
+    playtestDiscordRoleId: 0,
     playtestMessage: '',
     playtestFormUrl: '',
 
@@ -29,6 +30,7 @@ export default {
     sending: false,
     rules: {
       playtestDiscordChannelId: (value) => !!value || 'Discord channel id is required',
+      playtestDiscordRoleId: (value) =>  !!value || 'Discord role id is required',
       playtestMessage: (value) => !!value || 'Message is required',
       playtestFormUrl: (value) => !!value || 'Form URL is required',
       playtestSteamKeys: (value) => !!value || 'Add one steam key per line'
@@ -75,6 +77,7 @@ export default {
         if (response.data != null && response.data.discord_channel_id != null) {
           this.playtestEnabled = response.data.enabled == 1
           this.playtestDiscordChannelId = response.data.discord_channel_id
+          this.playtestDiscordRoleId = response.data.discord_role_id
           this.playtestMessage = response.data.message
           this.playtestFormUrl = response.data.form_url
 
@@ -82,6 +85,7 @@ export default {
         } else {
           this.playtestEnabled = false
           this.playtestDiscordChannelId = 0
+          this.playtestDiscordRoleId = 0
           this.playtestMessage = ''
           this.playtestFormUrl = ''
 
@@ -418,6 +422,32 @@ export default {
       })
     },
 
+    updatePlaytestDiscordRoleId: function() {
+      this.sending = true
+
+      return this.$http({
+        method: 'put',
+        url: `/playtest/${this.project_id}/discordRoleId`,
+        headers: {
+          Authorization: `Bearer ${this.token}`
+        },
+        data: {
+          discordRoleId: this.playtestDiscordRoleId
+        }
+      })
+      .then((response) => {
+        this.sending = false
+      })
+      .catch((err) => {
+        if (err.response && err.response.status < 500) {
+          this.$emit('update:token', null)
+        }
+
+        this.sending = false
+        this.$emit('error', 'Cannot update playtest discord role id', err)
+      })
+    },
+
     updatePlaytestMessage: function () {
       this.sending = true
 
@@ -483,6 +513,7 @@ export default {
           projectId: this.project_id,
           enabled: this.playtestEnabled,
           discordChannelId: this.playtestDiscordChannelId,
+          discordRoleId: this.playtestDiscordRoleId,
           message: this.playtestMessage,
           formUrl: this.playtestFormUrl
         }
