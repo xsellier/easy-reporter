@@ -43,6 +43,51 @@ export default {
     computeBackgroundColor: function (review_data) {
       return review_data.voted_up ? 'bg-green-lighten-4' : 'bg-red-lighten-4'
     },
+    getPlayerCount: function () {
+      this.sending = true
+      this.selectedUserId = user_id
+
+      return this.$http({
+        method: 'get',
+        url: `/user/${encodeURIComponent(user_id)}/project/list/${this.projectCurrentPage}`,
+        headers: {
+          Authorization: `Bearer ${this.token}`
+        }
+      })
+      .then((response) => {
+        this.sending = false
+
+        this.application_name = ''
+        this.application_id = 0
+        this.id = 0
+        this.email = ''
+        this.secret = ''
+        this.apiToken = ''
+        this.archived = false
+        this.projectValid = false
+
+        if (response.data.list.length) {
+          this.application_name = response.data.list[0].name
+          this.application_id = response.data.list[0].steam_id
+          this.email = response.data.list[0].email
+          this.id = response.data.list[0].id
+          this.archived = response.data.list[0].archived
+          this.projectValid = true
+        }
+
+        this.projectTotalPages = response.data.maxPage
+        this.projectCurrentPage = Math.min(this.projectCurrentPage, response.data.maxPage)
+        this.projectTotalItems = response.data.total
+      })
+      .catch((err) => {
+        if (err.response && err.response.status < 500) {
+          this.token = null
+        }
+
+        this.sending = false
+        this.showError('Cannot get concurrent player count', err)
+      })
+    },
     getSteamPage: function () {
       return `https://store.steampowered.com/app/${this.application_data.steam_id}`
     },
